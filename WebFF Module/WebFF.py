@@ -2452,6 +2452,158 @@ def XMLtoFrcBondIncrements(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+
+# Converting between tabular XMLs and LAMMPS' .table format
+def XMLToTableBondPotential_Tabular(root, output_file):
+	f = open(output_file, 'w+')
+	root = ET.parse(root).getroot()
+
+	# Line 1
+	# Write keyword
+	f.write((root.findtext('./BondPotential/BondPotential-Tabular/keyword')).encode('utf-8') + '\n')
+	
+	# Line 2
+	# Write N, the number of table entries per column
+	f.write("N " + (root.findtext('./BondPotential/BondPotential-Tabular/N')).encode('utf-8'))
+	# Checking if fplo and fphi both exist before writing them to file
+	if (root.find('./BondPotential/BondPotential-Tabular/fplo') is not None) and (root.find('./BondPotential/BondPotential-Tabular/fphi') is not None):
+		f.write(" FP " + (root.findtext('./BondPotential/BondPotential-Tabular/fplo')).encode('utf-8'))
+		f.write(" " + (root.findtext('./BondPotential/BondPotential-Tabular/fphi')).encode('utf-8'))
+	# Checking if EQ exists before writing
+	if (root.find('./BondPotential/BondPotential-Tabular/EQ') is not None):
+		f.write(" EQ " + (root.findtext('./BondPotential/BondPotential-Tabular/EQ')).encode('utf-8'))
+
+	# Skip line 3
+	f.write('\n')
+
+	# Table data, lines 4 and beyond
+	for bond in root.findall('./BondPotential/BondPotential-Tabular/Bond'):
+		f.write('\n' + bond.findtext('index').encode('utf-8'))
+		f.write(" " + bond.findtext('bond-length').encode('utf-8'))
+		f.write(" " + bond.findtext('energy').encode('utf-8'))
+		f.write(" " + bond.findtext('force').encode('utf-8'))
+
+	# Close the file
+	f.close()
+
+def XMLToTableAnglePotential_Tabular(root, output_file):
+	f = open(output_file, 'w+')
+	root = ET.parse(root).getroot()
+
+	# Line 1
+	# Write keyword
+	f.write((root.findtext('./AnglePotential/AnglePotential-Tabular/keyword')).encode('utf-8') + '\n')
+	
+	# Line 2
+	# Write N, the number of table entries per column
+	f.write("N " + (root.findtext('./AnglePotential/AnglePotential-Tabular/N')).encode('utf-8'))
+	# Checking if fplo and fphi both exist before writing them to file
+	if (root.find('./AnglePotential/AnglePotential-Tabular/fplo') is not None) and (root.find('./AnglePotential/AnglePotential-Tabular/fphi') is not None):
+		f.write(" FP " + (root.findtext('./AnglePotential/AnglePotential-Tabular/fplo')).encode('utf-8'))
+		f.write(" " + (root.findtext('./AnglePotential/AnglePotential-Tabular/fphi')).encode('utf-8'))
+	# Checking if EQ exists before writing
+	if (root.find('./AnglePotential/AnglePotential-Tabular/EQ') is not None):
+		f.write(" EQ " + (root.findtext('./AnglePotential/AnglePotential-Tabular/EQ')).encode('utf-8'))
+
+	# Skip line 3
+	f.write('\n')
+	f.write('\n')
+
+	# Line 4
+	# Write N, the number of table entries per column
+	f.write("N " + (root.findtext('./AnglePotential/AnglePotential-Tabular/N')).encode('utf-8'))
+	# Checking if fplo and fphi both exist before writing them to file
+	if (root.find('./AnglePotential/AnglePotential-Tabular/fplo') is not None) and (root.find('./AnglePotential/AnglePotential-Tabular/fphi') is not None):
+		f.write(" FP " + (root.findtext('./AnglePotential/AnglePotential-Tabular/fplo')).encode('utf-8'))
+		f.write(" " + (root.findtext('./AnglePotential/AnglePotential-Tabular/fphi')).encode('utf-8'))
+
+	# Table data, lines 5 and beyond
+	for angle in root.findall('./AnglePotential/AnglePotential-Tabular/Angle'):
+		f.write('\n' + angle.findtext('index').encode('utf-8'))
+		f.write(" " + angle.findtext('angle').encode('utf-8'))
+		f.write(" " + angle.findtext('energy').encode('utf-8'))
+		f.write(" " + angle.findtext('energy-diff').encode('utf-8'))
+
+	# Close the file
+	f.close()
+
+def XMLToTableDihedralPotential_Tabular(root, output_file):
+	f = open(output_file, 'w+')
+	root = ET.parse(root).getroot()
+
+	# Line 1
+	# Write keyword
+	f.write((root.findtext('./DihedralPotential/DihedralPotential-Tabular/keyword')).encode('utf-8') + '\n')
+	
+	# Line 2
+	# Write N, the number of table entries per column
+	f.write("N " + (root.findtext('./DihedralPotential/DihedralPotential-Tabular/N')).encode('utf-8'))
+	# Checking if angle-units has been specified
+	if (root.find('./DihedralPotential/DihedralPotential-Tabular')).attrib['angle-units'] is not None:
+		f.write(' ' + ((root.find('./DihedralPotential/DihedralPotential-Tabular')).attrib['angle-units']).upper().encode('utf-8'))
+	# Checking if NOF exists before writing to file
+	if (root.find('./DihedralPotential/DihedralPotential-Tabular/NOF') is not None):
+		if (root.findtext('./DihedralPotential/DihedralPotential-Tabular/NOF')).encode('utf-8') == 'true':
+			f.write(" NOF")
+	# Checking if CHECKU exists before writing
+	if (root.find('./DihedralPotential/DihedralPotential-Tabular/CHECKU') is not None):
+		f.write(" CHECKU " + (root.findtext('./DihedralPotential/DihedralPotential-Tabular/CHECKU')).encode('utf-8'))
+	# Checking if CHECKF exists before writing
+	if (root.find('./DihedralPotential/DihedralPotential-Tabular/CHECKF') is not None):
+		f.write(" CHECKF " + (root.findtext('./DihedralPotential/DihedralPotential-Tabular/CHECKF')).encode('utf-8'))
+
+	# Skip line 3
+	f.write('\n')
+
+	# Table data, lines 4 and beyond
+	for dihedral in root.findall('./DihedralPotential/DihedralPotential-Tabular/Dihedral'):
+		f.write('\n' + dihedral.findtext('index').encode('utf-8'))
+		f.write(" " + dihedral.findtext('angle').encode('utf-8'))
+		f.write(" " + dihedral.findtext('energy').encode('utf-8'))
+		f.write(" " + dihedral.findtext('energy-diff').encode('utf-8'))
+
+	# Close the file
+	f.close()
+
+def XMLToTableNonBondPotential_Tabular(root, output_file):
+	f = open(output_file, 'w+')
+	root = ET.parse(root).getroot()
+
+	# Line 1
+	# Write keyword
+	f.write((root.findtext('./NonBondPotential/NonBondPotential-Tabular/keyword')).encode('utf-8') + '\n')
+	
+	# Line 2
+	# Write N, the number of table entries per column
+	f.write("N " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/N')).encode('utf-8'))
+	# Checking if interpolation style has been specified
+	if (root.find('./NonBondPotential/NonBondPotential-Tabular')).attrib['Interpolation-style'] is not None:
+		if (root.find('./NonBondPotential/NonBondPotential-Tabular')).attrib['Interpolation-style'] == 'R':
+			f.write(" R " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rlo')).encode('utf-8'))
+			f.write(" " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rhi')).encode('utf-8'))
+		elif (root.find('./NonBondPotential/NonBondPotential-Tabular')).attrib['Interpolation-style'] == 'RSQ':
+			f.write(" RSQ " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rlo')).encode('utf-8'))
+			f.write(" " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rhi')).encode('utf-8'))
+		elif (root.find('./NonBondPotential/NonBondPotential-Tabular')).attrib['Interpolation-style'] == 'BITMAP':
+			f.write(" BITMAP " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rlo')).encode('utf-8'))
+			f.write(" " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rhi')).encode('utf-8'))
+	# Checking if fplo and fphi both exist before writing them to file
+	if (root.find('./NonBondPotential/NonBondPotential-Tabular/fplo') is not None) and (root.find('./NonBondPotential/NonBondPotential-Tabular/fphi') is not None):
+		f.write(" FPRIME " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/fplo')).encode('utf-8'))
+		f.write(" " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/fphi')).encode('utf-8'))
+
+	# Skip line 3
+	f.write('\n')
+
+	# Table data, lines 4 and beyond
+	for non_bond in root.findall('./NonBondPotential/NonBondPotential-Tabular/NonBond'):
+		f.write('\n' + non_bond.findtext('index').encode('utf-8'))
+		f.write(" " + non_bond.findtext('r').encode('utf-8'))
+		f.write(" " + non_bond.findtext('energy').encode('utf-8'))
+		f.write(" " + non_bond.findtext('force').encode('utf-8'))
+
+	# Close the file
+	f.close()
     
 # The functions below create a file with citation information taken from an XML file and outputed as a text file 
 def XMLtoCitBib(root, output_file): 
