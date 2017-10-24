@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="FF-CoarseGrained">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="BondPotential" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="BondPotential-Tabular" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="AT-1" type="xs:string" />
+                                        <xs:element name="AT-2" type="xs:string" />
+                                        <xs:element name="keyword" type="xs:string" />
+                                        <xs:element name="N" type="xs:integer" />
+                                        <xs:element name="fplo" type="xs:float" minOccurs="0" />
+                                        <xs:element name="fphi" type="xs:float" minOccurs="0" />
+                                        <xs:element name="EQ" type="xs:float" minOccurs="0" />
+                                        <xs:element name="Bond" type="BondTable" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute name="style" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Tabular" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="bond-length-units" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Å" />
+                                                <xs:enumeration value="nm" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="energy-units" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Kcal/mole" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="force-units" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Kcal/mole-Å" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="comment" type="xs:string" use="optional" />
+                                    <xs:attribute name="version" type="VersionString" use="optional" />
+                                    <xs:attribute name="reference" type="xs:string" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="AnglePotential" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="AnglePotential-Tabular" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="AT-1" type="xs:string" />
+                                        <xs:element name="AT-2" type="xs:string" />
+                                        <xs:element name="AT-3" type="xs:string" />
+                                        <xs:element name="keyword" type="xs:string" />
+                                        <xs:element name="N" type="xs:integer" />
+                                        <xs:element name="fplo" type="xs:float" minOccurs="0" />
+                                        <xs:element name="fphi" type="xs:float" minOccurs="0" />
+                                        <xs:element name="EQ" type="xs:float" minOccurs="0" />
+                                        <xs:element name="Angle" type="AngleTable" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute name="style" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Tabular" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="angle-units" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="degrees" />
+                                                <xs:enumeration value="radians" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="energy-units" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Kcal/mole" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="energy-diff-units" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Kcal/mole-degrees" />
+                                                <xs:enumeration value="Kcal/mole-radians" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="comment" type="xs:string" use="optional" />
+                                    <xs:attribute name="version" type="VersionString" use="optional" />
+                                    <xs:attribute name="reference" type="xs:string" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="DihedralPotential" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="DihedralPotential-Tabular" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="AT-1" type="xs:string" />
+                                        <xs:element name="AT-2" type="xs:string" />
+                                        <xs:element name="AT-3" type="xs:string" />
+                                        <xs:element name="AT-4" type="xs:string" />
+                                        <xs:element name="keyword" type="xs:string" />
+                                        <xs:element name="N" type="xs:integer" />
+                                        <xs:element name="NOF" type="xs:boolean" minOccurs="0" />
+                                        <xs:element name="CHECKU" type="xs:string" minOccurs="0" />
+                                        <xs:element name="CHECKF" type="xs:string" minOccurs="0" />
+                                        <xs:element name="Dihedral" type="DihedralTable" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute name="style" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Tabular" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="angle-units" use="optional">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="degrees" />
+                                                <xs:enumeration value="radians" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="energy-units">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Kcal/mole" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="energy-diff-units">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Kcal/mole-degrees" />
+                                                <xs:enumeration value="Kcal/mole-radians" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="comment" type="xs:string" use="optional" />
+                                    <xs:attribute name="version" type="VersionString" use="optional" />
+                                    <xs:attribute name="reference" type="xs:string" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="NonBondPotential" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="NonBondPotential-Tabular" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="AT-1" type="xs:string" />
+                                        <xs:element name="AT-2" type="xs:string" />
+                                        <xs:element name="keyword" type="xs:string" />
+                                        <xs:element name="N" type="xs:integer" />
+                                        <xs:element name="rlo" type="xs:float" minOccurs="0" />
+                                        <xs:element name="rhi" type="xs:float" minOccurs="0" />
+                                        <xs:element name="fplo" type="xs:float" minOccurs="0" />
+                                        <xs:element name="fphi" type="xs:float" minOccurs="0" />
+                                        <xs:element name="NonBond" type="NonBondTable" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute name="style" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Tabular" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Interpolation-style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="R" />
+                                                <xs:enumeration value="RSQ" />
+                                                <xs:enumeration value="BITMAP" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="r-units">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Å" />
+                                                <xs:enumeration value="nm" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="energy-units">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Kcal/mole" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="force-units">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Kcal/mole-Å" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="comment" type="xs:string" use="optional" />
+                                    <xs:attribute name="version" type="VersionString" use="optional" />
+                                    <xs:attribute name="reference" type="xs:string" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="VersionString">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9][\.]{0,1}[0-9]*" />
+            <xsd:whiteSpace value="collapse" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:complexType name="AngleTable">
+        <xs:sequence>
+            <xs:element name="index" type="xs:integer" />
+            <xs:element name="angle" type="xs:float" />
+            <xs:element name="energy" type="xs:float" />
+            <xs:element name="energy-diff" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="BondTable">
+        <xs:sequence>
+            <xs:element name="index" type="xs:integer" />
+            <xs:element name="bond-length" type="xs:float" />
+            <xs:element name="energy" type="xs:float" />
+            <xs:element name="force" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DihedralTable">
+        <xs:sequence>
+            <xs:element name="index" type="xs:integer" />
+            <xs:element name="angle" type="xs:float" />
+            <xs:element name="energy" type="xs:float" />
+            <xs:element name="energy-diff" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NonBondTable">
+        <xs:sequence>
+            <xs:element name="index" type="xs:integer" />
+            <xs:element name="r" type="xs:float" />
+            <xs:element name="energy" type="xs:float" />
+            <xs:element name="force" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
