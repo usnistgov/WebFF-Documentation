@@ -1795,6 +1795,7 @@
                     </xs:choice>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="Attachment" type="AttachmentType" minOccurs="0" maxOccurs="unbounded" />
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="Bond-Class2">
@@ -2181,6 +2182,12 @@
             <xs:element name="AtomType" type="xs:string" />
             <xs:element name="epsilon" type="xs:float" />
             <xs:element name="sigma" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AttachmentType">
+        <xs:sequence>
+            <xs:element name="fileExtension" type="xs:string" />
+            <xs:element xmlns:ns0="http://mdcs.ns" name="reference" type="xs:anyURI" ns0:_mod_mdcs_="/curator/blob-hoster" />
         </xs:sequence>
     </xs:complexType>
 </xs:schema>
