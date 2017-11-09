@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML 2015 Developer Bundle Edition 13.2.3.6018 (http://www.liquid-technologies.com)-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="VersionString">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9][\.]{0,1}[0-9]*" />
+            <xsd:whiteSpace value="collapse" />
+        </xsd:restriction>
+    </xs:simpleType>
+</xs:schema>
