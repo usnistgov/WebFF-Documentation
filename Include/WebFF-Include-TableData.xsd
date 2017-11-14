@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="BondIncrement-Type">
+        <xs:sequence>
+            <xs:element name="AT-I" type="xs:string" />
+            <xs:element name="AT-J" type="xs:string" />
+            <xs:element name="Delta-IJ" type="xs:string" />
+            <xs:element name="Delta-JI" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Equivalence-Relation">
+        <xs:sequence>
+            <xs:element name="AtomType" type="xs:string" />
+            <xs:element name="NonBond" type="xs:string" />
+            <xs:element name="Bond" type="xs:string" />
+            <xs:element name="Angle" type="xs:string" />
+            <xs:element name="Dihedral" type="xs:string" />
+            <xs:element name="Improper" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AutoEquivalence-Type">
+        <xs:sequence>
+            <xs:element name="AtomType" type="xs:string" />
+            <xs:element name="NonBond" type="xs:string" />
+            <xs:element name="BondIncrement" type="xs:string" />
+            <xs:element name="Bond" type="xs:string" />
+            <xs:element name="AngleEnd" type="xs:string" />
+            <xs:element name="AngleApex" type="xs:string" />
+            <xs:element name="DihedralEnd" type="xs:string" />
+            <xs:element name="DihedralCenter" type="xs:string" />
+            <xs:element name="OutOfPlaneEnd" type="xs:string" />
+            <xs:element name="OutOfPlaneCenter" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

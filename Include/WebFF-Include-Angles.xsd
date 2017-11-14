@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="Angle-Harmonic">
+        <xs:sequence>
+            <xs:element name="AT-1" type="xs:string" />
+            <xs:element name="AT-2" type="xs:string" />
+            <xs:element name="AT-3" type="xs:string" />
+            <xs:element name="Ka" type="xs:float" />
+            <xs:element name="Theta0" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Angle-COS2">
+        <xs:sequence>
+            <xs:element name="AT-1" type="xs:string" />
+            <xs:element name="AT-2" type="xs:string" />
+            <xs:element name="AT-3" type="xs:string" />
+            <xs:element name="Ka" type="xs:float" />
+            <xs:element name="Theta0" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Angle-CHARMM">
+        <xs:sequence>
+            <xs:element name="AT-1" type="xs:string" />
+            <xs:element name="AT-2" type="xs:string" />
+            <xs:element name="AT-3" type="xs:string" />
+            <xs:element name="Ka" type="xs:float" />
+            <xs:element name="Theta0" type="xs:float" />
+            <xs:element name="Kub" type="xs:float" />
+            <xs:element name="Rub" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AnglePotential-Class2">
+        <xs:sequence>
+            <xs:element name="AT-1" type="xs:string" />
+            <xs:element name="AT-2" type="xs:string" />
+            <xs:element name="AT-3" type="xs:string" />
+            <xs:element name="K2" type="xs:float" />
+            <xs:element name="K3" type="xs:float" />
+            <xs:element name="K4" type="xs:float" />
+            <xs:element name="Theta0" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AngleTable">
+        <xs:sequence>
+            <xs:element name="index" type="xs:integer" />
+            <xs:element name="angle" type="xs:float" />
+            <xs:element name="energy" type="xs:float" />
+            <xs:element name="energy-diff" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="AnglePotential-Harmonic-AngleCoefficient-Units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kcal/mol/degrees^2" />
+            <xs:enumeration value="kJ/mol/degrees^2" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AnglePotential-Harmonic-Angle-Units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="degrees" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AnglePotential-COS2-AngleCoefficient-Units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kcal/mol" />
+            <xs:enumeration value="kJ/mol" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AnglePotential-COS2-Angle-Units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="degrees" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AnglePotential-CHARMM-AngleCoefficient-Units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kcal/mol/degrees^2" />
+            <xs:enumeration value="kJ/mol/degrees^2" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AnglePotential-CHARMM-Angle-Units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="degrees" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AnglePotential-CHARMM-KUB-Units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kcal/mol/Å^2" />
+            <xs:enumeration value="kJ/mol/nm^2" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AnglePotential-CHARMM-RUB-Units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Å" />
+            <xs:enumeration value="nm" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

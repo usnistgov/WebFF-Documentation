@@ -1,0 +1,1068 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation=".\WebFF-Include.xsd" />
+    <xs:include schemaLocation=".\WebFF-Include-AtomTypes.xsd" />
+    <xs:include schemaLocation=".\WebFF-Include-TableData.xsd" />
+    <xs:include schemaLocation=".\WebFF-Include-Angles.xsd" />
+    <xs:include schemaLocation=".\WebFF-Include-Bonds.xsd" />
+    <xs:include schemaLocation=".\WebFF-Include-Dihedrals.xsd" />
+    <xs:include schemaLocation=".\WebFF-Include-Impropers.xsd" />
+    <xs:include schemaLocation=".\WebFF-Include-NonBonds.xsd" />
+    <xs:include schemaLocation=".\WebFF-Include-Metadata.xsd" />
+    <xs:element name="FF-Class-I">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Force-Field-Header" type="Force-Field-Metadata" />
+                <xs:element name="AtomTypes" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="AtomType" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:complexContent>
+                                        <xs:extension base="AtomTemplate">
+                                            <xs:attribute name="Description" type="xs:string" />
+                                            <xs:attribute name="Element" type="xs:string" use="optional" />
+                                            <xs:attribute name="AtomicNumber" type="xs:positiveInteger" use="optional" />
+                                            <xs:attribute name="AtomicMass" type="xs:float" use="optional" />
+                                        </xs:extension>
+                                    </xs:complexContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="PatternNomenclatureStyle" type="xs:string" use="required" />
+                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="BondPotential" minOccurs="0">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="BondPotential-Harmonic">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Bond" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Bond-Harmonic">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Harmonic" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="K*(R-R0)^2" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="K-units" type="BondPotential-Harmonic-BondCoefficient-Units" />
+                                    <xs:attribute name="R0-units" type="BondPotential-Harmonic-BondLength-Units" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="BondPotential-Morse">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Bond" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Bond-Morse">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Morse" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="D*[(1-exp(-A(R-R0))]^2" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="D-units" type="BondPotential-Morse-D-Units" />
+                                    <xs:attribute name="A-units" type="BondPotential-Morse-A-Units" />
+                                    <xs:attribute name="R0-units" type="BondPotential-Morse-R0-Units" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="BondPotential-Class2">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Bond" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Bond-Class2">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Class2" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="K2*(R-R0)^2+K3*(R-R0)^3+K4*(R-R0)^4" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="K-units" type="BondPotential-Class2-BondCoefficient-Units" />
+                                    <xs:attribute name="R0-units" type="BondPotential-Class2-BondLength-Units" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="AnglePotential" minOccurs="0">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="AnglePotential-Harmonic">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Angle" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Angle-Harmonic">
+                                                        <xs:attribute name="precedence" type="xs:positiveInteger" use="optional" />
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Harmonic" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Ka*(Theta-Theta0)^2" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Ka-units" type="AnglePotential-Harmonic-AngleCoefficient-Units" />
+                                    <xs:attribute name="Theta0-units" type="AnglePotential-Harmonic-Angle-Units" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="AnglePotential-COS2">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Angle" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Angle-COS2">
+                                                        <xs:attribute name="precedence" type="xs:positiveInteger" use="optional" />
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="cosine/squared" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Ka*[cos(Theta)-cos(Theta0)]^2" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Ka-units" type="AnglePotential-COS2-AngleCoefficient-Units" />
+                                    <xs:attribute name="Theta0-units" type="AnglePotential-COS2-Angle-Units" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="AnglePotential-CHARMM">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Angle" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Angle-CHARMM">
+                                                        <xs:attribute name="precedence" type="xs:positiveInteger" use="optional" />
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="CHARMM" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Ka*(Theta-Theta0)^2+Kub*(R-Rub)^2" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Ka-units" type="AnglePotential-CHARMM-AngleCoefficient-Units" />
+                                    <xs:attribute name="Theta0-units" type="AnglePotential-CHARMM-Angle-Units" />
+                                    <xs:attribute name="Kub-units" type="AnglePotential-CHARMM-KUB-Units" />
+                                    <xs:attribute name="Rub-units" type="AnglePotential-CHARMM-RUB-Units" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="DihedralPotential" minOccurs="0">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="DihedralPotential-CHARMM">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Dihedral" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Dihedral-CHARMM">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="CHARMM" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Kd*[1+cos(N*Phi-Phi0)]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="convention">
+                                        <xs:simpleType>
+                                            <xs:restriction base="Conventions" />
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Kd-units" type="Energy-Units" />
+                                    <xs:attribute name="Phi0-units">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="degrees" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="DihedralPotential-Harmonic">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Dihedral" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Dihedral-Harmonic">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Harmonic" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Kd*[1+Ns*cos(N*Phi)]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="convention">
+                                        <xs:simpleType>
+                                            <xs:restriction base="Conventions">
+                                                <xs:enumeration value="cis" />
+                                                <xs:enumeration value="cis:left" />
+                                                <xs:enumeration value="cis:right" />
+                                                <xs:enumeration value="trans" />
+                                                <xs:enumeration value="trans:left" />
+                                                <xs:enumeration value="trans:right" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Kd-units" type="Energy-Units" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="DihedralPotential-Quadratic">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Dihedral" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Dihedral-Quadratic">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Quadratic" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Kd*(Phi-Phi0)^2" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="convention">
+                                        <xs:simpleType>
+                                            <xs:restriction base="Conventions">
+                                                <xs:enumeration value="cis" />
+                                                <xs:enumeration value="cis:left" />
+                                                <xs:enumeration value="cis:right" />
+                                                <xs:enumeration value="trans" />
+                                                <xs:enumeration value="trans:left" />
+                                                <xs:enumeration value="trans:right" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Kd-units" type="Energy-Units" />
+                                    <xs:attribute name="Phi0-units">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="degrees" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="DihedralPotential-OPLS">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Dihedral" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Dihedral-OPLS">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="OPLS" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="0.5*{K1*[1+cos(Phi)]+K2*[1-cos(2*Phi)]+K3*[1+cos(3*Phi)]+K4*[1-cos(4*Phi)]}" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="convention">
+                                        <xs:simpleType>
+                                            <xs:restriction base="Conventions">
+                                                <xs:enumeration value="cis" />
+                                                <xs:enumeration value="cis:left" />
+                                                <xs:enumeration value="cis:right" />
+                                                <xs:enumeration value="trans" />
+                                                <xs:enumeration value="trans:left" />
+                                                <xs:enumeration value="trans:right" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Kn-units" type="Energy-Units" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="DihedralPotential-FourierSimple">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Dihedral" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Dihedral-FourierSimple">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Fourier-Simple" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="K1*[1+cos(Phi)]+K2*[1+cos(2*Phi)]+K3*[1+cos(3*Phi)]+K4*[1+cos(4*Phi)]+K5*[1+cos(5*Phi)]" />
+                                                <xs:enumeration value="K1*[1-cos(Phi)]+K2*[1-cos(2*Phi)]+K3*[1-cos(3*Phi)]+K4*[1-cos(4*Phi)]+K5*[1-cos(5*Phi)]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="convention">
+                                        <xs:simpleType>
+                                            <xs:restriction base="Conventions">
+                                                <xs:enumeration value="cis" />
+                                                <xs:enumeration value="cis:left" />
+                                                <xs:enumeration value="cis:right" />
+                                                <xs:enumeration value="trans" />
+                                                <xs:enumeration value="trans:left" />
+                                                <xs:enumeration value="trans:right" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Kn-units" type="Energy-Units" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="DihedralPotential-Fourier">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Dihedral" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Dihedral-Fourier">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Fourier" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="K1*[1+cos(N1*Phi-D1)]+K2*[1+cos(N2*Phi-D2)]+K3*[1+cos(N3*Phi-D3)]+K4*[1+cos(N4*Phi-D4)]+K5*[1+cos(N5*Phi-D5)]" />
+                                                <xs:enumeration value="K1*[1-cos(N1*Phi-D1)]+K2*[1-cos(N2*Phi-D2)]+K3*[1-cos(N3*Phi-D3)]+K4*[1-cos(N4*Phi-D4)]+K5*[1-cos(N5*Phi-D5)]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="convention">
+                                        <xs:simpleType>
+                                            <xs:restriction base="Conventions">
+                                                <xs:enumeration value="cis" />
+                                                <xs:enumeration value="cis:left" />
+                                                <xs:enumeration value="cis:right" />
+                                                <xs:enumeration value="trans" />
+                                                <xs:enumeration value="trans:left" />
+                                                <xs:enumeration value="trans:right" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Kn-units" type="Energy-Units" />
+                                    <xs:attribute name="Dn-units">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="degrees" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="ImproperPotential" minOccurs="0">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="ImproperPotential-CVFF">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Improper" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Improper-CVFF">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="CVFF" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Ki*[1+Ns*cos(N*Phi)]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="convention">
+                                        <xs:simpleType>
+                                            <xs:restriction base="Conventions">
+                                                <xs:enumeration value="cis" />
+                                                <xs:enumeration value="cis:left" />
+                                                <xs:enumeration value="cis:right" />
+                                                <xs:enumeration value="trans" />
+                                                <xs:enumeration value="trans:left" />
+                                                <xs:enumeration value="trans:right" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Ki-units" type="Energy-Units" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="ImproperPotential-COS2">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Improper" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Improper-COS2">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="cosine/squared" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Ki*cos(Chi-Chi0)^2" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="convention">
+                                        <xs:simpleType>
+                                            <xs:restriction base="Conventions">
+                                                <xs:enumeration value="cis" />
+                                                <xs:enumeration value="cis:left" />
+                                                <xs:enumeration value="cis:right" />
+                                                <xs:enumeration value="trans" />
+                                                <xs:enumeration value="trans:left" />
+                                                <xs:enumeration value="trans:right" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Ki-units" type="Energy-Units" />
+                                    <xs:attribute name="Chi0-units">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="degrees" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="ImproperPotential-Harmonic">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Improper" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Improper-Harmonic">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Harmonic" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Ki*(Chi-Chi0)^2" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="convention">
+                                        <xs:simpleType>
+                                            <xs:restriction base="Conventions">
+                                                <xs:enumeration value="cis" />
+                                                <xs:enumeration value="cis:left" />
+                                                <xs:enumeration value="cis:right" />
+                                                <xs:enumeration value="trans" />
+                                                <xs:enumeration value="trans:left" />
+                                                <xs:enumeration value="trans:right" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Ki-units" type="Energy-Units-Scaled" />
+                                    <xs:attribute name="Chi0-units">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="degrees" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="ImproperPotential-Fourier">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Improper" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Improper-Fourier">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Fourier" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Ki*[C0+C1*cos(w)+C2*cos(2*w)]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="convention">
+                                        <xs:simpleType>
+                                            <xs:restriction base="Conventions">
+                                                <xs:enumeration value="cis" />
+                                                <xs:enumeration value="cis:left" />
+                                                <xs:enumeration value="cis:right" />
+                                                <xs:enumeration value="trans" />
+                                                <xs:enumeration value="trans:left" />
+                                                <xs:enumeration value="trans:right" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Ki-units" type="Energy-Units" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="ImproperPotential-Umbrella">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Improper" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Improper-Umbrella">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Umbrella" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="0.5*K*[{1+cos(w0)}/sin(w0)]^2*[cos(w)-cos(w0)], w0 ≠ 0°; K*[1-cos(w)],  w0 = 0°" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="convention">
+                                        <xs:simpleType>
+                                            <xs:restriction base="Conventions">
+                                                <xs:enumeration value="cis" />
+                                                <xs:enumeration value="cis:left" />
+                                                <xs:enumeration value="cis:right" />
+                                                <xs:enumeration value="trans" />
+                                                <xs:enumeration value="trans:left" />
+                                                <xs:enumeration value="trans:right" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Ki-units" type="Energy-Units" />
+                                    <xs:attribute name="w0-units">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="degrees" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="ImproperPotential-CHARMM">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Improper" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Improper-CHARMM">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="CHARMM" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Kd*[1+cos(N*Phi-Phi0)]" />
+                                                <xs:enumeration value="Kd*[1+cos(N*Phi+Phi0)]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="convention">
+                                        <xs:simpleType>
+                                            <xs:restriction base="Conventions">
+                                                <xs:enumeration value="cis" />
+                                                <xs:enumeration value="cis:left" />
+                                                <xs:enumeration value="cis:right" />
+                                                <xs:enumeration value="trans" />
+                                                <xs:enumeration value="trans:left" />
+                                                <xs:enumeration value="trans:right" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="Kd-units" type="Energy-Units" />
+                                    <xs:attribute name="Phi0-units">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="degrees" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="NonBondPotential" minOccurs="0">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="NonBondPotential-LJ">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NonBond" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="NonBond-LJ">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Lennard-Jones (12-6)" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="4*epsilon*[(sigma/R)^12-(sigma/R)^6]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="epsilon-units" type="LJ-epsilon-units" />
+                                    <xs:attribute name="sigma-units" type="LJ-sigma-units" />
+                                    <xs:attribute name="Combining-Rule" type="Combining-Rules" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="NonBondPotential-LJ-Rmin">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NonBond" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="NonBond-LJ-Rmin">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Lennard-Jones (12-6) [Rmin Form]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="epsilon*[(Rmin/R)^12-2*(Rmin/R)^6]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="epsilon-units" type="LJ-epsilon-units" />
+                                    <xs:attribute name="Rmin-units" type="LJ-Rmin-units" />
+                                    <xs:attribute name="Combining-Rule" type="Combining-Rules" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="NonBondPotential-LJ-AB">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NonBond" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="NonBond-LJ-AB">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Lennard-Jones (12-6) [A-B Form]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="A/(R^12)-B/(R^6)" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="A-units" type="LJ-A-units" />
+                                    <xs:attribute name="B-units" type="LJ-B-units" />
+                                    <xs:attribute name="Combining-Rule" type="Combining-Rules" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="NonBondPotential-LJ96">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NonBond" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="NonBond-LJ96">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Lennard-Jones (9-6) [Class 2 Form]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="epsilon*[2*(sigma/R)^9-3*(sigma/R)^6]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="epsilon-units" type="LJ-epsilon-units" />
+                                    <xs:attribute name="sigma-units" type="LJ-sigma-units" />
+                                    <xs:attribute name="Combining-Rule" type="Combining-Rules" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="NonBondPotential-LJ2">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NonBond" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="NonBond-LJ2">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Lennard-Jones (12-6)" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="4*epsilon*[(sigma/R)^12-(sigma/R)^6]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="epsilon-units" type="LJ-epsilon-units" />
+                                    <xs:attribute name="sigma-units" type="LJ-sigma-units" />
+                                    <xs:attribute name="Combining-Rule" type="Combining-Rules" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="BondIncrementTable" minOccurs="0">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="BondIncrement" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:complexContent>
+                                        <xs:extension base="BondIncrement-Type">
+                                            <xs:attribute name="comment" type="xs:string" use="optional" />
+                                            <xs:attribute name="version" type="VersionString" use="optional" />
+                                            <xs:attribute name="reference" type="xs:string" use="optional" />
+                                        </xs:extension>
+                                    </xs:complexContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="EquivalenceTable" minOccurs="0">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="Equivalence" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:complexContent>
+                                        <xs:extension base="Equivalence-Relation">
+                                            <xs:attribute name="comment" type="xs:string" use="optional" />
+                                            <xs:attribute name="version" type="VersionString" use="optional" />
+                                            <xs:attribute name="reference" type="xs:string" use="optional" />
+                                        </xs:extension>
+                                    </xs:complexContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="AutoEquivalenceTable" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="AutoEquivalence" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:complexContent>
+                                        <xs:extension base="AutoEquivalence-Type">
+                                            <xs:attribute name="comment" type="xs:string" use="optional" />
+                                            <xs:attribute name="version" type="VersionString" use="optional" />
+                                            <xs:attribute name="reference" type="xs:string" use="optional" />
+                                        </xs:extension>
+                                    </xs:complexContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

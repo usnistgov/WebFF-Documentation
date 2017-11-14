@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="NonBond-LJ">
+        <xs:sequence>
+            <xs:element name="AtomType" type="xs:string" />
+            <xs:element name="epsilon" type="xs:float" />
+            <xs:element name="sigma" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NonBond-LJ-Rmin">
+        <xs:sequence>
+            <xs:element name="AtomType" type="xs:string" />
+            <xs:element name="epsilon" type="xs:float" />
+            <xs:element name="Rmin" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NonBond-LJ-AB">
+        <xs:sequence>
+            <xs:element name="AtomType" type="xs:string" />
+            <xs:element name="A" type="xs:float" />
+            <xs:element name="B" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NonBond-LJ2">
+        <xs:sequence>
+            <xs:element name="AT-1" type="xs:string" />
+            <xs:element name="AT-2" type="xs:string" />
+            <xs:element name="epsilon" type="xs:float" />
+            <xs:element name="sigma" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NonBond-LJ96">
+        <xs:sequence>
+            <xs:element name="AtomType" type="xs:string" />
+            <xs:element name="epsilon" type="xs:float" />
+            <xs:element name="sigma" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NonBondTable">
+        <xs:sequence>
+            <xs:element name="index" type="xs:integer" />
+            <xs:element name="r" type="xs:float" />
+            <xs:element name="energy" type="xs:float" />
+            <xs:element name="force" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="LJ-epsilon-units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kcal/mol" />
+            <xs:enumeration value="kJ/mol" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="LJ-sigma-units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Å (Angstrom)" />
+            <xs:enumeration value="nm" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="LJ-Rmin-units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Å (Angstrom)" />
+            <xs:enumeration value="nm" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="LJ-A-units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kcal*Å^12/mol" />
+            <xs:enumeration value="kJ*nm^12/mol" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="LJ-B-units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kcal*Å^6/mol" />
+            <xs:enumeration value="kJ*nm^6/mol" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Combining-Rules">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Lorentz-Berthelot" />
+            <xs:enumeration value="Waldman-Hagler" />
+            <xs:enumeration value="Kong" />
+            <xs:enumeration value="Fender-Halsey" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
