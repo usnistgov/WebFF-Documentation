@@ -78,4 +78,12 @@
             <xs:element name="force" type="xs:float" />
         </xs:sequence>
     </xs:complexType>
+    <xs:complexType name="Bond-FENE">
+        <xs:sequence>
+            <xs:element name="AT-1" type="xs:string" />
+            <xs:element name="AT-2" type="xs:string" />
+            <xs:element name="K" type="xs:float" />
+            <xs:element name="R0" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>

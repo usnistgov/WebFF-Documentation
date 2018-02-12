@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:complexType name="NonBond-LJ">
         <xs:sequence>
@@ -36,6 +37,39 @@
             <xs:element name="sigma" type="xs:float" />
         </xs:sequence>
     </xs:complexType>
+    <xs:complexType name="NonBond-Weeks-Chandler-Anderson">
+        <xs:sequence>
+            <xs:element name="AT-1" type="xs:string" />
+            <xs:element name="AT-2" type="xs:string" />
+            <xs:element name="epsilon" type="xs:float" />
+            <xs:element name="sigma" type="xs:float" />
+            <xs:element name="r_cut" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NonBond-Mie">
+        <xs:sequence>
+            <xs:element name="AT-1" type="xs:string" />
+            <xs:element name="AT-2" type="xs:string" />
+            <xs:element name="C" type="xs:float" />
+            <xs:element name="epsilon" type="xs:float" />
+            <xs:element name="sigma" type="xs:float" />
+            <xs:element name="m_rep" type="xs:float" />
+            <xs:element name="n_att" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NonBond-EnergyRenorm">
+        <xs:sequence>
+            <xs:element name="AT-1" type="xs:string" />
+            <xs:element name="AT-2" type="xs:string" />
+            <xs:element name="epsilon_g" type="xs:float" />
+            <xs:element name="epsilon_A" type="xs:float" />
+            <xs:element name="sigma_0" type="xs:float" />
+            <xs:element name="a" type="xs:float" />
+            <xs:element name="b" type="xs:float" />
+            <xs:element name="k_sig" type="xs:float" />
+            <xs:element name="T_sig" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
     <xs:complexType name="NonBondTable">
         <xs:sequence>
             <xs:element name="index" type="xs:integer" />
@@ -51,6 +85,30 @@
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="LJ-sigma-units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Å (Angstrom)" />
+            <xs:enumeration value="nm" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="WCA-epsilon-units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kcal/mol" />
+            <xs:enumeration value="kJ/mol" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="WCA-sigma-units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Å (Angstrom)" />
+            <xs:enumeration value="nm" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Mie-epsilon-units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kcal/mol" />
+            <xs:enumeration value="kJ/mol" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Mie-sigma-units">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Å (Angstrom)" />
             <xs:enumeration value="nm" />
@@ -80,6 +138,17 @@
             <xs:enumeration value="Waldman-Hagler" />
             <xs:enumeration value="Kong" />
             <xs:enumeration value="Fender-Halsey" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnergyRenorm-T_sig-units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="K" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnergyRenorm-R-units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Å (Angstrom)" />
+            <xs:enumeration value="nm" />
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>

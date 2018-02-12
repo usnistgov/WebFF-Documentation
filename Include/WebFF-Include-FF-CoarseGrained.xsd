@@ -4,15 +4,17 @@
     <xs:include schemaLocation=".\WebFF-Include.xsd" />
     <xs:include schemaLocation=".\WebFF-Include-Angles.xsd" />
     <xs:include schemaLocation=".\WebFF-Include-AtomTypes.xsd" />
-    <xs:include schemaLocation=".\WebFF-Include-Bonds.xsd" />
     <xs:include schemaLocation=".\WebFF-Include-Dihedrals.xsd" />
     <xs:include schemaLocation=".\WebFF-Include-Impropers.xsd" />
     <xs:include schemaLocation=".\WebFF-Include-Metadata.xsd" />
-    <xs:include schemaLocation=".\WebFF-Include-NonBonds.xsd" />
     <xs:include schemaLocation=".\WebFF-Include-TableData.xsd" />
+    <xs:include schemaLocation=".\WebFF-Include-Bonds.xsd" />
+    <xs:include schemaLocation=".\WebFF-Include-NonBonds.xsd" />
+    <xs:include schemaLocation=".\WebFF-Include-DissipativePotential.xsd" />
     <xs:element name="FF-CoarseGrained">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="Force-Field-Header" type="Force-Field-Metadata" />
                 <xs:element name="BondPotential" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
@@ -93,6 +95,39 @@
                                     <xs:attribute name="comment" type="xs:string" use="optional" />
                                     <xs:attribute name="version" type="VersionString" use="optional" />
                                     <xs:attribute name="reference" type="xs:string" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="BondPotential-FENE" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Bond">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Bond-FENE">
+                                                        <xs:attribute name="comment" type="xs:string" />
+                                                        <xs:attribute name="version" type="VersionString" />
+                                                        <xs:attribute name="reference" type="xs:string" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="FENE" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="-[(K*R0^2)/2]*ln[1-(R/R0)^2]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="K-units" type="BondPotential-Harmonic-BondCoefficient-Units" />
+                                    <xs:attribute name="R0-units" type="BondPotential-Harmonic-BondLength-Units" />
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
@@ -542,6 +577,149 @@
                                     <xs:attribute name="comment" type="xs:string" use="optional" />
                                     <xs:attribute name="version" type="VersionString" use="optional" />
                                     <xs:attribute name="reference" type="xs:string" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="NonBondPotential-Weeks-Chandler-Anderson" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NonBond" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="NonBond-Weeks-Chandler-Anderson">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Weeks-Anderson-Chandler" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="4*epsilon*[((sigma/R)^-12)-((sigma/R)^-6)+(1/4)]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="epsilon-units" type="WCA-epsilon-units" />
+                                    <xs:attribute name="sigma-units" type="WCA-sigma-units" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="NonBondPotential-Mie" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NonBond" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="NonBond-Mie">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Mie" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="C*epsilon*[(sigma/R)^m_rep-(sigma/R)^n_att]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="epsilon-units" type="Mie-epsilon-units" />
+                                    <xs:attribute name="sigma-units" type="Mie-sigma-units" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="NonBondPotential-EnergyRenorm" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NonBond" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="NonBond-EnergyRenorm">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="EnergyRenorm" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="[epsilon_g+[(epsilon_A-epsilon_g)/(1+exp(-k_sig*(T-T_sig)))]]*[((sigma_0*(a*T+b))/R)^12-((sigma_0*(a*T+b))/R)^6]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="epsilon_g-units" />
+                                    <xs:attribute name="epsilon_A-units" />
+                                    <xs:attribute name="sigma_0-units" />
+                                    <xs:attribute name="a-units" />
+                                    <xs:attribute name="b-units" />
+                                    <xs:attribute name="k_sig-units" />
+                                    <xs:attribute name="R-units" type="EnergyRenorm-R-units" />
+                                    <xs:attribute name="T_sig-units" type="EnergyRenorm-T_sig-units" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="DissipativePotential" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="DissipativePotential-Langevin" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="DissipativePotential" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="DissipativePotential-Langevin">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Langevin" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="gamma" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="gamma-units" type="Langevin-gamma-units" />
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
