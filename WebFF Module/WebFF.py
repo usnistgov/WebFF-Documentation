@@ -78,6 +78,43 @@ def ReadExcelBondPotential_Harmonic(sheet, sub_root):
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
 
+def ReadExcelBondPotential_FENE(sheet, sub_root): 
+    ''' Reads in the BondPotential-FENE sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''
+    xls_sheet = sheet
+
+    AA=xls_sheet.row_values(2)[1]
+    BB=xls_sheet.row_values(3)[1]
+    CC=xls_sheet.row_values(4)[1]
+    DD=xls_sheet.row_values(5)[1]
+
+    sheet = ET.SubElement(sub_root, "BondPotential-FENE", {'style':AA, 'formula':BB, 'K-units':CC, 'R0-units':DD})
+
+    # Row 7 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(7))
+
+    for row_num in xrange(8, xls_sheet.nrows):
+        attribute_idx1 = xls_sheet_header.index("comment")
+        attribute_idx2 = xls_sheet_header.index("version")
+        attribute_idx3 = xls_sheet_header.index("reference")
+        cur_entry = ET.SubElement(sheet, "Bond")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
+            ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
+            ET.Element.set(cur_entry, 'version', str((xls_sheet.row_values(row_num)[attribute_idx2])))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
+            ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+            if (len(str(cell_value))!=0) :
+                if col_num == attribute_idx1:
+                    continue 
+                elif col_num == attribute_idx2:
+                    continue
+                elif col_num == attribute_idx3:
+                    continue
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+
 def ReadExcelBondPotential_Quartic(sheet, sub_root): 
     ''' Reads in the BondPotential-Quartic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
@@ -803,6 +840,7 @@ def ReadExcelNonBondPotential_LJ(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+
 def ReadExcelNonBondPotential_LJRmin(sheet, sub_root): 
     ''' Reads in the NonBondPotential-LJRmin sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
@@ -934,6 +972,153 @@ def ReadExcelNonBondPotential_LJ2(sheet, sub_root):
     xls_sheet_header = map(str, xls_sheet.row_values(8))
 
     for row_num in xrange(9, xls_sheet.nrows):
+        attribute_idx1 = xls_sheet_header.index("comment")
+        attribute_idx2 = xls_sheet_header.index("version")
+        attribute_idx3 = xls_sheet_header.index("reference")
+        cur_entry = ET.SubElement(sheet, "NonBond")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
+            ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
+            ET.Element.set(cur_entry, 'version', str((xls_sheet.row_values(row_num)[attribute_idx2])))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
+            ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+            if (len(str(cell_value))!=0) :
+                if col_num == attribute_idx1:
+                    continue 
+                elif col_num == attribute_idx2:
+                    continue
+                elif col_num == attribute_idx3:
+                    continue
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+
+def ReadExcelNonBondPotential_WCA(sheet, sub_root): 
+    ''' Reads in the NonBondPotential-WCA sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''
+    xls_sheet = sheet
+
+    AA=xls_sheet.row_values(2)[1]
+    BB=xls_sheet.row_values(3)[1]
+    CC=xls_sheet.row_values(4)[1]
+    DD=xls_sheet.row_values(5)[1]
+
+    sheet = ET.SubElement(sub_root, "NonBondPotential-WCA", {'style':AA, 'formula':BB, 'epsilon-units':CC, 'sigma-units':DD})
+
+    # Row 7 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(7))
+
+    for row_num in xrange(8, xls_sheet.nrows):
+        attribute_idx1 = xls_sheet_header.index("comment")
+        attribute_idx2 = xls_sheet_header.index("version")
+        attribute_idx3 = xls_sheet_header.index("reference")
+        cur_entry = ET.SubElement(sheet, "NonBond")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
+            ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
+            ET.Element.set(cur_entry, 'version', str((xls_sheet.row_values(row_num)[attribute_idx2])))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
+            ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+            if (len(str(cell_value))!=0) :
+                if col_num == attribute_idx1:
+                    continue 
+                elif col_num == attribute_idx2:
+                    continue
+                elif col_num == attribute_idx3:
+                    continue
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+
+def ReadExcelNonBondPotential_Mie(sheet, sub_root): 
+    ''' Reads in the NonBondPotential-Mie sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''
+    xls_sheet = sheet
+
+    AA=xls_sheet.row_values(2)[1]
+    BB=xls_sheet.row_values(3)[1]
+    CC=xls_sheet.row_values(4)[1]
+    DD=xls_sheet.row_values(5)[1]
+
+    sheet = ET.SubElement(sub_root, "NonBondPotential-Mie", {'style':AA, 'formula':BB, 'epsilon-units':CC, 'sigma-units':DD})
+
+    # Row 7 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(7))
+
+    for row_num in xrange(8, xls_sheet.nrows):
+        attribute_idx1 = xls_sheet_header.index("comment")
+        attribute_idx2 = xls_sheet_header.index("version")
+        attribute_idx3 = xls_sheet_header.index("reference")
+        cur_entry = ET.SubElement(sheet, "NonBond")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
+            ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
+            ET.Element.set(cur_entry, 'version', str((xls_sheet.row_values(row_num)[attribute_idx2])))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
+            ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+            if (len(str(cell_value))!=0) :
+                if col_num == attribute_idx1:
+                    continue 
+                elif col_num == attribute_idx2:
+                    continue
+                elif col_num == attribute_idx3:
+                    continue
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+
+def ReadExcelNonBondPotential_EnergyRenorm (sheet, sub_root): 
+    ''' Reads in the NonBondPotential-EnergyRenorm sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''
+    xls_sheet = sheet
+
+    AA=xls_sheet.row_values(2)[1]
+    BB=xls_sheet.row_values(3)[1]
+    CC=xls_sheet.row_values(4)[1]
+    DD=xls_sheet.row_values(5)[1]
+    EE=xls_sheet.row_values(6)[1]
+
+    sheet = ET.SubElement(sub_root, "NonBondPotential-EnergyRenorm", {'style':AA, 'formula':BB, 'epsilon-units':CC, 'sigma-units':DD, 'T_sig-units':EE})
+
+    # Row 8 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(8))
+
+    for row_num in xrange(9, xls_sheet.nrows):
+        attribute_idx1 = xls_sheet_header.index("comment")
+        attribute_idx2 = xls_sheet_header.index("version")
+        attribute_idx3 = xls_sheet_header.index("reference")
+        cur_entry = ET.SubElement(sheet, "NonBond")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
+            ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
+            ET.Element.set(cur_entry, 'version', str((xls_sheet.row_values(row_num)[attribute_idx2])))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
+            ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+			if col_num == attribute_idx1:
+				continue 
+			elif col_num == attribute_idx2:
+				continue
+			elif col_num == attribute_idx3:
+				continue 
+			ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+
+def ReadExcelDissipativePotential_Langevin(sheet, sub_root): 
+    ''' Reads in the DissipativePotential-Langevin sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''
+    xls_sheet = sheet
+
+    AA=xls_sheet.row_values(2)[1]
+    BB=xls_sheet.row_values(3)[1]
+    CC=xls_sheet.row_values(4)[1]
+
+    sheet = ET.SubElement(sub_root, "DissipativePotential-Langevin", {'style':AA, 'formula':BB, 'gamma-units':CC})
+
+    # Row 6 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(6))
+
+    for row_num in xrange(7, xls_sheet.nrows):
         attribute_idx1 = xls_sheet_header.index("comment")
         attribute_idx2 = xls_sheet_header.index("version")
         attribute_idx3 = xls_sheet_header.index("reference")
