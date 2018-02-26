@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
-<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema elementFormDefault="qualified" targetNamespace="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="FF-CoarseGrained">
     <xs:complexType>
       <xs:sequence>
+        <xs:element name="Force-Field-Header" type="Force-Field-Metadata" />
         <xs:element name="BondPotential" minOccurs="0">
           <xs:complexType>
             <xs:sequence>
@@ -84,6 +85,39 @@
                   <xs:attribute name="comment" type="xs:string" use="optional" />
                   <xs:attribute name="version" type="VersionString" use="optional" />
                   <xs:attribute name="reference" type="xs:string" use="optional" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="BondPotential-FENE" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Bond">
+                      <xs:complexType>
+                        <xs:complexContent>
+                          <xs:extension base="Bond-FENE">
+                            <xs:attribute name="comment" type="xs:string" />
+                            <xs:attribute name="version" type="VersionString" />
+                            <xs:attribute name="reference" type="xs:string" />
+                          </xs:extension>
+                        </xs:complexContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="style">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="FENE" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="formula">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="(-[(K*R0^2)/2]*ln[1-(R/R0)^2])" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="K-units" type="BondPotential-Harmonic-BondCoefficient-Units" />
+                  <xs:attribute name="R0-units" type="BondPotential-Harmonic-BondLength-Units" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -535,6 +569,144 @@
                   <xs:attribute name="reference" type="xs:string" use="optional" />
                 </xs:complexType>
               </xs:element>
+              <xs:element name="NonBondPotential-Weeks-Chandler-Anderson" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="NonBond" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:complexContent>
+                          <xs:extension base="NonBond-Weeks-Chandler-Anderson">
+                            <xs:attribute name="comment" type="xs:string" use="optional" />
+                            <xs:attribute name="version" type="VersionString" use="optional" />
+                            <xs:attribute name="reference" type="xs:string" use="optional" />
+                          </xs:extension>
+                        </xs:complexContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="style">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Weeks-Anderson-Chandler" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="formula">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="4*epsilon*[((sigma/R)^-12)-((sigma/R)^-6)+(1/4)]" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="epsilon-units" type="WCA-epsilon-units" />
+                  <xs:attribute name="sigma-units" type="WCA-sigma-units" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="NonBondPotential-Mie" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="NonBond" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:complexContent>
+                          <xs:extension base="NonBond-Mie">
+                            <xs:attribute name="comment" type="xs:string" use="optional" />
+                            <xs:attribute name="version" type="VersionString" use="optional" />
+                            <xs:attribute name="reference" type="xs:string" use="optional" />
+                          </xs:extension>
+                        </xs:complexContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="style">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Mie" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="formula">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="C*epsilon*[(sigma/R)^m_rep-(sigma/R)^n_att]" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="epsilon-units" type="Mie-epsilon-units" />
+                  <xs:attribute name="sigma-units" type="Mie-sigma-units" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="NonBondPotential-EnergyRenorm" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="NonBond" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:complexContent>
+                          <xs:extension base="NonBond-EnergyRenorm">
+                            <xs:attribute name="comment" type="xs:string" use="optional" />
+                            <xs:attribute name="version" type="VersionString" use="optional" />
+                            <xs:attribute name="reference" type="xs:string" use="optional" />
+                          </xs:extension>
+                        </xs:complexContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="style">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Energy Renormalization" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="formula">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="[epsilon_g+[(epsilon_A-epsilon_g)/(1+exp(-k_sig*(T-T_sig)))]]*[((sigma*(a*T+b))/R)^12-((sigma*(a*T+b))/R)^6]" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="epsilon-units" type="EnergyRenorm-epsilon-units" />
+                  <xs:attribute name="sigma-units" type="EnergyRenorm-sigma-units" />
+                  <xs:attribute name="T_sig-units" type="EnergyRenorm-T_sig-units" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DissipativePotential" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DissipativePotential-Langevin" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DissipativePotential" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:complexContent>
+                          <xs:extension base="DissipativePotential-Langevin">
+                            <xs:attribute name="comment" type="xs:string" use="optional" />
+                            <xs:attribute name="version" type="VersionString" use="optional" />
+                            <xs:attribute name="reference" type="xs:string" use="optional" />
+                          </xs:extension>
+                        </xs:complexContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="style">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Langevin" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="formula">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="gamma" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="gamma-units" type="Langevin-gamma-units" />
+                </xs:complexType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -691,84 +863,6 @@
       <xs:element name="Hybridization" type="xs:string" minOccurs="0" />
       <xs:element name="ElementsAllowed" type="xs:string" minOccurs="0" />
       <xs:element name="ElementsDisallowed" type="xs:string" minOccurs="0" />
-    </xs:sequence>
-  </xs:complexType>
-  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\Include\WebFF-Include-Bonds.xsd-->
-  <xs:complexType name="Bond-Harmonic">
-    <xs:sequence>
-      <xs:element name="AT-1" type="xs:string" />
-      <xs:element name="AT-2" type="xs:string" />
-      <xs:element name="K" type="xs:float" />
-      <xs:element name="R0" type="xs:float" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:simpleType name="BondPotential-Harmonic-BondCoefficient-Units">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="kcal/mol/Å^2" />
-      <xs:enumeration value="kJ/mol/nm^2" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="BondPotential-Harmonic-BondLength-Units">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Å" />
-      <xs:enumeration value="nm" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="Bond-Class2">
-    <xs:sequence>
-      <xs:element name="AT-1" type="xs:string" />
-      <xs:element name="AT-2" type="xs:string" />
-      <xs:element name="K2" type="xs:float" />
-      <xs:element name="K3" type="xs:float" />
-      <xs:element name="K4" type="xs:float" />
-      <xs:element name="R0" type="xs:float" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:simpleType name="BondPotential-Class2-BondCoefficient-Units">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="K2:kcal/mol/Å^2 | K3:kcal/mol/Å^3 | K4:kcal/mol/Å^4" />
-      <xs:enumeration value="K2:kJ/mol/nm^2 | K3:kJ/mol/nm^3 | K4:kJ/mol/nm^4" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="BondPotential-Class2-BondLength-Units">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Å" />
-      <xs:enumeration value="nm" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="Bond-Morse">
-    <xs:sequence>
-      <xs:element name="AT-1" type="xs:string" />
-      <xs:element name="AT-2" type="xs:string" />
-      <xs:element name="D" type="xs:float" />
-      <xs:element name="A" type="xs:float" />
-      <xs:element name="R0" type="xs:float" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:simpleType name="BondPotential-Morse-D-Units">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="kcal/mol" />
-      <xs:enumeration value="kJ/mol" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="BondPotential-Morse-A-Units">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="1/Å" />
-      <xs:enumeration value="1/nm" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="BondPotential-Morse-R0-Units">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Å" />
-      <xs:enumeration value="nm" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="BondTable">
-    <xs:sequence>
-      <xs:element name="index" type="xs:integer" />
-      <xs:element name="bond-length" type="xs:float" />
-      <xs:element name="energy" type="xs:float" />
-      <xs:element name="force" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
   <!--Schema items added from C:\Github\Projects\WebFF-Documentation\Include\WebFF-Include-Dihedrals.xsd-->
@@ -1164,6 +1258,125 @@
       <xs:element xmlns:ns0="http://mdcs.ns" name="Reference" type="xs:anyURI" ns0:_mod_mdcs_="/curator/blob-hoster" />
     </xs:sequence>
   </xs:complexType>
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\Include\WebFF-Include-TableData.xsd-->
+  <xs:complexType name="BondIncrement-Type">
+    <xs:sequence>
+      <xs:element name="AT-I" type="xs:string" />
+      <xs:element name="AT-J" type="xs:string" />
+      <xs:element name="Delta-IJ" type="xs:string" />
+      <xs:element name="Delta-JI" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Equivalence-Relation">
+    <xs:sequence>
+      <xs:element name="AtomType" type="xs:string" />
+      <xs:element name="NonBond" type="xs:string" />
+      <xs:element name="Bond" type="xs:string" />
+      <xs:element name="Angle" type="xs:string" />
+      <xs:element name="Dihedral" type="xs:string" />
+      <xs:element name="Improper" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AutoEquivalence-Type">
+    <xs:sequence>
+      <xs:element name="AtomType" type="xs:string" />
+      <xs:element name="NonBond" type="xs:string" />
+      <xs:element name="BondIncrement" type="xs:string" />
+      <xs:element name="Bond" type="xs:string" />
+      <xs:element name="AngleEnd" type="xs:string" />
+      <xs:element name="AngleApex" type="xs:string" />
+      <xs:element name="DihedralEnd" type="xs:string" />
+      <xs:element name="DihedralCenter" type="xs:string" />
+      <xs:element name="OutOfPlaneEnd" type="xs:string" />
+      <xs:element name="OutOfPlaneCenter" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\Include\WebFF-Include-Bonds.xsd-->
+  <xs:complexType name="Bond-Harmonic">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="K" type="xs:float" />
+      <xs:element name="R0" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="BondPotential-Harmonic-BondCoefficient-Units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol/Å^2" />
+      <xs:enumeration value="kJ/mol/nm^2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="BondPotential-Harmonic-BondLength-Units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å" />
+      <xs:enumeration value="nm" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Bond-Class2">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="K2" type="xs:float" />
+      <xs:element name="K3" type="xs:float" />
+      <xs:element name="K4" type="xs:float" />
+      <xs:element name="R0" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="BondPotential-Class2-BondCoefficient-Units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="K2:kcal/mol/Å^2 | K3:kcal/mol/Å^3 | K4:kcal/mol/Å^4" />
+      <xs:enumeration value="K2:kJ/mol/nm^2 | K3:kJ/mol/nm^3 | K4:kJ/mol/nm^4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="BondPotential-Class2-BondLength-Units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å" />
+      <xs:enumeration value="nm" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Bond-Morse">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="D" type="xs:float" />
+      <xs:element name="A" type="xs:float" />
+      <xs:element name="R0" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="BondPotential-Morse-D-Units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol" />
+      <xs:enumeration value="kJ/mol" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="BondPotential-Morse-A-Units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1/Å" />
+      <xs:enumeration value="1/nm" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="BondPotential-Morse-R0-Units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å" />
+      <xs:enumeration value="nm" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="BondTable">
+    <xs:sequence>
+      <xs:element name="index" type="xs:integer" />
+      <xs:element name="bond-length" type="xs:float" />
+      <xs:element name="energy" type="xs:float" />
+      <xs:element name="force" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Bond-FENE">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="K" type="xs:float" />
+      <xs:element name="R0" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
   <!--Schema items added from C:\Github\Projects\WebFF-Documentation\Include\WebFF-Include-NonBonds.xsd-->
   <xs:complexType name="NonBond-LJ">
     <xs:sequence>
@@ -1201,6 +1414,39 @@
       <xs:element name="sigma" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="NonBond-Weeks-Chandler-Anderson">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="epsilon" type="xs:float" />
+      <xs:element name="sigma" type="xs:float" />
+      <xs:element name="r_cut" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NonBond-Mie">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="C" type="xs:float" />
+      <xs:element name="epsilon" type="xs:float" />
+      <xs:element name="sigma" type="xs:float" />
+      <xs:element name="m_rep" type="xs:float" />
+      <xs:element name="n_att" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NonBond-EnergyRenorm">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="epsilon_g" type="xs:float" />
+      <xs:element name="epsilon_A" type="xs:float" />
+      <xs:element name="sigma" type="xs:float" />
+      <xs:element name="a" type="xs:float" />
+      <xs:element name="b" type="xs:float" />
+      <xs:element name="k_sig" type="xs:float" />
+      <xs:element name="T_sig" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="NonBondTable">
     <xs:sequence>
       <xs:element name="index" type="xs:integer" />
@@ -1216,6 +1462,30 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="LJ-sigma-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å (Angstrom)" />
+      <xs:enumeration value="nm" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="WCA-epsilon-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol" />
+      <xs:enumeration value="kJ/mol" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="WCA-sigma-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å" />
+      <xs:enumeration value="nm" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Mie-epsilon-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol" />
+      <xs:enumeration value="kJ/mol" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Mie-sigma-units">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Å (Angstrom)" />
       <xs:enumeration value="nm" />
@@ -1239,6 +1509,23 @@
       <xs:enumeration value="kJ*nm^6/mol" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="EnergyRenorm-epsilon-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol" />
+      <xs:enumeration value="kJ/mol" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EnergyRenorm-sigma-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å" />
+      <xs:enumeration value="nm" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EnergyRenorm-T_sig-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="K" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="Combining-Rules">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Lorentz-Berthelot" />
@@ -1247,37 +1534,17 @@
       <xs:enumeration value="Fender-Halsey" />
     </xs:restriction>
   </xs:simpleType>
-  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\Include\WebFF-Include-TableData.xsd-->
-  <xs:complexType name="BondIncrement-Type">
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\Include\WebFF-Include-DissipativePotential.xsd-->
+  <xs:simpleType name="Langevin-gamma-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="amu/s" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DissipativePotential-Langevin">
     <xs:sequence>
-      <xs:element name="AT-I" type="xs:string" />
-      <xs:element name="AT-J" type="xs:string" />
-      <xs:element name="Delta-IJ" type="xs:string" />
-      <xs:element name="Delta-JI" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="Equivalence-Relation">
-    <xs:sequence>
-      <xs:element name="AtomType" type="xs:string" />
-      <xs:element name="NonBond" type="xs:string" />
-      <xs:element name="Bond" type="xs:string" />
-      <xs:element name="Angle" type="xs:string" />
-      <xs:element name="Dihedral" type="xs:string" />
-      <xs:element name="Improper" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="AutoEquivalence-Type">
-    <xs:sequence>
-      <xs:element name="AtomType" type="xs:string" />
-      <xs:element name="NonBond" type="xs:string" />
-      <xs:element name="BondIncrement" type="xs:string" />
-      <xs:element name="Bond" type="xs:string" />
-      <xs:element name="AngleEnd" type="xs:string" />
-      <xs:element name="AngleApex" type="xs:string" />
-      <xs:element name="DihedralEnd" type="xs:string" />
-      <xs:element name="DihedralCenter" type="xs:string" />
-      <xs:element name="OutOfPlaneEnd" type="xs:string" />
-      <xs:element name="OutOfPlaneCenter" type="xs:string" />
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="gamma" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

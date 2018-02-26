@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:include schemaLocation=".\WebFF-Include.xsd" />
-    <xs:include schemaLocation=".\WebFF-Include-Angles.xsd" />
-    <xs:include schemaLocation=".\WebFF-Include-AtomTypes.xsd" />
-    <xs:include schemaLocation=".\WebFF-Include-Dihedrals.xsd" />
-    <xs:include schemaLocation=".\WebFF-Include-Impropers.xsd" />
-    <xs:include schemaLocation=".\WebFF-Include-Metadata.xsd" />
-    <xs:include schemaLocation=".\WebFF-Include-TableData.xsd" />
-    <xs:include schemaLocation=".\WebFF-Include-Bonds.xsd" />
-    <xs:include schemaLocation=".\WebFF-Include-NonBonds.xsd" />
-    <xs:include schemaLocation=".\WebFF-Include-DissipativePotential.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include-Angles.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include-AtomTypes.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include-Dihedrals.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include-Impropers.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include-Metadata.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include-TableData.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include-Bonds.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include-NonBonds.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include-DissipativePotential.xsd" />
     <xs:element name="FF-CoarseGrained">
         <xs:complexType>
             <xs:sequence>
