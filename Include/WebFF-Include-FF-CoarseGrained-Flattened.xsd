@@ -160,6 +160,28 @@
                   <xs:attribute name="Theta0-units" type="AnglePotential-Harmonic-Angle-Units" />
                 </xs:complexType>
               </xs:element>
+              <xs:element name="AnglePotential-Cosine" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Angle" type="Angle-Cosine" maxOccurs="unbounded" />
+                  </xs:sequence>
+                  <xs:attribute name="style">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Cosine" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="formula">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Ka*[1+cos(theta)]" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="Ka-units" type="AnglePotential-Cosine-Coefficient-Units" />
+                </xs:complexType>
+              </xs:element>
               <xs:element name="AnglePotential-COS2" minOccurs="0">
                 <xs:complexType>
                   <xs:sequence>
@@ -476,7 +498,6 @@
                   </xs:attribute>
                   <xs:attribute name="epsilon-units" type="LJ-epsilon-units" />
                   <xs:attribute name="sigma-units" type="LJ-sigma-units" />
-                  <xs:attribute name="Combining-Rule" type="Combining-Rules" />
                 </xs:complexType>
               </xs:element>
               <xs:element name="NonBondPotential-LJ96" minOccurs="0">
@@ -754,6 +775,14 @@
       <xs:element name="Theta0" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="Angle-Cosine">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="AT-3" type="xs:string" />
+      <xs:element name="Ka" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="Angle-COS2">
     <xs:sequence>
       <xs:element name="AT-1" type="xs:string" />
@@ -802,6 +831,13 @@
   <xs:simpleType name="AnglePotential-Harmonic-Angle-Units">
     <xs:restriction base="xs:string">
       <xs:enumeration value="degrees" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AnglePotential-Cosine-Coefficient-Units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal" />
+      <xs:enumeration value="Joules" />
+      <xs:enumeration value="Reduced" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="AnglePotential-COS2-AngleCoefficient-Units">
@@ -1304,12 +1340,14 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="kcal/mol/Å^2" />
       <xs:enumeration value="kJ/mol/nm^2" />
+      <xs:enumeration value="Reduced" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="BondPotential-Harmonic-BondLength-Units">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Å" />
       <xs:enumeration value="nm" />
+      <xs:enumeration value="Reduced" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="Bond-Class2">

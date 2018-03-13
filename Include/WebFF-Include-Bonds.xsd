@@ -13,12 +13,14 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="kcal/mol/Å^2" />
             <xs:enumeration value="kJ/mol/nm^2" />
+            <xs:enumeration value="Reduced" />
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="BondPotential-Harmonic-BondLength-Units">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Å" />
             <xs:enumeration value="nm" />
+            <xs:enumeration value="Reduced" />
         </xs:restriction>
     </xs:simpleType>
     <xs:complexType name="Bond-Class2">
