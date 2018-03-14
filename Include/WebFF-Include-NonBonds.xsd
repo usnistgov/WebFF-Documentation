@@ -37,6 +37,14 @@
             <xs:element name="sigma" type="xs:float" />
         </xs:sequence>
     </xs:complexType>
+    <xs:complexType name="NonBond-LJ962">
+        <xs:sequence>
+            <xs:element name="AT-1" type="xs:string" />
+            <xs:element name="AT-2" type="xs:string" />
+            <xs:element name="epsilon" type="xs:float" />
+            <xs:element name="sigma" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
     <xs:complexType name="NonBond-Weeks-Chandler-Anderson">
         <xs:sequence>
             <xs:element name="AT-1" type="xs:string" />
@@ -63,7 +71,7 @@
             <xs:element name="AT-2" type="xs:string" />
             <xs:element name="epsilon_g" type="xs:float" />
             <xs:element name="epsilon_A" type="xs:float" />
-            <xs:element name="sigma_0" type="xs:float" />
+            <xs:element name="sigma" type="xs:float" />
             <xs:element name="a" type="xs:float" />
             <xs:element name="b" type="xs:float" />
             <xs:element name="k_sig" type="xs:float" />
@@ -90,28 +98,46 @@
             <xs:enumeration value="nm" />
         </xs:restriction>
     </xs:simpleType>
+    <xs:simpleType name="LJ2-epsilon-units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kcal/mol" />
+            <xs:enumeration value="kJ/mol" />
+            <xs:enumeration value="Reduced" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="LJ2-sigma-units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Å" />
+            <xs:enumeration value="nm" />
+            <xs:enumeration value="Reduced" />
+        </xs:restriction>
+    </xs:simpleType>
     <xs:simpleType name="WCA-epsilon-units">
         <xs:restriction base="xs:string">
             <xs:enumeration value="kcal/mol" />
             <xs:enumeration value="kJ/mol" />
+            <xs:enumeration value="Reduced" />
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="WCA-sigma-units">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="Å (Angstrom)" />
+            <xs:enumeration value="Å" />
             <xs:enumeration value="nm" />
+            <xs:enumeration value="Reduced" />
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="Mie-epsilon-units">
         <xs:restriction base="xs:string">
             <xs:enumeration value="kcal/mol" />
             <xs:enumeration value="kJ/mol" />
+            <xs:enumeration value="Reduced" />
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="Mie-sigma-units">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="Å (Angstrom)" />
+            <xs:enumeration value="Å" />
             <xs:enumeration value="nm" />
+            <xs:enumeration value="Reduced" />
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="LJ-Rmin-units">
@@ -132,12 +158,16 @@
             <xs:enumeration value="kJ*nm^6/mol" />
         </xs:restriction>
     </xs:simpleType>
-    <xs:simpleType name="Combining-Rules">
+    <xs:simpleType name="EnergyRenorm-epsilon-units">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="Lorentz-Berthelot" />
-            <xs:enumeration value="Waldman-Hagler" />
-            <xs:enumeration value="Kong" />
-            <xs:enumeration value="Fender-Halsey" />
+            <xs:enumeration value="kcal/mol" />
+            <xs:enumeration value="kJ/mol" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EnergyRenorm-sigma-units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Å" />
+            <xs:enumeration value="nm" />
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="EnergyRenorm-T_sig-units">
@@ -145,10 +175,12 @@
             <xs:enumeration value="K" />
         </xs:restriction>
     </xs:simpleType>
-    <xs:simpleType name="EnergyRenorm-R-units">
+    <xs:simpleType name="Combining-Rules">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="Å (Angstrom)" />
-            <xs:enumeration value="nm" />
+            <xs:enumeration value="Lorentz-Berthelot" />
+            <xs:enumeration value="Waldman-Hagler" />
+            <xs:enumeration value="Kong" />
+            <xs:enumeration value="Fender-Halsey" />
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>

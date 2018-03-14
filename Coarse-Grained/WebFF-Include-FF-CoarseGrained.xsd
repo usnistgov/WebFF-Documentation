@@ -506,8 +506,8 @@
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
-                                    <xs:attribute name="epsilon-units" type="LJ-epsilon-units" />
-                                    <xs:attribute name="sigma-units" type="LJ-sigma-units" />
+                                    <xs:attribute name="epsilon-units" type="LJ2-epsilon-units" />
+                                    <xs:attribute name="sigma-units" type="LJ2-sigma-units" />
                                 </xs:complexType>
                             </xs:element>
                             <xs:element name="NonBondPotential-LJ96" minOccurs="0">
@@ -542,6 +542,39 @@
                                     <xs:attribute name="epsilon-units" type="LJ-epsilon-units" />
                                     <xs:attribute name="sigma-units" type="LJ-sigma-units" />
                                     <xs:attribute name="Combining-Rule" type="Combining-Rules" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="NonBondPotential-LJ962" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NonBond" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="NonBond-LJ962">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Lennard-Jones (9-6) [Class 2 Form]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="epsilon*[2*(sigma/R)^9-3*(sigma/R)^6]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="epsilon-units" type="LJ2-epsilon-units" />
+                                    <xs:attribute name="sigma-units" type="LJ2-sigma-units" />
                                 </xs:complexType>
                             </xs:element>
                             <xs:element name="NonBondPotential-Tabular" minOccurs="0">
@@ -736,6 +769,30 @@
                                         </xs:simpleType>
                                     </xs:attribute>
                                     <xs:attribute name="gamma-units" type="Langevin-gamma-units" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="DissipativePotential-DPD" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="DissipativePotential" type="DissipativePotential-DPD" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="DPD" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="A*(1-r/r_cut)-gamma*(1-r/r_cut)^2+sigma*(1-r/r_cut)*alpha*deltaT^(-1/2)" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="A-units" type="DPD-A-units" />
+                                    <xs:attribute name="gamma-units" type="Langevin-gamma-units" />
+                                    <xs:attribute name="r_cut-units" type="DPD-r_cut-units" />
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>

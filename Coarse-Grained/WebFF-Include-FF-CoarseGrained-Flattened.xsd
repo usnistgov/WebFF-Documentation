@@ -496,8 +496,8 @@
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:attribute>
-                  <xs:attribute name="epsilon-units" type="LJ-epsilon-units" />
-                  <xs:attribute name="sigma-units" type="LJ-sigma-units" />
+                  <xs:attribute name="epsilon-units" type="LJ2-epsilon-units" />
+                  <xs:attribute name="sigma-units" type="LJ2-sigma-units" />
                 </xs:complexType>
               </xs:element>
               <xs:element name="NonBondPotential-LJ96" minOccurs="0">
@@ -532,6 +532,39 @@
                   <xs:attribute name="epsilon-units" type="LJ-epsilon-units" />
                   <xs:attribute name="sigma-units" type="LJ-sigma-units" />
                   <xs:attribute name="Combining-Rule" type="Combining-Rules" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="NonBondPotential-LJ962" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="NonBond" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:complexContent>
+                          <xs:extension base="NonBond-LJ962">
+                            <xs:attribute name="comment" type="xs:string" use="optional" />
+                            <xs:attribute name="version" type="VersionString" use="optional" />
+                            <xs:attribute name="reference" type="xs:string" use="optional" />
+                          </xs:extension>
+                        </xs:complexContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="style">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Lennard-Jones (9-6) [Class 2 Form]" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="formula">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="epsilon*[2*(sigma/R)^9-3*(sigma/R)^6]" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="epsilon-units" type="LJ2-epsilon-units" />
+                  <xs:attribute name="sigma-units" type="LJ2-sigma-units" />
                 </xs:complexType>
               </xs:element>
               <xs:element name="NonBondPotential-Tabular" minOccurs="0">
@@ -726,6 +759,30 @@
                     </xs:simpleType>
                   </xs:attribute>
                   <xs:attribute name="gamma-units" type="Langevin-gamma-units" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DissipativePotential-DPD" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DissipativePotential" type="DissipativePotential-DPD" maxOccurs="unbounded" />
+                  </xs:sequence>
+                  <xs:attribute name="style">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="DPD" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="formula">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="A*(1-r/r_cut)-gamma*(1-r/r_cut)^2+sigma*(1-r/r_cut)*alpha*deltaT^(-1/2)" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="A-units" type="DPD-A-units" />
+                  <xs:attribute name="gamma-units" type="Langevin-gamma-units" />
+                  <xs:attribute name="r_cut-units" type="DPD-r_cut-units" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -1452,6 +1509,14 @@
       <xs:element name="sigma" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="NonBond-LJ962">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="epsilon" type="xs:float" />
+      <xs:element name="sigma" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="NonBond-Weeks-Chandler-Anderson">
     <xs:sequence>
       <xs:element name="AT-1" type="xs:string" />
@@ -1505,28 +1570,46 @@
       <xs:enumeration value="nm" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="LJ2-epsilon-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol" />
+      <xs:enumeration value="kJ/mol" />
+      <xs:enumeration value="Reduced" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LJ2-sigma-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å" />
+      <xs:enumeration value="nm" />
+      <xs:enumeration value="Reduced" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="WCA-epsilon-units">
     <xs:restriction base="xs:string">
       <xs:enumeration value="kcal/mol" />
       <xs:enumeration value="kJ/mol" />
+      <xs:enumeration value="Reduced" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="WCA-sigma-units">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Å" />
       <xs:enumeration value="nm" />
+      <xs:enumeration value="Reduced" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="Mie-epsilon-units">
     <xs:restriction base="xs:string">
       <xs:enumeration value="kcal/mol" />
       <xs:enumeration value="kJ/mol" />
+      <xs:enumeration value="Reduced" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="Mie-sigma-units">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="Å (Angstrom)" />
+      <xs:enumeration value="Å" />
       <xs:enumeration value="nm" />
+      <xs:enumeration value="Reduced" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="LJ-Rmin-units">
@@ -1585,4 +1668,30 @@
       <xs:element name="gamma" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="DissipativePotential-DPD">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="A" type="xs:float" />
+      <xs:element name="gamma" type="xs:float" />
+      <xs:element name="r_cut" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="DPD-A-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol/Å^2" />
+      <xs:enumeration value="kJ/mol/nm^2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DPD-gamma-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="amu/s" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DPD-r_cut-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å" />
+      <xs:enumeration value="nm" />
+    </xs:restriction>
+  </xs:simpleType>
 </xs:schema>
