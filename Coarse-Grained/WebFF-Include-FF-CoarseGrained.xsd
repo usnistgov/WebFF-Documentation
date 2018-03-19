@@ -11,6 +11,7 @@
     <xs:include schemaLocation="..\Include\WebFF-Include-Bonds.xsd" />
     <xs:include schemaLocation="..\Include\WebFF-Include-NonBonds.xsd" />
     <xs:include schemaLocation="..\Include\WebFF-Include-DissipativePotential.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include-SoftPotential.xsd" />
     <xs:element name="FF-CoarseGrained">
         <xs:complexType>
             <xs:sequence>
@@ -733,6 +734,29 @@
                                     <xs:attribute name="T_sig-units" type="EnergyRenorm-T_sig-units" />
                                 </xs:complexType>
                             </xs:element>
+                            <xs:element name="NonBondPotential-Soft" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NonBond" type="NonBond-Soft" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Soft" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="a_ij*[1+cos(pi*r/r_c)]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="a_ij-units" type="Soft-a_ij-units" />
+                                    <xs:attribute name="r_c-units" type="Soft-r_c-units" />
+                                </xs:complexType>
+                            </xs:element>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -771,10 +795,16 @@
                                     <xs:attribute name="gamma-units" type="Langevin-gamma-units" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="DissipativePotential-DPD" minOccurs="0">
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="SoftPotential" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="SoftPotential-DPD" minOccurs="0">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="DissipativePotential" type="DissipativePotential-DPD" maxOccurs="unbounded" />
+                                        <xs:element name="SoftPotential" type="SoftPotential-DPD" maxOccurs="unbounded" />
                                     </xs:sequence>
                                     <xs:attribute name="style">
                                         <xs:simpleType>
@@ -786,13 +816,36 @@
                                     <xs:attribute name="formula">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                                <xs:enumeration value="A*(1-r/r_cut)-gamma*(1-r/r_cut)^2+sigma*(1-r/r_cut)*alpha*deltaT^(-1/2)" />
+                                                <xs:enumeration value="a_ij*(1-r/r_c)-gamma*(1-r/r_c)^2+sigma*(1-r/r_c)*alpha*deltaT^(-1/2)" />
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
-                                    <xs:attribute name="A-units" type="DPD-A-units" />
+                                    <xs:attribute name="a_ij-units" type="DPD-a_ij-units" />
                                     <xs:attribute name="gamma-units" type="Langevin-gamma-units" />
-                                    <xs:attribute name="r_cut-units" type="DPD-r_cut-units" />
+                                    <xs:attribute name="r_c-units" type="DPD-r_c-units" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="SoftPotential-SRP" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="SoftPotential" type="SoftPotential-SRP" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="SRP" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="c_ij*(1-r/r_c)" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="c_ij-units" type="DPD-a_ij-units" />
+                                    <xs:attribute name="r_c-units" type="SRP-r_c-units" />
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>

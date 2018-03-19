@@ -723,6 +723,29 @@
                   <xs:attribute name="T_sig-units" type="EnergyRenorm-T_sig-units" />
                 </xs:complexType>
               </xs:element>
+              <xs:element name="NonBondPotential-Soft" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="NonBond" type="NonBond-Soft" maxOccurs="unbounded" />
+                  </xs:sequence>
+                  <xs:attribute name="style">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Soft" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="formula">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="a_ij*[1+cos(pi*r/r_c)]" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="a_ij-units" type="Soft-a_ij-units" />
+                  <xs:attribute name="r_c-units" type="Soft-r_c-units" />
+                </xs:complexType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -761,10 +784,16 @@
                   <xs:attribute name="gamma-units" type="Langevin-gamma-units" />
                 </xs:complexType>
               </xs:element>
-              <xs:element name="DissipativePotential-DPD" minOccurs="0">
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SoftPotential" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SoftPotential-DPD" minOccurs="0">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="DissipativePotential" type="DissipativePotential-DPD" maxOccurs="unbounded" />
+                    <xs:element name="SoftPotential" type="SoftPotential-DPD" maxOccurs="unbounded" />
                   </xs:sequence>
                   <xs:attribute name="style">
                     <xs:simpleType>
@@ -776,13 +805,36 @@
                   <xs:attribute name="formula">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
-                        <xs:enumeration value="A*(1-r/r_cut)-gamma*(1-r/r_cut)^2+sigma*(1-r/r_cut)*alpha*deltaT^(-1/2)" />
+                        <xs:enumeration value="a_ij*(1-r/r_c)-gamma*(1-r/r_c)^2+sigma*(1-r/r_c)*alpha*deltaT^(-1/2)" />
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:attribute>
-                  <xs:attribute name="A-units" type="DPD-A-units" />
+                  <xs:attribute name="a_ij-units" type="DPD-a_ij-units" />
                   <xs:attribute name="gamma-units" type="Langevin-gamma-units" />
-                  <xs:attribute name="r_cut-units" type="DPD-r_cut-units" />
+                  <xs:attribute name="r_c-units" type="DPD-r_c-units" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="SoftPotential-SRP" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="SoftPotential" type="SoftPotential-SRP" maxOccurs="unbounded" />
+                  </xs:sequence>
+                  <xs:attribute name="style">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="SRP" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="formula">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="c_ij*(1-r/r_c)" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="c_ij-units" type="DPD-a_ij-units" />
+                  <xs:attribute name="r_c-units" type="SRP-r_c-units" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -1550,6 +1602,14 @@
       <xs:element name="T_sig" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="NonBond-Soft">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="a_ij" type="xs:float" />
+      <xs:element name="r_c" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="NonBondTable">
     <xs:sequence>
       <xs:element name="index" type="xs:integer" />
@@ -1558,6 +1618,20 @@
       <xs:element name="force" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
+  <xs:simpleType name="Soft-a_ij-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol/Å^2" />
+      <xs:enumeration value="kJ/mol/nm^2" />
+      <xs:enumeration value="Reduced" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Soft-r_c-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å" />
+      <xs:enumeration value="nm" />
+      <xs:enumeration value="Reduced" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="LJ-epsilon-units">
     <xs:restriction base="xs:string">
       <xs:enumeration value="kcal/mol" />
@@ -1668,30 +1742,56 @@
       <xs:element name="gamma" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="DissipativePotential-DPD">
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\Include\WebFF-Include-SoftPotential.xsd-->
+  <xs:complexType name="SoftPotential-DPD">
     <xs:sequence>
       <xs:element name="AT-1" type="xs:string" />
       <xs:element name="AT-2" type="xs:string" />
-      <xs:element name="A" type="xs:float" />
+      <xs:element name="a_ij" type="xs:float" />
       <xs:element name="gamma" type="xs:float" />
-      <xs:element name="r_cut" type="xs:float" />
+      <xs:element name="r_c" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
-  <xs:simpleType name="DPD-A-units">
+  <xs:simpleType name="DPD-a_ij-units">
     <xs:restriction base="xs:string">
       <xs:enumeration value="kcal/mol/Å^2" />
       <xs:enumeration value="kJ/mol/nm^2" />
+      <xs:enumeration value="Reduced" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="DPD-gamma-units">
     <xs:restriction base="xs:string">
       <xs:enumeration value="amu/s" />
+      <xs:enumeration value="Reduced" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="DPD-r_cut-units">
+  <xs:simpleType name="DPD-r_c-units">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Å" />
       <xs:enumeration value="nm" />
+      <xs:enumeration value="Reduced" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="SoftPotential-SRP">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="c_ij" type="xs:float" />
+      <xs:element name="r_c" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="SRP-a_ij-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol/Å^2" />
+      <xs:enumeration value="kJ/mol/nm^2" />
+      <xs:enumeration value="Reduced" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SRP-r_c-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å" />
+      <xs:enumeration value="nm" />
+      <xs:enumeration value="Reduced" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

@@ -13,30 +13,4 @@
             <xs:element name="gamma" type="xs:float" />
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType name="DissipativePotential-DPD">
-        <xs:sequence>
-            <xs:element name="AT-1" type="xs:string" />
-            <xs:element name="AT-2" type="xs:string" />
-            <xs:element name="A" type="xs:float" />
-            <xs:element name="gamma" type="xs:float" />
-            <xs:element name="r_cut" type="xs:float" />
-        </xs:sequence>
-    </xs:complexType>
-    <xs:simpleType name="DPD-A-units">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="kcal/mol/Å^2" />
-            <xs:enumeration value="kJ/mol/nm^2" />
-        </xs:restriction>
-    </xs:simpleType>
-    <xs:simpleType name="DPD-gamma-units">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="amu/s" />
-        </xs:restriction>
-    </xs:simpleType>
-    <xs:simpleType name="DPD-r_cut-units">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Å" />
-            <xs:enumeration value="nm" />
-        </xs:restriction>
-    </xs:simpleType>
 </xs:schema>

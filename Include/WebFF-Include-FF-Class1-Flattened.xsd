@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
-<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema elementFormDefault="qualified" targetNamespace="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="FF-Class-I">
     <xs:complexType>
       <xs:sequence>
@@ -1157,6 +1157,14 @@
       <xs:element name="Theta0" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="Angle-Cosine">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="AT-3" type="xs:string" />
+      <xs:element name="Ka" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="Angle-COS2">
     <xs:sequence>
       <xs:element name="AT-1" type="xs:string" />
@@ -1207,6 +1215,13 @@
       <xs:enumeration value="degrees" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="AnglePotential-Cosine-Coefficient-Units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal" />
+      <xs:enumeration value="Joules" />
+      <xs:enumeration value="Reduced" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="AnglePotential-COS2-AngleCoefficient-Units">
     <xs:restriction base="xs:string">
       <xs:enumeration value="kcal/mol" />
@@ -1254,12 +1269,14 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="kcal/mol/Å^2" />
       <xs:enumeration value="kJ/mol/nm^2" />
+      <xs:enumeration value="Reduced" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="BondPotential-Harmonic-BondLength-Units">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Å" />
       <xs:enumeration value="nm" />
+      <xs:enumeration value="Reduced" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="Bond-Class2">
@@ -1317,6 +1334,14 @@
       <xs:element name="bond-length" type="xs:float" />
       <xs:element name="energy" type="xs:float" />
       <xs:element name="force" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Bond-FENE">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="K" type="xs:float" />
+      <xs:element name="R0" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
   <!--Schema items added from C:\Github\Projects\WebFF-Documentation\Include\WebFF-Include-Dihedrals.xsd-->
@@ -1554,6 +1579,55 @@
       <xs:element name="sigma" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="NonBond-LJ962">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="epsilon" type="xs:float" />
+      <xs:element name="sigma" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NonBond-Weeks-Chandler-Anderson">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="epsilon" type="xs:float" />
+      <xs:element name="sigma" type="xs:float" />
+      <xs:element name="r_cut" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NonBond-Mie">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="C" type="xs:float" />
+      <xs:element name="epsilon" type="xs:float" />
+      <xs:element name="sigma" type="xs:float" />
+      <xs:element name="m_rep" type="xs:float" />
+      <xs:element name="n_att" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NonBond-EnergyRenorm">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="epsilon_g" type="xs:float" />
+      <xs:element name="epsilon_A" type="xs:float" />
+      <xs:element name="sigma" type="xs:float" />
+      <xs:element name="a" type="xs:float" />
+      <xs:element name="b" type="xs:float" />
+      <xs:element name="k_sig" type="xs:float" />
+      <xs:element name="T_sig" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NonBond-Soft">
+    <xs:sequence>
+      <xs:element name="AT-1" type="xs:string" />
+      <xs:element name="AT-2" type="xs:string" />
+      <xs:element name="a_ij" type="xs:float" />
+      <xs:element name="r_c" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="NonBondTable">
     <xs:sequence>
       <xs:element name="index" type="xs:integer" />
@@ -1562,6 +1636,20 @@
       <xs:element name="force" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
+  <xs:simpleType name="Soft-a_ij-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol/Å^2" />
+      <xs:enumeration value="kJ/mol/nm^2" />
+      <xs:enumeration value="Reduced" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Soft-r_c-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å" />
+      <xs:enumeration value="nm" />
+      <xs:enumeration value="Reduced" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="LJ-epsilon-units">
     <xs:restriction base="xs:string">
       <xs:enumeration value="kcal/mol" />
@@ -1572,6 +1660,48 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="Å (Angstrom)" />
       <xs:enumeration value="nm" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LJ2-epsilon-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol" />
+      <xs:enumeration value="kJ/mol" />
+      <xs:enumeration value="Reduced" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LJ2-sigma-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å" />
+      <xs:enumeration value="nm" />
+      <xs:enumeration value="Reduced" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="WCA-epsilon-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol" />
+      <xs:enumeration value="kJ/mol" />
+      <xs:enumeration value="Reduced" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="WCA-sigma-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å" />
+      <xs:enumeration value="nm" />
+      <xs:enumeration value="Reduced" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Mie-epsilon-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol" />
+      <xs:enumeration value="kJ/mol" />
+      <xs:enumeration value="Reduced" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Mie-sigma-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å" />
+      <xs:enumeration value="nm" />
+      <xs:enumeration value="Reduced" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="LJ-Rmin-units">
@@ -1590,6 +1720,23 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="kcal*Å^6/mol" />
       <xs:enumeration value="kJ*nm^6/mol" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EnergyRenorm-epsilon-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol" />
+      <xs:enumeration value="kJ/mol" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EnergyRenorm-sigma-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Å" />
+      <xs:enumeration value="nm" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EnergyRenorm-T_sig-units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="K" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="Combining-Rules">
@@ -1791,8 +1938,8 @@
   </xs:complexType>
   <xs:complexType name="AttachmentType">
     <xs:sequence>
-      <xs:element name="fileExtension" type="xs:string" />
-      <xs:element xmlns:ns0="http://mdcs.ns" name="reference" type="xs:anyURI" ns0:_mod_mdcs_="/curator/blob-hoster" />
+      <xs:element xmlns:ns0="http://mdcs.ns" name="File-Description" type="xs:string" ns0:_mod_mdcs_="/registry/description" />
+      <xs:element xmlns:ns0="http://mdcs.ns" name="Reference" type="xs:anyURI" ns0:_mod_mdcs_="/curator/blob-hoster" />
     </xs:sequence>
   </xs:complexType>
 </xs:schema>
