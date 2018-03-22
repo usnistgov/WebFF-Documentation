@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML 2015 Developer Bundle Edition 13.2.3.6018 (http://www.liquid-technologies.com)-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="FF">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="AtomTypes" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="AtomType" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:complexContent>
+                                        <xs:extension base="AtomTemplate">
+                                            <xs:attribute name="Description" type="xs:string" />
+                                            <xs:attribute name="Element" type="xs:string" use="optional" />
+                                            <xs:attribute name="AtomicNumber" type="xs:positiveInteger" use="optional" />
+                                            <xs:attribute name="AtomicMass" type="xs:float" use="optional" />
+                                        </xs:extension>
+                                    </xs:complexContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="PatternNomenclatureStyle" type="xs:string" use="required" />
+                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="AtomTemplate">
+        <xs:sequence>
+            <xs:element name="AtomType-Name" type="xs:string" />
+            <xs:element name="BondPattern" type="xs:string" minOccurs="0" />
+            <xs:element name="BondPattern-2" type="xs:string" minOccurs="0" />
+            <xs:element name="Atom-Attributes" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Attribute" type="AttributeType" maxOccurs="unbounded" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AttributeType">
+        <xs:sequence>
+            <xs:element name="Index" type="xs:positiveInteger" />
+            <xs:element name="BondOrder" type="xs:integer" minOccurs="0" />
+            <xs:element name="Ring" type="xs:integer" minOccurs="0" />
+            <xs:element name="Aromatic" type="xs:boolean" minOccurs="0" />
+            <xs:element name="FormalCharge" type="xs:integer" minOccurs="0" />
+            <xs:element name="Hybridization" type="xs:string" minOccurs="0" />
+            <xs:element name="ElementsAllowed" type="xs:string" minOccurs="0" />
+            <xs:element name="ElementsDisallowed" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
