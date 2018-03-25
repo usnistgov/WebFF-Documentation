@@ -23,7 +23,13 @@
                                             </xs:complexType>
                                         </xs:element>
                                     </xs:sequence>
-                                    <xs:attribute name="PatternNomenclatureStyle" type="xs:string" use="required" />
+                                    <xs:attribute name="Nomenclature" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="ATDL" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
                                     <xs:attribute name="comment" type="xs:string" use="optional" />
                                 </xs:complexType>
                             </xs:element>
@@ -43,7 +49,13 @@
                                             </xs:complexType>
                                         </xs:element>
                                     </xs:sequence>
-                                    <xs:attribute name="PatternNomenclatureStyle" type="xs:string" use="required" />
+                                    <xs:attribute name="Nomenclature" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="DFF" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
                                     <xs:attribute name="comment" type="xs:string" use="optional" />
                                 </xs:complexType>
                             </xs:element>
@@ -63,7 +75,42 @@
                                             </xs:complexType>
                                         </xs:element>
                                     </xs:sequence>
-                                    <xs:attribute name="PatternNomenclatureStyle" type="xs:string" use="required" />
+                                    <xs:attribute name="Nomenclature" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Generic" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="comment" type="xs:string" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="AtomType-CoarseGrained">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="CGType" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="AtomTemplate-CoarseGrained">
+                                                        <xs:attribute name="Nomenclature" use="optional">
+                                                            <xs:simpleType>
+                                                                <xs:restriction base="xs:string">
+                                                                    <xs:enumeration value="SMILES" />
+                                                                    <xs:enumeration value="SMARTS" />
+                                                                    <xs:enumeration value="CurlySMILES" />
+                                                                    <xs:enumeration value="SLN" />
+                                                                    <xs:enumeration value="InChI" />
+                                                                </xs:restriction>
+                                                            </xs:simpleType>
+                                                        </xs:attribute>
+                                                        <xs:attribute name="Description" type="xs:string" use="optional" />
+                                                        <xs:attribute name="AtomicMass-CG" type="xs:float" use="optional" />
+                                                        <xs:attribute name="AtomicSize-CG" type="xs:float" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
                                     <xs:attribute name="comment" type="xs:string" use="optional" />
                                 </xs:complexType>
                             </xs:element>
@@ -129,6 +176,12 @@
             <xs:element name="Hybridization" type="xs:string" minOccurs="0" />
             <xs:element name="ElementsAllowed" type="xs:string" minOccurs="0" />
             <xs:element name="ElementsDisallowed" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AtomTemplate-CoarseGrained">
+        <xs:sequence>
+            <xs:element name="CG-Name" type="xs:string" />
+            <xs:element name="CG-Chemistry" type="xs:string" minOccurs="0" />
         </xs:sequence>
     </xs:complexType>
 </xs:schema>
