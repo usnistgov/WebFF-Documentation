@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!--Created with Liquid XML 2015 Developer Bundle Edition 13.2.3.6018 (http://www.liquid-technologies.com)-->
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="FF">
@@ -33,7 +33,7 @@
                                     <xs:attribute name="comment" type="xs:string" use="optional" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="AtomTpe-DFF">
+                            <xs:element name="AtomType-DFF">
                                 <xs:complexType>
                                     <xs:sequence>
                                         <xs:element name="AtomType">
@@ -92,17 +92,6 @@
                                             <xs:complexType>
                                                 <xs:complexContent>
                                                     <xs:extension base="AtomTemplate-CoarseGrained">
-                                                        <xs:attribute name="Nomenclature" use="optional">
-                                                            <xs:simpleType>
-                                                                <xs:restriction base="xs:string">
-                                                                    <xs:enumeration value="SMILES" />
-                                                                    <xs:enumeration value="SMARTS" />
-                                                                    <xs:enumeration value="CurlySMILES" />
-                                                                    <xs:enumeration value="SLN" />
-                                                                    <xs:enumeration value="InChI" />
-                                                                </xs:restriction>
-                                                            </xs:simpleType>
-                                                        </xs:attribute>
                                                         <xs:attribute name="Description" type="xs:string" use="optional" />
                                                         <xs:attribute name="AtomicMass-CG" type="xs:float" use="optional" />
                                                         <xs:attribute name="AtomicSize-CG" type="xs:float" use="optional" />
@@ -111,6 +100,17 @@
                                             </xs:complexType>
                                         </xs:element>
                                     </xs:sequence>
+                                    <xs:attribute name="Nomenclature" use="optional">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="SMILES" />
+                                                <xs:enumeration value="SMARTS" />
+                                                <xs:enumeration value="CurlySMILES" />
+                                                <xs:enumeration value="SLN" />
+                                                <xs:enumeration value="InChI" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
                                     <xs:attribute name="comment" type="xs:string" use="optional" />
                                 </xs:complexType>
                             </xs:element>
@@ -131,7 +131,7 @@
     <xs:complexType name="AtomTemplate-DFF">
         <xs:sequence>
             <xs:element name="AtomType-Name" type="xs:string" />
-            <xs:element name="BondPattern" type="xs:string" />
+            <xs:element name="Substructure" type="xs:string" />
             <xs:element name="Atom-Attributes" minOccurs="0">
                 <xs:complexType>
                     <xs:sequence>
@@ -144,11 +144,10 @@
     <xs:complexType name="AttributeStyle-DFF">
         <xs:sequence>
             <xs:element name="Index" type="xs:positiveInteger" />
-            <xs:element name="BondOrder" type="xs:integer" minOccurs="0" />
-            <xs:element name="Ring" type="xs:integer" minOccurs="0" />
+            <xs:element name="Coordination" type="xs:string" minOccurs="0" />
+            <xs:element name="Ringsize" type="xs:string" minOccurs="0" />
             <xs:element name="Aromatic" type="xs:boolean" minOccurs="0" />
             <xs:element name="FormalCharge" type="xs:float" minOccurs="0" />
-            <xs:element name="Hybridization" type="xs:string" minOccurs="0" />
             <xs:element name="ElementsAllowed" type="xs:string" minOccurs="0" />
             <xs:element name="ElementsDisallowed" type="xs:string" minOccurs="0" />
         </xs:sequence>
@@ -170,7 +169,7 @@
         <xs:sequence>
             <xs:element name="Index" type="xs:positiveInteger" />
             <xs:element name="BondOrder" type="xs:integer" minOccurs="0" />
-            <xs:element name="Ring" type="xs:integer" minOccurs="0" />
+            <xs:element name="Ring" type="xs:string" minOccurs="0" />
             <xs:element name="Aromatic" type="xs:boolean" minOccurs="0" />
             <xs:element name="FormalCharge" type="xs:float" minOccurs="0" />
             <xs:element name="Hybridization" type="xs:string" minOccurs="0" />
