@@ -36,7 +36,7 @@
                             <xs:element name="AtomType-DFF">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="AtomType">
+                                        <xs:element name="AtomType" maxOccurs="unbounded">
                                             <xs:complexType>
                                                 <xs:complexContent>
                                                     <xs:extension base="AtomTemplate-DFF">
@@ -48,6 +48,7 @@
                                                 </xs:complexContent>
                                             </xs:complexType>
                                         </xs:element>
+                                        <xs:element name="DFFRelationTree" type="xs:string" minOccurs="0" />
                                     </xs:sequence>
                                     <xs:attribute name="Nomenclature" use="required">
                                         <xs:simpleType>
