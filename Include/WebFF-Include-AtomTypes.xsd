@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:complexType name="AtomTemplate">
         <xs:sequence>
@@ -24,6 +25,69 @@
             <xs:element name="Hybridization" type="xs:string" minOccurs="0" />
             <xs:element name="ElementsAllowed" type="xs:string" minOccurs="0" />
             <xs:element name="ElementsDisallowed" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ATDL">
+        <xs:sequence>
+            <xs:element name="AtomType-Name" type="xs:string" />
+            <xs:element name="Atom" type="xs:string" />
+            <xs:element name="BondedAtoms" type="xs:string" />
+            <xs:element name="FormalCharge" type="xs:float" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AtomTemplate-DFF">
+        <xs:sequence>
+            <xs:element name="AtomType-Name" type="xs:string" />
+            <xs:element name="Substructure" type="xs:string" />
+            <xs:element name="Atom-Attributes" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Attribute" type="AttributeStyle-DFF" maxOccurs="unbounded" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AttributeStyle-DFF">
+        <xs:sequence>
+            <xs:element name="Index" type="xs:positiveInteger" />
+            <xs:element name="Coordination" type="xs:string" minOccurs="0" />
+            <xs:element name="Ringsize" type="xs:string" minOccurs="0" />
+            <xs:element name="Aromatic" type="xs:boolean" minOccurs="0" />
+            <xs:element name="FormalCharge" type="xs:float" minOccurs="0" />
+            <xs:element name="ElementsAllowed" type="xs:string" minOccurs="0" />
+            <xs:element name="ElementsDisallowed" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AtomTemplate-Generic">
+        <xs:sequence>
+            <xs:element name="AtomType-Name" type="xs:string" />
+            <xs:element name="BondPattern" type="xs:string" />
+            <xs:element name="Atom-Attributes" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Attribute" type="AttributeStyle-Generic" maxOccurs="unbounded" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AttributeStyle-Generic">
+        <xs:sequence>
+            <xs:element name="Index" type="xs:positiveInteger" />
+            <xs:element name="BondOrder" type="xs:integer" minOccurs="0" />
+            <xs:element name="Ring" type="xs:string" minOccurs="0" />
+            <xs:element name="Aromatic" type="xs:boolean" minOccurs="0" />
+            <xs:element name="FormalCharge" type="xs:float" minOccurs="0" />
+            <xs:element name="Hybridization" type="xs:string" minOccurs="0" />
+            <xs:element name="ElementsAllowed" type="xs:string" minOccurs="0" />
+            <xs:element name="ElementsDisallowed" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AtomTemplate-CoarseGrained">
+        <xs:sequence>
+            <xs:element name="CG-Name" type="xs:string" />
+            <xs:element name="CG-Chemistry" type="xs:string" minOccurs="0" />
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

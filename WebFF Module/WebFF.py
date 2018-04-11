@@ -1268,6 +1268,131 @@ def ReadExcelAtomTypes(sheet,root):
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
 
+def ReadExcelAtomTypes_ATDL(sheet,root): 
+    ''' Reads in the AtomTypes-ATDL sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''   
+    xls_sheet = sheet
+
+    AA=xls_sheet.row_values(2)[1]
+    BB=xls_sheet.row_values(3)[1]
+
+    funko = ET.SubElement(root, "AtomTypes")
+    sheet = ET.SubElement(funko, "AtomType-ATDL", {'Nomenclature':AA, 'comment':BB}) 
+    # Row 5 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(5))
+
+    attribute_idx1 = xls_sheet_header.index("Element")
+    attribute_idx2 = xls_sheet_header.index("AtomicNumber")
+    attribute_idx3 = xls_sheet_header.index("AtomicMass")
+    attribute_idx4 = xls_sheet_header.index("Description")
+
+    for row_num in xrange(6, xls_sheet.nrows):
+        cur_entry = ET.SubElement(sheet, "AtomType")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
+            ET.Element.set(cur_entry, 'Element', str((xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
+            ET.Element.set(cur_entry, 'AtomicNumber', str(int((xls_sheet.row_values(row_num)[attribute_idx2]))))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
+            ET.Element.set(cur_entry, 'AtomicMass', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        if (xls_sheet.cell_value(row_num, attribute_idx4)) : 
+            ET.Element.set(cur_entry, 'Description', str((xls_sheet.row_values(row_num)[attribute_idx4])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+            if (len(str(cell_value))!=0) :
+                if col_num == attribute_idx1:
+                    continue
+                elif col_num == attribute_idx2:
+                    continue
+                elif col_num == attribute_idx3:
+                    continue
+                elif col_num == attribute_idx4:
+                    continue
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+
+def ReadExcelAtomTypes_DFF(sheet,root): 
+    ''' Reads in the AtomTypes-DFF sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''   
+    xls_sheet = sheet
+
+    AA=xls_sheet.row_values(2)[1]
+    BB=xls_sheet.row_values(3)[1]
+
+    funko = ET.SubElement(root, "AtomTypes")
+    sheet = ET.SubElement(funko, "AtomType-DFF", {'Nomenclature':AA, 'comment':BB}) 
+    # Row 5 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(5))
+
+    attribute_idx1 = xls_sheet_header.index("Element")
+    attribute_idx2 = xls_sheet_header.index("AtomicNumber")
+    attribute_idx3 = xls_sheet_header.index("AtomicMass")
+    attribute_idx4 = xls_sheet_header.index("Description")
+
+    for row_num in xrange(6, xls_sheet.nrows):
+        cur_entry = ET.SubElement(sheet, "AtomType")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
+            ET.Element.set(cur_entry, 'Element', str((xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
+            ET.Element.set(cur_entry, 'AtomicNumber', str(int((xls_sheet.row_values(row_num)[attribute_idx2]))))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
+            ET.Element.set(cur_entry, 'AtomicMass', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        if (xls_sheet.cell_value(row_num, attribute_idx4)) : 
+            ET.Element.set(cur_entry, 'Description', str((xls_sheet.row_values(row_num)[attribute_idx4])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+            if (len(str(cell_value))!=0) :
+                if col_num == attribute_idx1:
+                    continue
+                elif col_num == attribute_idx2:
+                    continue
+                elif col_num == attribute_idx3:
+                    continue
+                elif col_num == attribute_idx4:
+                    continue
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+
+def ReadExcelAtomTypes_Generic(sheet,root): 
+    ''' Reads in the AtomTypes-Generic sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''   
+    xls_sheet = sheet
+
+    AA=xls_sheet.row_values(2)[1]
+    BB=xls_sheet.row_values(3)[1]
+
+    funko = ET.SubElement(root, "AtomTypes")
+    sheet = ET.SubElement(funko, "AtomType-Generic", {'Nomenclature':AA, 'comment':BB}) 
+    # Row 5 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(5))
+
+    attribute_idx1 = xls_sheet_header.index("Element")
+    attribute_idx2 = xls_sheet_header.index("AtomicNumber")
+    attribute_idx3 = xls_sheet_header.index("AtomicMass")
+    attribute_idx4 = xls_sheet_header.index("Description")
+
+    for row_num in xrange(6, xls_sheet.nrows):
+        cur_entry = ET.SubElement(sheet, "AtomType")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
+            ET.Element.set(cur_entry, 'Element', str((xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
+            ET.Element.set(cur_entry, 'AtomicNumber', str(int((xls_sheet.row_values(row_num)[attribute_idx2]))))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
+            ET.Element.set(cur_entry, 'AtomicMass', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        if (xls_sheet.cell_value(row_num, attribute_idx4)) : 
+            ET.Element.set(cur_entry, 'Description', str((xls_sheet.row_values(row_num)[attribute_idx4])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+            if (len(str(cell_value))!=0) :
+                if col_num == attribute_idx1:
+                    continue
+                elif col_num == attribute_idx2:
+                    continue
+                elif col_num == attribute_idx3:
+                    continue
+                elif col_num == attribute_idx4:
+                    continue
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+
+
+
 def ReadExcelAtomTypeAttributes(sheet,root): 
     ''' Reads in the Atom-Types-Attributes sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
@@ -1290,7 +1415,55 @@ def ReadExcelAtomTypeAttributes(sheet,root):
                         if(type(cell_value) == float): 
                             ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(int(cell_value)) 
                         else:
-                            ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value) 
+                            ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value)
+
+def ReadExcelAtomTypeAttributes_Generic(sheet,root): 
+    ''' Reads in the Atom-Attributes-Generic sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''   
+    xls_sheet1 = sheet
+
+    # Row 4 is the header
+    xls_sheet1_header = map(str, xls_sheet1.row_values(4))
+    attribute_idx1 = xls_sheet1_header.index("AtomType-Name")
+    for row_num in xrange(5, xls_sheet1.nrows):
+        for child in root.findall("./AtomTypes/AtomType-Generic/AtomType"): 
+            AtomTypeName = (child.find("AtomType-Name"))
+            if(AtomTypeName.text == str(xls_sheet1.cell_value(row_num, 0))): 
+                sheet1 = ET.SubElement(child, "Atom-Attributes")
+                sheet2 = ET.SubElement(sheet1, "Attribute")
+                for col_num, cell_value in enumerate(xls_sheet1.row_values(row_num)):
+                    if (len(str(cell_value))!=0) :
+                        if col_num == attribute_idx1:
+                            continue    
+                        if(type(cell_value) == float): 
+                            ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(int(cell_value)) 
+                        else:
+                            ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value)
+
+def ReadExcelAtomTypeAttributes_DFF(sheet,root): 
+    ''' Reads in the Atom-Attributes-Generic sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''   
+    xls_sheet1 = sheet
+
+    # Row 4 is the header
+    xls_sheet1_header = map(str, xls_sheet1.row_values(4))
+    attribute_idx1 = xls_sheet1_header.index("AtomType-Name")
+    for row_num in xrange(5, xls_sheet1.nrows):
+        for child in root.findall("./AtomTypes/AtomType-DFF/AtomType"): 
+            AtomTypeName = (child.find("AtomType-Name"))
+            if(AtomTypeName.text == str(xls_sheet1.cell_value(row_num, 0))): 
+                sheet1 = ET.SubElement(child, "Atom-Attributes")
+                sheet2 = ET.SubElement(sheet1, "Attribute")
+                for col_num, cell_value in enumerate(xls_sheet1.row_values(row_num)):
+                    if (len(str(cell_value))!=0) :
+                        if col_num == attribute_idx1:
+                            continue    
+                        if(type(cell_value) == float): 
+                            ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(int(cell_value)) 
+                        else:
+                            ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value)
                             
                             
 #Class2 functions

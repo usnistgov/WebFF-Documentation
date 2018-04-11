@@ -7,22 +7,87 @@
         <xs:element name="Force-Field-Header" type="Force-Field-Metadata" />
         <xs:element name="AtomTypes" minOccurs="0">
           <xs:complexType>
-            <xs:sequence>
-              <xs:element name="AtomType" maxOccurs="unbounded">
+            <xs:choice>
+              <xs:element name="AtomType-ATDL">
                 <xs:complexType>
-                  <xs:complexContent>
-                    <xs:extension base="AtomTemplate">
-                      <xs:attribute name="Description" type="xs:string" />
-                      <xs:attribute name="Element" type="xs:string" use="optional" />
-                      <xs:attribute name="AtomicNumber" type="xs:positiveInteger" use="optional" />
-                      <xs:attribute name="AtomicMass" type="xs:float" use="optional" />
-                    </xs:extension>
-                  </xs:complexContent>
+                  <xs:sequence>
+                    <xs:element name="AtomType" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:complexContent>
+                          <xs:extension base="ATDL">
+                            <xs:attribute name="Description" type="xs:string" use="optional" />
+                            <xs:attribute name="Element" type="xs:string" use="optional" />
+                            <xs:attribute name="AtomicNumber" type="xs:positiveInteger" use="optional" />
+                            <xs:attribute name="AtomicMass" type="xs:float" use="optional" />
+                          </xs:extension>
+                        </xs:complexContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Nomenclature" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="ATDL" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="comment" type="xs:string" use="optional" />
                 </xs:complexType>
               </xs:element>
-            </xs:sequence>
-            <xs:attribute name="PatternNomenclatureStyle" type="xs:string" use="required" />
-            <xs:attribute name="comment" type="xs:string" use="optional" />
+              <xs:element name="AtomType-DFF">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="AtomType" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:complexContent>
+                          <xs:extension base="AtomTemplate-DFF">
+                            <xs:attribute name="Description" type="xs:string" />
+                            <xs:attribute name="Element" type="xs:string" use="optional" />
+                            <xs:attribute name="AtomicNumber" type="xs:positiveInteger" use="optional" />
+                            <xs:attribute name="AtomicMass" type="xs:float" use="optional" />
+                          </xs:extension>
+                        </xs:complexContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element xmlns:ns0="http://mdcs.ns" name="DFFRelationTree" type="xs:string" minOccurs="0" ns0:_mod_mdcs_="/registry/description" />
+                  </xs:sequence>
+                  <xs:attribute name="Nomenclature" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="DFF" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="comment" type="xs:string" use="optional" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="AtomType-Generic">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="AtomType" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:complexContent>
+                          <xs:extension base="AtomTemplate-Generic">
+                            <xs:attribute name="Description" type="xs:string" use="optional" />
+                            <xs:attribute name="Element" type="xs:string" use="optional" />
+                            <xs:attribute name="AtomicNumber" type="xs:positiveInteger" use="optional" />
+                            <xs:attribute name="AtomicMass" type="xs:float" use="optional" />
+                          </xs:extension>
+                        </xs:complexContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Nomenclature" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Generic" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="comment" type="xs:string" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
           </xs:complexType>
         </xs:element>
         <xs:element name="BondPotential" minOccurs="0">
@@ -1112,6 +1177,69 @@
       <xs:element name="Hybridization" type="xs:string" minOccurs="0" />
       <xs:element name="ElementsAllowed" type="xs:string" minOccurs="0" />
       <xs:element name="ElementsDisallowed" type="xs:string" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ATDL">
+    <xs:sequence>
+      <xs:element name="AtomType-Name" type="xs:string" />
+      <xs:element name="Atom" type="xs:string" />
+      <xs:element name="BondedAtoms" type="xs:string" />
+      <xs:element name="FormalCharge" type="xs:float" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AtomTemplate-DFF">
+    <xs:sequence>
+      <xs:element name="AtomType-Name" type="xs:string" />
+      <xs:element name="Substructure" type="xs:string" />
+      <xs:element name="Atom-Attributes" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Attribute" type="AttributeStyle-DFF" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttributeStyle-DFF">
+    <xs:sequence>
+      <xs:element name="Index" type="xs:positiveInteger" />
+      <xs:element name="Coordination" type="xs:string" minOccurs="0" />
+      <xs:element name="Ringsize" type="xs:string" minOccurs="0" />
+      <xs:element name="Aromatic" type="xs:boolean" minOccurs="0" />
+      <xs:element name="FormalCharge" type="xs:float" minOccurs="0" />
+      <xs:element name="ElementsAllowed" type="xs:string" minOccurs="0" />
+      <xs:element name="ElementsDisallowed" type="xs:string" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AtomTemplate-Generic">
+    <xs:sequence>
+      <xs:element name="AtomType-Name" type="xs:string" />
+      <xs:element name="BondPattern" type="xs:string" />
+      <xs:element name="Atom-Attributes" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Attribute" type="AttributeStyle-Generic" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttributeStyle-Generic">
+    <xs:sequence>
+      <xs:element name="Index" type="xs:positiveInteger" />
+      <xs:element name="BondOrder" type="xs:integer" minOccurs="0" />
+      <xs:element name="Ring" type="xs:string" minOccurs="0" />
+      <xs:element name="Aromatic" type="xs:boolean" minOccurs="0" />
+      <xs:element name="FormalCharge" type="xs:float" minOccurs="0" />
+      <xs:element name="Hybridization" type="xs:string" minOccurs="0" />
+      <xs:element name="ElementsAllowed" type="xs:string" minOccurs="0" />
+      <xs:element name="ElementsDisallowed" type="xs:string" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AtomTemplate-CoarseGrained">
+    <xs:sequence>
+      <xs:element name="CG-Name" type="xs:string" />
+      <xs:element name="CG-Chemistry" type="xs:string" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
   <!--Schema items added from C:\Github\Projects\WebFF-Documentation\Include\WebFF-Include-TableData.xsd-->

@@ -16,22 +16,87 @@
                 <xs:element name="Force-Field-Header" type="Force-Field-Metadata" />
                 <xs:element name="AtomTypes" minOccurs="0">
                     <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="AtomType" maxOccurs="unbounded">
+                        <xs:choice>
+                            <xs:element name="AtomType-ATDL">
                                 <xs:complexType>
-                                    <xs:complexContent>
-                                        <xs:extension base="AtomTemplate">
-                                            <xs:attribute name="Description" type="xs:string" />
-                                            <xs:attribute name="Element" type="xs:string" use="optional" />
-                                            <xs:attribute name="AtomicNumber" type="xs:positiveInteger" use="optional" />
-                                            <xs:attribute name="AtomicMass" type="xs:float" use="optional" />
-                                        </xs:extension>
-                                    </xs:complexContent>
+                                    <xs:sequence>
+                                        <xs:element name="AtomType" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="ATDL">
+                                                        <xs:attribute name="Description" type="xs:string" use="optional" />
+                                                        <xs:attribute name="Element" type="xs:string" use="optional" />
+                                                        <xs:attribute name="AtomicNumber" type="xs:positiveInteger" use="optional" />
+                                                        <xs:attribute name="AtomicMass" type="xs:float" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="Nomenclature" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="ATDL" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="comment" type="xs:string" use="optional" />
                                 </xs:complexType>
                             </xs:element>
-                        </xs:sequence>
-                        <xs:attribute name="PatternNomenclatureStyle" type="xs:string" use="required" />
-                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                            <xs:element name="AtomType-DFF">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="AtomType" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="AtomTemplate-DFF">
+                                                        <xs:attribute name="Description" type="xs:string" />
+                                                        <xs:attribute name="Element" type="xs:string" use="optional" />
+                                                        <xs:attribute name="AtomicNumber" type="xs:positiveInteger" use="optional" />
+                                                        <xs:attribute name="AtomicMass" type="xs:float" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="DFFRelationTree" type="xs:string" minOccurs="0" xmlns:ns0="http://mdcs.ns" ns0:_mod_mdcs_="/registry/description"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="Nomenclature" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="DFF" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="comment" type="xs:string" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="AtomType-Generic">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="AtomType" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="AtomTemplate-Generic">
+                                                        <xs:attribute name="Description" type="xs:string" use="optional" />
+                                                        <xs:attribute name="Element" type="xs:string" use="optional" />
+                                                        <xs:attribute name="AtomicNumber" type="xs:positiveInteger" use="optional" />
+                                                        <xs:attribute name="AtomicMass" type="xs:float" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="Nomenclature" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Generic" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="comment" type="xs:string" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="BondPotential" minOccurs="0">
