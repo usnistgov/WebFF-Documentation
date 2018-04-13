@@ -16,6 +16,67 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="Force-Field-Header" type="Force-Field-Metadata" />
+                <xs:element name="AtomTypes" minOccurs="0">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="AtomType-ATDL">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="AtomType" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="ATDL">
+                                                        <xs:attribute name="Description" type="xs:string" use="optional" />
+                                                        <xs:attribute name="Element" type="xs:string" use="optional" />
+                                                        <xs:attribute name="AtomicNumber" type="xs:positiveInteger" use="optional" />
+                                                        <xs:attribute name="AtomicMass" type="xs:float" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="Nomenclature" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="ATDL" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="comment" type="xs:string" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="AtomType-CoarseGrained">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="CGType" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="AtomTemplate-CoarseGrained">
+                                                        <xs:attribute name="Description" type="xs:string" use="optional" />
+                                                        <xs:attribute name="AtomicMass-CG" type="xs:float" use="optional" />
+                                                        <xs:attribute name="AtomicSize-CG" type="xs:float" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="Nomenclature" use="optional">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="SMILES" />
+                                                <xs:enumeration value="SMARTS" />
+                                                <xs:enumeration value="CurlySMILES" />
+                                                <xs:enumeration value="SLN" />
+                                                <xs:enumeration value="InChI" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="comment" type="xs:string" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="BondPotential" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
