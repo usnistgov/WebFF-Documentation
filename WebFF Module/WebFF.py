@@ -1391,7 +1391,41 @@ def ReadExcelAtomTypes_Generic(sheet,root):
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
 
+def ReadExcelAtomTypes_CoarseGrained(sheet,root): 
+    ''' Reads in the AtomTypes-ATDL sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''   
+    xls_sheet = sheet
 
+    AA=xls_sheet.row_values(2)[1]
+    BB=xls_sheet.row_values(3)[1]
+
+    funko = ET.SubElement(root, "AtomTypes")
+    sheet = ET.SubElement(funko, "AtomType-CoarseGrained", {'Nomenclature':AA, 'comment':BB}) 
+    # Row 5 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(5))
+
+    attribute_idx1 = xls_sheet_header.index("Description")
+    attribute_idx2 = xls_sheet_header.index("AtomicMass-CG")
+    attribute_idx3 = xls_sheet_header.index("AtomicSize-CG")
+
+    for row_num in xrange(6, xls_sheet.nrows):
+        cur_entry = ET.SubElement(sheet, "AtomType")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
+            ET.Element.set(cur_entry, 'Description', str((xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
+            ET.Element.set(cur_entry, 'AtomicMass-CG', str(int((xls_sheet.row_values(row_num)[attribute_idx2]))))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
+            ET.Element.set(cur_entry, 'AtomicSize-CG', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+            if (len(str(cell_value))!=0) :
+                if col_num == attribute_idx1:
+                    continue
+                elif col_num == attribute_idx2:
+                    continue
+                elif col_num == attribute_idx3:
+                    continue
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
 
 def ReadExcelAtomTypeAttributes(sheet,root): 
     ''' Reads in the Atom-Types-Attributes sheet from the webFF excel template. 
@@ -1442,7 +1476,7 @@ def ReadExcelAtomTypeAttributes_Generic(sheet,root):
                             ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value)
 
 def ReadExcelAtomTypeAttributes_DFF(sheet,root): 
-    ''' Reads in the Atom-Attributes-Generic sheet from the webFF excel template. 
+    ''' Reads in the Atom-Attributes-DFF sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''   
     xls_sheet1 = sheet
@@ -1464,8 +1498,17 @@ def ReadExcelAtomTypeAttributes_DFF(sheet,root):
                             ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(int(cell_value)) 
                         else:
                             ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value)
-                            
-                            
+
+def ReadExcelRelationTree_DFF(sheet,root): 
+    ''' Reads in the RelationTree-DFF sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''   
+    xls_sheet = sheet
+    RT=xls_sheet.row_values(4)[1]
+    if (len(str(RT))!=0) :
+	temp = root.find("./AtomTypes/AtomType-DFF")
+	ET.SubElement(temp, "DFFRelationTree").text = str(RT)
+
 #Class2 functions
 def ReadExcelBondPotential_Class2(sheet, sub_root): 
     ''' Reads in the BondPotential-Harmonic sheet from the webFF excel template. 

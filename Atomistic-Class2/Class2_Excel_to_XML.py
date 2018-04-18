@@ -33,14 +33,26 @@ def excel_xml(input, output):
         FF.ReadExcelMetaData_Keywords(sheet,root)
         
     #Atom Types
-    if  "AtomTypes" in sheet_names: 
-        sheet = xls_file.sheet_by_name("AtomTypes")
-        FF.ReadExcelAtomTypes(sheet, root) 
-    if  "Atom-Attributes" in sheet_names: 
-        sheet = xls_file.sheet_by_name("Atom-Attributes")
-        FF.ReadExcelAtomTypeAttributes(sheet, root)    
+    if  "AtomType-ATDL" in sheet_names: 
+        sheet = xls_file.sheet_by_name("AtomType-ATDL")
+        FF.ReadExcelAtomTypes_ATDL(sheet, root)
+    if  "AtomType-DFF" in sheet_names: 
+        sheet = xls_file.sheet_by_name("AtomType-DFF")
+        FF.ReadExcelAtomTypes_DFF(sheet, root)
+	if  "RelationTree-DFF" in sheet_names:
+	    sheet = xls_file.sheet_by_name("RelationTree-DFF")
+            FF.ReadExcelRelationTree_DFF(sheet, root)
+    if  "AtomType-Generic" in sheet_names: 
+        sheet = xls_file.sheet_by_name("AtomType-Generic")
+        FF.ReadExcelAtomTypes_Generic(sheet, root)
+    if  "Atom-Attributes-DFF" in sheet_names: 
+        sheet = xls_file.sheet_by_name("Atom-Attributes-DFF")
+        FF.ReadExcelAtomTypeAttributes_DFF(sheet, root)
+    if  "Atom-Attributes-Generic" in sheet_names: 
+        sheet = xls_file.sheet_by_name("Atom-Attributes-Generic")
+        FF.ReadExcelAtomTypeAttributes_Generic(sheet, root)    
 	
-	#Bond Potentials 
+    #Bond Potentials 
     if "BondPotential-Harmonic" in sheet_names:
         sub_root = ET.SubElement(root, "BondPotential")
         sheet = xls_file.sheet_by_name("BondPotential-Harmonic")

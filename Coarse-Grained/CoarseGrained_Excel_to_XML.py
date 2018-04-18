@@ -33,12 +33,12 @@ def excel_xml(input, output):
         FF.ReadExcelMetaData_Keywords(sheet,root)
         
     #Atom Types
-    if  "AtomTypes" in sheet_names: 
-        sheet = xls_file.sheet_by_name("AtomTypes")
-        FF.ReadExcelAtomTypes(sheet, root) 
-    if  "Atom-Attributes" in sheet_names: 
-        sheet = xls_file.sheet_by_name("Atom-Attributes")
-        FF.ReadExcelAtomTypeAttributes(sheet, root)    
+    if  "AtomType-ATDL" in sheet_names: 
+        sheet = xls_file.sheet_by_name("AtomType-ATDL")
+        FF.ReadExcelAtomTypes_ATDL(sheet, root)
+    if  "AtomType-CoarseGrained" in sheet_names: 
+        sheet = xls_file.sheet_by_name("AtomType-CoarseGrained")
+        FF.ReadExcelAtomTypes_CoarseGrained(sheet, root)   
 	
     #Bond Potentials 
     if "BondPotential-Tabular" in sheet_names:
