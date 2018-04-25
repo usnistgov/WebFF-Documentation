@@ -1,0 +1,92 @@
+<!-- Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com) -->
+<FF-Class-I>
+    <Force-Field-Header>
+        <Force-Field-Protocol>Atomistic - Class I</Force-Field-Protocol>
+        <Force-Field-Name>Name</Force-Field-Name>
+        <Description>Description</Description>
+        <Data-Source>
+            <Compact>
+                <Reference>Source</Reference>
+                <DOI>doi</DOI>
+                <URL>url</URL>
+                <Notes>notes</Notes>
+            </Compact>
+        </Data-Source>
+        <Data-Source-Scribe>
+            <Name>Pablo</Name>
+            <Affiliation>NIST</Affiliation>
+            <email>pablo.garciabeltran@nist.gov</email>
+        </Data-Source-Scribe>
+        <Keywords>Acetals</Keywords>
+        <Keywords>- Hemiacetals</Keywords>
+        <WebFF-Scribe>
+            <Name>Pablo</Name>
+            <Affiliation>NIST</Affiliation>
+            <email>pablo.garciabeltran@nist.gov</email>
+        </WebFF-Scribe>
+    </Force-Field-Header>
+    <AtomTypes>
+        <AtomType-ATDL Nomenclature="ATDL" comment="this is a comment">
+            <AtomType AtomicMass="0.10381037721" AtomicNumber="1" Description="description" Element="element">
+                <AtomType-Name>Name1</AtomType-Name>
+                <Atom>atom1</Atom>
+                <BondedAtoms>bonded_atom1</BondedAtoms>
+                <FormalCharge>0.770150189447</FormalCharge>
+            </AtomType>
+            <AtomType AtomicMass="0.0652500142007" AtomicNumber="2" Description="description" Element="element">
+                <AtomType-Name>Name2</AtomType-Name>
+                <Atom>atom2</Atom>
+                <BondedAtoms>bonded_atom2</BondedAtoms>
+                <FormalCharge>0.635298560436</FormalCharge>
+            </AtomType>
+            <AtomType AtomicMass="0.267168387752" AtomicNumber="3" Description="description" Element="element">
+                <AtomType-Name>Name3</AtomType-Name>
+                <Atom>atom3</Atom>
+                <BondedAtoms>bonded_atom3</BondedAtoms>
+                <FormalCharge>0.498699026615</FormalCharge>
+            </AtomType>
+            <AtomType AtomicMass="0.371689229379" AtomicNumber="4" Description="description" Element="element">
+                <AtomType-Name>Name4</AtomType-Name>
+                <Atom>atom4</Atom>
+                <BondedAtoms>bonded_atom4</BondedAtoms>
+                <FormalCharge>0.676468930878</FormalCharge>
+            </AtomType>
+            <AtomType AtomicMass="0.579884858638" AtomicNumber="5" Description="description" Element="element">
+                <AtomType-Name>Name5</AtomType-Name>
+                <Atom>atom5</Atom>
+                <BondedAtoms>bonded_atom5</BondedAtoms>
+                <FormalCharge>0.846959916969</FormalCharge>
+            </AtomType>
+            <AtomType AtomicMass="0.0923239458226" AtomicNumber="6" Description="description" Element="element">
+                <AtomType-Name>Name6</AtomType-Name>
+                <Atom>atom6</Atom>
+                <BondedAtoms>bonded_atom6</BondedAtoms>
+                <FormalCharge>0.631792468905</FormalCharge>
+            </AtomType>
+            <AtomType AtomicMass="0.144965836228" AtomicNumber="7" Description="description" Element="element">
+                <AtomType-Name>Name7</AtomType-Name>
+                <Atom>atom7</Atom>
+                <BondedAtoms>bonded_atom7</BondedAtoms>
+                <FormalCharge>0.046866328566</FormalCharge>
+            </AtomType>
+            <AtomType AtomicMass="0.0570108582386" AtomicNumber="8" Description="description" Element="element">
+                <AtomType-Name>Name8</AtomType-Name>
+                <Atom>atom8</Atom>
+                <BondedAtoms>bonded_atom8</BondedAtoms>
+                <FormalCharge>0.076114528851</FormalCharge>
+            </AtomType>
+            <AtomType AtomicMass="0.970301115781" AtomicNumber="9" Description="description" Element="element">
+                <AtomType-Name>Name9</AtomType-Name>
+                <Atom>atom9</Atom>
+                <BondedAtoms>bonded_atom9</BondedAtoms>
+                <FormalCharge>0.630154216391</FormalCharge>
+            </AtomType>
+            <AtomType AtomicMass="0.195816429215" AtomicNumber="10" Description="description" Element="element">
+                <AtomType-Name>Name10</AtomType-Name>
+                <Atom>atom10</Atom>
+                <BondedAtoms>bonded_atom10</BondedAtoms>
+                <FormalCharge>0.624008425952</FormalCharge>
+            </AtomType>
+        </AtomType-ATDL>
+    </AtomTypes>
+</FF-Class-I>

@@ -1,0 +1,48 @@
+<!-- Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com) -->
+<FF-Class-I>
+    <Force-Field-Header>
+        <Force-Field-Protocol>Atomistic - Class I</Force-Field-Protocol>
+        <Force-Field-Name>Name</Force-Field-Name>
+        <Description>Description</Description>
+        <Data-Source>
+            <Compact>
+                <Reference>Source</Reference>
+                <DOI>doi</DOI>
+                <URL>url</URL>
+                <Notes>notes</Notes>
+            </Compact>
+        </Data-Source>
+        <Data-Source-Scribe>
+            <Name>Pablo</Name>
+            <Affiliation>NIST</Affiliation>
+            <email>pablo.garciabeltran@nist.gov</email>
+        </Data-Source-Scribe>
+        <Keywords>Acetals</Keywords>
+        <Keywords>- Hemiacetals</Keywords>
+        <WebFF-Scribe>
+            <Name>Pablo</Name>
+            <Affiliation>NIST</Affiliation>
+            <email>pablo.garciabeltran@nist.gov</email>
+        </WebFF-Scribe>
+    </Force-Field-Header>
+    <AtomTypes>
+        <AtomType-DFF Nomenclature="DFF" comment="this is a comment">
+            <AtomType AtomicMass="0.260713659997" AtomicNumber="1" Description="description" Element="element">
+                <AtomType-Name>Name1</AtomType-Name>
+                <Substructure>substructure1</Substructure>
+                <Atom-Attributes>
+                    <Attribute>
+                        <Index>1</Index>
+                        <Coordination>coordination1</Coordination>
+                        <Ringsize>ringsize1</Ringsize>
+                        <Aromatic>1</Aromatic>
+                        <FormalCharge>0.932613600012</FormalCharge>
+                        <ElementsAllowed>elements_allowed1</ElementsAllowed>
+                        <ElementsDisallowed>elements_disallowed1</ElementsDisallowed>
+                    </Attribute>
+                </Atom-Attributes>
+            </AtomType>
+            <DFFRelationTree>this is a multiline relation tree sample input</DFFRelationTree>
+        </AtomType-DFF>
+    </AtomTypes>
+</FF-Class-I>
