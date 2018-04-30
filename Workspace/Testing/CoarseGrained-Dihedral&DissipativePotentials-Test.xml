@@ -1,0 +1,77 @@
+<!-- Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com) -->
+<FF-CoarseGrained>
+    <Force-Field-Header>
+        <Force-Field-Protocol>Coarse-Grained - Pseudo-Atom</Force-Field-Protocol>
+        <Force-Field-Name>dfg</Force-Field-Name>
+        <Description>dfg</Description>
+        <Data-Source>
+            <Compact>
+                <Reference>dfg</Reference>
+                <DOI>dfg</DOI>
+                <URL>dfg</URL>
+                <Notes>dfg</Notes>
+            </Compact>
+        </Data-Source>
+        <Data-Source-Scribe>
+            <Name>dfg</Name>
+            <Affiliation>dfg</Affiliation>
+            <email>dfg</email>
+        </Data-Source-Scribe>
+        <Keywords>Acetals</Keywords>
+        <Keywords>Aliphatic hydrocarbons</Keywords>
+        <WebFF-Scribe>
+            <Name>dfg</Name>
+            <Affiliation>dfg</Affiliation>
+            <email>dfg</email>
+        </WebFF-Scribe>
+    </Force-Field-Header>
+    <DihedralPotential>
+        <DihedralPotential-Tabular angle-units="degrees" comment="jyt" energy-diff-units="Kcal/mole-degrees" energy-units="Kcal/mole" style="Tabular">
+            <AT-1>rshnyk</AT-1>
+            <AT-2>bsr</AT-2>
+            <AT-3>srdg</AT-3>
+            <AT-4>sfg</AT-4>
+            <keyword>xfg</keyword>
+            <N>4</N>
+            <CHECKU>fgh</CHECKU>
+            <CHECKF>fgh</CHECKF>
+            <Dihedral>
+                <index>1</index>
+                <angle>0.68470374084</angle>
+                <energy>0.573887148973</energy>
+                <energy-diff>0.76750459191</energy-diff>
+            </Dihedral>
+            <Dihedral>
+                <index>2</index>
+                <angle>0.700754943267</angle>
+                <energy>0.98991338406</energy>
+                <energy-diff>0.912979595043</energy-diff>
+            </Dihedral>
+            <Dihedral>
+                <index>3</index>
+                <angle>0.0692856772075</angle>
+                <energy>0.573848435918</energy>
+                <energy-diff>0.960747534758</energy-diff>
+            </Dihedral>
+        </DihedralPotential-Tabular>
+    </DihedralPotential>
+    <DissipativePotential>
+        <DissipativePotential-Langevin formula="gamma" gamma-units="amu/s" style="Langevin">
+            <Dissipative comment="comment">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <gamma>0.0792009253583</gamma>
+            </Dissipative>
+            <Dissipative comment="comment">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <gamma>0.981889279397</gamma>
+            </Dissipative>
+            <Dissipative comment="comment">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <gamma>0.387298889046</gamma>
+            </Dissipative>
+        </DissipativePotential-Langevin>
+    </DissipativePotential>
+</FF-CoarseGrained>

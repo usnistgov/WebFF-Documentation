@@ -1,0 +1,80 @@
+<!-- Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com) -->
+<FF-CoarseGrained>
+    <Force-Field-Header>
+        <Force-Field-Protocol>Coarse-Grained - Pseudo-Atom</Force-Field-Protocol>
+        <Force-Field-Name>dfg</Force-Field-Name>
+        <Description>dfg</Description>
+        <Data-Source>
+            <Compact>
+                <Reference>dfg</Reference>
+                <DOI>dfg</DOI>
+                <URL>dfg</URL>
+                <Notes>dfg</Notes>
+            </Compact>
+        </Data-Source>
+        <Data-Source-Scribe>
+            <Name>dfg</Name>
+            <Affiliation>dfg</Affiliation>
+            <email>dfg</email>
+        </Data-Source-Scribe>
+        <Keywords>Acetals</Keywords>
+        <Keywords>Aliphatic hydrocarbons</Keywords>
+        <WebFF-Scribe>
+            <Name>dfg</Name>
+            <Affiliation>dfg</Affiliation>
+            <email>dfg</email>
+        </WebFF-Scribe>
+    </Force-Field-Header>
+    <AnglePotential>
+        <AnglePotential-Cosine Ka-units="Reduced" formula="Ka*[1+cos(theta)]" style="Cosine">
+            <Angle comment="comment" precedence="1">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <AT-3>at3.1</AT-3>
+                <Ka>0.691603462323</Ka>
+            </Angle>
+            <Angle comment="comment" precedence="2">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <AT-3>at3.2</AT-3>
+                <Ka>0.761530973073</Ka>
+            </Angle>
+            <Angle comment="comment" precedence="3">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <AT-3>at3.3</AT-3>
+                <Ka>0.129813895903</Ka>
+            </Angle>
+        </AnglePotential-Cosine>
+    </AnglePotential>
+    <AnglePotential>
+        <AnglePotential-Tabular angle-units="degrees" energy-diff-units="Kcal/mole-degrees" energy-units="Kcal/mole" style="Tabular">
+            <AT-1>ef</AT-1>
+            <AT-2>sdf</AT-2>
+            <AT-3>gdf</AT-3>
+            <keyword>klaw</keyword>
+            <N>4</N>
+            <fplo>456.68</fplo>
+            <fphi>6785.9</fphi>
+            <EQ>234.45</EQ>
+            <Angle>
+                <index>1</index>
+                <angle>0.205183283241</angle>
+                <energy>0.36571633115</energy>
+                <energy-diff>0.787256289899</energy-diff>
+            </Angle>
+            <Angle>
+                <index>2</index>
+                <angle>0.531477360612</angle>
+                <energy>0.0386268724056</energy>
+                <energy-diff>0.477267104947</energy-diff>
+            </Angle>
+            <Angle>
+                <index>3</index>
+                <angle>0.228446474289</angle>
+                <energy>0.442824794618</energy>
+                <energy-diff>0.609837290318</energy-diff>
+            </Angle>
+        </AnglePotential-Tabular>
+    </AnglePotential>
+</FF-CoarseGrained>

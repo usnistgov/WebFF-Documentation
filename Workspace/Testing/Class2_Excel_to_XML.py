@@ -76,9 +76,9 @@ def excel_xml(input, output):
         sheet = xls_file.sheet_by_name("AnglePotential-CHARMM")
         FF.ReadExcelAnglePotential_CHARMM(sheet, sub_root)
     elif  "AnglePotential-Class2" in sheet_names: 
-		sub_root = ET.SubElement(root, "AnglePotential")
-		sheet = xls_file.sheet_by_name("AnglePotential-Class2")
-		FF.ReadExcelAnglePotential_Class2(sheet, sub_root)
+	sub_root = ET.SubElement(root, "AnglePotential")
+	sheet = xls_file.sheet_by_name("AnglePotential-Class2")
+	FF.ReadExcelAnglePotential_Class2(sheet, sub_root)
 
     #Dihedral Potentials    
     if  "DihedralPotential-CHARMM" in sheet_names: 

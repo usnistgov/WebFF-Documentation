@@ -1,0 +1,103 @@
+<!-- Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com) -->
+<FF-CoarseGrained>
+    <Force-Field-Header>
+        <Force-Field-Protocol>Coarse-Grained - Pseudo-Atom</Force-Field-Protocol>
+        <Force-Field-Name>dfg</Force-Field-Name>
+        <Description>dfg</Description>
+        <Data-Source>
+            <Compact>
+                <Reference>dfg</Reference>
+                <DOI>dfg</DOI>
+                <URL>dfg</URL>
+                <Notes>dfg</Notes>
+            </Compact>
+        </Data-Source>
+        <Data-Source-Scribe>
+            <Name>dfg</Name>
+            <Affiliation>dfg</Affiliation>
+            <email>dfg</email>
+        </Data-Source-Scribe>
+        <Keywords>Acetals</Keywords>
+        <Keywords>Aliphatic hydrocarbons</Keywords>
+        <WebFF-Scribe>
+            <Name>dfg</Name>
+            <Affiliation>dfg</Affiliation>
+            <email>dfg</email>
+        </WebFF-Scribe>
+    </Force-Field-Header>
+    <BondPotential>
+        <BondPotential-Tabular bond-length-units="&#197;" energy-units="Kcal/mole" force-units="Kcal/mole-&#197;" style="Tabular">
+            <AT-1>ef</AT-1>
+            <AT-2>sdf</AT-2>
+            <keyword>klaw</keyword>
+            <N>4</N>
+            <fplo>456.68</fplo>
+            <fphi>6785.9</fphi>
+            <EQ>234.45</EQ>
+            <Bond>
+                <index>1</index>
+                <bond-length>0.629756860547</bond-length>
+                <energy>0.100038321408</energy>
+                <force>0.583730974073</force>
+            </Bond>
+            <Bond>
+                <index>2</index>
+                <bond-length>0.340683994515</bond-length>
+                <energy>0.175382498999</energy>
+                <force>0.277745957319</force>
+            </Bond>
+            <Bond>
+                <index>3</index>
+                <bond-length>0.751819640257</bond-length>
+                <energy>0.84982186854</energy>
+                <force>0.194439796707</force>
+            </Bond>
+            <Bond>
+                <index>4</index>
+                <bond-length>0.868934631602</bond-length>
+                <energy>0.699759748139</energy>
+                <force>0.857293491098</force>
+            </Bond>
+            <Bond>
+                <index>5</index>
+                <bond-length>0.487846219754</bond-length>
+                <energy>0.133972281928</energy>
+                <force>0.280095082185</force>
+            </Bond>
+        </BondPotential-Tabular>
+    </BondPotential>
+    <BondPotential>
+        <BondPotential-FENE K-units="kJ/mol/nm^2" R0-units="nm" formula="(-[(K*R0^2)/2]*ln[1-(R/R0)^2])" style="FENE">
+            <Bond comment="comment">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <K>0.890290019023</K>
+                <R0>0.877174433485</R0>
+            </Bond>
+            <Bond comment="comment">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <K>0.00845120475328</K>
+                <R0>0.0958290331748</R0>
+            </Bond>
+            <Bond comment="comment">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <K>0.183558280966</K>
+                <R0>0.138558424507</R0>
+            </Bond>
+            <Bond comment="comment">
+                <AT-1>at1.4</AT-1>
+                <AT-2>at2.4</AT-2>
+                <K>0.441542626008</K>
+                <R0>0.0232658990111</R0>
+            </Bond>
+            <Bond comment="comment">
+                <AT-1>at1.5</AT-1>
+                <AT-2>at2.5</AT-2>
+                <K>0.0639077403777</K>
+                <R0>0.714035380992</R0>
+            </Bond>
+        </BondPotential-FENE>
+    </BondPotential>
+</FF-CoarseGrained>

@@ -1,0 +1,199 @@
+<!-- Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com) -->
+<FF-CoarseGrained>
+    <Force-Field-Header>
+        <Force-Field-Protocol>Coarse-Grained - Pseudo-Atom</Force-Field-Protocol>
+        <Force-Field-Name>dfg</Force-Field-Name>
+        <Description>dfg</Description>
+        <Data-Source>
+            <Compact>
+                <Reference>dfg</Reference>
+                <DOI>dfg</DOI>
+                <URL>dfg</URL>
+                <Notes>dfg</Notes>
+            </Compact>
+        </Data-Source>
+        <Data-Source-Scribe>
+            <Name>dfg</Name>
+            <Affiliation>dfg</Affiliation>
+            <email>dfg</email>
+        </Data-Source-Scribe>
+        <Keywords>Acetals</Keywords>
+        <Keywords>Aliphatic hydrocarbons</Keywords>
+        <WebFF-Scribe>
+            <Name>dfg</Name>
+            <Affiliation>dfg</Affiliation>
+            <email>dfg</email>
+        </WebFF-Scribe>
+    </Force-Field-Header>
+    <NonBondPotential>
+        <NonBondPotential-LJ962 epsilon-units="kJ/mol" formula="epsilon*[2*(sigma/R)^9-3*(sigma/R)^6]" sigma-units="nm" style="Lennard-Jones (9-6) [Class 2 Form]">
+            <NonBond>
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <epsilon>0.67935896319</epsilon>
+                <sigma>0.933105454825</sigma>
+            </NonBond>
+            <NonBond>
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <epsilon>0.0501105300942</epsilon>
+                <sigma>0.997129163209</sigma>
+            </NonBond>
+            <NonBond>
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <epsilon>0.871962931251</epsilon>
+                <sigma>0.0149394077363</sigma>
+            </NonBond>
+        </NonBondPotential-LJ962>
+    </NonBondPotential>
+    <NonBondPotential>
+        <NonBondPotential-Tabular Interpolation-style="R" energy-units="Kcal/mole" force-units="Kcal/mole-&#197;" r-units="nm" style="Tabular">
+            <AT-1>fdsjh</AT-1>
+            <AT-2>fn</AT-2>
+            <keyword>sth</keyword>
+            <N>5</N>
+            <rlo>0.743068162728</rlo>
+            <rhi>0.96373216738</rhi>
+            <NonBond>
+                <index>1</index>
+                <r>0.849844988762</r>
+                <energy>0.260353132117</energy>
+                <force>0.681542761612</force>
+            </NonBond>
+            <NonBond>
+                <index>2</index>
+                <r>0.589734759413</r>
+                <energy>0.230866940215</energy>
+                <force>0.16881405386</force>
+            </NonBond>
+            <NonBond>
+                <index>3</index>
+                <r>0.562039769741</r>
+                <energy>0.143221387711</energy>
+                <force>0.168007926768</force>
+            </NonBond>
+        </NonBondPotential-Tabular>
+    </NonBondPotential>
+    <NonBondPotential>
+        <NonBondPotential-Weeks-Chandler-Anderson epsilon-units="kJ/mol" formula="4*epsilon*[((sigma/R)^-12)-((sigma/R)^-6)+(1/4)]" sigma-units="nm" style="Weeks-Chandler-Anderson">
+            <NonBond comment="comment">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <epsilon>0.660401507493</epsilon>
+                <sigma>0.726195515967</sigma>
+                <r_cut>0.349604241292</r_cut>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <epsilon>0.340303219103</epsilon>
+                <sigma>0.139416047741</sigma>
+                <r_cut>0.683213412512</r_cut>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <epsilon>0.857677659293</epsilon>
+                <sigma>0.0955490122094</sigma>
+                <r_cut>0.500070505658</r_cut>
+            </NonBond>
+        </NonBondPotential-Weeks-Chandler-Anderson>
+    </NonBondPotential>
+    <NonBondPotential>
+        <NonBondPotential-Tabular Interpolation-style="R" energy-units="Kcal/mole" force-units="Kcal/mole-&#197;" r-units="nm" style="Tabular">
+            <AT-1>fdsjh</AT-1>
+            <AT-2>fn</AT-2>
+            <keyword>sth</keyword>
+            <N>5</N>
+            <rlo>0.743068162728</rlo>
+            <rhi>0.96373216738</rhi>
+            <NonBond>
+                <index>1</index>
+                <r>0.849844988762</r>
+                <energy>0.260353132117</energy>
+                <force>0.681542761612</force>
+            </NonBond>
+            <NonBond>
+                <index>2</index>
+                <r>0.589734759413</r>
+                <energy>0.230866940215</energy>
+                <force>0.16881405386</force>
+            </NonBond>
+            <NonBond>
+                <index>3</index>
+                <r>0.562039769741</r>
+                <energy>0.143221387711</energy>
+                <force>0.168007926768</force>
+            </NonBond>
+        </NonBondPotential-Tabular>
+    </NonBondPotential>
+    <NonBondPotential>
+        <NonBondPotential-Mie epsilon-units="kJ/mol" formula="C*epsilon*[(sigma/R)^m_rep-(sigma/R)^n_att]" sigma-units="nm" style="Mie">
+            <NonBond comment="comment">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <C>0.777195024054</C>
+                <epsilon>0.557723928149</epsilon>
+                <sigma>0.0431189995003</sigma>
+                <m_rep>0.866148944238</m_rep>
+                <n_att>0.252143277659</n_att>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <C>0.490753288986</C>
+                <epsilon>0.22973252648</epsilon>
+                <sigma>0.932467391563</sigma>
+                <m_rep>0.458600039657</m_rep>
+                <n_att>0.0866853919351</n_att>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <C>0.627001862447</C>
+                <epsilon>0.787281858562</epsilon>
+                <sigma>0.767106323003</sigma>
+                <m_rep>0.589114861499</m_rep>
+                <n_att>0.0828606562976</n_att>
+            </NonBond>
+        </NonBondPotential-Mie>
+    </NonBondPotential>
+    <NonBondPotential>
+        <NonBondPotential-EnergyRenorm T_sig-units="K" epsilon-units="kJ/mol" formula="[epsilon_g+[(epsilon_A-epsilon_g)/(1+exp(-k_sig*(T-T_sig)))]]*[((sigma*(a*T+b))/R)^12-((sigma*(a*T+b))/R)^6]" sigma-units="nm" style="Energy Renormalization">
+            <NonBond comment="comment">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <epsilon_g>0.322969624905</epsilon_g>
+                <epsilon_A>0.558869562336</epsilon_A>
+                <sigma>0.926186328794</sigma>
+                <a>0.505047967977</a>
+                <b>0.255465002392</b>
+                <k_sig>0.316073516947</k_sig>
+                <T_sig>0.684172581781</T_sig>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <epsilon_g>0.897495827051</epsilon_g>
+                <epsilon_A>0.525285188365</epsilon_A>
+                <sigma>0.0213139539461</sigma>
+                <a>0.665379709336</a>
+                <b>0.125844849902</b>
+                <k_sig>0.567085126943</k_sig>
+                <T_sig>0.0766260889933</T_sig>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <epsilon_g>0.459085844766</epsilon_g>
+                <epsilon_A>0.53352433887</epsilon_A>
+                <sigma>0.94932208434</sigma>
+                <a>0.964730112062</a>
+                <b>0.0827673912827</b>
+                <k_sig>0.989069050903</k_sig>
+                <T_sig>0.581226256284</T_sig>
+            </NonBond>
+        </NonBondPotential-EnergyRenorm>
+    </NonBondPotential>
+</FF-CoarseGrained>

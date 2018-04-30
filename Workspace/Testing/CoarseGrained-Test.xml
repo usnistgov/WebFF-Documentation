@@ -1,0 +1,1093 @@
+<!-- Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com) -->
+<FF-CoarseGrained>
+    <Force-Field-Header>
+        <Force-Field-Protocol>Coarse-Grained - Pseudo-Atom</Force-Field-Protocol>
+        <Force-Field-Name>dfg</Force-Field-Name>
+        <Description>dfg</Description>
+        <Data-Source>
+            <Compact>
+                <Reference>dfg</Reference>
+                <DOI>dfg</DOI>
+                <URL>dfg</URL>
+                <Notes>dfg</Notes>
+            </Compact>
+        </Data-Source>
+        <Data-Source-Scribe>
+            <Name>dfg</Name>
+            <Affiliation>dfg</Affiliation>
+            <email>dfg</email>
+        </Data-Source-Scribe>
+        <Keywords>Acetals</Keywords>
+        <Keywords>Aliphatic hydrocarbons</Keywords>
+        <WebFF-Scribe>
+            <Name>dfg</Name>
+            <Affiliation>dfg</Affiliation>
+            <email>dfg</email>
+        </WebFF-Scribe>
+    </Force-Field-Header>
+    <AtomTypes>
+        <AtomType-CoarseGrained Nomenclature="SMILES" comment="comment">
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.664271563059" Description="description1">
+                <CG-Name>name1</CG-Name>
+                <CG-Chemistry>chemistry1</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.638058851709" Description="description2">
+                <CG-Name>name2</CG-Name>
+                <CG-Chemistry>chemistry2</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.46896064667" Description="description3">
+                <CG-Name>name3</CG-Name>
+                <CG-Chemistry>chemistry3</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.593086931818" Description="description4">
+                <CG-Name>name4</CG-Name>
+                <CG-Chemistry>chemistry4</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.312894294738" Description="description5">
+                <CG-Name>name5</CG-Name>
+                <CG-Chemistry>chemistry5</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.157792671587" Description="description6">
+                <CG-Name>name6</CG-Name>
+                <CG-Chemistry>chemistry6</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.256256169446" Description="description7">
+                <CG-Name>name7</CG-Name>
+                <CG-Chemistry>chemistry7</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.0605231677201" Description="description8">
+                <CG-Name>name8</CG-Name>
+                <CG-Chemistry>chemistry8</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.977900140886" Description="description9">
+                <CG-Name>name9</CG-Name>
+                <CG-Chemistry>chemistry9</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.167425099717" Description="description10">
+                <CG-Name>name10</CG-Name>
+                <CG-Chemistry>chemistry10</CG-Chemistry>
+            </CGType>
+        </AtomType-CoarseGrained>
+    </AtomTypes>
+    <BondPotential>
+        <BondPotential-Tabular bond-length-units="&#197;" energy-units="Kcal/mole" force-units="Kcal/mole-&#197;" style="Tabular">
+            <AT-1>ef</AT-1>
+            <AT-2>sdf</AT-2>
+            <keyword>klaw</keyword>
+            <N>4</N>
+            <fplo>456.68</fplo>
+            <fphi>6785.9</fphi>
+            <EQ>234.45</EQ>
+            <Bond>
+                <index>1</index>
+                <bond-length>0.629756860547</bond-length>
+                <energy>0.100038321408</energy>
+                <force>0.583730974073</force>
+            </Bond>
+            <Bond>
+                <index>2</index>
+                <bond-length>0.340683994515</bond-length>
+                <energy>0.175382498999</energy>
+                <force>0.277745957319</force>
+            </Bond>
+            <Bond>
+                <index>3</index>
+                <bond-length>0.751819640257</bond-length>
+                <energy>0.84982186854</energy>
+                <force>0.194439796707</force>
+            </Bond>
+            <Bond>
+                <index>4</index>
+                <bond-length>0.868934631602</bond-length>
+                <energy>0.699759748139</energy>
+                <force>0.857293491098</force>
+            </Bond>
+            <Bond>
+                <index>5</index>
+                <bond-length>0.487846219754</bond-length>
+                <energy>0.133972281928</energy>
+                <force>0.280095082185</force>
+            </Bond>
+            <Bond>
+                <index>6</index>
+                <bond-length>0.154787064451</bond-length>
+                <energy>0.672061150104</energy>
+                <force>0.857978999787</force>
+            </Bond>
+            <Bond>
+                <index>7</index>
+                <bond-length>0.100148505746</bond-length>
+                <energy>0.249102481298</energy>
+                <force>0.252730746534</force>
+            </Bond>
+            <Bond>
+                <index>8</index>
+                <bond-length>0.279180104251</bond-length>
+                <energy>0.232178001006</energy>
+                <force>0.415998621575</force>
+            </Bond>
+            <Bond>
+                <index>9</index>
+                <bond-length>0.253845571968</bond-length>
+                <energy>0.109050825522</energy>
+                <force>0.143324433958</force>
+            </Bond>
+            <Bond>
+                <index>10</index>
+                <bond-length>0.861012109669</bond-length>
+                <energy>0.574339978646</energy>
+                <force>0.0632670755082</force>
+            </Bond>
+        </BondPotential-Tabular>
+    </BondPotential>
+    <BondPotential>
+        <BondPotential-FENE K-units="kJ/mol/nm^2" R0-units="nm" formula="(-[(K*R0^2)/2]*ln[1-(R/R0)^2])" style="FENE">
+            <Bond comment="comment">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <K>0.890290019023</K>
+                <R0>0.877174433485</R0>
+            </Bond>
+            <Bond comment="comment">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <K>0.00845120475328</K>
+                <R0>0.0958290331748</R0>
+            </Bond>
+            <Bond comment="comment">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <K>0.183558280966</K>
+                <R0>0.138558424507</R0>
+            </Bond>
+            <Bond comment="comment">
+                <AT-1>at1.4</AT-1>
+                <AT-2>at2.4</AT-2>
+                <K>0.441542626008</K>
+                <R0>0.0232658990111</R0>
+            </Bond>
+            <Bond comment="comment">
+                <AT-1>at1.5</AT-1>
+                <AT-2>at2.5</AT-2>
+                <K>0.0639077403777</K>
+                <R0>0.714035380992</R0>
+            </Bond>
+            <Bond comment="comment">
+                <AT-1>at1.6</AT-1>
+                <AT-2>at2.6</AT-2>
+                <K>0.480468196979</K>
+                <R0>0.0109548399507</R0>
+            </Bond>
+            <Bond comment="comment">
+                <AT-1>at1.7</AT-1>
+                <AT-2>at2.7</AT-2>
+                <K>0.471924078745</K>
+                <R0>0.126454442921</R0>
+            </Bond>
+            <Bond comment="comment">
+                <AT-1>at1.8</AT-1>
+                <AT-2>at2.8</AT-2>
+                <K>0.857488450206</K>
+                <R0>0.41414008648</R0>
+            </Bond>
+            <Bond comment="comment">
+                <AT-1>at1.9</AT-1>
+                <AT-2>at2.9</AT-2>
+                <K>0.145914224822</K>
+                <R0>0.177495469231</R0>
+            </Bond>
+            <Bond comment="comment">
+                <AT-1>at1.10</AT-1>
+                <AT-2>at2.10</AT-2>
+                <K>0.00249378089459</K>
+                <R0>0.573602844547</R0>
+            </Bond>
+        </BondPotential-FENE>
+    </BondPotential>
+    <AnglePotential>
+        <AnglePotential-Cosine Ka-units="Reduced" formula="Ka*[1+cos(theta)]" style="Cosine">
+            <Angle comment="comment" precedence="1">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <AT-3>at3.1</AT-3>
+                <Ka>0.691603462323</Ka>
+            </Angle>
+            <Angle comment="comment" precedence="2">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <AT-3>at3.2</AT-3>
+                <Ka>0.761530973073</Ka>
+            </Angle>
+            <Angle comment="comment" precedence="3">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <AT-3>at3.3</AT-3>
+                <Ka>0.129813895903</Ka>
+            </Angle>
+            <Angle comment="comment" precedence="4">
+                <AT-1>at1.4</AT-1>
+                <AT-2>at2.4</AT-2>
+                <AT-3>at3.4</AT-3>
+                <Ka>0.535119067297</Ka>
+            </Angle>
+            <Angle comment="comment" precedence="5">
+                <AT-1>at1.5</AT-1>
+                <AT-2>at2.5</AT-2>
+                <AT-3>at3.5</AT-3>
+                <Ka>0.868989255362</Ka>
+            </Angle>
+            <Angle comment="comment" precedence="6">
+                <AT-1>at1.6</AT-1>
+                <AT-2>at2.6</AT-2>
+                <AT-3>at3.6</AT-3>
+                <Ka>0.0298886387719</Ka>
+            </Angle>
+            <Angle comment="comment" precedence="7">
+                <AT-1>at1.7</AT-1>
+                <AT-2>at2.7</AT-2>
+                <AT-3>at3.7</AT-3>
+                <Ka>0.149763039917</Ka>
+            </Angle>
+            <Angle comment="comment" precedence="8">
+                <AT-1>at1.8</AT-1>
+                <AT-2>at2.8</AT-2>
+                <AT-3>at3.8</AT-3>
+                <Ka>0.671600901632</Ka>
+            </Angle>
+            <Angle comment="comment" precedence="9">
+                <AT-1>at1.9</AT-1>
+                <AT-2>at2.9</AT-2>
+                <AT-3>at3.9</AT-3>
+                <Ka>0.70826343019</Ka>
+            </Angle>
+            <Angle comment="comment" precedence="10">
+                <AT-1>at1.10</AT-1>
+                <AT-2>at2.10</AT-2>
+                <AT-3>at3.10</AT-3>
+                <Ka>0.495741092949</Ka>
+            </Angle>
+        </AnglePotential-Cosine>
+    </AnglePotential>
+    <AnglePotential>
+        <AnglePotential-Tabular angle-units="degrees" energy-diff-units="Kcal/mole-degrees" energy-units="Kcal/mole" style="Tabular">
+            <AT-1>ef</AT-1>
+            <AT-2>sdf</AT-2>
+            <AT-3>gdf</AT-3>
+            <keyword>klaw</keyword>
+            <N>4</N>
+            <fplo>456.68</fplo>
+            <fphi>6785.9</fphi>
+            <EQ>234.45</EQ>
+            <Angle>
+                <index>1</index>
+                <angle>0.205183283241</angle>
+                <energy>0.36571633115</energy>
+                <energy-diff>0.787256289899</energy-diff>
+            </Angle>
+            <Angle>
+                <index>2</index>
+                <angle>0.531477360612</angle>
+                <energy>0.0386268724056</energy>
+                <energy-diff>0.477267104947</energy-diff>
+            </Angle>
+            <Angle>
+                <index>3</index>
+                <angle>0.228446474289</angle>
+                <energy>0.442824794618</energy>
+                <energy-diff>0.609837290318</energy-diff>
+            </Angle>
+            <Angle>
+                <index>4</index>
+                <angle>0.144826982357</angle>
+                <energy>0.698448590015</energy>
+                <energy-diff>0.380696310815</energy-diff>
+            </Angle>
+            <Angle>
+                <index>5</index>
+                <angle>0.243034166498</angle>
+                <energy>0.704248883914</energy>
+                <energy-diff>0.251989424839</energy-diff>
+            </Angle>
+            <Angle>
+                <index>6</index>
+                <angle>0.721755717313</angle>
+                <energy>0.0110372025052</energy>
+                <energy-diff>0.874362634946</energy-diff>
+            </Angle>
+            <Angle>
+                <index>7</index>
+                <angle>0.236188643938</angle>
+                <energy>0.116198890273</energy>
+                <energy-diff>0.848081910215</energy-diff>
+            </Angle>
+            <Angle>
+                <index>8</index>
+                <angle>0.497892890061</angle>
+                <energy>0.474471242546</energy>
+                <energy-diff>0.728751982883</energy-diff>
+            </Angle>
+            <Angle>
+                <index>9</index>
+                <angle>0.0632705548235</angle>
+                <energy>0.802227666829</energy>
+                <energy-diff>0.344161035104</energy-diff>
+            </Angle>
+            <Angle>
+                <index>10</index>
+                <angle>0.284602557729</angle>
+                <energy>0.853092088971</energy>
+                <energy-diff>0.82264310868</energy-diff>
+            </Angle>
+        </AnglePotential-Tabular>
+    </AnglePotential>
+    <DihedralPotential>
+        <DihedralPotential-Tabular angle-units="degrees" comment="jyt" energy-diff-units="Kcal/mole-degrees" energy-units="Kcal/mole" style="Tabular">
+            <AT-1>rshnyk</AT-1>
+            <AT-2>bsr</AT-2>
+            <AT-3>srdg</AT-3>
+            <AT-4>sfg</AT-4>
+            <keyword>xfg</keyword>
+            <N>4</N>
+            <CHECKU>fgh</CHECKU>
+            <CHECKF>fgh</CHECKF>
+            <Dihedral>
+                <index>1</index>
+                <angle>0.68470374084</angle>
+                <energy>0.573887148973</energy>
+                <energy-diff>0.76750459191</energy-diff>
+            </Dihedral>
+            <Dihedral>
+                <index>2</index>
+                <angle>0.700754943267</angle>
+                <energy>0.98991338406</energy>
+                <energy-diff>0.912979595043</energy-diff>
+            </Dihedral>
+            <Dihedral>
+                <index>3</index>
+                <angle>0.0692856772075</angle>
+                <energy>0.573848435918</energy>
+                <energy-diff>0.960747534758</energy-diff>
+            </Dihedral>
+            <Dihedral>
+                <index>4</index>
+                <angle>0.183163866507</angle>
+                <energy>0.238132142994</energy>
+                <energy-diff>0.49295549768</energy-diff>
+            </Dihedral>
+            <Dihedral>
+                <index>5</index>
+                <angle>0.556723240998</angle>
+                <energy>0.982851944891</energy>
+                <energy-diff>0.453813471621</energy-diff>
+            </Dihedral>
+            <Dihedral>
+                <index>6</index>
+                <angle>0.924761131298</angle>
+                <energy>0.676823955246</energy>
+                <energy-diff>0.964822710891</energy-diff>
+            </Dihedral>
+            <Dihedral>
+                <index>7</index>
+                <angle>0.354434330692</angle>
+                <energy>0.459313633319</energy>
+                <energy-diff>0.616772572976</energy-diff>
+            </Dihedral>
+            <Dihedral>
+                <index>8</index>
+                <angle>0.909466092184</angle>
+                <energy>0.411900608946</energy>
+                <energy-diff>0.378082251084</energy-diff>
+            </Dihedral>
+            <Dihedral>
+                <index>9</index>
+                <angle>0.615080567094</angle>
+                <energy>0.157658745853</energy>
+                <energy-diff>0.355153674101</energy-diff>
+            </Dihedral>
+            <Dihedral>
+                <index>10</index>
+                <angle>0.0287707233443</angle>
+                <energy>0.819351527462</energy>
+                <energy-diff>0.813662948826</energy-diff>
+            </Dihedral>
+        </DihedralPotential-Tabular>
+    </DihedralPotential>
+    <NonBondPotential>
+        <NonBondPotential-LJ962 epsilon-units="kJ/mol" formula="epsilon*[2*(sigma/R)^9-3*(sigma/R)^6]" sigma-units="nm" style="Lennard-Jones (9-6) [Class 2 Form]">
+            <NonBond>
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <epsilon>0.67935896319</epsilon>
+                <sigma>0.933105454825</sigma>
+            </NonBond>
+            <NonBond>
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <epsilon>0.0501105300942</epsilon>
+                <sigma>0.997129163209</sigma>
+            </NonBond>
+            <NonBond>
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <epsilon>0.871962931251</epsilon>
+                <sigma>0.0149394077363</sigma>
+            </NonBond>
+            <NonBond>
+                <AT-1>at1.4</AT-1>
+                <AT-2>at2.4</AT-2>
+                <epsilon>0.10172442967</epsilon>
+                <sigma>0.984423822847</sigma>
+            </NonBond>
+            <NonBond>
+                <AT-1>at1.5</AT-1>
+                <AT-2>at2.5</AT-2>
+                <epsilon>0.568644339465</epsilon>
+                <sigma>0.069540000668</sigma>
+            </NonBond>
+            <NonBond>
+                <AT-1>at1.6</AT-1>
+                <AT-2>at2.6</AT-2>
+                <epsilon>0.282695998472</epsilon>
+                <sigma>0.890354921763</sigma>
+            </NonBond>
+            <NonBond>
+                <AT-1>at1.7</AT-1>
+                <AT-2>at2.7</AT-2>
+                <epsilon>0.951314203376</epsilon>
+                <sigma>0.0132277264366</sigma>
+            </NonBond>
+            <NonBond>
+                <AT-1>at1.8</AT-1>
+                <AT-2>at2.8</AT-2>
+                <epsilon>0.656142868529</epsilon>
+                <sigma>0.612548394257</sigma>
+            </NonBond>
+            <NonBond>
+                <AT-1>at1.9</AT-1>
+                <AT-2>at2.9</AT-2>
+                <epsilon>0.626357072715</epsilon>
+                <sigma>0.812820253985</sigma>
+            </NonBond>
+            <NonBond>
+                <AT-1>at1.10</AT-1>
+                <AT-2>at2.10</AT-2>
+                <epsilon>0.655917119771</epsilon>
+                <sigma>0.817040363317</sigma>
+            </NonBond>
+        </NonBondPotential-LJ962>
+    </NonBondPotential>
+    <NonBondPotential>
+        <NonBondPotential-Tabular Interpolation-style="R" energy-units="Kcal/mole" force-units="Kcal/mole-&#197;" r-units="nm" style="Tabular">
+            <AT-1>fdsjh</AT-1>
+            <AT-2>fn</AT-2>
+            <keyword>sth</keyword>
+            <N>5</N>
+            <rlo>0.743068162728</rlo>
+            <rhi>0.96373216738</rhi>
+            <NonBond>
+                <index>1</index>
+                <r>0.849844988762</r>
+                <energy>0.260353132117</energy>
+                <force>0.681542761612</force>
+            </NonBond>
+            <NonBond>
+                <index>2</index>
+                <r>0.589734759413</r>
+                <energy>0.230866940215</energy>
+                <force>0.16881405386</force>
+            </NonBond>
+            <NonBond>
+                <index>3</index>
+                <r>0.562039769741</r>
+                <energy>0.143221387711</energy>
+                <force>0.168007926768</force>
+            </NonBond>
+            <NonBond>
+                <index>4</index>
+                <r>0.844843307752</r>
+                <energy>0.0594396934927</energy>
+                <force>0.297264215974</force>
+            </NonBond>
+            <NonBond>
+                <index>5</index>
+                <r>0.355188671934</r>
+                <energy>0.186552931782</energy>
+                <force>0.155584580958</force>
+            </NonBond>
+            <NonBond>
+                <index>6</index>
+                <r>0.925563721516</r>
+                <energy>0.546631443264</energy>
+                <force>0.552749531451</force>
+            </NonBond>
+            <NonBond>
+                <index>7</index>
+                <r>0.854437946463</r>
+                <energy>0.300734342286</energy>
+                <force>0.200943560453</force>
+            </NonBond>
+            <NonBond>
+                <index>8</index>
+                <r>0.112542796413</r>
+                <energy>0.226380551276</energy>
+                <force>0.889730906222</force>
+            </NonBond>
+            <NonBond>
+                <index>9</index>
+                <r>0.44417137634</r>
+                <energy>0.211898787287</energy>
+                <force>0.0515178282965</force>
+            </NonBond>
+            <NonBond>
+                <index>10</index>
+                <r>0.696428864858</r>
+                <energy>0.980963906784</energy>
+                <force>0.69993712285</force>
+            </NonBond>
+        </NonBondPotential-Tabular>
+    </NonBondPotential>
+    <NonBondPotential>
+        <NonBondPotential-Weeks-Chandler-Anderson epsilon-units="kJ/mol" formula="4*epsilon*[((sigma/R)^-12)-((sigma/R)^-6)+(1/4)]" sigma-units="nm" style="Weeks-Chandler-Anderson">
+            <NonBond comment="comment">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <epsilon>0.660401507493</epsilon>
+                <sigma>0.726195515967</sigma>
+                <r_cut>0.349604241292</r_cut>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <epsilon>0.340303219103</epsilon>
+                <sigma>0.139416047741</sigma>
+                <r_cut>0.683213412512</r_cut>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <epsilon>0.857677659293</epsilon>
+                <sigma>0.0955490122094</sigma>
+                <r_cut>0.500070505658</r_cut>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.4</AT-1>
+                <AT-2>at2.4</AT-2>
+                <epsilon>0.152663810165</epsilon>
+                <sigma>0.963271832531</sigma>
+                <r_cut>0.376933205277</r_cut>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.5</AT-1>
+                <AT-2>at2.5</AT-2>
+                <epsilon>0.705329428162</epsilon>
+                <sigma>0.85263927032</sigma>
+                <r_cut>0.997046957335</r_cut>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.6</AT-1>
+                <AT-2>at2.6</AT-2>
+                <epsilon>0.547836571628</epsilon>
+                <sigma>0.497064218261</sigma>
+                <r_cut>0.499741945196</r_cut>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.7</AT-1>
+                <AT-2>at2.7</AT-2>
+                <epsilon>0.234239929092</epsilon>
+                <sigma>0.0841290103277</sigma>
+                <r_cut>0.239734403954</r_cut>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.8</AT-1>
+                <AT-2>at2.8</AT-2>
+                <epsilon>0.93206434845</epsilon>
+                <sigma>0.190901318971</sigma>
+                <r_cut>0.77607835469</r_cut>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.9</AT-1>
+                <AT-2>at2.9</AT-2>
+                <epsilon>0.474145459789</epsilon>
+                <sigma>0.661737319563</sigma>
+                <r_cut>0.375753846713</r_cut>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.10</AT-1>
+                <AT-2>at2.10</AT-2>
+                <epsilon>0.697625721983</epsilon>
+                <sigma>0.243830683229</sigma>
+                <r_cut>0.398814709907</r_cut>
+            </NonBond>
+        </NonBondPotential-Weeks-Chandler-Anderson>
+    </NonBondPotential>
+    <NonBondPotential>
+        <NonBondPotential-Tabular Interpolation-style="R" energy-units="Kcal/mole" force-units="Kcal/mole-&#197;" r-units="nm" style="Tabular">
+            <AT-1>fdsjh</AT-1>
+            <AT-2>fn</AT-2>
+            <keyword>sth</keyword>
+            <N>5</N>
+            <rlo>0.743068162728</rlo>
+            <rhi>0.96373216738</rhi>
+            <NonBond>
+                <index>1</index>
+                <r>0.849844988762</r>
+                <energy>0.260353132117</energy>
+                <force>0.681542761612</force>
+            </NonBond>
+            <NonBond>
+                <index>2</index>
+                <r>0.589734759413</r>
+                <energy>0.230866940215</energy>
+                <force>0.16881405386</force>
+            </NonBond>
+            <NonBond>
+                <index>3</index>
+                <r>0.562039769741</r>
+                <energy>0.143221387711</energy>
+                <force>0.168007926768</force>
+            </NonBond>
+            <NonBond>
+                <index>4</index>
+                <r>0.844843307752</r>
+                <energy>0.0594396934927</energy>
+                <force>0.297264215974</force>
+            </NonBond>
+            <NonBond>
+                <index>5</index>
+                <r>0.355188671934</r>
+                <energy>0.186552931782</energy>
+                <force>0.155584580958</force>
+            </NonBond>
+            <NonBond>
+                <index>6</index>
+                <r>0.925563721516</r>
+                <energy>0.546631443264</energy>
+                <force>0.552749531451</force>
+            </NonBond>
+            <NonBond>
+                <index>7</index>
+                <r>0.854437946463</r>
+                <energy>0.300734342286</energy>
+                <force>0.200943560453</force>
+            </NonBond>
+            <NonBond>
+                <index>8</index>
+                <r>0.112542796413</r>
+                <energy>0.226380551276</energy>
+                <force>0.889730906222</force>
+            </NonBond>
+            <NonBond>
+                <index>9</index>
+                <r>0.44417137634</r>
+                <energy>0.211898787287</energy>
+                <force>0.0515178282965</force>
+            </NonBond>
+            <NonBond>
+                <index>10</index>
+                <r>0.696428864858</r>
+                <energy>0.980963906784</energy>
+                <force>0.69993712285</force>
+            </NonBond>
+        </NonBondPotential-Tabular>
+    </NonBondPotential>
+    <NonBondPotential>
+        <NonBondPotential-Mie epsilon-units="kJ/mol" formula="C*epsilon*[(sigma/R)^m_rep-(sigma/R)^n_att]" sigma-units="nm" style="Mie">
+            <NonBond comment="comment">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <C>0.777195024054</C>
+                <epsilon>0.557723928149</epsilon>
+                <sigma>0.0431189995003</sigma>
+                <m_rep>0.866148944238</m_rep>
+                <n_att>0.252143277659</n_att>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <C>0.490753288986</C>
+                <epsilon>0.22973252648</epsilon>
+                <sigma>0.932467391563</sigma>
+                <m_rep>0.458600039657</m_rep>
+                <n_att>0.0866853919351</n_att>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <C>0.627001862447</C>
+                <epsilon>0.787281858562</epsilon>
+                <sigma>0.767106323003</sigma>
+                <m_rep>0.589114861499</m_rep>
+                <n_att>0.0828606562976</n_att>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.4</AT-1>
+                <AT-2>at2.4</AT-2>
+                <C>0.177998490813</C>
+                <epsilon>0.254379114186</epsilon>
+                <sigma>0.0378759666671</sigma>
+                <m_rep>0.810083773291</m_rep>
+                <n_att>0.0897468326143</n_att>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.5</AT-1>
+                <AT-2>at2.5</AT-2>
+                <C>0.570106197023</C>
+                <epsilon>0.594563191179</epsilon>
+                <sigma>0.142316907422</sigma>
+                <m_rep>0.783020600978</m_rep>
+                <n_att>0.767665984919</n_att>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.6</AT-1>
+                <AT-2>at2.6</AT-2>
+                <C>0.851886230097</C>
+                <epsilon>0.286222442486</epsilon>
+                <sigma>0.522288776633</sigma>
+                <m_rep>0.270098317136</m_rep>
+                <n_att>0.414969533135</n_att>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.7</AT-1>
+                <AT-2>at2.7</AT-2>
+                <C>0.123653060171</C>
+                <epsilon>0.80723960119</epsilon>
+                <sigma>0.81572593391</sigma>
+                <m_rep>0.642628666899</m_rep>
+                <n_att>0.534764277197</n_att>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.8</AT-1>
+                <AT-2>at2.8</AT-2>
+                <C>0.808172622004</C>
+                <epsilon>0.248719570234</epsilon>
+                <sigma>0.588587766356</sigma>
+                <m_rep>0.882195905036</m_rep>
+                <n_att>0.351758997248</n_att>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.9</AT-1>
+                <AT-2>at2.9</AT-2>
+                <C>0.355127420613</C>
+                <epsilon>0.888414489013</epsilon>
+                <sigma>0.90776570128</sigma>
+                <m_rep>0.566717377568</m_rep>
+                <n_att>0.371212698507</n_att>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.10</AT-1>
+                <AT-2>at2.10</AT-2>
+                <C>0.511418652232</C>
+                <epsilon>0.813623679485</epsilon>
+                <sigma>0.407832552237</sigma>
+                <m_rep>0.956550527689</m_rep>
+                <n_att>0.136593917798</n_att>
+            </NonBond>
+        </NonBondPotential-Mie>
+    </NonBondPotential>
+    <NonBondPotential>
+        <NonBondPotential-EnergyRenorm T_sig-units="K" epsilon-units="kJ/mol" formula="[epsilon_g+[(epsilon_A-epsilon_g)/(1+exp(-k_sig*(T-T_sig)))]]*[((sigma*(a*T+b))/R)^12-((sigma*(a*T+b))/R)^6]" sigma-units="nm" style="Energy Renormalization">
+            <NonBond comment="comment">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <epsilon_g>0.322969624905</epsilon_g>
+                <epsilon_A>0.558869562336</epsilon_A>
+                <sigma>0.926186328794</sigma>
+                <a>0.505047967977</a>
+                <b>0.255465002392</b>
+                <k_sig>0.316073516947</k_sig>
+                <T_sig>0.684172581781</T_sig>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <epsilon_g>0.897495827051</epsilon_g>
+                <epsilon_A>0.525285188365</epsilon_A>
+                <sigma>0.0213139539461</sigma>
+                <a>0.665379709336</a>
+                <b>0.125844849902</b>
+                <k_sig>0.567085126943</k_sig>
+                <T_sig>0.0766260889933</T_sig>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <epsilon_g>0.459085844766</epsilon_g>
+                <epsilon_A>0.53352433887</epsilon_A>
+                <sigma>0.94932208434</sigma>
+                <a>0.964730112062</a>
+                <b>0.0827673912827</b>
+                <k_sig>0.989069050903</k_sig>
+                <T_sig>0.581226256284</T_sig>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.4</AT-1>
+                <AT-2>at2.4</AT-2>
+                <epsilon_g>0.035019221163</epsilon_g>
+                <epsilon_A>0.196604000954</epsilon_A>
+                <sigma>0.926102063328</sigma>
+                <a>0.981514040076</a>
+                <b>0.327692259312</b>
+                <k_sig>0.47627406411</k_sig>
+                <T_sig>0.889719524307</T_sig>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.5</AT-1>
+                <AT-2>at2.5</AT-2>
+                <epsilon_g>0.678642499095</epsilon_g>
+                <epsilon_A>0.262826702296</epsilon_A>
+                <sigma>0.812622856659</sigma>
+                <a>0.792853262276</a>
+                <b>0.406771919686</b>
+                <k_sig>0.602366824275</k_sig>
+                <T_sig>0.332692214005</T_sig>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.6</AT-1>
+                <AT-2>at2.6</AT-2>
+                <epsilon_g>0.0517645271977</epsilon_g>
+                <epsilon_A>0.663817561812</epsilon_A>
+                <sigma>0.490422549023</sigma>
+                <a>0.33586883717</a>
+                <b>0.801742356214</b>
+                <k_sig>0.71624196995</k_sig>
+                <T_sig>0.366947357341</T_sig>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.7</AT-1>
+                <AT-2>at2.7</AT-2>
+                <epsilon_g>0.623815310882</epsilon_g>
+                <epsilon_A>0.996472925777</epsilon_A>
+                <sigma>0.482809760923</sigma>
+                <a>0.848982639803</a>
+                <b>0.309315901555</b>
+                <k_sig>0.50386439347</k_sig>
+                <T_sig>0.254473621971</T_sig>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.8</AT-1>
+                <AT-2>at2.8</AT-2>
+                <epsilon_g>0.414947921495</epsilon_g>
+                <epsilon_A>0.793615368024</epsilon_A>
+                <sigma>0.556741814398</sigma>
+                <a>0.698052607637</a>
+                <b>0.360737028053</b>
+                <k_sig>0.16797821435</k_sig>
+                <T_sig>0.245783777494</T_sig>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.9</AT-1>
+                <AT-2>at2.9</AT-2>
+                <epsilon_g>0.04135633417</epsilon_g>
+                <epsilon_A>0.618773900038</epsilon_A>
+                <sigma>0.21932478117</sigma>
+                <a>0.166312416649</a>
+                <b>0.402488396739</b>
+                <k_sig>0.573227637932</k_sig>
+                <T_sig>0.135171115111</T_sig>
+            </NonBond>
+            <NonBond comment="comment">
+                <AT-1>at1.10</AT-1>
+                <AT-2>at2.10</AT-2>
+                <epsilon_g>0.0664928311442</epsilon_g>
+                <epsilon_A>0.814323180724</epsilon_A>
+                <sigma>0.852791120858</sigma>
+                <a>0.497786143025</a>
+                <b>0.696943811465</b>
+                <k_sig>0.655258630862</k_sig>
+                <T_sig>0.557190028987</T_sig>
+            </NonBond>
+        </NonBondPotential-EnergyRenorm>
+    </NonBondPotential>
+    <DissipativePotential>
+        <DissipativePotential-Langevin formula="gamma" gamma-units="amu/s" style="Langevin">
+            <Dissipative comment="comment">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <gamma>0.0792009253583</gamma>
+            </Dissipative>
+            <Dissipative comment="comment">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <gamma>0.981889279397</gamma>
+            </Dissipative>
+            <Dissipative comment="comment">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <gamma>0.387298889046</gamma>
+            </Dissipative>
+            <Dissipative comment="comment">
+                <AT-1>at1.4</AT-1>
+                <AT-2>at2.4</AT-2>
+                <gamma>0.543456718842</gamma>
+            </Dissipative>
+            <Dissipative comment="comment">
+                <AT-1>at1.5</AT-1>
+                <AT-2>at2.5</AT-2>
+                <gamma>0.772784199011</gamma>
+            </Dissipative>
+            <Dissipative comment="comment">
+                <AT-1>at1.6</AT-1>
+                <AT-2>at2.6</AT-2>
+                <gamma>0.421636049714</gamma>
+            </Dissipative>
+            <Dissipative comment="comment">
+                <AT-1>at1.7</AT-1>
+                <AT-2>at2.7</AT-2>
+                <gamma>0.765081722868</gamma>
+            </Dissipative>
+            <Dissipative comment="comment">
+                <AT-1>at1.8</AT-1>
+                <AT-2>at2.8</AT-2>
+                <gamma>0.403398539516</gamma>
+            </Dissipative>
+            <Dissipative comment="comment">
+                <AT-1>at1.9</AT-1>
+                <AT-2>at2.9</AT-2>
+                <gamma>0.541179967757</gamma>
+            </Dissipative>
+            <Dissipative comment="comment">
+                <AT-1>at1.10</AT-1>
+                <AT-2>at2.10</AT-2>
+                <gamma>0.622706545347</gamma>
+            </Dissipative>
+        </DissipativePotential-Langevin>
+    </DissipativePotential>
+    <SoftPotential>
+        <SoftPotential-DPD a_ij-units="kcal/mol/&#197;^2" formula="a_ij*(1-r/r_c)-gamma*(1-r/r_c)^2+sigma*(1-r/r_c)*alpha*deltaT^(-1/2)" gamma-units="amu/s" r_c-units="nm" style="DPD">
+            <Soft comment="comment">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <a_ij>0.261233260484</a_ij>
+                <gamma>0.27729151273</gamma>
+                <r_c>0.56171649362</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <a_ij>0.202428963027</a_ij>
+                <gamma>0.96476352433</gamma>
+                <r_c>0.912442475377</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <a_ij>0.312830506561</a_ij>
+                <gamma>0.639887581897</gamma>
+                <r_c>0.187584133367</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.4</AT-1>
+                <AT-2>at2.4</AT-2>
+                <a_ij>0.753934040538</a_ij>
+                <gamma>0.0966876855704</gamma>
+                <r_c>0.839164948125</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.5</AT-1>
+                <AT-2>at2.5</AT-2>
+                <a_ij>0.371569105973</a_ij>
+                <gamma>0.681282777255</gamma>
+                <r_c>0.645644884353</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.6</AT-1>
+                <AT-2>at2.6</AT-2>
+                <a_ij>0.782926964844</a_ij>
+                <gamma>0.580460231869</gamma>
+                <r_c>0.892071395781</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.7</AT-1>
+                <AT-2>at2.7</AT-2>
+                <a_ij>0.0648168811963</a_ij>
+                <gamma>0.561288140473</gamma>
+                <r_c>0.766118776573</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.8</AT-1>
+                <AT-2>at2.8</AT-2>
+                <a_ij>0.815911810442</a_ij>
+                <gamma>0.988570182406</gamma>
+                <r_c>0.453789345777</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.9</AT-1>
+                <AT-2>at2.9</AT-2>
+                <a_ij>0.773322578543</a_ij>
+                <gamma>0.209943831063</gamma>
+                <r_c>0.346432919196</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.10</AT-1>
+                <AT-2>at2.10</AT-2>
+                <a_ij>0.221287382808</a_ij>
+                <gamma>0.343051159798</gamma>
+                <r_c>0.481773443854</r_c>
+            </Soft>
+        </SoftPotential-DPD>
+    </SoftPotential>
+    <SoftPotential>
+        <SoftPotential-SRP c_ij-units="kcal/mol/&#197;^2" formula="c_ij*(1-r/r_c)" r_c-units="nm" style="SRP">
+            <Soft comment="comment">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <c_ij>0.556712903394</c_ij>
+                <r_c>0.563699082199</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <c_ij>0.34623967203</c_ij>
+                <r_c>0.915343663327</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <c_ij>0.39639763696</c_ij>
+                <r_c>0.751256875909</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.4</AT-1>
+                <AT-2>at2.4</AT-2>
+                <c_ij>0.733742485013</c_ij>
+                <r_c>0.109668245104</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.5</AT-1>
+                <AT-2>at2.5</AT-2>
+                <c_ij>0.962265599853</c_ij>
+                <r_c>0.630811167287</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.6</AT-1>
+                <AT-2>at2.6</AT-2>
+                <c_ij>0.785084918265</c_ij>
+                <r_c>0.0307385171653</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.7</AT-1>
+                <AT-2>at2.7</AT-2>
+                <c_ij>0.852601552907</c_ij>
+                <r_c>0.0932364982086</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.8</AT-1>
+                <AT-2>at2.8</AT-2>
+                <c_ij>0.314655049158</c_ij>
+                <r_c>0.653216272745</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.9</AT-1>
+                <AT-2>at2.9</AT-2>
+                <c_ij>0.0908128415351</c_ij>
+                <r_c>0.909512970302</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.10</AT-1>
+                <AT-2>at2.10</AT-2>
+                <c_ij>0.0710971579299</c_ij>
+                <r_c>0.417263330595</r_c>
+            </Soft>
+        </SoftPotential-SRP>
+    </SoftPotential>
+</FF-CoarseGrained>

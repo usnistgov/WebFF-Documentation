@@ -270,6 +270,48 @@ def ReadExcelAnglePotential_COS2(sheet, sub_root):
                     continue
                 elif col_num == attribute_idx4: 
                     continue
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+
+def ReadExcelAnglePotential_Cosine(sheet, sub_root): 
+    ''' Reads in the AnglePotential-Cosine sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''
+    xls_sheet = sheet
+
+    AA=xls_sheet.row_values(2)[1]
+    BB=xls_sheet.row_values(3)[1]
+    CC=xls_sheet.row_values(4)[1]
+
+    sheet = ET.SubElement(sub_root, "AnglePotential-Cosine", {'style':AA, 'formula':BB, 'Ka-units':CC})
+
+    # Row 6 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(6))
+
+    attribute_idx1 = xls_sheet_header.index("precedence")
+    attribute_idx2 = xls_sheet_header.index("comment")
+    attribute_idx3 = xls_sheet_header.index("version")
+    attribute_idx4 = xls_sheet_header.index("reference")
+
+    for row_num in xrange(7, xls_sheet.nrows):
+        cur_entry = ET.SubElement(sheet, "Angle")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
+            ET.Element.set(cur_entry, 'precedence', str(int(xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
+            ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx2])))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
+            ET.Element.set(cur_entry, 'version', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        if (xls_sheet.cell_value(row_num, attribute_idx4)) : 
+            ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx4])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+            if (len(str(cell_value))!=0) :
+                if col_num == attribute_idx1:
+                    continue
+                elif col_num == attribute_idx2:
+                    continue
+                elif col_num == attribute_idx3:
+                    continue
+                elif col_num == attribute_idx4: 
+                    continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
 
 def ReadExcelAnglePotential_CHARMM(sheet, sub_root): 
@@ -954,6 +996,42 @@ def ReadExcelNonBondPotential_LJ96 (sheet, sub_root):
 				continue 
 			ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
 
+def ReadExcelNonBondPotential_LJ962 (sheet, sub_root): 
+    ''' Reads in the NonBondPotential-LJ962 sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''
+    xls_sheet = sheet
+
+    AA=xls_sheet.row_values(2)[1]
+    BB=xls_sheet.row_values(3)[1]
+    CC=xls_sheet.row_values(4)[1]
+    DD=xls_sheet.row_values(5)[1]
+
+    sheet = ET.SubElement(sub_root, "NonBondPotential-LJ962", {'style':AA, 'formula':BB, 'epsilon-units':CC, 'sigma-units':DD})
+
+    # Row 7 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(7))
+
+    for row_num in xrange(8, xls_sheet.nrows):
+        attribute_idx1 = xls_sheet_header.index("comment")
+        attribute_idx2 = xls_sheet_header.index("version")
+        attribute_idx3 = xls_sheet_header.index("reference")
+        cur_entry = ET.SubElement(sheet, "NonBond")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
+            ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
+            ET.Element.set(cur_entry, 'version', str((xls_sheet.row_values(row_num)[attribute_idx2])))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
+            ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+			if col_num == attribute_idx1:
+				continue 
+			elif col_num == attribute_idx2:
+				continue
+			elif col_num == attribute_idx3:
+				continue 
+			ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+
 def ReadExcelNonBondPotential_LJ2(sheet, sub_root): 
     ''' Reads in the NonBondPotential-LJ2 sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
@@ -1003,7 +1081,7 @@ def ReadExcelNonBondPotential_WCA(sheet, sub_root):
     CC=xls_sheet.row_values(4)[1]
     DD=xls_sheet.row_values(5)[1]
 
-    sheet = ET.SubElement(sub_root, "NonBondPotential-WCA", {'style':AA, 'formula':BB, 'epsilon-units':CC, 'sigma-units':DD})
+    sheet = ET.SubElement(sub_root, "NonBondPotential-Weeks-Chandler-Anderson", {'style':AA, 'formula':BB, 'epsilon-units':CC, 'sigma-units':DD})
 
     # Row 7 is the header
     xls_sheet_header = map(str, xls_sheet.row_values(7))
@@ -1122,7 +1200,7 @@ def ReadExcelDissipativePotential_Langevin(sheet, sub_root):
         attribute_idx1 = xls_sheet_header.index("comment")
         attribute_idx2 = xls_sheet_header.index("version")
         attribute_idx3 = xls_sheet_header.index("reference")
-        cur_entry = ET.SubElement(sheet, "NonBond")
+        cur_entry = ET.SubElement(sheet, "Dissipative")
         if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
             ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
         if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
@@ -1162,7 +1240,7 @@ def ReadExcelSoftPotential_DPD(sheet, sub_root):
         attribute_idx1 = xls_sheet_header.index("comment")
         attribute_idx2 = xls_sheet_header.index("version")
         attribute_idx3 = xls_sheet_header.index("reference")
-        cur_entry = ET.SubElement(sheet, "SoftPotential")
+        cur_entry = ET.SubElement(sheet, "Soft")
         if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
             ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
         if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
@@ -1190,7 +1268,7 @@ def ReadExcelSoftPotential_SRP(sheet, sub_root):
     CC=xls_sheet.row_values(4)[1]
     DD=xls_sheet.row_values(5)[1]
 
-    sheet = ET.SubElement(sub_root, "SoftPotential-DPD", {'style':AA, 'formula':BB, 'c_ij-units':CC, 'r_c-units':DD})
+    sheet = ET.SubElement(sub_root, "SoftPotential-SRP", {'style':AA, 'formula':BB, 'c_ij-units':CC, 'r_c-units':DD})
 
     # Row 7 is the header
     xls_sheet_header = map(str, xls_sheet.row_values(7))
@@ -1199,7 +1277,7 @@ def ReadExcelSoftPotential_SRP(sheet, sub_root):
         attribute_idx1 = xls_sheet_header.index("comment")
         attribute_idx2 = xls_sheet_header.index("version")
         attribute_idx3 = xls_sheet_header.index("reference")
-        cur_entry = ET.SubElement(sheet, "SoftPotential")
+        cur_entry = ET.SubElement(sheet, "Soft")
         if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
             ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
         if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
@@ -1487,7 +1565,7 @@ def ReadExcelAtomTypes_CoarseGrained(sheet,root):
     attribute_idx3 = xls_sheet_header.index("AtomicSize-CG")
 
     for row_num in xrange(6, xls_sheet.nrows):
-        cur_entry = ET.SubElement(sheet, "AtomType")
+        cur_entry = ET.SubElement(sheet, "CGType")
         if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
             ET.Element.set(cur_entry, 'Description', str((xls_sheet.row_values(row_num)[attribute_idx1])))
         if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
@@ -2292,7 +2370,7 @@ def ReadExcelNonBondPotential_Tabular(sheet, sub_root):
     DD=xls_sheet.row_values(5)[1]
     EE=xls_sheet.row_values(6)[1]
 
-    sheet = ET.SubElement(sub_root, "NonBondPotential-Tabular", {'style':AA, 'Interpolation-style':BB, 'r-units':CC, 'angle-units':DD, 'force-units':EE})
+    sheet = ET.SubElement(sub_root, "NonBondPotential-Tabular", {'style':AA, 'Interpolation-style':BB, 'r-units':CC, 'energy-units':DD, 'force-units':EE})
 
     # Handling comments, version, and reference
     if (xls_sheet.row_values(8)[1]) :

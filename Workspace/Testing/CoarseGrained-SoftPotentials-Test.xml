@@ -1,0 +1,75 @@
+<!-- Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com) -->
+<FF-CoarseGrained>
+    <Force-Field-Header>
+        <Force-Field-Protocol>Coarse-Grained - Pseudo-Atom</Force-Field-Protocol>
+        <Force-Field-Name>dfg</Force-Field-Name>
+        <Description>dfg</Description>
+        <Data-Source>
+            <Compact>
+                <Reference>dfg</Reference>
+                <DOI>dfg</DOI>
+                <URL>dfg</URL>
+                <Notes>dfg</Notes>
+            </Compact>
+        </Data-Source>
+        <Data-Source-Scribe>
+            <Name>dfg</Name>
+            <Affiliation>dfg</Affiliation>
+            <email>dfg</email>
+        </Data-Source-Scribe>
+        <Keywords>Acetals</Keywords>
+        <Keywords>Aliphatic hydrocarbons</Keywords>
+        <WebFF-Scribe>
+            <Name>dfg</Name>
+            <Affiliation>dfg</Affiliation>
+            <email>dfg</email>
+        </WebFF-Scribe>
+    </Force-Field-Header>
+    <SoftPotential>
+        <SoftPotential-DPD a_ij-units="kcal/mol/&#197;^2" formula="a_ij*(1-r/r_c)-gamma*(1-r/r_c)^2+sigma*(1-r/r_c)*alpha*deltaT^(-1/2)" gamma-units="amu/s" r_c-units="nm" style="DPD">
+            <Soft comment="comment">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <a_ij>0.261233260484</a_ij>
+                <gamma>0.27729151273</gamma>
+                <r_c>0.56171649362</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <a_ij>0.202428963027</a_ij>
+                <gamma>0.96476352433</gamma>
+                <r_c>0.912442475377</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <a_ij>0.312830506561</a_ij>
+                <gamma>0.639887581897</gamma>
+                <r_c>0.187584133367</r_c>
+            </Soft>
+        </SoftPotential-DPD>
+    </SoftPotential>
+    <SoftPotential>
+        <SoftPotential-SRP c_ij-units="kcal/mol/&#197;^2" formula="c_ij*(1-r/r_c)" r_c-units="nm" style="SRP">
+            <Soft comment="comment">
+                <AT-1>at1.1</AT-1>
+                <AT-2>at2.1</AT-2>
+                <c_ij>0.556712903394</c_ij>
+                <r_c>0.563699082199</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.2</AT-1>
+                <AT-2>at2.2</AT-2>
+                <c_ij>0.34623967203</c_ij>
+                <r_c>0.915343663327</r_c>
+            </Soft>
+            <Soft comment="comment">
+                <AT-1>at1.3</AT-1>
+                <AT-2>at2.3</AT-2>
+                <c_ij>0.39639763696</c_ij>
+                <r_c>0.751256875909</r_c>
+            </Soft>
+        </SoftPotential-SRP>
+    </SoftPotential>
+</FF-CoarseGrained>

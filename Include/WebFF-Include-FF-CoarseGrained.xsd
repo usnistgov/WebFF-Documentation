@@ -10,8 +10,8 @@
     <xs:include schemaLocation="..\Include\WebFF-Include-TableData.xsd" />
     <xs:include schemaLocation="..\Include\WebFF-Include-Bonds.xsd" />
     <xs:include schemaLocation="..\Include\WebFF-Include-NonBonds.xsd" />
-    <xs:include schemaLocation="..\Include\WebFF-Include-DissipativePotential.xsd" />
-    <xs:include schemaLocation="..\Include\WebFF-Include-SoftPotential.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include-Dissipatives.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include-Softs.xsd" />
     <xs:element name="FF-CoarseGrained">
         <xs:complexType>
             <xs:sequence>
@@ -162,7 +162,7 @@
                             <xs:element name="BondPotential-FENE" minOccurs="0">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="Bond">
+                                        <xs:element name="Bond" maxOccurs="unbounded">
                                             <xs:complexType>
                                                 <xs:complexContent>
                                                     <xs:extension base="Bond-FENE">
@@ -235,7 +235,18 @@
                             <xs:element name="AnglePotential-Cosine" minOccurs="0">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="Angle" type="Angle-Cosine" maxOccurs="unbounded" />
+                                        <xs:element name="Angle" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Angle-Cosine">
+                                                        <xs:attribute name="precedence" type="xs:positiveInteger" use="optional" />
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
                                     </xs:sequence>
                                     <xs:attribute name="style">
                                         <xs:simpleType>
@@ -713,7 +724,7 @@
                                     <xs:attribute name="style">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                                <xs:enumeration value="Weeks-Anderson-Chandler" />
+                                                <xs:enumeration value="Weeks-Chandler-Anderson" />
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
@@ -827,10 +838,10 @@
                             <xs:element name="DissipativePotential-Langevin" minOccurs="0">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="DissipativePotential" maxOccurs="unbounded">
+                                        <xs:element name="Dissipative" maxOccurs="unbounded">
                                             <xs:complexType>
                                                 <xs:complexContent>
-                                                    <xs:extension base="DissipativePotential-Langevin">
+                                                    <xs:extension base="Dissipative-Langevin">
                                                         <xs:attribute name="comment" type="xs:string" use="optional" />
                                                         <xs:attribute name="version" type="VersionString" use="optional" />
                                                         <xs:attribute name="reference" type="xs:string" use="optional" />
@@ -865,7 +876,17 @@
                             <xs:element name="SoftPotential-DPD" minOccurs="0">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="SoftPotential" type="SoftPotential-DPD" maxOccurs="unbounded" />
+                                        <xs:element name="Soft" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Soft-DPD">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
                                     </xs:sequence>
                                     <xs:attribute name="style">
                                         <xs:simpleType>
@@ -889,7 +910,17 @@
                             <xs:element name="SoftPotential-SRP" minOccurs="0">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="SoftPotential" type="SoftPotential-SRP" maxOccurs="unbounded" />
+                                        <xs:element name="Soft" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Soft-SRP">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
                                     </xs:sequence>
                                     <xs:attribute name="style">
                                         <xs:simpleType>

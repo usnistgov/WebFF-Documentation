@@ -1,0 +1,72 @@
+<!-- Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com) -->
+<FF-CoarseGrained>
+    <Force-Field-Header>
+        <Force-Field-Protocol>Coarse-Grained - Pseudo-Atom</Force-Field-Protocol>
+        <Force-Field-Name>dfg</Force-Field-Name>
+        <Description>dfg</Description>
+        <Data-Source>
+            <Compact>
+                <Reference>dfg</Reference>
+                <DOI>dfg</DOI>
+                <URL>dfg</URL>
+                <Notes>dfg</Notes>
+            </Compact>
+        </Data-Source>
+        <Data-Source-Scribe>
+            <Name>dfg</Name>
+            <Affiliation>dfg</Affiliation>
+            <email>dfg</email>
+        </Data-Source-Scribe>
+        <Keywords>Acetals</Keywords>
+        <Keywords>Aliphatic hydrocarbons</Keywords>
+        <WebFF-Scribe>
+            <Name>dfg</Name>
+            <Affiliation>dfg</Affiliation>
+            <email>dfg</email>
+        </WebFF-Scribe>
+    </Force-Field-Header>
+    <AtomTypes>
+        <AtomType-CoarseGrained Nomenclature="SMILES" comment="comment">
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.664271563059" Description="description1">
+                <CG-Name>name1</CG-Name>
+                <CG-Chemistry>chemistry1</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.638058851709" Description="description2">
+                <CG-Name>name2</CG-Name>
+                <CG-Chemistry>chemistry2</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.46896064667" Description="description3">
+                <CG-Name>name3</CG-Name>
+                <CG-Chemistry>chemistry3</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.593086931818" Description="description4">
+                <CG-Name>name4</CG-Name>
+                <CG-Chemistry>chemistry4</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.312894294738" Description="description5">
+                <CG-Name>name5</CG-Name>
+                <CG-Chemistry>chemistry5</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.157792671587" Description="description6">
+                <CG-Name>name6</CG-Name>
+                <CG-Chemistry>chemistry6</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.256256169446" Description="description7">
+                <CG-Name>name7</CG-Name>
+                <CG-Chemistry>chemistry7</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.0605231677201" Description="description8">
+                <CG-Name>name8</CG-Name>
+                <CG-Chemistry>chemistry8</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.977900140886" Description="description9">
+                <CG-Name>name9</CG-Name>
+                <CG-Chemistry>chemistry9</CG-Chemistry>
+            </CGType>
+            <CGType AtomicMass-CG="0" AtomicSize-CG="0.167425099717" Description="description10">
+                <CG-Name>name10</CG-Name>
+                <CG-Chemistry>chemistry10</CG-Chemistry>
+            </CGType>
+        </AtomType-CoarseGrained>
+    </AtomTypes>
+</FF-CoarseGrained>
