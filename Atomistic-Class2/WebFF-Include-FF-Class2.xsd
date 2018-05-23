@@ -59,7 +59,7 @@
                                                 </xs:complexContent>
                                             </xs:complexType>
                                         </xs:element>
-                                        <xs:element name="DFFRelationTree" type="xs:string" minOccurs="0" xmlns:ns0="http://mdcs.ns" ns0:_mod_mdcs_="/registry/description"/>
+                                        <xs:element xmlns:ns0="http://mdcs.ns" name="DFFRelationTree" type="xs:string" minOccurs="0" ns0:_mod_mdcs_="/registry/description" />
                                     </xs:sequence>
                                     <xs:attribute name="Nomenclature" use="required">
                                         <xs:simpleType>
@@ -1420,7 +1420,7 @@
                                         <xs:element name="NonBond" maxOccurs="unbounded">
                                             <xs:complexType>
                                                 <xs:complexContent>
-                                                    <xs:extension base="NonBond-LJ">
+                                                    <xs:extension base="NonBond-LJ-Rmin">
                                                         <xs:attribute name="comment" type="xs:string" use="optional" />
                                                         <xs:attribute name="version" type="VersionString" use="optional" />
                                                         <xs:attribute name="reference" type="xs:string" use="optional" />
@@ -1439,12 +1439,46 @@
                                     <xs:attribute name="formula">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                                <xs:enumeration value="epsilon*[2*(sigma/R)^9-3*(sigma/R)^6]" />
+                                                <xs:enumeration value="epsilon*[2*(Rmin/R)^9-3*(Rmin/R)^6]" />
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
                                     <xs:attribute name="epsilon-units" type="LJ-epsilon-units" />
-                                    <xs:attribute name="sigma-units" type="LJ-sigma-units" />
+                                    <xs:attribute name="Rmin-units" type="LJ-Rmin-units" />
+                                    <xs:attribute name="Combining-Rule" type="Combining-Rules" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="NonBondPotential-LJ-Rmin">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NonBond" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="NonBond-LJ-Rmin">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Lennard-Jones (12-6) [Rmin Form]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="epsilon*[(Rmin/R)^12-2*(Rmin/R)^6]" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="epsilon-units" type="LJ-epsilon-units" />
+                                    <xs:attribute name="Rmin-units" type="LJ-Rmin-units" />
                                     <xs:attribute name="Combining-Rule" type="Combining-Rules" />
                                 </xs:complexType>
                             </xs:element>

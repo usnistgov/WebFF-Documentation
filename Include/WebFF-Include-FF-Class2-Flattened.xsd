@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
-<xs:schema elementFormDefault="qualified" targetNamespace="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="FF-Class2">
     <xs:complexType>
       <xs:sequence>
@@ -1410,7 +1410,7 @@
                     <xs:element name="NonBond" maxOccurs="unbounded">
                       <xs:complexType>
                         <xs:complexContent>
-                          <xs:extension base="NonBond-LJ">
+                          <xs:extension base="NonBond-LJ-Rmin">
                             <xs:attribute name="comment" type="xs:string" use="optional" />
                             <xs:attribute name="version" type="VersionString" use="optional" />
                             <xs:attribute name="reference" type="xs:string" use="optional" />
@@ -1429,12 +1429,46 @@
                   <xs:attribute name="formula">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
-                        <xs:enumeration value="epsilon*[2*(sigma/R)^9-3*(sigma/R)^6]" />
+                        <xs:enumeration value="epsilon*[2*(Rmin/R)^9-3*(Rmin/R)^6]" />
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:attribute>
                   <xs:attribute name="epsilon-units" type="LJ-epsilon-units" />
-                  <xs:attribute name="sigma-units" type="LJ-sigma-units" />
+                  <xs:attribute name="Rmin-units" type="LJ-Rmin-units" />
+                  <xs:attribute name="Combining-Rule" type="Combining-Rules" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="NonBondPotential-LJ-Rmin">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="NonBond" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:complexContent>
+                          <xs:extension base="NonBond-LJ-Rmin">
+                            <xs:attribute name="comment" type="xs:string" use="optional" />
+                            <xs:attribute name="version" type="VersionString" use="optional" />
+                            <xs:attribute name="reference" type="xs:string" use="optional" />
+                          </xs:extension>
+                        </xs:complexContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="style">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Lennard-Jones (12-6) [Rmin Form]" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="formula">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="epsilon*[(Rmin/R)^12-2*(Rmin/R)^6]" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="epsilon-units" type="LJ-epsilon-units" />
+                  <xs:attribute name="Rmin-units" type="LJ-Rmin-units" />
                   <xs:attribute name="Combining-Rule" type="Combining-Rules" />
                 </xs:complexType>
               </xs:element>
@@ -1905,10 +1939,10 @@
       <xs:element name="AT-3" type="xs:string" />
       <xs:element name="AT-4" type="xs:string" />
       <xs:element name="K1" type="xs:float" />
-      <xs:element name="K2" type="xs:float" />
-      <xs:element name="K3" type="xs:float" />
-      <xs:element name="K4" type="xs:float" />
-      <xs:element name="K5" type="xs:float" />
+      <xs:element name="K2" type="xs:float" minOccurs="0" />
+      <xs:element name="K3" type="xs:float" minOccurs="0" />
+      <xs:element name="K4" type="xs:float" minOccurs="0" />
+      <xs:element name="K5" type="xs:float" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="Dihedral-Fourier">
@@ -1920,18 +1954,18 @@
       <xs:element name="K1" type="xs:float" />
       <xs:element name="N1" type="xs:int" />
       <xs:element name="D1" type="xs:float" />
-      <xs:element name="K2" type="xs:float" />
-      <xs:element name="N2" type="xs:int" />
-      <xs:element name="D2" type="xs:float" />
-      <xs:element name="K3" type="xs:float" />
-      <xs:element name="N3" type="xs:int" />
-      <xs:element name="D3" type="xs:float" />
-      <xs:element name="K4" type="xs:float" />
-      <xs:element name="N4" type="xs:int" />
-      <xs:element name="D4" type="xs:float" />
-      <xs:element name="K5" type="xs:float" />
-      <xs:element name="N5" type="xs:int" />
-      <xs:element name="D5" type="xs:float" />
+      <xs:element name="K2" type="xs:float" minOccurs="0" />
+      <xs:element name="N2" type="xs:int" minOccurs="0" />
+      <xs:element name="D2" type="xs:float" minOccurs="0" />
+      <xs:element name="K3" type="xs:float" minOccurs="0" />
+      <xs:element name="N3" type="xs:int" minOccurs="0" />
+      <xs:element name="D3" type="xs:float" minOccurs="0" />
+      <xs:element name="K4" type="xs:float" minOccurs="0" />
+      <xs:element name="N4" type="xs:int" minOccurs="0" />
+      <xs:element name="D4" type="xs:float" minOccurs="0" />
+      <xs:element name="K5" type="xs:float" minOccurs="0" />
+      <xs:element name="N5" type="xs:int" minOccurs="0" />
+      <xs:element name="D5" type="xs:float" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="DihedralPotential-Class2">
@@ -2078,7 +2112,7 @@
   </xs:simpleType>
   <xs:simpleType name="LJ-sigma-units">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="Å (Angstrom)" />
+      <xs:enumeration value="Å" />
       <xs:enumeration value="nm" />
     </xs:restriction>
   </xs:simpleType>
@@ -2126,7 +2160,7 @@
   </xs:simpleType>
   <xs:simpleType name="LJ-Rmin-units">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="Å (Angstrom)" />
+      <xs:enumeration value="Å" />
       <xs:enumeration value="nm" />
     </xs:restriction>
   </xs:simpleType>

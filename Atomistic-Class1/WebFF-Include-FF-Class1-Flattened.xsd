@@ -1786,7 +1786,7 @@
   </xs:simpleType>
   <xs:simpleType name="LJ-sigma-units">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="Å (Angstrom)" />
+      <xs:enumeration value="Å" />
       <xs:enumeration value="nm" />
     </xs:restriction>
   </xs:simpleType>
@@ -1834,7 +1834,7 @@
   </xs:simpleType>
   <xs:simpleType name="LJ-Rmin-units">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="Å (Angstrom)" />
+      <xs:enumeration value="Å" />
       <xs:enumeration value="nm" />
     </xs:restriction>
   </xs:simpleType>
