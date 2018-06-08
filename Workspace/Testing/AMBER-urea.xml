@@ -1,0 +1,177 @@
+<!-- Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com) -->
+<FF-Class-I>
+    <Force-Field-Header>
+        <Force-Field-Protocol>Atomistic - Class I</Force-Field-Protocol>
+        <Force-Field-Name>AMBER-urea</Force-Field-Name>
+        <Description>An improved generalized AMBER force field (GAFF) for urea</Description>
+        <Data-Source>
+            <Compact>
+                <Reference>&#214;zp&#305;nar, G.A., Peukert, W. &amp; Clark, T. J Mol Model (2010) 16: 1427. doi:10.1007/s00894-010-0650-7</Reference>
+                <DOI>http://dx.doi.org/10.1007/s00894-010-0650-7</DOI>
+            </Compact>
+        </Data-Source>
+        <Data-Source-Scribe>
+            <Name>Pablo GB</Name>
+            <Affiliation>NIST</Affiliation>
+            <email>pablo.garciabeltran@nist.gov</email>
+        </Data-Source-Scribe>
+        <Keywords>Other</Keywords>
+        <WebFF-Scribe>
+            <Name>Pablo GB</Name>
+            <Affiliation>NIST</Affiliation>
+            <email>pablo.garciabeltran@nist.gov</email>
+        </WebFF-Scribe>
+    </Force-Field-Header>
+    <AtomTypes>
+        <AtomType-DFF Nomenclature="DFF">
+            <AtomType AtomicMass="12.011" AtomicNumber="6">
+                <AtomType-Name>C</AtomType-Name>
+                <Substructure>C</Substructure>
+            </AtomType>
+            <AtomType AtomicMass="1.0079" AtomicNumber="1">
+                <AtomType-Name>HN</AtomType-Name>
+                <Substructure>H</Substructure>
+            </AtomType>
+            <AtomType AtomicMass="14.0067" AtomicNumber="7">
+                <AtomType-Name>N</AtomType-Name>
+                <Substructure>N</Substructure>
+            </AtomType>
+            <AtomType AtomicMass="15.9994" AtomicNumber="8">
+                <AtomType-Name>O</AtomType-Name>
+                <Substructure>O</Substructure>
+            </AtomType>
+            <DFFRelationTree>
+                (C
+                )
+                (O
+                )
+                (HN
+                )
+                (N
+                )
+            </DFFRelationTree>
+        </AtomType-DFF>
+    </AtomTypes>
+    <BondPotential>
+        <BondPotential-Harmonic K-units="kcal/mol/&#197;^2" R0-units="&#197;" formula="K*(R-R0)^2" style="Harmonic">
+            <Bond>
+                <AT-1>C</AT-1>
+                <AT-2>N</AT-2>
+                <K>424.0</K>
+                <R0>1.383</R0>
+            </Bond>
+            <Bond>
+                <AT-1>C</AT-1>
+                <AT-2>O</AT-2>
+                <K>656.0</K>
+                <R0>1.25</R0>
+            </Bond>
+            <Bond>
+                <AT-1>HN</AT-1>
+                <AT-2>N</AT-2>
+                <K>434.0</K>
+                <R0>1.01</R0>
+            </Bond>
+        </BondPotential-Harmonic>
+    </BondPotential>
+    <AnglePotential>
+        <AnglePotential-Harmonic Ka-units="kcal/mol/degrees^2" Theta0-units="degrees" formula="Ka*(Theta-Theta0)^2" style="Harmonic">
+            <Angle>
+                <AT-1>C</AT-1>
+                <AT-2>N</AT-2>
+                <AT-3>HN</AT-3>
+                <Ka>30.0</Ka>
+                <Theta0>120.0</Theta0>
+            </Angle>
+            <Angle>
+                <AT-1>HN</AT-1>
+                <AT-2>N</AT-2>
+                <AT-3>HN</AT-3>
+                <Ka>35.0</Ka>
+                <Theta0>120.0</Theta0>
+            </Angle>
+            <Angle>
+                <AT-1>N</AT-1>
+                <AT-2>C</AT-2>
+                <AT-3>N</AT-3>
+                <Ka>70.0</Ka>
+                <Theta0>118.6</Theta0>
+            </Angle>
+            <Angle>
+                <AT-1>N</AT-1>
+                <AT-2>C</AT-2>
+                <AT-3>O</AT-3>
+                <Ka>80.0</Ka>
+                <Theta0>120.9</Theta0>
+            </Angle>
+        </AnglePotential-Harmonic>
+    </AnglePotential>
+    <DihedralPotential>
+        <DihedralPotential-Fourier Dn-units="degrees" Kn-units="kcal" convention="cis:right" formula="K1*[1-cos(N1*Phi-D1)]+K2*[1-cos(N2*Phi-D2)]+K3*[1-cos(N3*Phi-D3)]+K4*[1-cos(N4*Phi-D4)]+K5*[1-cos(N5*Phi-D5)]" style="Fourier">
+            <Dihedral>
+                <AT-1>HN</AT-1>
+                <AT-2>N</AT-2>
+                <AT-3>C</AT-3>
+                <AT-4>N</AT-4>
+                <K1>0.0</K1>
+                <N1>1</N1>
+                <D1>0.0</D1>
+            </Dihedral>
+            <Dihedral>
+                <AT-1>HN</AT-1>
+                <AT-2>N</AT-2>
+                <AT-3>C</AT-3>
+                <AT-4>O</AT-4>
+                <K1>4.0</K1>
+                <N1>1</N1>
+                <D1>0.0</D1>
+            </Dihedral>
+        </DihedralPotential-Fourier>
+    </DihedralPotential>
+    <ImproperPotential>
+        <ImproperPotential-CHARMM Kd-units="kcal" Phi0-units="degrees" convention="cis" formula="0.5*Kd*[1+cos(N*Phi-Phi0)]" style="CHARMM">
+            <Improper>
+                <AT-1>C</AT-1>
+                <AT-2>HN</AT-2>
+                <AT-3>N</AT-3>
+                <AT-4>HN</AT-4>
+                <Kd>180.0</Kd>
+                <N>2</N>
+                <Phi0>2.0</Phi0>
+            </Improper>
+            <Improper>
+                <AT-1>N</AT-1>
+                <AT-2>N</AT-2>
+                <AT-3>C</AT-3>
+                <AT-4>O</AT-4>
+                <Kd>180.0</Kd>
+                <N>21</N>
+                <Phi0>2.0</Phi0>
+            </Improper>
+        </ImproperPotential-CHARMM>
+    </ImproperPotential>
+    <NonBondPotential>
+        <NonBondPotential-LJ Combining-Rule="Lorentz-Berthelot" epsilon-units="kcal/mol" formula="4*epsilon*[(sigma/R)^12-(sigma/R)^6]" sigma-units="&#197;" style="Lennard-Jones (12-6)">
+            <NonBond>
+                <AtomType>C</AtomType>
+                <epsilon>0.086</epsilon>
+                <sigma>2.14166</sigma>
+            </NonBond>
+            <NonBond>
+                <AtomType>HN</AtomType>
+                <epsilon>0.0157</epsilon>
+                <sigma>0.67348</sigma>
+            </NonBond>
+            <NonBond>
+                <AtomType>N</AtomType>
+                <epsilon>0.17</epsilon>
+                <sigma>2.04737</sigma>
+            </NonBond>
+            <NonBond>
+                <AtomType>O</AtomType>
+                <epsilon>0.21</epsilon>
+                <sigma>1.86463</sigma>
+            </NonBond>
+        </NonBondPotential-LJ>
+    </NonBondPotential>
+</FF-Class-I>

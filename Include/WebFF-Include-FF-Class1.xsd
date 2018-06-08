@@ -58,7 +58,7 @@
                                                 </xs:complexContent>
                                             </xs:complexType>
                                         </xs:element>
-                                        <xs:element name="DFFRelationTree" type="xs:string" minOccurs="0" xmlns:ns0="http://mdcs.ns" ns0:_mod_mdcs_="/registry/description"/>
+                                        <xs:element xmlns:ns0="http://mdcs.ns" name="DFFRelationTree" type="xs:string" minOccurs="0" ns0:_mod_mdcs_="/registry/description" />
                                     </xs:sequence>
                                     <xs:attribute name="Nomenclature" use="required">
                                         <xs:simpleType>
@@ -872,6 +872,8 @@
                                             <xs:restriction base="xs:string">
                                                 <xs:enumeration value="Kd*[1+cos(N*Phi-Phi0)]" />
                                                 <xs:enumeration value="Kd*[1+cos(N*Phi+Phi0)]" />
+                                                <xs:enumeration value="0.5*Kd*[1+cos(N*Phi-Phi0)]" />
+                                                <xs:enumeration value="0.5*Kd*[1+cos(N*Phi+Phi0)]" />
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>

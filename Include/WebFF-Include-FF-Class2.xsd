@@ -312,8 +312,10 @@
                                     <xs:attribute name="K-units">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                                <xs:enumeration value="K2: kcal/mol/radians^2 | K3: kcal/mol/radians^3 | K4: kcal/mol/radians^4" />
-                                                <xs:enumeration value="K2: kJ/mol/radians^2 | K3: kJ/mol/radians^3 | K4: kJ/mol/radians^4" />
+                                                <xs:enumeration value="K2:kcal/mol/radians^2 | K3:kcal/mol/radians^3 | K4:kcal/mol/radians^4" />
+                                                <xs:enumeration value="K2:kJ/mol/radians^2 | K3:kJ/mol/radians^3 | K4:kJ/mol/radians^4" />
+                                                <xs:enumeration value="K2:kcal/mol/degrees^2 | K3:kcal/mol/degrees^3 | K4:kcal/mol/degrees^4" />
+                                                <xs:enumeration value="K2:kJ/mol/degrees^2 | K3:kJ/mol/degrees^3 | K4:kJ/mol/degrees^4" />
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>

@@ -872,6 +872,8 @@
                                             <xs:restriction base="xs:string">
                                                 <xs:enumeration value="Kd*[1+cos(N*Phi-Phi0)]" />
                                                 <xs:enumeration value="Kd*[1+cos(N*Phi+Phi0)]" />
+                                                <xs:enumeration value="0.5*Kd*[1+cos(N*Phi-Phi0)]" />
+                                                <xs:enumeration value="0.5*Kd*[1+cos(N*Phi+Phi0)]" />
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>

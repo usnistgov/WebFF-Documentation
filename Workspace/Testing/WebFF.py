@@ -17,9 +17,12 @@ def ReadExcelMetaData_Header(sheet, sub_root):
     field3 = ET.SubElement(sub_root, "Data-Source")
     field4 = ET.SubElement(field3, "Compact")
     field1 = ET.SubElement(field4, "Reference").text = xls_sheet.row_values(7)[1]
-    field2 = ET.SubElement(field4, "DOI").text = xls_sheet.row_values(8)[1]
-    field1 = ET.SubElement(field4, "URL").text = xls_sheet.row_values(9)[1]
-    field2 = ET.SubElement(field4, "Notes").text = xls_sheet.row_values(10)[1]
+    if (len(xls_sheet.row_values(8)[1]) != 0) :
+	field2 = ET.SubElement(field4, "DOI").text = xls_sheet.row_values(8)[1]
+    if (len(xls_sheet.row_values(9)[1]) != 0) :
+    	field1 = ET.SubElement(field4, "URL").text = xls_sheet.row_values(9)[1]
+    if (len(xls_sheet.row_values(10)[1]) != 0) :
+    	field2 = ET.SubElement(field4, "Notes").text = xls_sheet.row_values(10)[1]
     field4 = ET.SubElement(sub_root, "Data-Source-Scribe")
     field1 = ET.SubElement(field4, "Name").text = xls_sheet.row_values(11)[1]
     field1 = ET.SubElement(field4, "Affiliation").text = xls_sheet.row_values(12)[1]
@@ -1429,11 +1432,15 @@ def ReadExcelAtomTypes_ATDL(sheet,root):
     '''   
     xls_sheet = sheet
 
-    AA=xls_sheet.row_values(2)[1]
-    BB=xls_sheet.row_values(3)[1]
-
     funko = ET.SubElement(root, "AtomTypes")
-    sheet = ET.SubElement(funko, "AtomType-ATDL", {'Nomenclature':AA, 'comment':BB}) 
+
+    AA=xls_sheet.row_values(2)[1]
+    if (len(xls_sheet.row_values(3)[1]) != 0) :
+    	BB=xls_sheet.row_values(3)[1]
+	sheet = ET.SubElement(funko, "AtomType-ATDL", {'Nomenclature':AA, 'comment':BB})
+    else :
+	sheet = ET.SubElement(funko, "AtomType-ATDL", {'Nomenclature':AA})
+    
     # Row 5 is the header
     xls_sheet_header = map(str, xls_sheet.row_values(5))
 
@@ -1470,11 +1477,15 @@ def ReadExcelAtomTypes_DFF(sheet,root):
     '''   
     xls_sheet = sheet
 
-    AA=xls_sheet.row_values(2)[1]
-    BB=xls_sheet.row_values(3)[1]
-
     funko = ET.SubElement(root, "AtomTypes")
-    sheet = ET.SubElement(funko, "AtomType-DFF", {'Nomenclature':AA, 'comment':BB}) 
+
+    AA=xls_sheet.row_values(2)[1]
+    if (len(xls_sheet.row_values(3)[1]) != 0) :
+    	BB=xls_sheet.row_values(3)[1]
+	sheet = ET.SubElement(funko, "AtomType-DFF", {'Nomenclature':AA, 'comment':BB})
+    else :
+	sheet = ET.SubElement(funko, "AtomType-DFF", {'Nomenclature':AA})
+    
     # Row 5 is the header
     xls_sheet_header = map(str, xls_sheet.row_values(5))
 
@@ -1511,11 +1522,15 @@ def ReadExcelAtomTypes_Generic(sheet,root):
     '''   
     xls_sheet = sheet
 
-    AA=xls_sheet.row_values(2)[1]
-    BB=xls_sheet.row_values(3)[1]
-
     funko = ET.SubElement(root, "AtomTypes")
-    sheet = ET.SubElement(funko, "AtomType-Generic", {'Nomenclature':AA, 'comment':BB}) 
+
+    AA=xls_sheet.row_values(2)[1]
+    if (len(xls_sheet.row_values(3)[1]) != 0) :
+    	BB=xls_sheet.row_values(3)[1]
+	sheet = ET.SubElement(funko, "AtomType-Generic", {'Nomenclature':AA, 'comment':BB})
+    else :
+	sheet = ET.SubElement(funko, "AtomType-Generic", {'Nomenclature':AA})
+    
     # Row 5 is the header
     xls_sheet_header = map(str, xls_sheet.row_values(5))
 
@@ -1595,8 +1610,12 @@ def ReadExcelAtomTypeAttributes(sheet,root):
         for child in root.findall("./AtomTypes/AtomType"): 
             AtomTypeName = (child.find("AtomType-Name"))
             if(AtomTypeName.text == str(xls_sheet1.cell_value(row_num, 0))): 
-                sheet1 = ET.SubElement(child, "Atom-Attributes")
-                sheet2 = ET.SubElement(sheet1, "Attribute")
+                # Check if there is already an attribute to avoid creating incorrect duplicate attribute elements 
+		if(child.find("Atom-Attributes") == None) :
+                    sheet1 = ET.SubElement(child, "Atom-Attributes")
+                    sheet2 = ET.SubElement(sheet1, "Attribute")
+		else :
+		    sheet2 = ET.SubElement(child.find("Atom-Attributes"), "Attribute")
                 for col_num, cell_value in enumerate(xls_sheet1.row_values(row_num)):
                     if (len(str(cell_value))!=0) :
                         if col_num == attribute_idx1:
@@ -1619,8 +1638,12 @@ def ReadExcelAtomTypeAttributes_Generic(sheet,root):
         for child in root.findall("./AtomTypes/AtomType-Generic/AtomType"): 
             AtomTypeName = (child.find("AtomType-Name"))
             if(AtomTypeName.text == str(xls_sheet1.cell_value(row_num, 0))): 
-                sheet1 = ET.SubElement(child, "Atom-Attributes")
-                sheet2 = ET.SubElement(sheet1, "Attribute")
+                # Check if there is already an attribute to avoid creating incorrect duplicate attribute elements 
+		if(child.find("Atom-Attributes") == None) :
+                    sheet1 = ET.SubElement(child, "Atom-Attributes")
+                    sheet2 = ET.SubElement(sheet1, "Attribute")
+		else :
+		    sheet2 = ET.SubElement(child.find("Atom-Attributes"), "Attribute")
                 for col_num, cell_value in enumerate(xls_sheet1.row_values(row_num)):
                     if (len(str(cell_value))!=0) :
                         if col_num == attribute_idx1:
@@ -1644,9 +1667,13 @@ def ReadExcelAtomTypeAttributes_DFF(sheet,root):
     for row_num in xrange(5, xls_sheet1.nrows):
         for child in root.findall("./AtomTypes/AtomType-DFF/AtomType"): 
             AtomTypeName = (child.find("AtomType-Name"))
-            if(AtomTypeName.text == str(xls_sheet1.cell_value(row_num, 0))): 
-                sheet1 = ET.SubElement(child, "Atom-Attributes")
-                sheet2 = ET.SubElement(sheet1, "Attribute")
+            if(AtomTypeName.text == str(xls_sheet1.cell_value(row_num, 0))):
+		# Check if there is already an attribute to avoid creating incorrect duplicate attribute elements 
+		if(child.find("Atom-Attributes") == None) :
+                    sheet1 = ET.SubElement(child, "Atom-Attributes")
+                    sheet2 = ET.SubElement(sheet1, "Attribute")
+		else :
+		    sheet2 = ET.SubElement(child.find("Atom-Attributes"), "Attribute")
                 for col_num, cell_value in enumerate(xls_sheet1.row_values(row_num)):
                     if (len(str(cell_value))!=0) :
                         if col_num == attribute_idx1:
@@ -2161,7 +2188,7 @@ def ReadExcelNonBondPotential_LJClass2(sheet, sub_root):
     DD=xls_sheet.row_values(5)[1]
     EE=xls_sheet.row_values(6)[1]
 
-    sheet = ET.SubElement(sub_root, "NonBondPotential-Class2", {'style':AA, 'formula':BB, 'epsilon-units':CC, 'sigma-units':DD, 'Combining-Rule':EE})
+    sheet = ET.SubElement(sub_root, "NonBondPotential-Class2", {'style':AA, 'formula':BB, 'epsilon-units':CC, 'Rmin-units':DD, 'Combining-Rule':EE})
 
     # Row 8 is the header
     xls_sheet_header = map(str, xls_sheet.row_values(8))
