@@ -7,6 +7,8 @@ import xlrd                               # NEED to be installed
 import requests                           # NEED to be installed
 import WebFF as FF                        #webff python module (needs to be installed)
 import xml.etree.ElementTree as ET        #Python standard library
+import xml.dom.minidom as xdm
+
 def excel_xml(input, output): 
     # Read in file 
     excel_file_path = (input)
@@ -193,12 +195,19 @@ def excel_xml(input, output):
     if  "AutoEquivalenceTable" in sheet_names: 
         sub_root = ET.SubElement(root, "AutoEquivalenceTable")
         sheet = xls_file.sheet_by_name("AutoEquivalenceTable")
-        FF.ReadExcelAutoEquivalenceTable(sheet, sub_root)  
+        FF.ReadExcelAutoEquivalenceTable(sheet, sub_root)
+ 
     # Create a ElementTree, which is the structure corresponding to the Xml Document
     tree = ET.ElementTree(root)
 
     # Write it out
     tree.write(output_file_path)
+
+    # Save into pretty print format
+    xml = xdm.parse(output_file_path)
+    with open(output_file_path, "w") as text_file:
+	text_file.write(xml.toprettyxml().encode("UTF-8"))
+	text_file.close()
     
 if __name__ == "__main__":
     input = str((sys.argv[1]))

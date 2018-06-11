@@ -1,3 +1,4 @@
+<?xml version="1.0" ?>
 <!-- Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com) -->
 <FF-Class-I>
     <Force-Field-Header>
@@ -6,7 +7,7 @@
         <Description>An improved generalized AMBER force field (GAFF) for urea</Description>
         <Data-Source>
             <Compact>
-                <Reference>&#214;zp&#305;nar, G.A., Peukert, W. &amp; Clark, T. J Mol Model (2010) 16: 1427. doi:10.1007/s00894-010-0650-7</Reference>
+                <Reference>Özpınar, G.A., Peukert, W. &amp; Clark, T. J Mol Model (2010) 16: 1427. doi:10.1007/s00894-010-0650-7</Reference>
                 <DOI>http://dx.doi.org/10.1007/s00894-010-0650-7</DOI>
             </Compact>
         </Data-Source>
@@ -53,7 +54,7 @@
         </AtomType-DFF>
     </AtomTypes>
     <BondPotential>
-        <BondPotential-Harmonic K-units="kcal/mol/&#197;^2" R0-units="&#197;" formula="K*(R-R0)^2" style="Harmonic">
+        <BondPotential-Harmonic K-units="kcal/mol/Å^2" R0-units="Å" formula="K*(R-R0)^2" style="Harmonic">
             <Bond>
                 <AT-1>C</AT-1>
                 <AT-2>N</AT-2>
@@ -151,7 +152,7 @@
         </ImproperPotential-CHARMM>
     </ImproperPotential>
     <NonBondPotential>
-        <NonBondPotential-LJ Combining-Rule="Lorentz-Berthelot" epsilon-units="kcal/mol" formula="4*epsilon*[(sigma/R)^12-(sigma/R)^6]" sigma-units="&#197;" style="Lennard-Jones (12-6)">
+        <NonBondPotential-LJ Combining-Rule="Lorentz-Berthelot" epsilon-units="kcal/mol" formula="4*epsilon*[(sigma/R)^12-(sigma/R)^6]" sigma-units="Å" style="Lennard-Jones (12-6)">
             <NonBond>
                 <AtomType>C</AtomType>
                 <epsilon>0.086</epsilon>

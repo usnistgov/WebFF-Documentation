@@ -26,37 +26,7 @@
         </WebFF-Scribe>
     </Force-Field-Header>
     <AtomTypes>
-        <AtomType-DFF Nomenclature="DFF" comment="this is a comment">
-            <AtomType AtomicMass="0.260713659997" AtomicNumber="1" Description="description" Element="element">
-                <AtomType-Name>Name1</AtomType-Name>
-                <Substructure>substructure1</Substructure>
-                <Atom-Attributes>
-                    <Attribute>
-                        <Index>1</Index>
-                        <Coordination>coordination1</Coordination>
-                        <Ringsize>ringsize1</Ringsize>
-                        <Aromatic>1</Aromatic>
-                        <FormalCharge>0.932613600012</FormalCharge>
-                        <ElementsAllowed>elements_allowed1</ElementsAllowed>
-                        <ElementsDisallowed>elements_disallowed1</ElementsDisallowed>
-                    </Attribute>
-                </Atom-Attributes>
-            </AtomType>
-            <AtomType AtomicMass="0.434533162048" AtomicNumber="2" Description="description" Element="element">
-                <AtomType-Name>Name2</AtomType-Name>
-                <Substructure>substructure2</Substructure>
-                <Atom-Attributes>
-                    <Attribute>
-                        <Index>2</Index>
-                        <Coordination>coordination2</Coordination>
-                        <Ringsize>ringsize2</Ringsize>
-                        <Aromatic>0</Aromatic>
-                        <FormalCharge>0.0205550796344</FormalCharge>
-                        <ElementsAllowed>elements_allowed2</ElementsAllowed>
-                        <ElementsDisallowed>elements_disallowed2</ElementsDisallowed>
-                    </Attribute>
-                </Atom-Attributes>
-            </AtomType>
+        <AtomType-DFF Nomenclature="DFF" comment="Å">
             <AtomType AtomicMass="0.282361400443" AtomicNumber="3" Description="description" Element="element">
                 <AtomType-Name>Name3</AtomType-Name>
                 <Substructure>substructure3</Substructure>
@@ -114,66 +84,6 @@
                         <FormalCharge>0.565318446279</FormalCharge>
                         <ElementsAllowed>elements_allowed6</ElementsAllowed>
                         <ElementsDisallowed>elements_disallowed6</ElementsDisallowed>
-                    </Attribute>
-                </Atom-Attributes>
-            </AtomType>
-            <AtomType AtomicMass="0.265722078901" AtomicNumber="7" Description="description" Element="element">
-                <AtomType-Name>Name7</AtomType-Name>
-                <Substructure>substructure7</Substructure>
-                <Atom-Attributes>
-                    <Attribute>
-                        <Index>7</Index>
-                        <Coordination>coordination7</Coordination>
-                        <Ringsize>ringsize7</Ringsize>
-                        <Aromatic>1</Aromatic>
-                        <FormalCharge>0.235891991477</FormalCharge>
-                        <ElementsAllowed>elements_allowed7</ElementsAllowed>
-                        <ElementsDisallowed>elements_disallowed7</ElementsDisallowed>
-                    </Attribute>
-                </Atom-Attributes>
-            </AtomType>
-            <AtomType AtomicMass="0.515073497565" AtomicNumber="8" Description="description" Element="element">
-                <AtomType-Name>Name8</AtomType-Name>
-                <Substructure>substructure8</Substructure>
-                <Atom-Attributes>
-                    <Attribute>
-                        <Index>8</Index>
-                        <Coordination>coordination8</Coordination>
-                        <Ringsize>ringsize8</Ringsize>
-                        <Aromatic>0</Aromatic>
-                        <FormalCharge>0.109618704768</FormalCharge>
-                        <ElementsAllowed>elements_allowed8</ElementsAllowed>
-                        <ElementsDisallowed>elements_disallowed8</ElementsDisallowed>
-                    </Attribute>
-                </Atom-Attributes>
-            </AtomType>
-            <AtomType AtomicMass="0.135909978842" AtomicNumber="9" Description="description" Element="element">
-                <AtomType-Name>Name9</AtomType-Name>
-                <Substructure>substructure9</Substructure>
-                <Atom-Attributes>
-                    <Attribute>
-                        <Index>9</Index>
-                        <Coordination>coordination9</Coordination>
-                        <Ringsize>ringsize9</Ringsize>
-                        <Aromatic>1</Aromatic>
-                        <FormalCharge>0.605531879814</FormalCharge>
-                        <ElementsAllowed>elements_allowed9</ElementsAllowed>
-                        <ElementsDisallowed>elements_disallowed9</ElementsDisallowed>
-                    </Attribute>
-                </Atom-Attributes>
-            </AtomType>
-            <AtomType AtomicMass="0.201395863714" AtomicNumber="10" Description="description" Element="element">
-                <AtomType-Name>Name10</AtomType-Name>
-                <Substructure>substructure10</Substructure>
-                <Atom-Attributes>
-                    <Attribute>
-                        <Index>10</Index>
-                        <Coordination>coordination10</Coordination>
-                        <Ringsize>ringsize10</Ringsize>
-                        <Aromatic>0</Aromatic>
-                        <FormalCharge>0.378330080952</FormalCharge>
-                        <ElementsAllowed>elements_allowed10</ElementsAllowed>
-                        <ElementsDisallowed>elements_disallowed10</ElementsDisallowed>
                     </Attribute>
                 </Atom-Attributes>
             </AtomType>
