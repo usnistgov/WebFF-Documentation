@@ -7,12 +7,12 @@ Welcome to WebFF's documentation!
 =================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
+   Introduction
 
-
-Indices and tables
+Indices and Tables
 ==================
 
 * :ref:`genindex`
