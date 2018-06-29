@@ -1,4 +1,4 @@
-.. Introduction:
+.. _Introduction:
 
 .. image:: ../images/MGI-Logo_2_0.jpg
     :width: 200px
@@ -10,7 +10,7 @@ WebFF
 WebFF is an open and extensible molecular dynamics force-field (FF) repository, designed to support the Materials Genome Initiative (MGI) for organic and related soft materials. The repository is built using the NIST **Materials Data Curation System (MDCS)** [`link <https://mgi.nist.gov/materials-data-curation-system>`__] which supports ontology based database descriptions using XML schema. 
 
 Features
-========
+--------
 
 Here are some of the main features of WebFF:
 
@@ -35,7 +35,7 @@ Here are some of the main features of WebFF:
 
 
 External Resources
-==================
+------------------
 .. csv-table:: 
 
     WebFF-Documentation, |GitHub-WebFFDocs|

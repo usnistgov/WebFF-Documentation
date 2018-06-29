@@ -7,10 +7,34 @@ Welcome to WebFF's documentation!
 =================================
 
 .. toctree::
-   :maxdepth: 1
-   :caption: Contents:
+   :maxdepth: 2
+   :numbered:
+   :caption: User Documentation
 
    Introduction
+   DataSearch
+   DataCuration
+   XMLSchemas
+   Python
+   Contribute
+   Publications
+   Contacts
+   Legal
+
+.. toctree::
+   :maxdepth: 2
+   :numbered:
+   :caption: Reference
+
+   Reference/Metadata
+   Reference/AtomTypes
+   Reference/Bonds
+   Reference/Angles
+   Reference/Dihedrals
+   Reference/Impropers
+   Reference/NonBond
+   Reference/Tables
+   Reference/SoftPotentials
 
 Indices and Tables
 ==================
