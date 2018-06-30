@@ -6,6 +6,10 @@
 Welcome to WebFF's documentation!
 =================================
 
+----
+
+
+
 .. toctree::
    :maxdepth: 2
    :numbered:
@@ -15,7 +19,7 @@ Welcome to WebFF's documentation!
    DataSearch
    DataCuration
    XMLSchemas
-   Python
+   PythonTools
    Contribute
    Publications
    Contacts
@@ -32,9 +36,11 @@ Welcome to WebFF's documentation!
    Reference/Angles
    Reference/Dihedrals
    Reference/Impropers
+   Reference/Cross
    Reference/NonBond
    Reference/Tables
-   Reference/SoftPotentials
+   Reference/Mesoscale
+
 
 Indices and Tables
 ==================

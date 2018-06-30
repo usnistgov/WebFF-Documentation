@@ -9,6 +9,7 @@ WebFF
 
 WebFF is an open and extensible molecular dynamics force-field (FF) repository, designed to support the Materials Genome Initiative (MGI) for organic and related soft materials. The repository is built using the NIST **Materials Data Curation System (MDCS)** [`link <https://mgi.nist.gov/materials-data-curation-system>`__] which supports ontology based database descriptions using XML schema. 
 
+
 Features
 --------
 
@@ -31,7 +32,6 @@ Here are some of the main features of WebFF:
     1. The main source or the data cited in the XML metadata 
 
     2. Frederick R. Phelan Jr., Kathleen Mullin, Pablo Garcia Beltran, Gule Teri, Priyanshu Mishra and Huai Sun, "The Web Force-Field (WebFF) Project: Ontology Based Force-Field Repository for Soft Materials at Multiple Levels of Granularity," in preparation (2018).
-
 
 
 External Resources
