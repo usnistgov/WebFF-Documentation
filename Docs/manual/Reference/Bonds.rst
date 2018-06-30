@@ -10,6 +10,5 @@ Bond Potentials
    Bond-FENE
    Bond-Harmonic
    Bond-Morse
-   Bond-Quartic
-   Bond-Table
+   Bond-Tabular
 
