@@ -70,9 +70,13 @@ References
 
 1. `LAMMPS FENE Bond Potential`_.
 
-2. `Liquid XML Studio`_.
+2. `GROMACS FENE Bond Potential`_ page 74.
+
+3. `Liquid XML Studio`_.
 
 .. _LAMMPS FENE Bond Potential: http://lammps.sandia.gov/doc/bond_fene.html
+
+.. _GROMACS FENE Bond Potential: http://manual.gromacs.org/documentation/2016.3/manual-2016.3.pdf
 
 .. _Liquid XML Studio: https://www.liquid-technologies.com/
 

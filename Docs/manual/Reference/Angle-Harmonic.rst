@@ -30,19 +30,19 @@ The XML schema for the **harmonic angle potential** has the following representa
 
 The relationship between the equation symbols and XML schema notations are given by:
 
-+-----------------------------------------+-----------------------+---------------------+
-| **Parameter Definition**                | **Equation Symbol**   | **Schema Notation** |
-+-----------------------------------------+-----------------------+---------------------+
-| Atom type of atom [i]                   | :math:`i`             | AT-1                |
-+-----------------------------------------+-----------------------+---------------------+
-| Atom type of atom [j]                   | :math:`j`             | AT-2                |
-+-----------------------------------------+-----------------------+---------------------+
-| Atom type of atom [k]                   | :math:`k`             | AT-3                |
-+-----------------------------------------+-----------------------+---------------------+
-| Bond coefficient for atoms [i,j]        | :math:`K_{a,ijk}`     | Ka                  |
-+-----------------------------------------+-----------------------+---------------------+
-| Equilibrium bond length for atoms [i,j] | :math:`\theta_{0,ij}` | Theta0              |
-+-----------------------------------------+-----------------------+---------------------+
++-------------------------------------+------------------------+---------------------+
+| **Parameter Definition**            | **Equation Symbol**    | **Schema Notation** |
++-------------------------------------+------------------------+---------------------+
+| Atom type of atom [i]               | :math:`i`              | AT-1                |
++-------------------------------------+------------------------+---------------------+
+| Atom type of atom [j]               | :math:`j`              | AT-2                |
++-------------------------------------+------------------------+---------------------+
+| Atom type of atom [k]               | :math:`k`              | AT-3                |
++-------------------------------------+------------------------+---------------------+
+| Angle coefficient for atoms [i,j,k] | :math:`K_{a,ijk}`      | Ka                  |
++-------------------------------------+------------------------+---------------------+
+| Equilibrium angle for atoms [i,j,k] | :math:`\theta_{0,ijk}` | Theta0              |
++-------------------------------------+------------------------+---------------------+
 
 The general attributes (describing the entire data set) are given by:
 
@@ -50,7 +50,7 @@ The general attributes (describing the entire data set) are given by:
 **General Attributes** **Cardinality** **Value/Definition**               
 ---------------------- --------------- ---------------------------------------
 style                  Fixed           Harmonic
-formula                Fixed           Ka*(Theta_Theta0)^2
+formula                Fixed           Ka*(Theta-Theta0)^2
 Ka-units               Required        Enumerations specified in schema
 Theta0-units           Required        Enumerations specified in schema
 ====================== =============== =======================================
@@ -73,13 +73,13 @@ References
 
 1. `LAMMPS Harmonic Angle Potential`_.
 
-2. `GROMACS Harmonic Bond Potential`_ page 74.
+2. `GROMACS Harmonic Angle Potential`_ page 74.
 
 3. `Liquid XML Studio`_.
 
 .. _LAMMPS Harmonic Angle Potential: http://lammps.sandia.gov/doc/angle_harmonic.html
 
-.. _GROMACS Harmonic Bond Potential: http://manual.gromacs.org/documentation/2016.3/manual-2016.3.pdf
+.. _GROMACS Harmonic Angle Potential: http://manual.gromacs.org/documentation/2016.3/manual-2016.3.pdf
 
 .. _Liquid XML Studio: https://www.liquid-technologies.com/
 

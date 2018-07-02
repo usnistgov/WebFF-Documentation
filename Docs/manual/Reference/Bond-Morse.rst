@@ -74,9 +74,13 @@ References
 
 1. `LAMMPS Morse Bond Potential`_.
 
-2. `Liquid XML Studio`_.
+2. `GROMACS Morse Bond Potential`_ page 72.
+
+3. `Liquid XML Studio`_.
 
 .. _LAMMPS Morse Bond Potential: http://lammps.sandia.gov/doc/bond_morse.html
+
+.. _GROMACS Morse Bond Potential: http://manual.gromacs.org/documentation/2016.3/manual-2016.3.pdf
 
 .. _Liquid XML Studio: https://www.liquid-technologies.com/
 
