@@ -10,7 +10,7 @@ The **harmonic bond potential** has the functional form:
 
 :math:`E = {K_{ij}} \cdot \left( {{R_{ij}} - {R_{0,ij}}} \right)`
 
-The parameters and units are given by:
+The force-field parameters for this potential and units are given by:
 
 =================== ======================================= ===============
 **Equation Symbol** **Parameter Definition**                **Units**
@@ -28,7 +28,7 @@ The XML schema for the **harmonic bond potential** has the following representat
 .. image:: ../../images/Bond-Harmonic.png
 	:align: left
 
-The parameter definitions and the relationship between the equation symbols and XML schema notations are given by:
+The relationship between the equation symbols and XML schema notations are given by:
 
 +-----------------------------------------+---------------------+---------------------+
 | **Parameter Definition**                | **Equation Symbol** | **Schema Notation** |
@@ -42,6 +42,28 @@ The parameter definitions and the relationship between the equation symbols and 
 | Equilibrium bond length for atoms [i,j] | :math:`R_{0,ij}`    | R0                  |
 +-----------------------------------------+---------------------+---------------------+
 
+The general attributes (describing the entire data set) are given by:
+
+====================== =============== =======================================
+**General Attributes** **Cardinality** **Value/Definition**               
+---------------------- --------------- ---------------------------------------
+style                  Fixed           Harmonic
+formula                Fixed           K*(R_R0)^2
+K-units                Required        Enumerations specified in schema
+R0-units               Required        Enumerations specified in schema
+====================== =============== =======================================
+
+The specific attributes (attached to each set of parameters) are given by:
+
+======================= =============== =======================================
+**Specific Attributes** **Cardinality** **Value/Definition**               
+----------------------- --------------- ---------------------------------------
+comment                 Optional        Comment attached to parameter set
+version                 Optional        Version number of parameter set
+reference               Optional        Reference attached to parameter set 
+======================= =============== =======================================
+
+Note that an XML document will be rejected from being entered into the WebFF database if a required attribute is left unspecified. 
 
 References
 ----------
