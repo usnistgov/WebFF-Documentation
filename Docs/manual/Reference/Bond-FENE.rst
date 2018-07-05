@@ -8,7 +8,7 @@ Functional Form
 
 The **FENE bond potential** has the functional form:
 
-:math:`E=-\frac{{{K}_{ij}}}{2}R_{0,ij}^{2}\ln \left[ 1-{{\left( \frac{{{R}_{ij}}}{{{R}_{0,ij}}} \right)}^{2}} \right]`
+:math:`E=-\frac{1}{2}{{K}_{ij}}R_{0,ij}^{2}\ln \left[ 1-{{\left( \frac{{{R}_{ij}}}{{{R}_{0,ij}}} \right)}^{2}} \right]`
 
 The force-field parameters for this potential and units are given by:
 
