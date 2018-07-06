@@ -7,7 +7,7 @@ Cross Potentials
    :maxdepth: 1
 
    Cross-BondBond
-   Cross-Bond13
+   Cross-BondBond13
    Cross-AngleAngle
    Cross-BondAngle
    Cross-MiddleBondTorsion

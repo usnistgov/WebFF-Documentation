@@ -1,31 +1,34 @@
-.. _Bond-FENE:
+.. _Cross-BondBond:
 
-FENE Bond  
-=============
+Cross: Bond-Bond  
+================
 
 Functional Form
 ---------------
 
-The **FENE bond potential** has the functional form:
+The **Bond-Bond Cross Potential** has the functional form:
 
-:math:`E=-\frac{1}{2}{{K}_{ij}}R_{0,ij}^{2}\ln \left[ 1-{{\left( \frac{{{R}_{ij}}}{{{R}_{0,ij}}} \right)}^{2}} \right]`
+:math:`E = {M} \cdot \left( {{R_{ij}} - {R_{1,ij}}} \right) \cdot \left( {{R_{jk}} - {R_{2,jk}}} \right)`
+
+This term is part of the Class2 Angle Potential style. 
 
 The force-field parameters for this potential and units are given by:
 
-=================== ======================================= ===============
-**Equation Symbol** **Parameter Definition**                **Units**
-------------------- --------------------------------------- ---------------
-:math:`K_{ij}`      Bond coefficient for atoms [i,j]        energy/length^2
-:math:`R_{0,ij}`    Equilibrium bond length for atoms [i,j] length
-=================== ======================================= ===============
+=================== ======================================================= ===============
+**Equation Symbol** **Parameter Definition**                                **Units**
+------------------- ------------------------------------------------------- ---------------
+:math:`M`           Cross potential bond coefficient for atoms [i,j,k]      energy/length^2
+:math:`R_{1}`       Equilibrium bond length for atoms [i,j]                 length
+:math:`R_{2}`       Equilibrium bond length for atoms [j,k]                 length
+=================== ======================================================= ===============
 
 
 XML Schema
 ----------
 
-The XML schema for the **FENE bond potential** has the following representation (design mode representation using Liquid XML Studio):
+The XML schema for the **Bond-Bond Cross Potential** has the following representation (design mode representation using Liquid XML Studio):
 
-.. image:: ../../images/Bond-FENE.png
+.. image:: ../../images/Cross-BondBond.png
 	:align: left
 
 The relationship between the equation symbols and XML schema notations are given by:
@@ -37,9 +40,13 @@ The relationship between the equation symbols and XML schema notations are given
 +-----------------------------------------+---------------------+---------------------+
 | Atom type of atom [j]                   | :math:`j`           | AT-2                |
 +-----------------------------------------+---------------------+---------------------+
-| Bond coefficient for atoms [i,j]        | :math:`K_{ij}`      | K                   |
+| Atom type of atom [k]                   | :math:`k`           | AT-3                |
 +-----------------------------------------+---------------------+---------------------+
-| Equilibrium bond length for atoms [i,j] | :math:`R_{0,ij}`    | R0                  |
+| Bond coefficient for atoms [i,j]        | :math:`M`           | M                   |
++-----------------------------------------+---------------------+---------------------+
+| Equilibrium bond length for atoms [i,j] | :math:`R_{1,ij}`    | R1                  |
++-----------------------------------------+---------------------+---------------------+
+| Equilibrium bond length for atoms [j,k] | :math:`R_{2,jk}`    | R2                  |
 +-----------------------------------------+---------------------+---------------------+
 
 The general attributes (describing the entire data set) are given by:
@@ -47,10 +54,10 @@ The general attributes (describing the entire data set) are given by:
 ====================== =============== =======================================
 **General Attributes** **Cardinality** **Value/Definition**               
 ---------------------- --------------- ---------------------------------------
-style                  Fixed           FENE
-formula                Fixed           -[(K*R0^2)/2]*ln[1-(R/R0)^2]
-K-units                Required        Enumerations specified in schema
-R0-units               Required        Enumerations specified in schema
+style                  Fixed           Harmonic
+formula                Fixed           M*(Rij-R1)*(Rjk-R2)
+M-units                Required        Enumerations specified in schema
+Ri-units               Required        Enumerations specified in schema
 ====================== =============== =======================================
 
 The specific attributes (attached to each set of parameters) are given by:
@@ -68,15 +75,15 @@ Note that an XML document will be rejected from being entered into the WebFF dat
 References
 ----------
 
-1. `LAMMPS FENE Bond Potential`_.
+1. `LAMMPS Class2 Angle Potential w/ Bond-Bond Cross term`_.
 
-2. `GROMACS FENE Bond Potential`_ page 74.
+2. `SklogWiki COMPASS Force-Field`_.
 
 3. `Liquid XML Studio`_.
 
-.. _LAMMPS FENE Bond Potential: http://lammps.sandia.gov/doc/bond_fene.html
+.. _LAMMPS Class2 Angle Potential w/ Bond-Bond Cross term: http://lammps.sandia.gov/doc/angle_class2.html
 
-.. _GROMACS FENE Bond Potential: http://manual.gromacs.org/documentation/2016.3/manual-2016.3.pdf
+.. _SklogWiki COMPASS Force-Field: http://www.sklogwiki.org/SklogWiki/index.php/COMPASS_force_field
 
 .. _Liquid XML Studio: https://www.liquid-technologies.com/
 
