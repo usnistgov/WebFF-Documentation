@@ -394,7 +394,7 @@
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
-                                    <xs:attribute name="Kd-units" type="Energy-Units" />
+                                    <xs:attribute name="Kd-units" type="Dihedral-Quadratic-Kd-Units" />
                                     <xs:attribute name="Phi0-units">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">

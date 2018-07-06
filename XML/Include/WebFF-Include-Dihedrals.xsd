@@ -116,4 +116,16 @@
             <xs:enumeration value="kJ" />
         </xs:restriction>
     </xs:simpleType>
+    <xs:simpleType name="Dihedral-Kd-Units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kcal/mol" />
+            <xs:enumeration value="kJ/mol" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Dihedral-Quadratic-Kd-Units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kcal/mol/degree^2" />
+            <xs:enumeration value="kJ/mol/degree^2" />
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>

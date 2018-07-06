@@ -368,7 +368,7 @@
                                             <xs:restriction base="Conventions" />
                                         </xs:simpleType>
                                     </xs:attribute>
-                                    <xs:attribute name="Kd-units" type="Energy-Units" />
+                                    <xs:attribute name="Kd-units" type="Dihedral-Kd-Units" />
                                     <xs:attribute name="Phi0-units">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
@@ -419,7 +419,7 @@
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
-                                    <xs:attribute name="Kd-units" type="Energy-Units" />
+                                    <xs:attribute name="Kd-units" type="Dihedral-Kd-Units" />
                                 </xs:complexType>
                             </xs:element>
                             <xs:element name="DihedralPotential-Quadratic">
@@ -463,7 +463,7 @@
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
-                                    <xs:attribute name="Kd-units" type="Energy-Units" />
+                                    <xs:attribute name="Kd-units" type="Dihedral-Quadratic-Kd-Units" />
                                     <xs:attribute name="Phi0-units">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
