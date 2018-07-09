@@ -1,32 +1,31 @@
-.. _Dihedral-Harmonic:
+.. _Improper-COS2:
 
-Harmonic Dihedral  
+COS2 Improper  
 ==================
 
 Functional Form
 ---------------
 
-The **harmonic dihedral potential** has the functional form:
+The **COS2 improper potential** has the functional form:
 
-:math:`E={{K}_{d,ijkl}}\left[ 1+{{N}_{s}}\cos \left( N{{\phi }_{ijkl}} \right) \right]`
+:math:`E={{K}_{i,ijkl}}{{\cos }^{2}}\left( {{\chi }_{ijkl}}-{{\chi }_{0,ijkl}} \right)`
 
 The force-field parameters for this potential and units are given by:
 
-====================== ======================================== ================
-**Equation Symbol**      **Parameter Definition**                 **Units**
----------------------- ---------------------------------------- ----------------
-:math:`K_{d,ijkl}`     Dihedral coefficient for atoms [i,j,k,l] energy
-:math:`N_{s}`          Determines sign convention (-1 or +1)    N/A
-:math:`N`              Nonnegative integer coefficient          N/A
-====================== ======================================== ================
+====================== ============================================== ================
+**Equation Symbol**      **Parameter Definition**                     **Units**
+---------------------- ---------------------------------------------- ----------------
+:math:`K_{i,ijkl}`     Improper coefficient for atoms [i,j,k,l]       energy
+:math:`\chi_{0,ijkl}`  Equilibrium improper angle for atoms [i,j,k,l] degrees
+====================== ============================================== ================
 
 
 XML Schema
 ----------
 
-The XML schema for the **harmonic dihedral potential** has the following representation (design mode representation using Liquid XML Studio):
+The XML schema for the **COS2 improper potential** has the following representation (design mode representation using Liquid XML Studio):
 
-.. image:: ../../images/Dihedral-Harmonic.png
+.. image:: ../../images/Improper-COS2.png
 	:align: left
 
 The relationship between the equation symbols and XML schema notations are given by:
@@ -42,11 +41,9 @@ The relationship between the equation symbols and XML schema notations are given
 +------------------------------------------------+-----------------------+---------------------+
 | Atom type of atom [l]                          | :math:`l`             | AT-4                |
 +------------------------------------------------+-----------------------+---------------------+
-| Dihedral coefficient for atoms [i,j,k,l]       | :math:`K_{d,ijkl}`    | Kd                  |
+| Improper coefficient for atoms [i,j,k,l]       | :math:`K_{i,ijkl}`    | Ki                  |
 +------------------------------------------------+-----------------------+---------------------+
-| Determines sign convention (-1 or +1)          | :math:`N_{S}`         | Ns                  |
-+------------------------------------------------+-----------------------+---------------------+
-| Nonnegative integer coefficient                | :math:`N`             | N                   |
+| Equilibrium improper angle for atoms [i,j,k,l] | :math:`\chi_{0,ijkl}` | Chi0                |
 +------------------------------------------------+-----------------------+---------------------+
 
 The general attributes (describing the entire data set) are given by:
@@ -54,10 +51,11 @@ The general attributes (describing the entire data set) are given by:
 ====================== =============== =======================================
 **General Attributes** **Cardinality** **Value**               
 ---------------------- --------------- ---------------------------------------
-style                  Fixed           Harmonic
-formula                Fixed           Kd*[1+Ns*cos(N*Phi)]
+style                  Fixed           cosine/squared
+formula                Fixed           Ki*cos(Chi-Chi0)^2
 convention             Optional        Enumerations specified in schema
-Kd-units               Required        Enumerations specified in schema
+Ki-units               Required        Enumerations specified in schema
+Chi0-units             Required        Enumerations specified in schema
 ====================== =============== =======================================
 
 The specific attributes (attached to each set of parameters) are given by:
@@ -75,11 +73,11 @@ Note that an XML document will be rejected from being entered into the WebFF dat
 References
 ----------
 
-1. `LAMMPS Harmonic Dihedral Potential`_.
+1. `LAMMPS COS2 Improper Potential`_.
 
 2. `Liquid XML Studio`_.
 
-.. _LAMMPS Harmonic Dihedral Potential: http://lammps.sandia.gov/doc/dihedral_harmonic.html
+.. _LAMMPS COS2 Improper Potential: http://lammps.sandia.gov/doc/improper_cossq.html
 
 .. _Liquid XML Studio: https://www.liquid-technologies.com/
 

@@ -52,7 +52,7 @@ The general attributes (describing the entire data set) are given by:
 **General Attributes** **Cardinality** **Value**               
 ---------------------- --------------- ---------------------------------------
 style                  Fixed           Harmonic
-formula                Fixed           Ki*(Chi_Chi0)^2
+formula                Fixed           Ki*(Chi-Chi0)^2
 convention             Optional        Enumerations specified in schema
 Ki-units               Required        Enumerations specified in schema
 Chi0-units             Required        Enumerations specified in schema

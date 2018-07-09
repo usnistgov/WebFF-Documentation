@@ -1,32 +1,33 @@
-.. _Dihedral-Harmonic:
+.. _Improper-Fourier:
 
-Harmonic Dihedral  
+Fourier Improper  
 ==================
 
 Functional Form
 ---------------
 
-The **harmonic dihedral potential** has the functional form:
+The **Fourier improper potential** has the functional form:
 
-:math:`E={{K}_{d,ijkl}}\left[ 1+{{N}_{s}}\cos \left( N{{\phi }_{ijkl}} \right) \right]`
+:math:`E={{K}_{i,ijkl}}\left[ {{C}_{0,ijkl}}+{{C}_{1,ijkl}}\cos \left( {{\omega }_{ijkl}} \right)+{{C}_{2,ijkl}}\cos \left( 2{{\omega }_{ijkl}} \right) \right]`
 
 The force-field parameters for this potential and units are given by:
 
-====================== ======================================== ================
-**Equation Symbol**      **Parameter Definition**                 **Units**
----------------------- ---------------------------------------- ----------------
-:math:`K_{d,ijkl}`     Dihedral coefficient for atoms [i,j,k,l] energy
-:math:`N_{s}`          Determines sign convention (-1 or +1)    N/A
-:math:`N`              Nonnegative integer coefficient          N/A
-====================== ======================================== ================
+====================== ============================================== ================
+**Equation Symbol**      **Parameter Definition**                     **Units**
+---------------------- ---------------------------------------------- ----------------
+:math:`K_{i,ijkl}`     Improper coefficient for atoms [i,j,k,l]       energy
+:math:`C_{0,ijkl}`     Real coefficient for cosine term #0 [i,j,k,l]  N/A
+:math:`C_{1,ijkl}`     Real coefficient for cosine term #1 [i,j,k,l]  N/A
+:math:`C_{2,ijkl}`     Real coefficient for cosine term #2 [i,j,k,l]  N/A
+====================== ============================================== ================
 
 
 XML Schema
 ----------
 
-The XML schema for the **harmonic dihedral potential** has the following representation (design mode representation using Liquid XML Studio):
+The XML schema for the **Fourier improper potential** has the following representation (design mode representation using Liquid XML Studio):
 
-.. image:: ../../images/Dihedral-Harmonic.png
+.. image:: ../../images/Improper-Fourier.png
 	:align: left
 
 The relationship between the equation symbols and XML schema notations are given by:
@@ -42,11 +43,13 @@ The relationship between the equation symbols and XML schema notations are given
 +------------------------------------------------+-----------------------+---------------------+
 | Atom type of atom [l]                          | :math:`l`             | AT-4                |
 +------------------------------------------------+-----------------------+---------------------+
-| Dihedral coefficient for atoms [i,j,k,l]       | :math:`K_{d,ijkl}`    | Kd                  |
+| Improper coefficient for atoms [i,j,k,l]       | :math:`K_{i,ijkl}`    | Ki                  |
 +------------------------------------------------+-----------------------+---------------------+
-| Determines sign convention (-1 or +1)          | :math:`N_{S}`         | Ns                  |
+| Real coefficient for cosine term #0 [i,j,k,l]  | :math:`C_{0,ijkl}`    | C0                  |
 +------------------------------------------------+-----------------------+---------------------+
-| Nonnegative integer coefficient                | :math:`N`             | N                   |
+| Real coefficient for cosine term #1 [i,j,k,l]  | :math:`C_{1,ijkl}`    | C1                  |
++------------------------------------------------+-----------------------+---------------------+
+| Real coefficient for cosine term #2 [i,j,k,l]  | :math:`C_{2,ijkl}`    | C2                  |
 +------------------------------------------------+-----------------------+---------------------+
 
 The general attributes (describing the entire data set) are given by:
@@ -54,10 +57,10 @@ The general attributes (describing the entire data set) are given by:
 ====================== =============== =======================================
 **General Attributes** **Cardinality** **Value**               
 ---------------------- --------------- ---------------------------------------
-style                  Fixed           Harmonic
-formula                Fixed           Kd*[1+Ns*cos(N*Phi)]
+style                  Fixed           Fourier
+formula                Fixed           Ki*[C0+C1*cos(w)+C2*cos(2*w)]
 convention             Optional        Enumerations specified in schema
-Kd-units               Required        Enumerations specified in schema
+Ki-units               Required        Enumerations specified in schema
 ====================== =============== =======================================
 
 The specific attributes (attached to each set of parameters) are given by:
@@ -75,11 +78,11 @@ Note that an XML document will be rejected from being entered into the WebFF dat
 References
 ----------
 
-1. `LAMMPS Harmonic Dihedral Potential`_.
+1. `LAMMPS Fourier Improper Potential`_.
 
 2. `Liquid XML Studio`_.
 
-.. _LAMMPS Harmonic Dihedral Potential: http://lammps.sandia.gov/doc/dihedral_harmonic.html
+.. _LAMMPS Fourier Improper Potential: http://lammps.sandia.gov/doc/improper_fourier.html
 
 .. _Liquid XML Studio: https://www.liquid-technologies.com/
 
