@@ -702,7 +702,7 @@
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:attribute>
-                  <xs:attribute name="Ki-units" type="Energy-Units" />
+                  <xs:attribute name="Ki-units" type="Improper-Ki-Units" />
                 </xs:complexType>
               </xs:element>
               <xs:element name="ImproperPotential-COS2">
@@ -746,7 +746,7 @@
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:attribute>
-                  <xs:attribute name="Ki-units" type="Energy-Units" />
+                  <xs:attribute name="Ki-units" type="Improper-Ki-Units" />
                   <xs:attribute name="Chi0-units">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
@@ -797,7 +797,7 @@
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:attribute>
-                  <xs:attribute name="Ki-units" type="Energy-Units-Scaled" />
+                  <xs:attribute name="Ki-units" type="Harmonic-Ki-Units" />
                   <xs:attribute name="Chi0-units">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
@@ -848,7 +848,7 @@
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:attribute>
-                  <xs:attribute name="Ki-units" type="Energy-Units" />
+                  <xs:attribute name="Ki-units" type="Improper-Ki-Units" />
                 </xs:complexType>
               </xs:element>
               <xs:element name="ImproperPotential-Umbrella">
@@ -892,7 +892,7 @@
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:attribute>
-                  <xs:attribute name="Ki-units" type="Energy-Units" />
+                  <xs:attribute name="Ki-units" type="Improper-Ki-Units" />
                   <xs:attribute name="w0-units">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
@@ -990,10 +990,7 @@
                   </xs:attribute>
                   <xs:attribute name="Ki-units">
                     <xs:simpleType>
-                      <xs:restriction base="xs:string">
-                        <xs:enumeration value="kcal/radians^2" />
-                        <xs:enumeration value="kJ/radians^2" />
-                      </xs:restriction>
+                      <xs:restriction base="Improper-Ki-Units" />
                     </xs:simpleType>
                   </xs:attribute>
                   <xs:attribute name="Chi0-units">
@@ -2595,4 +2592,18 @@
       <xs:element name="Chi0" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
+  <xs:simpleType name="Harmonic-Ki-Units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol/degrees^2" />
+      <xs:enumeration value="kcal/mol/radians^2" />
+      <xs:enumeration value="kJ/mol/degrees^2" />
+      <xs:enumeration value="kJ/mol/radians^2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Improper-Ki-Units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/mol" />
+      <xs:enumeration value="kJ/mol" />
+    </xs:restriction>
+  </xs:simpleType>
 </xs:schema>

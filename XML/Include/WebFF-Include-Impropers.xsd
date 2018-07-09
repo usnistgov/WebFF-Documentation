@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:complexType name="Improper-CVFF">
         <xs:sequence>
@@ -81,4 +82,18 @@
             <xs:element name="Chi0" type="xs:float" />
         </xs:sequence>
     </xs:complexType>
+    <xs:simpleType name="Harmonic-Ki-Units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kcal/mol/degrees^2" />
+            <xs:enumeration value="kcal/mol/radians^2" />
+            <xs:enumeration value="kJ/mol/degrees^2" />
+            <xs:enumeration value="kJ/mol/radians^2" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Improper-Ki-Units">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kcal/mol" />
+            <xs:enumeration value="kJ/mol" />
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>
