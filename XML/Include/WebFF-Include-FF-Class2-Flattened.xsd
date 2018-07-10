@@ -1193,6 +1193,13 @@
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:attribute>
+                  <xs:attribute name="Theta0-units">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="degrees" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
                 </xs:complexType>
               </xs:element>
               <xs:element name="CrossPotential-MiddleBondTorsion">
