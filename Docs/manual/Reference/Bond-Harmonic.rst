@@ -8,7 +8,7 @@ Functional Form
 
 The **harmonic bond potential** has the functional form:
 
-:math:`E = {K_{ij}} \cdot \left( {{R_{ij}} - {R_{0,ij}}} \right)`
+:math:`E = {K_{ij}} \cdot \left( {{R_{ij}} - {R_{0,ij}}} \right)^{2}`
 
 The force-field parameters for this potential and units are given by:
 
