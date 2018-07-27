@@ -18,14 +18,14 @@ The force-field parameters for this potential and units are given by:
 ======================== ======================================================= ===============
 **Equation Symbol**      **Parameter Definition**                                **Units**
 ------------------------ ------------------------------------------------------- ---------------
-:math:`D_{1,ijkl}`       Cosine term coefficient for atoms [i,j,k,l]             energy/angle
-:math:`D_{2,ijkl}`       Cosine term coefficient for atoms [i,j,k,l]             energy/angle
-:math:`D_{3,ijkl}`       Cosine term coefficient for atoms [i,j,k,l]             energy/angle
-:math:`E_{1,ijkl}`       Cosine term coefficient for atoms [i,j,k,l]             energy/angle
-:math:`E_{2,ijkl}`       Cosine term coefficient for atoms [i,j,k,l]             energy/angle
-:math:`E_{3,ijkl}`       Cosine term coefficient for atoms [i,j,k,l]             energy/angle
-:math:`{\theta}_{1,ijk}` Equilibrium bond length for atoms [i,j]                 angle
-:math:`{\theta}_{2,jkl}` Equilibrium bond length for atoms [k,l]                 angle
+:math:`D_{1,ijkl}`       Cosine term coefficient for atoms [i,j,k,l]             energy/degrees
+:math:`D_{2,ijkl}`       Cosine term coefficient for atoms [i,j,k,l]             energy/degrees
+:math:`D_{3,ijkl}`       Cosine term coefficient for atoms [i,j,k,l]             energy/degrees
+:math:`E_{1,ijkl}`       Cosine term coefficient for atoms [i,j,k,l]             energy/degrees
+:math:`E_{2,ijkl}`       Cosine term coefficient for atoms [i,j,k,l]             energy/degrees
+:math:`E_{3,ijkl}`       Cosine term coefficient for atoms [i,j,k,l]             energy/degrees
+:math:`{\theta}_{1,ijk}` Equilibrium bond length for atoms [i,j]                 degrees
+:math:`{\theta}_{2,jkl}` Equilibrium bond length for atoms [k,l]                 degrees
 ======================== ======================================================= ===============
 
 
