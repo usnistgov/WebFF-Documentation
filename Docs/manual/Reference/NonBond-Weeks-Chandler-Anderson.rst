@@ -1,14 +1,14 @@
-.. _NonBond-LJ96:
+.. _NonBond-Weeks-Chandler-Anderson:
 
-Non-Bond Lennard-Jones (9-6 Form) Potential  
-================================
+Non-Bond Weeks-Chandler-Anderson Potential  
+==========================================
 
 Functional Form
 ---------------
 
-The **non-bond Lennard-Jones (9-6 Form) potential** has the functional form:
+The **non-bond Weeks-Chandler-Anderson potential** has the functional form:
 
-:math:`E=\epsilon \left[ 2{{\left( \frac{{\sigma}}{{{R}_{ij}}} \right)}^{9}}-3{{\left( \frac{{\sigma}}{{{R}_{ij}}} \right)}^{6}} \right]`
+:math:`E=4\epsilon \left[ {{\left( \frac{{{\sigma }_{ij}}}{{{R}_{ij}}} \right)}^{12}}-{{\left( \frac{{{\sigma }_{ij}}}{{{R}_{ij}}} \right)}^{12}}+\frac{1}{4} \right]`
 
 The force-field parameters for this potential and units are given by:
 
@@ -23,9 +23,9 @@ The force-field parameters for this potential and units are given by:
 XML Schema
 ----------
 
-The XML schema for the **non-bond Lennard-Jones (9-6 Form) potential** has the following representation (design mode representation using Liquid XML Studio):
+The XML schema for the **non-bond Weeks-Chandler-Anderson potential** has the following representation (design mode representation using Liquid XML Studio):
 
-.. image:: ../../images/NonBond-LJ96.png
+.. image:: ../../images/NonBond-Weeks-Chandler-Anderson.png
 	:align: left
 
 The relationship between the equation symbols and XML schema notations are given by:
@@ -33,24 +33,27 @@ The relationship between the equation symbols and XML schema notations are given
 +-------------------------------------------+---------------------+---------------------+
 | **Parameter Definition**                  | **Equation Symbol** | **Schema Notation** |
 +-------------------------------------------+---------------------+---------------------+
-| Atom type of atom [i]                     | (implicit)          | AtomType            |
+| Atom type of atom [i]                     | (implicit)          | AT-1                |
++-------------------------------------------+---------------------+---------------------+
+| Atom type of atom [j]                     | (implicit)          | AT-2                |
 +-------------------------------------------+---------------------+---------------------+
 | Potential well depth for atom [i]         | :math:`\epsilon`    | epsilon             |
 +-------------------------------------------+---------------------+---------------------+
 | Interatomic cut-off distance for atom [i] | :math:`\sigma`      | sigma               |
 +-------------------------------------------+---------------------+---------------------+
+| Interatomic cut-off distance for atom [i] | N/A                 | r_cut               |
++-------------------------------------------+---------------------+---------------------+
 
 The general attributes (describing the entire data set) are given by:
 
-====================== =============== =======================================
+====================== =============== ================================================
 **General Attributes** **Cardinality** **Value/Definition**               
----------------------- --------------- ---------------------------------------
-style                  Fixed           Lennard-Jones (9-6) [Class 2 Form]
-formula                Fixed           epsilon*[2*(sigma/R)^9-3*(sigma/R)^6]
+---------------------- --------------- ------------------------------------------------
+style                  Fixed           Weeks-Chandler-Anderson
+formula                Fixed           4*epsilon*[((sigma/R)^-12)-((sigma/R)^-6)+(1/4)]
 epsilon-units          Required        Enumerations specified in schema
 sigma-units            Required        Enumerations specified in schema
-Combining-Rule         Required        Combining rule for mixed atom types
-====================== =============== =======================================
+====================== =============== ================================================
 
 The specific attributes (attached to each set of parameters) are given by:
 
@@ -67,11 +70,11 @@ Note that an XML document will be rejected from being entered into the WebFF dat
 References
 ----------
 
-1. `LAMMPS Lennard-Jones Pair Potential Class 2`_.
+1. `The Journal of Chemical Physics 54, 5237 (1971); doi 10.1063/1.1674820`_.
 
 2. `Liquid XML Studio`_.
 
-.. _LAMMPS Lennard-Jones Pair Potential Class 2: https://lammps.sandia.gov/doc/pair_class2.html
+.. _The Journal of Chemical Physics 54, 5237 (1971); doi 10.1063/1.1674820: https://aip.scitation.org/doi/pdf/10.1063/1.1674820/
 
 .. _Liquid XML Studio: https://www.liquid-technologies.com/
 

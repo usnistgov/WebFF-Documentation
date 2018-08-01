@@ -1,31 +1,31 @@
-.. _NonBond-LJ96:
+.. _NonBond-Soft:
 
-Non-Bond Lennard-Jones (9-6 Form) Potential  
+Non-Bond Soft Potential  
 ================================
 
 Functional Form
 ---------------
 
-The **non-bond Lennard-Jones (9-6 Form) potential** has the functional form:
+The **non-bond Soft potential** has the functional form:
 
-:math:`E=\epsilon \left[ 2{{\left( \frac{{\sigma}}{{{R}_{ij}}} \right)}^{9}}-3{{\left( \frac{{\sigma}}{{{R}_{ij}}} \right)}^{6}} \right]`
+:math:`E={{A}_{ij}}\left[ 1+\cos \left( \frac{\pi R}{{{R}_{c}}} \right) \right]`
 
 The force-field parameters for this potential and units are given by:
 
 =================== ============================================= ===============
 **Equation Symbol** **Parameter Definition**                      **Units**
 ------------------- --------------------------------------------- ---------------
-:math:`\epsilon`    Potential well depth for atom [i]             energy/mol
-:math:`\sigma`      Interatomic cut-off distance for atom [i]     length
+:math:`A_{ij}`      Coefficient for atom [i]                      energy/mol
+:math:`R_{c}`       Interatomic cut-off distance for atom [i]     length
 =================== ============================================= ===============
 
 
 XML Schema
 ----------
 
-The XML schema for the **non-bond Lennard-Jones (9-6 Form) potential** has the following representation (design mode representation using Liquid XML Studio):
+The XML schema for the **non-bond Soft potential** has the following representation (design mode representation using Liquid XML Studio):
 
-.. image:: ../../images/NonBond-LJ96.png
+.. image:: ../../images/NonBond-Soft.png
 	:align: left
 
 The relationship between the equation symbols and XML schema notations are given by:
@@ -33,11 +33,13 @@ The relationship between the equation symbols and XML schema notations are given
 +-------------------------------------------+---------------------+---------------------+
 | **Parameter Definition**                  | **Equation Symbol** | **Schema Notation** |
 +-------------------------------------------+---------------------+---------------------+
-| Atom type of atom [i]                     | (implicit)          | AtomType            |
+| Atom type of atom [i]                     | (implicit)          | AT1                 |
 +-------------------------------------------+---------------------+---------------------+
-| Potential well depth for atom [i]         | :math:`\epsilon`    | epsilon             |
+| Atom type of atom [j]                     | (implicit)          | AT2                 |
 +-------------------------------------------+---------------------+---------------------+
-| Interatomic cut-off distance for atom [i] | :math:`\sigma`      | sigma               |
+| Coefficient for atom [i]                  | :math:`A_{ij}`      | a_ij                |
++-------------------------------------------+---------------------+---------------------+
+| Interatomic cut-off distance for atom [i] | :math:`R_{c}`       | r_c                 |
 +-------------------------------------------+---------------------+---------------------+
 
 The general attributes (describing the entire data set) are given by:
@@ -45,11 +47,10 @@ The general attributes (describing the entire data set) are given by:
 ====================== =============== =======================================
 **General Attributes** **Cardinality** **Value/Definition**               
 ---------------------- --------------- ---------------------------------------
-style                  Fixed           Lennard-Jones (9-6) [Class 2 Form]
-formula                Fixed           epsilon*[2*(sigma/R)^9-3*(sigma/R)^6]
-epsilon-units          Required        Enumerations specified in schema
-sigma-units            Required        Enumerations specified in schema
-Combining-Rule         Required        Combining rule for mixed atom types
+style                  Fixed           Soft
+formula                Fixed           a_ij*[1+cos(pi*r/r_c)]
+a_ij-units             Required        Enumerations specified in schema
+r_c-units              Required        Enumerations specified in schema
 ====================== =============== =======================================
 
 The specific attributes (attached to each set of parameters) are given by:
@@ -67,11 +68,11 @@ Note that an XML document will be rejected from being entered into the WebFF dat
 References
 ----------
 
-1. `LAMMPS Lennard-Jones Pair Potential Class 2`_.
+1. `LAMMPS Soft Pair Potential`_.
 
 2. `Liquid XML Studio`_.
 
-.. _LAMMPS Lennard-Jones Pair Potential Class 2: https://lammps.sandia.gov/doc/pair_class2.html
+.. _LAMMPS Soft Pair Potential: https://lammps.sandia.gov/doc/pair_soft.html
 
 .. _Liquid XML Studio: https://www.liquid-technologies.com/
 

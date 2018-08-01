@@ -73,7 +73,7 @@ References
 
 3. `Liquid XML Studio`_.
 
-.. _LAMMPS Harmonic Bond Potential: https://lammps.sandia.gov/doc/pair_lj.html
+.. _LAMMPS Lennard-Jones Pair Potential: https://lammps.sandia.gov/doc/pair_lj.html
 
 .. _GROMACS Harmonic Bond Potential: http://manual.gromacs.org/documentation/2016.3/manual-2016.3.pdf
 
