@@ -1,4 +1,4 @@
-.. AtomTypes:
+.. _AtomTypes:
 
 Atom Types
 ==========
@@ -8,5 +8,6 @@ Atom Types
 
    AtomType-ATDL
    AtomType-DFF
+   AtomType-Generic
    AtomType-Coarse-Grained
 
