@@ -64,6 +64,6 @@ References
 
 2. `Liquid XML Studio`_.
 
-.. _DFF User Manual: http://webdff.com/Product.php
+.. _DFF User Manual: http://www.aeontechnology.com/Product_DFF.php
 
 .. _Liquid XML Studio: https://www.liquid-technologies.com/

@@ -1,24 +1,24 @@
-.. _AtomType-ATDL:
+.. _AtomType-Coarse-Grained:
 
-Atom Type - ATDL
-================
+Atom Type - Coarse Grained
+==========================
 
 XML Schema
 ----------
 
-The XML schema for the **Atom Type - ATDL** has the following representation (design mode representation using Liquid XML Studio):
+The XML schema for the **Atom Type - Coarse Grained** has the following representation (design mode representation using Liquid XML Studio):
 
-.. image:: ../../images/AtomType-ATDL.png
+.. image:: ../../images/AtomType-Coarse-Grained.png
 	:align: left
 
 The general attributes (describing the entire set of atoms) are given by:
 
-====================== =============== =======================================
+====================== =============== ===========================================
 **General Attributes** **Cardinality** **Value/Definition**               
----------------------- --------------- ---------------------------------------
-Nomenclature           Fixed           ATDL
+---------------------- --------------- -------------------------------------------
+Nomenclature           Fixed           SMILES | SMARTS | CurlySMILES | SLN | InChi
 comment                Optional        Comment attached to set of atoms
-====================== =============== =======================================
+====================== =============== ===========================================
 
 The specific attributes (attached to each atom description) are given by:
 
@@ -26,9 +26,8 @@ The specific attributes (attached to each atom description) are given by:
 **Specific Attributes** **Cardinality** **Value/Definition**               
 ----------------------- --------------- ---------------------------------------
 Description             Required        Description of the atom
-Element                 Required        Corresponding element of the atom
-AtomicNumber            Required        Corresponding atomic number of the atom
-AtomicMass              Required        Corresponding atomic mass of the atom
+AtomicMass-CG           Required        Corresponding atomic mass of the atom
+AtomicMSize-CG          Required        Corresponding atomic size of the atom
 ======================= =============== =======================================
 
 The specific elements (contained within each instance of the atom template) are given by:
@@ -36,10 +35,8 @@ The specific elements (contained within each instance of the atom template) are 
 ======================= =============== =======================================
 **Specific Elements**   **Cardinality** **Value/Definition**               
 ----------------------- --------------- ---------------------------------------
-AtomType-Name           Required        Atom type name
-Atom                    Required        Atom
-BondedAtoms             Required        Bonded atoms
-FormalCharge            Optional        Formal charge of the atom
+CG-Name                 Required        Atom type name
+CG_chemistry            Optional        Chemistry of the atom
 ======================= =============== =======================================
 
 Note that an XML document will be rejected from being entered into the WebFF database if a required attribute is left unspecified.
@@ -47,10 +44,6 @@ Note that an XML document will be rejected from being entered into the WebFF dat
 References
 ----------
 
-1. `Atom-type description language`_.
-
-2. `Liquid XML Studio`_.
-
-.. _Atom-type description language: https://link.springer.com/article/10.1007/s00214-002-0402-6
+1. `Liquid XML Studio`_.
 
 .. _Liquid XML Studio: https://www.liquid-technologies.com/
