@@ -7,7 +7,7 @@
             <xs:element name="Force-Field-Protocol" type="FF-Protocol-List" />
             <xs:element name="Force-Field-Schema-Version" type="VersionString" />
             <xs:element name="Force-Field-Name" type="xs:string" />
-            <xs:element name="Description" type="xs:string" />
+            <xs:element xmlns:ns0="http://mdcs.ns" name="Description" type="xs:string" ns0:_mod_mdcs_="/registry/description" />
             <xs:element name="Force-Field-Units">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">

@@ -12,21 +12,23 @@ def ReadExcelMetaData_Header(sheet, sub_root):
 
     
     field1 = ET.SubElement(sub_root, "Force-Field-Protocol").text = xls_sheet.row_values(4)[1]
-    field2 = ET.SubElement(sub_root, "Force-Field-Name").text = xls_sheet.row_values(5)[1]
-    field1 = ET.SubElement(sub_root, "Description").text = xls_sheet.row_values(6)[1]
+    field5 = ET.SubElement(sub_root, "Force-Field-Schema-Version").text = xls_sheet.row_values(5)[1]
+    field2 = ET.SubElement(sub_root, "Force-Field-Name").text = xls_sheet.row_values(6)[1]
+    field1 = ET.SubElement(sub_root, "Description").text = xls_sheet.row_values(7)[1]
+    field6 = ET.SubElement(sub_root, "Force-Field-Units").text = xls_sheet.row_values(8)[1]
     field3 = ET.SubElement(sub_root, "Data-Source")
     field4 = ET.SubElement(field3, "Compact")
-    field1 = ET.SubElement(field4, "Reference").text = xls_sheet.row_values(7)[1]
+    field1 = ET.SubElement(field4, "Reference").text = xls_sheet.row_values(9)[1]
     if (len(xls_sheet.row_values(8)[1]) != 0) :
-	field2 = ET.SubElement(field4, "DOI").text = xls_sheet.row_values(8)[1]
+	field2 = ET.SubElement(field4, "DOI").text = xls_sheet.row_values(10)[1]
     if (len(xls_sheet.row_values(9)[1]) != 0) :
-    	field1 = ET.SubElement(field4, "URL").text = xls_sheet.row_values(9)[1]
+    	field1 = ET.SubElement(field4, "URL").text = xls_sheet.row_values(11)[1]
     if (len(xls_sheet.row_values(10)[1]) != 0) :
-    	field2 = ET.SubElement(field4, "Notes").text = xls_sheet.row_values(10)[1]
-    field4 = ET.SubElement(sub_root, "Data-Source-Scribe")
-    field1 = ET.SubElement(field4, "Name").text = xls_sheet.row_values(11)[1]
-    field1 = ET.SubElement(field4, "Affiliation").text = xls_sheet.row_values(12)[1]
-    field2 = ET.SubElement(field4, "email").text = xls_sheet.row_values(13)[1]
+    	field2 = ET.SubElement(field4, "Notes").text = xls_sheet.row_values(12)[1]
+    field4 = ET.SubElement(sub_root, "Data-Source-Contact")
+    field1 = ET.SubElement(field4, "Name").text = xls_sheet.row_values(13)[1]
+    field1 = ET.SubElement(field4, "Affiliation").text = xls_sheet.row_values(14)[1]
+    field2 = ET.SubElement(field4, "email").text = xls_sheet.row_values(15)[1]
 
 def ReadExcelMetaData_Keywords(sheet, root): 
     ''' Reads in the Keywords sheet from the webFF excel template. 
