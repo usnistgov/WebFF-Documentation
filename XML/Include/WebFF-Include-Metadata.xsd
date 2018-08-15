@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
+<!--Created with Liquid XML 2015 Developer Bundle Edition 13.2.3.6018 (http://www.liquid-technologies.com)-->
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation=".\WebFF-Include.xsd" />
     <xs:complexType name="Force-Field-Metadata">
         <xs:sequence>
             <xs:element name="Force-Field-Protocol" type="FF-Protocol-List" />
+            <xs:element name="Force-Field-Schema-Version" type="VersionString" />
             <xs:element name="Force-Field-Name" type="xs:string" />
             <xs:element name="Description" type="xs:string" />
+            <xs:element name="Force-Field-Units">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Mixed-English" />
+                        <xs:enumeration value="Mixed-Metric" />
+                        <xs:enumeration value="Reduced" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Keywords" type="Keywords-List" maxOccurs="unbounded" />
+            <xs:element name="Additional-Keywords" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
             <xs:element name="Data-Source">
                 <xs:complexType>
                     <xs:choice>
@@ -17,10 +30,7 @@
                     </xs:choice>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="Data-Source-Scribe" type="Contact" />
-            <xs:element name="Keywords" type="Keywords-List" maxOccurs="unbounded" />
-            <xs:element name="Additional-Keywords" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
-            <xs:element name="WebFF-Scribe" type="Contact" />
+            <xs:element name="Data-Source-Contact" type="Contact" />
             <xs:element name="Additional-References" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                     <xs:choice>
@@ -33,17 +43,15 @@
                 </xs:complexType>
             </xs:element>
             <xs:element name="Attachment" type="AttachmentType" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="WebFF-Scribe" type="Contact" />
         </xs:sequence>
     </xs:complexType>
     <xs:simpleType name="FF-Protocol-List">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Atomistic - Class I" />
             <xs:enumeration value="Atomistic - Class II" />
-            <xs:enumeration value="Atomistic - Bond Order" />
-            <xs:enumeration value="Atomistic - ReaxFF" />
-            <xs:enumeration value="Atomistic - Polarizable" />
-            <xs:enumeration value="Atomistic - United Atom (UA)" />
-            <xs:enumeration value="Coarse-Grained - Pseudo-Atom" />
+            <xs:enumeration value="Atomistic - Water Model" />
+            <xs:enumeration value="Coarse-Grained" />
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="Keywords-List">
@@ -191,7 +199,7 @@
     </xs:complexType>
     <xs:complexType name="AttachmentType">
         <xs:sequence>
-            <xs:element name="File-Description" type="xs:string" xmlns:ns0="http://mdcs.ns" ns0:_mod_mdcs_="/registry/description"/>
+            <xs:element xmlns:ns0="http://mdcs.ns" name="File-Description" type="xs:string" ns0:_mod_mdcs_="/registry/description" />
             <xs:element xmlns:ns0="http://mdcs.ns" name="Reference" type="xs:anyURI" ns0:_mod_mdcs_="/curator/blob-hoster" />
         </xs:sequence>
     </xs:complexType>
