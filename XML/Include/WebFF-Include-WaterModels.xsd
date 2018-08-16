@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--Created with Liquid XML 2015 Developer Bundle Edition 13.2.3.6018 (http://www.liquid-technologies.com)-->
+<!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:complexType name="Water-3Site-Rigid">
         <xs:sequence>
@@ -11,7 +11,7 @@
             <xs:element name="q_H" type="xs:float" />
             <xs:element name="EnergyDispersion" type="xs:float" minOccurs="0" maxOccurs="1" />
             <xs:element name="sigma" type="xs:float" minOccurs="0" />
-            <xs:element name="epsilon_red" type="xs:float" minOccurs="0" />
+            <xs:element name="epsilon" type="xs:float" minOccurs="0" />
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="Water-4Site-Rigid">
@@ -24,7 +24,7 @@
             <xs:element name="q_M" type="xs:float" />
             <xs:element name="q_H" type="xs:float" />
             <xs:element name="sigma" type="xs:float" minOccurs="0" />
-            <xs:element name="epsilon_red" type="xs:float" minOccurs="0" />
+            <xs:element name="epsilon" type="xs:float" minOccurs="0" />
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="Water-5Site-Rigid">
@@ -40,7 +40,7 @@
             <xs:element name="R-L" type="xs:float" />
             <xs:element name="R-ij" type="xs:float" />
             <xs:element name="sigma" type="xs:float" minOccurs="0" />
-            <xs:element name="epsilon_red" type="xs:float" minOccurs="0" />
+            <xs:element name="epsilon" type="xs:float" minOccurs="0" />
         </xs:sequence>
     </xs:complexType>
 </xs:schema>
