@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML 2015 Developer Bundle Edition 13.2.3.6018 (http://www.liquid-technologies.com)-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="..\Include\WebFF-Include.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include-Metadata.xsd" />
+    <xs:include schemaLocation="..\Include\WebFF-Include-WaterModels.xsd" />
+    <xs:element name="FF-WaterModels">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Force-Field-Header" type="Force-Field-Metadata" />
+                <xs:element name="WaterModel">
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="WaterModel-3Site-Rigid">
+                                <xs:complexType>
+                                    <xs:complexContent>
+                                        <xs:extension base="Water-3Site-Rigid">
+                                            <xs:attribute name="name">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string" />
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="formula">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="E=E_q+E_LJ" />
+                                                        <xs:enumeration value="E=E_q+E_LJ+E_pol" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="Version" type="VersionString" use="optional" />
+                                            <xs:attribute name="Comment" type="xs:string" use="optional" />
+                                            <xs:attribute name="ROH-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="Å" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="Theta_HOH-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="degrees" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="A-Units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="x10^-3 (kcal*Å^12)/mol" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="B-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="(kcal*Å^6)/mol" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="sigma-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="Å" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="epsilon_red-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="Kelvin" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                        </xs:extension>
+                                    </xs:complexContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="WaterModel-4Site-Rigid">
+                                <xs:complexType>
+                                    <xs:complexContent>
+                                        <xs:extension base="Water-4Site-Rigid">
+                                            <xs:attribute name="name">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string" />
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="formula">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="E=E_q+E_LJ" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="Version" type="VersionString" use="optional" />
+                                            <xs:attribute name="Comment" type="xs:string" use="optional" />
+                                            <xs:attribute name="A-Units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="x10^-3, (kcal*Å^12)/mol" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="B-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="(kcal*Å^6)/mol" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="R-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="Å" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="Theta_HOH-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="degrees" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="sigma-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="Å" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="epsilon_red-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="Kelvin" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                        </xs:extension>
+                                    </xs:complexContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="WaterModel-5Site-Rigid">
+                                <xs:complexType>
+                                    <xs:complexContent>
+                                        <xs:extension base="Water-5Site-Rigid">
+                                            <xs:attribute name="name">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string" />
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="formula">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="E=E_q+E_LJ" />
+                                                        <xs:enumeration value="E=S(R_ij)*E_q+E_LJ" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="Version" type="VersionString" use="optional" />
+                                            <xs:attribute name="Comment" type="xs:string" use="optional" />
+                                            <xs:attribute name="A-Units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="x10^-3, (kcal*Å^12)/mol" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="B-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="(kcal*Å^6)/mol" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="R-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="Å" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="Theta-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="degrees" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="sigma-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="Å" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                            <xs:attribute name="epsilon_red-units">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="Kelvin" />
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:attribute>
+                                        </xs:extension>
+                                    </xs:complexContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
