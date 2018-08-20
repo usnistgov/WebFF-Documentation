@@ -2471,101 +2471,148 @@ def ReadExcelAutoEquivalenceTable(sheet, sub_root):
                     continue
                 elif col_num == attribute_idx3:
                     continue
-                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)   
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+   
 #WaterModel function
+
 def ReadExcelWaterPotential_3Site(sheet, sub_root): 
     ''' Reads in the WaterPotential-3Site sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
 
-    AA=xls_sheet.row_values(2)[1]
-    BB=xls_sheet.row_values(3)[1]
-    CC=xls_sheet.row_values(4)[1]
-    DD=xls_sheet.row_values(5)[1]
-    EE=xls_sheet.row_values(2)[1]
-    FF=xls_sheet.row_values(3)[1]
-    GG=xls_sheet.row_values(4)[1]
-    HH=xls_sheet.row_values(5)[1]
+    # Description attributes:
 
-    sheet = ET.SubElement(sub_root, "WaterPotential-3Site", {'Style':AA, 'Formula':BB, 'R-units':CC, 'Theta_HOH-units':DD, 'A-units':EE, 'B-units':FF, 'Version':GG, 'Comment': HH})
+    AA=xls_sheet.row_values(2)[1] # name
+    BB=xls_sheet.row_values(3)[1] # formula
+    CC=xls_sheet.row_values(4)[1] # version
+    DD=xls_sheet.row_values(5)[1] # comment
+    EE=xls_sheet.row_values(6)[1] # R_OH-units
+    FF=xls_sheet.row_values(7)[1] # Theta_HOH-units
+    GG=xls_sheet.row_values(8)[1] # A-units
+    HH=xls_sheet.row_values(9)[1] # B-units
+    II=xls_sheet.row_values(10)[1] # sigma-units
+    JJ=xls_sheet.row_values(11)[1] # epsilon-units
 
-    # Row 11 is the header
-    xls_sheet_header = map(str, xls_sheet.row_values(11))
+    sheet = ET.SubElement(sub_root, "WaterModel-3Site-Rigid", {'name':AA, 'formula':BB, 'version':CC, 'comment':DD, 'R_OH-units':EE, 'Theta_HOH-units':FF, 'A-units':GG, 'B-units':HH, 'sigma-units':II, 'epsilon-units':JJ})
 
-    for row_num in xrange(12, xls_sheet.nrows):
-        cur_entry = sub_root
-        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
-            if "\u2212" in repr(cell_value): 
-                a = repr(cell_value)
-                c = a.encode("utf-8", "ignore")
-                b = (c.replace("u'\u2212", '-'))
-                b = (b.replace("'", ''))
-                cell_value = float (b)
-            if (len(str(cell_value))!=0) :
-                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    # Data elements
+
+    AA=xls_sheet.row_values(14)[0] # R_OH
+    ET.SubElement(sub_root, "R_OH").text = AA
+    BB=xls_sheet.row_values(14)[1] # Theta_HOH
+    ET.SubElement(sub_root, "Theta_HOH").text = BB
+    CC=xls_sheet.row_values(14)[2] # A
+    ET.SubElement(sub_root, "A").text = CC
+    DD=xls_sheet.row_values(14)[3] # B
+    ET.SubElement(sub_root, "B").text = DD
+    EE=xls_sheet.row_values(14)[4] # q_O
+    ET.SubElement(sub_root, "q_O").text = EE
+    FF=xls_sheet.row_values(14)[5] # q_H
+    ET.SubElement(sub_root, "q_H").text = FF
+    if len(xls_sheet.row_values(14)[6]) != 0: # EnergyDispersion
+        GG=xls_sheet.row_values(14)[6]
+        ET.SubElement(sub_root, "EnergyDispersion").text = GG
+    if len(xls_sheet.row_values(14)[7]) != 0: # sigma
+        HH=xls_sheet.row_values(14)[7]
+        ET.SubElement(sub_root, "sigma").text = HH
+    if len(xls_sheet.row_values(14)[8]) != 0: # epsilon
+        II=xls_sheet.row_values(14)[8]
+        ET.SubElement(sub_root, "epsilon").text = II
+
 def ReadExcelWaterPotential_4Site(sheet, sub_root): 
     ''' Reads in the WaterPotential-4Site sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
 
-    AA=xls_sheet.row_values(2)[1]
-    BB=xls_sheet.row_values(3)[1]
-    CC=xls_sheet.row_values(4)[1]
-    DD=xls_sheet.row_values(5)[1]
-    EE=xls_sheet.row_values(2)[1]
-    FF=xls_sheet.row_values(3)[1]
-    GG=xls_sheet.row_values(4)[1]
-    HH=xls_sheet.row_values(5)[1]
+    # Description attributes:
 
-    sheet = ET.SubElement(sub_root, "WaterPotential-4Site", {'Style':AA, 'Formula':BB, 'R-units':CC, 'Theta_HOH-units':DD, 'A-units':EE, 'B-units':FF, 'Version':GG, 'Comment': HH})
+    AA=xls_sheet.row_values(2)[1] # name
+    BB=xls_sheet.row_values(3)[1] # formula
+    CC=xls_sheet.row_values(4)[1] # version
+    DD=xls_sheet.row_values(5)[1] # comment
+    EE=xls_sheet.row_values(6)[1] # A-units
+    FF=xls_sheet.row_values(7)[1] # B-units
+    GG=xls_sheet.row_values(8)[1] # R-units
+    HH=xls_sheet.row_values(9)[1] # Theta_HOH-units
+    II=xls_sheet.row_values(10)[1] # sigma-units
+    JJ=xls_sheet.row_values(11)[1] # epsilon-units
 
-    # Row 11 is the header
-    xls_sheet_header = map(str, xls_sheet.row_values(11))
+    sheet = ET.SubElement(sub_root, "WaterModel-4Site-Rigid", {'name':AA, 'formula':BB, 'version':CC, 'comment':DD, 'A-units':EE, 'B-units':FF, 'R-units':GG, 'Theta_HOH-units':HH, 'sigma-units':II, 'epsilon-units':JJ})
 
-    for row_num in xrange(12, xls_sheet.nrows):
-        cur_entry = sub_root
-        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
-            if "\u2212" in repr(cell_value): 
-                a = repr(cell_value)
-                c = a.encode("utf-8", "ignore")
-                b = (c.replace("u'\u2212", '-'))
-                b = (b.replace("'", ''))
-                cell_value = float (b)
-            if (len(str(cell_value))!=0) :
-                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    # Data elements
+
+    AA=xls_sheet.row_values(14)[0] # R_OH
+    ET.SubElement(sub_root, "R_OH").text = AA
+    BB=xls_sheet.row_values(14)[1] # R_OM
+    ET.SubElement(sub_root, "R_OM").text = BB
+    CC=xls_sheet.row_values(14)[2] # Theta_HOH
+    ET.SubElement(sub_root, "Theta_HOH").text = CC
+    DD=xls_sheet.row_values(14)[3] # A
+    ET.SubElement(sub_root, "A").text = DD
+    EE=xls_sheet.row_values(14)[4] # B
+    ET.SubElement(sub_root, "B").text = EE
+    FF=xls_sheet.row_values(14)[5] # q_M
+    ET.SubElement(sub_root, "q_M").text = FF
+    GG=xls_sheet.row_values(14)[6] # q_H
+    ET.SubElement(sub_root, "q_H").text = GG
+    if len(xls_sheet.row_values(14)[7]) != 0: # sigma
+        HH=xls_sheet.row_values(14)[7]
+        ET.SubElement(sub_root, "sigma").text = HH
+    if len(xls_sheet.row_values(14)[8]) != 0: # epsilon
+        II=xls_sheet.row_values(14)[8]
+        ET.SubElement(sub_root, "epsilon").text = II
+
 def ReadExcelWaterPotential_5Site(sheet, sub_root): 
     ''' Reads in the WaterPotential-5Site sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
 
-    AA=xls_sheet.row_values(2)[1]
-    BB=xls_sheet.row_values(3)[1]
-    CC=xls_sheet.row_values(4)[1]
-    DD=xls_sheet.row_values(5)[1]
-    EE=xls_sheet.row_values(2)[1]
-    FF=xls_sheet.row_values(3)[1]
-    GG=xls_sheet.row_values(4)[1]
-    HH=xls_sheet.row_values(5)[1]
+    # Description attributes:
 
-    sheet = ET.SubElement(sub_root, "WaterPotential-5Site", {'Style':AA, 'Formula':BB, 'R-units':CC, 'Theta_HOH-units':DD, 'A-units':EE, 'B-units':FF, 'Version':GG, 'Comment': HH})
+    AA=xls_sheet.row_values(2)[1] # name
+    BB=xls_sheet.row_values(3)[1] # formula
+    CC=xls_sheet.row_values(4)[1] # version
+    DD=xls_sheet.row_values(5)[1] # comment
+    EE=xls_sheet.row_values(6)[1] # A-units
+    FF=xls_sheet.row_values(7)[1] # B-units
+    GG=xls_sheet.row_values(8)[1] # R-units
+    HH=xls_sheet.row_values(9)[1] # Theta-units
+    II=xls_sheet.row_values(10)[1] # sigma-units
+    JJ=xls_sheet.row_values(11)[1] # epsilon-units
 
-    # Row 11 is the header
-    xls_sheet_header = map(str, xls_sheet.row_values(11))
+    sheet = ET.SubElement(sub_root, "WaterModel-5Site-Rigid", {'name':AA, 'formula':BB, 'version':CC, 'comment':DD, 'A-units':EE, 'B-units':FF, 'R-units':GG, 'Theta-units':HH, 'sigma-units':II, 'epsilon-units':JJ})
 
-    for row_num in xrange(12, xls_sheet.nrows):
-        cur_entry = sub_root
-        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
-            if "\u2212" in repr(cell_value): 
-                a = repr(cell_value)
-                c = a.encode("utf-8", "ignore")
-                b = (c.replace("u'\u2212", '-'))
-                b = (b.replace("'", ''))
-                cell_value = float (b)
-            if (len(str(cell_value))!=0) :
-                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    # Data elements
+
+    AA=xls_sheet.row_values(14)[0] # R_OH
+    ET.SubElement(sub_root, "R_OH").text = AA
+    BB=xls_sheet.row_values(14)[1] # R_OL
+    ET.SubElement(sub_root, "R_OL").text = BB
+    CC=xls_sheet.row_values(14)[2] # Theta_HOH
+    ET.SubElement(sub_root, "Theta_HOH").text = CC
+    DD=xls_sheet.row_values(14)[3] # Theta_LOL
+    ET.SubElement(sub_root, "Theta_LOL").text = DD
+    EE=xls_sheet.row_values(14)[4] # A
+    ET.SubElement(sub_root, "A").text = EE
+    FF=xls_sheet.row_values(14)[5] # B
+    ET.SubElement(sub_root, "B").text = FF
+    GG=xls_sheet.row_values(14)[6] # q_L
+    ET.SubElement(sub_root, "q_L").text = GG
+    HH=xls_sheet.row_values(14)[7] # q_H
+    ET.SubElement(sub_root, "q_L").text = HH
+    II=xls_sheet.row_values(14)[8] # R-L
+    ET.SubElement(sub_root, "R-L").text = II
+    JJ=xls_sheet.row_values(14)[9] # R-ij
+    ET.SubElement(sub_root, "R-ij").text = JJ
+    if len(xls_sheet.row_values(14)[10]) != 0: # sigma
+        KK=xls_sheet.row_values(14)[10]
+        ET.SubElement(sub_root, "sigma").text = KK
+    if len(xls_sheet.row_values(14)[11]) != 0: # epsilon
+        LL=xls_sheet.row_values(14)[11]
+        ET.SubElement(sub_root, "epsilon").text = LL
 
 # The set of functions below (all begin with XMLToParams) convert XML to .params format
 def XMLToParamsNonBondPotential_LJ_Rmin(root, output_file):

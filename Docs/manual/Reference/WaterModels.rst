@@ -1,4 +1,4 @@
-.. WaterModels:
+.. _WaterModels:
 
 Water Models
 ============

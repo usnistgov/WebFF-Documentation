@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="FF-WaterModels">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Force-Field-Header" type="Force-Field-Metadata" />
+        <xs:element name="WaterModel">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="WaterModel-3Site-Rigid">
+                <xs:complexType>
+                  <xs:complexContent>
+                    <xs:extension base="Water-3Site-Rigid">
+                      <xs:attribute name="name">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string" />
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="formula">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="E=E_q+E_LJ" />
+                            <xs:enumeration value="E=E_q+E_LJ+E_pol" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="version" type="VersionString" use="optional" />
+                      <xs:attribute name="comment" type="xs:string" use="optional" />
+                      <xs:attribute name="R_OH-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="Å" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="Theta_HOH-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="degrees" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="A-Units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="x10^-3 (kcal*Å^12)/mol" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="B-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="(kcal*Å^6)/mol" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="sigma-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="Å" />
+                            <xs:enumeration value="nm" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="epsilon-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="kJ/mol" />
+                            <xs:enumeration value="kcal/mol" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                    </xs:extension>
+                  </xs:complexContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="WaterModel-4Site-Rigid">
+                <xs:complexType>
+                  <xs:complexContent>
+                    <xs:extension base="Water-4Site-Rigid">
+                      <xs:attribute name="name">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string" />
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="formula">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="E=E_q+E_LJ" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="version" type="VersionString" use="optional" />
+                      <xs:attribute name="comment" type="xs:string" use="optional" />
+                      <xs:attribute name="A-Units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="x10^-3, (kcal*Å^12)/mol" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="B-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="(kcal*Å^6)/mol" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="R-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="Å" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="Theta_HOH-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="degrees" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="sigma-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="Å" />
+                            <xs:enumeration value="nm" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="epsilon-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="kJ/mol" />
+                            <xs:enumeration value="kcal/mol" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                    </xs:extension>
+                  </xs:complexContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="WaterModel-5Site-Rigid">
+                <xs:complexType>
+                  <xs:complexContent>
+                    <xs:extension base="Water-5Site-Rigid">
+                      <xs:attribute name="name">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string" />
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="formula">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="E=E_q+E_LJ" />
+                            <xs:enumeration value="E=S(R_ij)*E_q+E_LJ" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="version" type="VersionString" use="optional" />
+                      <xs:attribute name="comment" type="xs:string" use="optional" />
+                      <xs:attribute name="A-Units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="x10^-3, (kcal*Å^12)/mol" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="B-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="(kcal*Å^6)/mol" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="R-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="Å" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="Theta-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="degrees" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="sigma-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="Å" />
+                            <xs:enumeration value="nm" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                      <xs:attribute name="epsilon-units">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="kJ/mol" />
+                            <xs:enumeration value="kcal/mol" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
+                    </xs:extension>
+                  </xs:complexContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\XML\Include\WebFF-Include.xsd-->
+  <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="VersionString">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[0-9][\.]{0,1}[0-9]*" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Conventions">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="cis" />
+      <xs:enumeration value="trans" />
+      <xs:enumeration value="cis:right" />
+      <xs:enumeration value="cis:left" />
+      <xs:enumeration value="trans:right" />
+      <xs:enumeration value="trans:left" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Energy-Units-Scaled">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal/degrees^2" />
+      <xs:enumeration value="kcal/radians^2" />
+      <xs:enumeration value="kJ/degrees^2" />
+      <xs:enumeration value="kJ/radians^2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Energy-Units">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kcal" />
+      <xs:enumeration value="kJ" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\XML\Include\WebFF-Include-Metadata.xsd-->
+  <xs:complexType name="Force-Field-Metadata">
+    <xs:sequence>
+      <xs:element name="Force-Field-Protocol" type="FF-Protocol-List" />
+      <xs:element name="Force-Field-Schema-Version" type="VersionString" />
+      <xs:element name="Force-Field-Name" type="xs:string" />
+      <xs:element xmlns:ns0="http://mdcs.ns" name="Description" type="xs:string" ns0:_mod_mdcs_="/registry/description" />
+      <xs:element name="Force-Field-Units">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Mixed-English" />
+            <xs:enumeration value="Mixed-Metric" />
+            <xs:enumeration value="Reduced" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Keywords" type="Keywords-List" maxOccurs="unbounded" />
+      <xs:element name="Additional-Keywords" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Data-Source">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="Compact" type="SimpleReference-Type" />
+            <xs:element name="Website" type="Website-Type" />
+            <xs:element name="Journal-Article" type="JournalArticle-Type" />
+            <xs:element name="Book" type="Book-Type" />
+            <xs:element name="BookChapter" type="BookChapter-Type" />
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Data-Source-Contact" type="Contact" />
+      <xs:element name="Additional-References" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element name="Compact" type="SimpleReference-Type" />
+            <xs:element name="Website" type="Website-Type" />
+            <xs:element name="Journal-Article" type="JournalArticle-Type" />
+            <xs:element name="Book" type="Book-Type" />
+            <xs:element name="BookChapter" type="BookChapter-Type" />
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Attachment" type="AttachmentType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="WebFF-Scribe" type="Contact" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="FF-Protocol-List">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Atomistic - Class I" />
+      <xs:enumeration value="Atomistic - Class II" />
+      <xs:enumeration value="Atomistic - Water Model" />
+      <xs:enumeration value="Coarse-Grained" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Keywords-List">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Acetals" />
+      <xs:enumeration value="- Hemiacetals" />
+      <xs:enumeration value="- Ketals" />
+      <xs:enumeration value="- Thioacetals" />
+      <xs:enumeration value="- Thioketals" />
+      <xs:enumeration value="Aliphatic hydrocarbons" />
+      <xs:enumeration value="- Alkanes" />
+      <xs:enumeration value="- Cycloalkanes" />
+      <xs:enumeration value="- Alkenes" />
+      <xs:enumeration value="- Alkynes" />
+      <xs:enumeration value="Aliphatic hydrocarbons, substituted" />
+      <xs:enumeration value="- Alcohols" />
+      <xs:enumeration value="- Alkyl halides" />
+      <xs:enumeration value="- Diols" />
+      <xs:enumeration value="- Thiols" />
+      <xs:enumeration value="- Nitriles" />
+      <xs:enumeration value="Amines" />
+      <xs:enumeration value="- Aminals" />
+      <xs:enumeration value="Aromatics" />
+      <xs:enumeration value="- Acetophenones" />
+      <xs:enumeration value="- Anilines" />
+      <xs:enumeration value="- Anisoles" />
+      <xs:enumeration value="- Aryl aromatics" />
+      <xs:enumeration value="- Aryl halides" />
+      <xs:enumeration value="- Benzenesulfonic acids" />
+      <xs:enumeration value="- Benzophenones" />
+      <xs:enumeration value="- Nitrobenzenes" />
+      <xs:enumeration value="- Phenols" />
+      <xs:enumeration value="- Xylenes" />
+      <xs:enumeration value="- Polycyclics" />
+      <xs:enumeration value="Biomolecular compounds" />
+      <xs:enumeration value="- Amino acids" />
+      <xs:enumeration value="- Lipids" />
+      <xs:enumeration value="- Peptides" />
+      <xs:enumeration value="- Proteins" />
+      <xs:enumeration value="- Nucleic acids" />
+      <xs:enumeration value="Carbohydrates" />
+      <xs:enumeration value="- Monosaccharides" />
+      <xs:enumeration value="- Disaccharides" />
+      <xs:enumeration value="- Oligosaccharides" />
+      <xs:enumeration value="- Polysaccharides" />
+      <xs:enumeration value="- Polyols" />
+      <xs:enumeration value="- Starches" />
+      <xs:enumeration value="Carbonyl compounds" />
+      <xs:enumeration value="- Acid anhydride" />
+      <xs:enumeration value="- Acyl halides" />
+      <xs:enumeration value="- Acyl chlorides" />
+      <xs:enumeration value="- Aldehydes" />
+      <xs:enumeration value="- Amides" />
+      <xs:enumeration value="- Lactams" />
+      <xs:enumeration value="- Carboxylic acids" />
+      <xs:enumeration value="- Enones" />
+      <xs:enumeration value="- Esters" />
+      <xs:enumeration value="- Lactones" />
+      <xs:enumeration value="- Imides" />
+      <xs:enumeration value="- Ketones" />
+      <xs:enumeration value="- Orthoesters" />
+      <xs:enumeration value="Ethers" />
+      <xs:enumeration value="- Epoxides" />
+      <xs:enumeration value="- Sulfides" />
+      <xs:enumeration value="Fullerenes" />
+      <xs:enumeration value="Heterocyclics" />
+      <xs:enumeration value="Imines" />
+      <xs:enumeration value="- Schiff bases" />
+      <xs:enumeration value="Organometallic compounds" />
+      <xs:enumeration value="Oximes" />
+      <xs:enumeration value="Water" />
+      <xs:enumeration value="Other" />
+      <xs:enumeration value="- Carbides" />
+      <xs:enumeration value="- Metals" />
+      <xs:enumeration value="- Silicon compounds" />
+      <xs:enumeration value="Metal Organic Frameworks" />
+      <xs:enumeration value="Polymers" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Contact">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="Affiliation" type="xs:string" />
+      <xs:element name="email" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SimpleReference-Type">
+    <xs:sequence>
+      <xs:element name="Reference" type="xs:string" />
+      <xs:element name="DOI" type="xs:string" minOccurs="0" />
+      <xs:element name="URL" type="xs:string" minOccurs="0" />
+      <xs:element name="Notes" type="xs:string" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Website-Type">
+    <xs:sequence>
+      <xs:element name="Website-Name" type="xs:string" />
+      <xs:element name="URL" type="xs:string" />
+      <xs:element name="Notes" type="xs:string" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="JournalArticle-Type">
+    <xs:sequence>
+      <xs:element name="Author" type="xs:string" maxOccurs="unbounded" />
+      <xs:element name="Title" type="xs:string" minOccurs="0" />
+      <xs:element name="Journal" type="xs:string" />
+      <xs:element name="Volume" type="xs:string" />
+      <xs:element name="Number" type="xs:string" minOccurs="0" />
+      <xs:element name="Pages" type="xs:string" />
+      <xs:element name="Date" type="xs:string" />
+      <xs:element name="DOI" type="xs:string" minOccurs="0" />
+      <xs:element name="Notes" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Book-Type">
+    <xs:sequence>
+      <xs:element name="BookEditor" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="BookAuthor" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="BookTitle" type="xs:string" />
+      <xs:element name="Publisher" type="xs:string" />
+      <xs:element name="PublicationDate" type="xs:string" />
+      <xs:element name="PublicationPlace" type="xs:string" minOccurs="0" />
+      <xs:element name="Volume" type="xs:string" minOccurs="0" />
+      <xs:element name="Edition" type="xs:string" minOccurs="0" />
+      <xs:element name="DOI" type="xs:string" minOccurs="0" />
+      <xs:element name="Notes" type="xs:string" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BookChapter-Type">
+    <xs:sequence>
+      <xs:element name="BookEditor" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="BookAuthor" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="BookTitle" type="xs:string" />
+      <xs:element name="Publisher" type="xs:string" />
+      <xs:element name="PublicationDate" type="xs:string" />
+      <xs:element name="PublicationPlace" type="xs:string" minOccurs="0" />
+      <xs:element name="Volume" type="xs:string" minOccurs="0" />
+      <xs:element name="Edition" type="xs:string" minOccurs="0" />
+      <xs:element name="DOI" type="xs:string" minOccurs="0" />
+      <xs:element name="ChapterAuthor" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ChapterTitle" type="xs:string" />
+      <xs:element name="ChapterPages" type="xs:string" />
+      <xs:element name="Notes" type="xs:string" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttachmentType">
+    <xs:sequence>
+      <xs:element xmlns:ns0="http://mdcs.ns" name="File-Description" type="xs:string" ns0:_mod_mdcs_="/registry/description" />
+      <xs:element xmlns:ns0="http://mdcs.ns" name="Reference" type="xs:anyURI" ns0:_mod_mdcs_="/curator/blob-hoster" />
+    </xs:sequence>
+  </xs:complexType>
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\XML\Include\WebFF-Include-WaterModels.xsd-->
+  <xs:complexType name="Water-3Site-Rigid">
+    <xs:sequence>
+      <xs:element name="R_OH" type="xs:float" />
+      <xs:element name="Theta_HOH" type="xs:float" />
+      <xs:element name="A" type="xs:float" />
+      <xs:element name="B" type="xs:float" />
+      <xs:element name="q_O" type="xs:float" />
+      <xs:element name="q_H" type="xs:float" />
+      <xs:element name="EnergyDispersion" type="xs:float" minOccurs="0" maxOccurs="1" />
+      <xs:element name="sigma" type="xs:float" minOccurs="0" />
+      <xs:element name="epsilon" type="xs:float" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Water-4Site-Rigid">
+    <xs:sequence>
+      <xs:element name="R_OH" type="xs:float" />
+      <xs:element name="R_OM" type="xs:float" />
+      <xs:element name="Theta_HOH" type="xs:float" />
+      <xs:element name="A" type="xs:float" />
+      <xs:element name="B" type="xs:float" />
+      <xs:element name="q_M" type="xs:float" />
+      <xs:element name="q_H" type="xs:float" />
+      <xs:element name="sigma" type="xs:float" minOccurs="0" />
+      <xs:element name="epsilon" type="xs:float" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Water-5Site-Rigid">
+    <xs:sequence>
+      <xs:element name="R_OH" type="xs:float" />
+      <xs:element name="R_OL" type="xs:float" />
+      <xs:element name="Theta_HOH" type="xs:float" />
+      <xs:element name="Theta_LOL" type="xs:float" />
+      <xs:element name="A" type="xs:float" />
+      <xs:element name="B" type="xs:float" />
+      <xs:element name="q_L" type="xs:float" />
+      <xs:element name="q_H" type="xs:float" />
+      <xs:element name="R-L" type="xs:float" />
+      <xs:element name="R-ij" type="xs:float" />
+      <xs:element name="sigma" type="xs:float" minOccurs="0" />
+      <xs:element name="epsilon" type="xs:float" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

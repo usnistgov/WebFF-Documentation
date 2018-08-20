@@ -28,9 +28,9 @@
                                                     </xs:restriction>
                                                 </xs:simpleType>
                                             </xs:attribute>
-                                            <xs:attribute name="Version" type="VersionString" use="optional" />
-                                            <xs:attribute name="Comment" type="xs:string" use="optional" />
-                                            <xs:attribute name="ROH-units">
+                                            <xs:attribute name="version" type="VersionString" use="optional" />
+                                            <xs:attribute name="comment" type="xs:string" use="optional" />
+                                            <xs:attribute name="R_OH-units">
                                                 <xs:simpleType>
                                                     <xs:restriction base="xs:string">
                                                         <xs:enumeration value="Å" />
@@ -94,8 +94,8 @@
                                                     </xs:restriction>
                                                 </xs:simpleType>
                                             </xs:attribute>
-                                            <xs:attribute name="Version" type="VersionString" use="optional" />
-                                            <xs:attribute name="Comment" type="xs:string" use="optional" />
+                                            <xs:attribute name="version" type="VersionString" use="optional" />
+                                            <xs:attribute name="comment" type="xs:string" use="optional" />
                                             <xs:attribute name="A-Units">
                                                 <xs:simpleType>
                                                     <xs:restriction base="xs:string">
@@ -161,8 +161,8 @@
                                                     </xs:restriction>
                                                 </xs:simpleType>
                                             </xs:attribute>
-                                            <xs:attribute name="Version" type="VersionString" use="optional" />
-                                            <xs:attribute name="Comment" type="xs:string" use="optional" />
+                                            <xs:attribute name="version" type="VersionString" use="optional" />
+                                            <xs:attribute name="comment" type="xs:string" use="optional" />
                                             <xs:attribute name="A-Units">
                                                 <xs:simpleType>
                                                     <xs:restriction base="xs:string">
