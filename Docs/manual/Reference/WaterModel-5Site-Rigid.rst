@@ -16,13 +16,13 @@ or alternatively:
 
 The force-field parameters for this potential and units are given by:
 
-=========================== ======================================= ===============
-**Equation Symbol**         **Parameter Definition**                **Units**
---------------------------- --------------------------------------- ---------------
-:math:`E_{q}`               Charge potential energy                 energy
-:math:`E_{LJ}`              Lennard-Jones potential energy          energy
-:math:`S\left( {{R}_{ij}}`  Switching function                      N/A
-=========================== ======================================= ===============
+================================== ======================================= ===============
+**Equation Symbol**                **Parameter Definition**                **Units**
+---------------------------------- --------------------------------------- ---------------
+:math:`E_{q}`                      Charge potential energy                 energy
+:math:`E_{LJ}`                     Lennard-Jones potential energy          energy
+:math:`S\left( {{R}_{ij}} \right)` Switching function                      N/A
+================================== ======================================= ===============
 
 
 XML Schema
@@ -89,7 +89,7 @@ References
 
 2. `Wiki page for Water Model`_.
 
-5. `Liquid XML Studio`_.
+3. `Liquid XML Studio`_.
 
 .. _SklogWiki page for TIP5P Water Model: http://www.sklogwiki.org/SklogWiki/index.php/TIP5P_model_of_water
 

@@ -12,7 +12,7 @@ The **3Site-Rigid water model** has the functional form:
 
 or alternatively:
 
-:math: `E={{E}_{q}}+{{E}_{LJ}}+{{E}_{pol}}`
+:math:`E={{E}_{q}}+{{E}_{LJ}}+{{E}_{pol}}`
 
 The force-field parameters for this potential and units are given by:
 

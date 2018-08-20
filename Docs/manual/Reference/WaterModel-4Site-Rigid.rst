@@ -78,7 +78,7 @@ References
 
 2. `Wiki page for Water Model`_.
 
-4. `Liquid XML Studio`_.
+3. `Liquid XML Studio`_.
 
 .. _SklogWiki page for TIP4P Water Model: http://www.sklogwiki.org/SklogWiki/index.php/TIP4P_model_of_water
 
