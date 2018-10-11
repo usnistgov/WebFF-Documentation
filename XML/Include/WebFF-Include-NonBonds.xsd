@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML 2015 Developer Bundle Edition 13.2.3.6018 (http://www.liquid-technologies.com)-->
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:complexType name="NonBond-LJ">
         <xs:sequence>
@@ -28,6 +28,14 @@
             <xs:element name="AT-2" type="xs:string" />
             <xs:element name="epsilon" type="xs:float" />
             <xs:element name="sigma" type="xs:float" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NonBond-LJ2-AB">
+        <xs:sequence>
+            <xs:element name="AT-1" type="xs:string" />
+            <xs:element name="AT-2" type="xs:string" />
+            <xs:element name="A" type="xs:float" />
+            <xs:element name="B" type="xs:float" />
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="NonBond-LJ96">
