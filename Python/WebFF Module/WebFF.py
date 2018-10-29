@@ -964,6 +964,43 @@ def ReadExcelNonBondPotential_LJAB(sheet, sub_root):
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
 
+def ReadExcelNonBondPotential_LJ2AB(sheet, sub_root): 
+    ''' Reads in the NonBondPotential-LJ2AB sheet from the WebFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''
+    xls_sheet = sheet
+
+    AA=xls_sheet.row_values(2)[1]
+    BB=xls_sheet.row_values(3)[1]
+    CC=xls_sheet.row_values(4)[1]
+    DD=xls_sheet.row_values(5)[1]
+
+    sheet = ET.SubElement(sub_root, "NonBondPotential-LJ2-AB", {'style':AA, 'formula':BB, 'A-units':CC, 'B-units':DD})
+
+    # Row 8 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(8))
+
+    for row_num in xrange(9, xls_sheet.nrows):
+        attribute_idx1 = xls_sheet_header.index("comment")
+        attribute_idx2 = xls_sheet_header.index("version")
+        attribute_idx3 = xls_sheet_header.index("reference")
+        cur_entry = ET.SubElement(sheet, "NonBond")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
+            ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
+            ET.Element.set(cur_entry, 'version', str((xls_sheet.row_values(row_num)[attribute_idx2])))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
+            ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+            if (len(str(cell_value))!=0) :
+                if col_num == attribute_idx1:
+                    continue 
+                elif col_num == attribute_idx2:
+                    continue
+                elif col_num == attribute_idx3:
+                    continue
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+
 def ReadExcelNonBondPotential_LJ96 (sheet, sub_root): 
     ''' Reads in the NonBondPotential-LJRmin sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
