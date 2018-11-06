@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML 2015 Developer Bundle Edition 13.2.3.6018 (http://www.liquid-technologies.com)-->
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:include schemaLocation="..\Include\WebFF-Include.xsd" />
     <xs:include schemaLocation="..\Include\WebFF-Include-AtomTypes.xsd" />
@@ -344,6 +344,7 @@
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
                                                 <xs:enumeration value="Kd*[1+cos(N*Phi-Phi0)]" />
+                                                <xs:enumeration value="Kd*[1+cos(N*Phi+Phi0)]" />
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
