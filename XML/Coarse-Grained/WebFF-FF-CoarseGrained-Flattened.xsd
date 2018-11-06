@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <!--Created with Liquid XML 2015 Developer Bundle Edition 13.2.3.6018 (http://www.liquid-technologies.com)-->
 <xs:schema elementFormDefault="qualified" targetNamespace="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="FF-CoarseGrained">
@@ -342,6 +342,51 @@
         <xs:element name="DihedralPotential" minOccurs="0">
           <xs:complexType>
             <xs:sequence>
+              <xs:element name="DihedralPotential-CHARMM" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Dihedral" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:complexContent>
+                          <xs:extension base="Dihedral-CHARMM">
+                            <xs:attribute name="comment" type="xs:string" use="optional" />
+                            <xs:attribute name="version" type="VersionString" use="optional" />
+                            <xs:attribute name="reference" type="xs:string" use="optional" />
+                          </xs:extension>
+                        </xs:complexContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="style">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="CHARMM" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="formula">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Kd*[1+cos(N*Phi-Phi0)]" />
+                        <xs:enumeration value="Kd*[1+cos(N*Phi+Phi0)]" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="convention">
+                    <xs:simpleType>
+                      <xs:restriction base="Conventions" />
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="Kd-units" type="Dihedral-Kd-Units" />
+                  <xs:attribute name="Phi0-units">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="degrees" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
               <xs:element name="DihedralPotential-Quadratic" minOccurs="0">
                 <xs:complexType>
                   <xs:sequence>
