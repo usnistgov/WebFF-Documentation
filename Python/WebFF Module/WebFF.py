@@ -3,7 +3,7 @@
 import xml.etree.ElementTree as ET 		  # Python standard library	
 import xlrd                               # NEEDs to be installed
 
-#function below beginging with ReadExcel read in indivual sheet from the webff excel template and transleate them into XML that fits the webff XML schema
+#function below beginging with ReadExcel read in individual sheet from the webff excel template and translate them into XML that fits the webff XML schema
 def ReadExcelMetaData_Header(sheet, sub_root): 
     ''' Reads in the MetaData sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
@@ -977,10 +977,10 @@ def ReadExcelNonBondPotential_LJ2AB(sheet, sub_root):
 
     sheet = ET.SubElement(sub_root, "NonBondPotential-LJ2-AB", {'style':AA, 'formula':BB, 'A-units':CC, 'B-units':DD})
 
-    # Row 8 is the header
-    xls_sheet_header = map(str, xls_sheet.row_values(8))
+    # Row 7 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(7))
 
-    for row_num in xrange(9, xls_sheet.nrows):
+    for row_num in xrange(8, xls_sheet.nrows):
         attribute_idx1 = xls_sheet_header.index("comment")
         attribute_idx2 = xls_sheet_header.index("version")
         attribute_idx3 = xls_sheet_header.index("reference")
