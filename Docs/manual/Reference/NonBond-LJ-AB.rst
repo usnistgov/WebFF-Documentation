@@ -1,6 +1,6 @@
 .. _NonBond-LJ-AB:
 
-Non-Bond Lennard-Jones (AB Form) Potential
+Non-Bond Lennard-Jones Potential - AB Form
 ==========================================
 
 Functional Form

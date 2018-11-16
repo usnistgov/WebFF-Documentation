@@ -11,6 +11,7 @@ Non-Bond Potentials
    NonBond-LJ96
    NonBond-LJ962
    NonBond-LJ-AB
+   NonBond-LJ2-AB
    NonBond-LJ-Rmin
    NonBond-Class2
    NonBond-EnergyRenorm
