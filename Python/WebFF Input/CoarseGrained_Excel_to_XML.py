@@ -7,6 +7,7 @@ import xlrd                               # NEED to be installed
 import requests                           # NEED to be installed
 import WebFF as FF                        #webff python module (needs to be installed)
 import xml.etree.ElementTree as ET        #Python standard library
+import xml.dom.minidom as xdm
 def excel_xml(input, output): 
     # Read in file 
     excel_file_path = (input)
@@ -90,7 +91,11 @@ def excel_xml(input, output):
     if "NonBondPotential-LJ2" in sheet_names: 
         sub_root = ET.SubElement(root, "NonBondPotential")
         sheet = xls_file.sheet_by_name("NonBondPotential-LJ2")
-        FF.ReadExcelNonBondPotential_LJ2(sheet, sub_root)
+        FF.ReadExcelNonBondPotential_LJ2(sheet, sub_root)	
+    if "NonBondPotential-LJ-AB" in sheet_names: 
+	    sub_root = ET.SubElement(root, "NonBondPotential")
+	    sheet = xls_file.sheet_by_name("NonBondPotential-LJ-AB")
+	    FF.ReadExcelNonBondPotential_LJ2AB(sheet, sub_root)	
     if "NonBondPotential-LJ96" in sheet_names: 
         sub_root = ET.SubElement(root, "NonBondPotential")
         sheet = xls_file.sheet_by_name("NonBondPotential-LJ96")
@@ -163,8 +168,8 @@ def excel_xml(input, output):
     # Save into pretty print format
     xml = xdm.parse(output_file_path)
     with open(output_file_path, "w") as text_file:
-	text_file.write(xml.toprettyxml().encode("UTF-8"))
-	text_file.close()
+        text_file.write(xml.toprettyxml().encode("UTF-8"))
+    text_file.close()
     
 if __name__ == "__main__":
     input = str((sys.argv[1]))
