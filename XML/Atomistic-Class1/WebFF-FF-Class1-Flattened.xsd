@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<!--Created with Liquid XML 2015 Developer Bundle Edition 13.2.3.6018 (http://www.liquid-technologies.com)-->
+<!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
 <xs:schema elementFormDefault="qualified" targetNamespace="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="FF-Class-I">
     <xs:complexType>
@@ -1124,7 +1124,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <!--Schema items added from C:\GitHub\Projects\WebFF-Documentation\XML\Include\WebFF-Include.xsd-->
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\XML\Include\WebFF-Include.xsd-->
   <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="VersionString">
     <xsd:restriction base="xsd:string">
       <xsd:pattern value="[0-9][\.]{0,1}[0-9]*" />
@@ -1155,7 +1155,7 @@
       <xs:enumeration value="kJ" />
     </xs:restriction>
   </xs:simpleType>
-  <!--Schema items added from C:\GitHub\Projects\WebFF-Documentation\XML\Include\WebFF-Include-AtomTypes.xsd-->
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\XML\Include\WebFF-Include-AtomTypes.xsd-->
   <xs:complexType name="AtomTemplate">
     <xs:sequence>
       <xs:element name="AtomType-Name" type="xs:string" />
@@ -1245,7 +1245,7 @@
       <xs:element name="CG-Chemistry" type="xs:string" minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
-  <!--Schema items added from C:\GitHub\Projects\WebFF-Documentation\XML\Include\WebFF-Include-TableData.xsd-->
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\XML\Include\WebFF-Include-TableData.xsd-->
   <xs:complexType name="BondIncrement-Type">
     <xs:sequence>
       <xs:element name="AT-I" type="xs:string" />
@@ -1278,7 +1278,7 @@
       <xs:element name="OutOfPlaneCenter" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <!--Schema items added from C:\GitHub\Projects\WebFF-Documentation\XML\Include\WebFF-Include-Angles.xsd-->
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\XML\Include\WebFF-Include-Angles.xsd-->
   <xs:complexType name="Angle-Harmonic">
     <xs:sequence>
       <xs:element name="AT-1" type="xs:string" />
@@ -1387,7 +1387,7 @@
       <xs:enumeration value="nm" />
     </xs:restriction>
   </xs:simpleType>
-  <!--Schema items added from C:\GitHub\Projects\WebFF-Documentation\XML\Include\WebFF-Include-Bonds.xsd-->
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\XML\Include\WebFF-Include-Bonds.xsd-->
   <xs:complexType name="Bond-Harmonic">
     <xs:sequence>
       <xs:element name="AT-1" type="xs:string" />
@@ -1475,7 +1475,7 @@
       <xs:element name="R0" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
-  <!--Schema items added from C:\GitHub\Projects\WebFF-Documentation\XML\Include\WebFF-Include-Dihedrals.xsd-->
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\XML\Include\WebFF-Include-Dihedrals.xsd-->
   <xs:complexType name="Dihedral-CHARMM">
     <xs:sequence>
       <xs:element name="AT-1" type="xs:string" />
@@ -1603,7 +1603,7 @@
       <xs:enumeration value="kJ/mol/degree^2" />
     </xs:restriction>
   </xs:simpleType>
-  <!--Schema items added from C:\GitHub\Projects\WebFF-Documentation\XML\Include\WebFF-Include-Impropers.xsd-->
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\XML\Include\WebFF-Include-Impropers.xsd-->
   <xs:complexType name="Improper-CVFF">
     <xs:sequence>
       <xs:element name="AT-1" type="xs:string" />
@@ -1699,7 +1699,7 @@
       <xs:enumeration value="kJ/mol" />
     </xs:restriction>
   </xs:simpleType>
-  <!--Schema items added from C:\GitHub\Projects\WebFF-Documentation\XML\Include\WebFF-Include-NonBonds.xsd-->
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\XML\Include\WebFF-Include-NonBonds.xsd-->
   <xs:complexType name="NonBond-LJ">
     <xs:sequence>
       <xs:element name="AtomType" type="xs:string" />
@@ -1912,11 +1912,17 @@
       <xs:enumeration value="Fender-Halsey" />
     </xs:restriction>
   </xs:simpleType>
-  <!--Schema items added from C:\GitHub\Projects\WebFF-Documentation\XML\Include\WebFF-Include-Metadata.xsd-->
+  <!--Schema items added from C:\Github\Projects\WebFF-Documentation\XML\Include\WebFF-Include-Metadata.xsd-->
   <xs:complexType name="Force-Field-Metadata">
     <xs:sequence>
+      <xs:element name="Force-Field-Schema-Version">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="1.0.0" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
       <xs:element name="Force-Field-Protocol" type="FF-Protocol-List" />
-      <xs:element name="Force-Field-Schema-Version" type="VersionString" />
       <xs:element name="Force-Field-Name" type="xs:string" />
       <xs:element xmlns:ns0="http://mdcs.ns" name="Description" type="xs:string" ns0:_mod_mdcs_="/registry/description" />
       <xs:element name="Force-Field-Units">
