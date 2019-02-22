@@ -3,28 +3,28 @@
 import xml.etree.ElementTree as ET 		  # Python standard library	
 import xlrd                               # NEEDs to be installed
 
-#function below beginging with ReadExcel read in individual sheet from the webff excel template and translate them into XML that fits the webff XML schema
+
+#function below beginning with ReadExcel read in individual sheet from the webff excel template and translate them into XML that fits the webff XML schema
 def ReadExcelMetaData_Header(sheet, sub_root): 
     ''' Reads in the MetaData sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
 
-    
-    field1 = ET.SubElement(sub_root, "Force-Field-Protocol").text = xls_sheet.row_values(4)[1]
-    field5 = ET.SubElement(sub_root, "Force-Field-Schema-Version").text = xls_sheet.row_values(5)[1]
+    field5 = ET.SubElement(sub_root, "Force-Field-Schema-Version").text = xls_sheet.row_values(4)[1]    
+    field1 = ET.SubElement(sub_root, "Force-Field-Protocol").text = xls_sheet.row_values(5)[1]
     field2 = ET.SubElement(sub_root, "Force-Field-Name").text = xls_sheet.row_values(6)[1]
     field1 = ET.SubElement(sub_root, "Description").text = xls_sheet.row_values(7)[1]
     field6 = ET.SubElement(sub_root, "Force-Field-Units").text = xls_sheet.row_values(8)[1]
     field3 = ET.SubElement(sub_root, "Data-Source")
     field4 = ET.SubElement(field3, "Compact")
     field1 = ET.SubElement(field4, "Reference").text = xls_sheet.row_values(9)[1]
-    if (len(xls_sheet.row_values(8)[1]) != 0) :
-	field2 = ET.SubElement(field4, "DOI").text = xls_sheet.row_values(10)[1]
     if (len(xls_sheet.row_values(9)[1]) != 0) :
-    	field1 = ET.SubElement(field4, "URL").text = xls_sheet.row_values(11)[1]
-    if (len(xls_sheet.row_values(10)[1]) != 0) :
-    	field2 = ET.SubElement(field4, "Notes").text = xls_sheet.row_values(12)[1]
+        field2 = ET.SubElement(field4, "DOI").text = xls_sheet.row_values(10)[1]
+    if (len(xls_sheet.row_values(9)[1]) != 0) :
+        field1 = ET.SubElement(field4, "URL").text = xls_sheet.row_values(11)[1]
+    if (len(xls_sheet.row_values(9)[1]) != 0) :
+        field2 = ET.SubElement(field4, "Notes").text = xls_sheet.row_values(12)[1]
     field4 = ET.SubElement(sub_root, "Data-Source-Contact")
     field1 = ET.SubElement(field4, "Name").text = xls_sheet.row_values(13)[1]
     field1 = ET.SubElement(field4, "Affiliation").text = xls_sheet.row_values(14)[1]
@@ -38,14 +38,33 @@ def ReadExcelMetaData_Keywords(sheet, root):
 
     sub_root = root.find("./Force-Field-Header")
 
-    # Row 2 is the header
+    # Row 4 is the header
     xls_sheet_header = map(str, xls_sheet.row_values(4))
 
     for col_num in xrange(0, xls_sheet.ncols):
         for row_num , cell_value in enumerate(xls_sheet.col_values(col_num)[5:]):
             if (len(str(cell_value))!=0 and str(cell_value) != "?") :
                 ET.SubElement(sub_root, xls_sheet_header[col_num]).text = str(cell_value)
-    
+
+def ReadExcelMetaData_References(sheet, root): 
+    ''' Reads in the Keywords sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''
+    xls_sheet = sheet
+
+    sub_root = root.find("./Force-Field-Header")
+
+    sheet = ET.SubElement(sub_root, "Additional-References")
+	  
+    # Row 2 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(2))
+	
+    for row_num in xrange(3, xls_sheet.nrows):
+        cur_entry = ET.SubElement(sheet, "Compact")
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)): 
+            if (len(xls_sheet.row_values(row_num)[col_num]))!=0 :
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = xls_sheet.row_values(row_num)[col_num]
+
 def ReadExcelBondPotential_Harmonic(sheet, sub_root): 
     ''' Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
