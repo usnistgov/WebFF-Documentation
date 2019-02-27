@@ -33,6 +33,9 @@ def excel_xml(input, output):
     if "Keywords" in sheet_names:
         sheet = xls_file.sheet_by_name("Keywords")
         FF.ReadExcelMetaData_Keywords(sheet,root)
+    if "References" in sheet_names:
+	    sheet = xls_file.sheet_by_name("References")
+	    FF.ReadExcelMetaData_References(sheet,root)
         
     #Atom Types
     if  "AtomType-ATDL" in sheet_names: 
@@ -184,6 +187,23 @@ def excel_xml(input, output):
 	text_file.close()
     
 if __name__ == "__main__":
-    input = str((sys.argv[1]))
-    output = str((sys.argv[2]))
-    excel_xml(input, output)
+
+# Find argc size ... 
+    argc = len(sys.argv)
+
+# Test argc value ... 
+    if argc == 3: 
+        excel_file = str((sys.argv[1]))
+        xml_file = str((sys.argv[2]))
+    else:
+        print("Usage: Class1_Excel_to_XML.py Excel_Input_File XML_Output_File")
+        sys.exit()
+
+# Check for Excel template file existence and proceed ... 
+    if os.path.isfile(sys.argv[1]): 
+        print("Execute file conversion")
+        excel_xml(excel_file, xml_file)
+    else: 
+        print("Error: Specified Excel_Input_File does not exist")
+        print("Usage: Class1_Excel_to_XML.py Excel_Input_File XML_Output_File")
+        sys.exit()
