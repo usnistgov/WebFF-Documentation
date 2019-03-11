@@ -11,16 +11,22 @@ In this tutorial, we show step by step how to curate data for the Martini Coarse
 Martini Force-Field Data Source
 
 .. image:: ../images/Martini_main_reference_PDF.png
+    :width: 500px
 	:align: left
 	
 .. image:: ../images/itp_screenshot.png
+    :width: 500px
 	:align: left
 
 WebFF Excel Spreadsheet Data Entry
 
+The data for the Martini force-field was ported to the Excel spreadsheet called: \WebFF-Documentation\XML\Coarse-Grained\WebFF-CoarseGrained-DataTemplate.xlsx 
+
 
 
 Metadata
+
+There are three sections of Metadata to include
 
 .. image:: ../images/CG_template_Metadata.png
 	:align: left
@@ -35,6 +41,8 @@ Metadata
 
 
 Atom Types
+
+The atom types for Martini are general in nature, and each entry can stand for a number of similar but related chemical moeities. 
 
 .. image:: ../images/CG_template_AtomTypes.png
 	:align: left
