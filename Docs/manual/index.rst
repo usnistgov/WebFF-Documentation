@@ -19,6 +19,7 @@ Welcome to WebFF's documentation!
    XMLSchemas
    PythonTools
    Contribute
+   Tutorial
    Publications
    Contacts
    Legal
