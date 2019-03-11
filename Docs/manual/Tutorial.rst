@@ -10,11 +10,11 @@ In this tutorial, we show step by step how to curate data for the Martini Coarse
 
 Martini Force-Field Data Source
 
-.. image:: ../../images/Martini_main_reference_PDF.png
+.. image:: ../images/Martini_main_reference_PDF.png
 	:align: left
 	
-.. image:: ../../images/itp_screenshot.png
-	:align: left
+.. image:: ../images/itp_screenshot.png
+	:align: right
 
 WebFF Excel Spreadsheet Data Entry
 
@@ -22,35 +22,50 @@ WebFF Excel Spreadsheet Data Entry
 
 Metadata
 
-.. image:: ../../images/CG_template_Metadata.png
+.. image:: ../images/CG_template_Metadata.png
 	:align: left
 
-.. image:: ../../images/CG_template_Keywords.png
+.. image:: ../images/CG_template_Keywords.png
+	:align: right
+
+.. image:: ../images/CG_template_References.png
 	:align: left
 
-.. image:: ../../images/CG_template_References.png
-	:align: left
+
+
 
 Atom Types
 
-.. image:: ../../images/CG_template_AtomTypes.png
+.. image:: ../images/CG_template_AtomTypes.png
 	:align: left
+
+
+
+
 
 Potentials 
 
-.. image:: ../../images/CG_template_Bonds.png
+.. image:: ../images/CG_template_Bonds.png
 	:align: left
 
-.. image:: ../../images/CG_template_Angles.png
+.. image:: ../images/CG_template_Angles.png
 	:align: left
 
-.. image:: ../../images/CG_template_NonBonds.png
+.. image:: ../images/CG_template_NonBonds.png
 	:align: left
+
+
+
+
 
 Excel to XML Conversion 
 
-.. image:: ../../images/Python_cmd_line_Excel_to_XML.png
+.. image:: ../images/Python_cmd_line_Excel_to_XML.png
 	:align: left
+
+
+
+
 
 
 Atomistic Force-Field Data
