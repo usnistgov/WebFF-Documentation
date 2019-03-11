@@ -14,7 +14,7 @@ Martini Force-Field Data Source
 	:align: left
 	
 .. image:: ../images/itp_screenshot.png
-	:align: right
+	:align: left
 
 WebFF Excel Spreadsheet Data Entry
 
@@ -26,7 +26,7 @@ Metadata
 	:align: left
 
 .. image:: ../images/CG_template_Keywords.png
-	:align: right
+	:align: left
 
 .. image:: ../images/CG_template_References.png
 	:align: left
