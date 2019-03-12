@@ -8,6 +8,7 @@ The Martini Coarse-Grained Force-Field
 
 In this tutorial, we show step by step how to curate data for the Martini Coarse-Grained Force-Field into WebFF using the WebFF Excel data template and the WebFF.py Python library. 
 
+<<<<<<< HEAD
 | Martini Force-Field Data Source
 
 
@@ -16,6 +17,33 @@ In this tutorial, we show step by step how to curate data for the Martini Coarse
 	
 .. figure:: ../images/itp_screenshot.png
 	
+=======
+*Martini Force-Field Data Source
+
+.. image:: ../images/Martini_main_reference_PDF.png
+    :width: 400px
+	:align: left
+	
+.. image:: ../images/itp_screenshot.png
+    :width: 400px
+	:align: left
+
+* WebFF Excel Spreadsheet Data Entry
+
+The data for the Martini force-field was ported to the Excel spreadsheet called: \WebFF-Documentation\XML\Coarse-Grained\WebFF-CoarseGrained-DataTemplate.xlsx 
+
+
+
+*Metadata
+
+There are three sections of Metadata to include
+
+.. image:: ../images/CG_template_Metadata.png
+	:align: left
+
+.. image:: ../images/CG_template_Keywords.png
+	:align: left
+>>>>>>> 772deafe2fe6668c86181fa9c3f937c78ca79ee0
 
 | WebFF Excel Spreadsheet Data Entry
 
@@ -25,6 +53,12 @@ In this tutorial, we show step by step how to curate data for the Martini Coarse
 .. figure:: ../images/CG_template_Metadata.png
 	
 
+<<<<<<< HEAD
+=======
+*Atom Types
+
+The atom types for Martini are general in nature, and each entry can stand for a number of similar but related chemical moeities. 
+>>>>>>> 772deafe2fe6668c86181fa9c3f937c78ca79ee0
 
 .. figure:: ../images/CG_template_Keywords.png
 
@@ -33,6 +67,10 @@ In this tutorial, we show step by step how to curate data for the Martini Coarse
 .. figure:: ../images/CG_template_References.png
 
 
+<<<<<<< HEAD
+=======
+*Potentials 
+>>>>>>> 772deafe2fe6668c86181fa9c3f937c78ca79ee0
 
 | Atom Types
 
@@ -49,6 +87,10 @@ In this tutorial, we show step by step how to curate data for the Martini Coarse
 .. figure:: ../images/CG_template_Angles.png
 	
 
+<<<<<<< HEAD
+=======
+*Excel to XML Conversion 
+>>>>>>> 772deafe2fe6668c86181fa9c3f937c78ca79ee0
 
 .. figure:: ../images/CG_template_NonBonds.png
 	
@@ -72,5 +114,10 @@ References
 ----------
 
 #. Siewert J. Marrink, H. Jelger Risselada, Serge Yefimov, D. Peter Tieleman, and Alex H. de Vries, "The MARTINI Force Field:  Coarse Grained Model for Biomolecular Simulations," J. Phys. Chem. B, 111 (27), pp 7812–7824, (2007). 
+<<<<<<< HEAD
 #. http://www.cgmartini.nl/images/parameters/ITP/martini_v2.2.itp
+=======
+#. Martini v2.2 Force-Field Parameters, http://www.cgmartini.nl/images/parameters/ITP/martini_v2.2.itp
+
+>>>>>>> 772deafe2fe6668c86181fa9c3f937c78ca79ee0
 
