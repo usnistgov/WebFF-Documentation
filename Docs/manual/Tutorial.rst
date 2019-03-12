@@ -54,7 +54,7 @@ There are three sections of Metadata to include
 	
 
 
-=======
+
 *Atom Types
 
 The atom types for Martini are general in nature, and each entry can stand for a number of similar but related chemical moeities. 
@@ -68,7 +68,7 @@ The atom types for Martini are general in nature, and each entry can stand for a
 
 
 
-=======
+
 *Potentials 
 
 
@@ -85,13 +85,6 @@ The atom types for Martini are general in nature, and each entry can stand for a
 
 
 .. figure:: ../images/CG_template_Angles.png
-	
-
-=======
-*Excel to XML Conversion 
-
-
-.. figure:: ../images/CG_template_NonBonds.png
 	
 
 
