@@ -18,23 +18,16 @@ In this tutorial, we show step by step how to curate data for the Martini Coarse
 .. figure:: ../images/itp_screenshot.png
 	
 
-*Martini Force-Field Data Source
-
-.. figure:: ../images/Martini_main_reference_PDF.png
-
-	
-	
-.. figure:: ../images/itp_screenshot.png
-
 	
 
-* WebFF Excel Spreadsheet Data Entry
+| WebFF Excel Spreadsheet Data Entry
 
 The data for the Martini force-field was ported to the Excel spreadsheet called: \WebFF-Documentation\XML\Coarse-Grained\WebFF-CoarseGrained-DataTemplate.xlsx 
 
 
 
-*Metadata
+
+| Metadata
 
 There are three sections of Metadata to include
 
@@ -42,26 +35,6 @@ There are three sections of Metadata to include
 	
 
 .. figure:: ../images/CG_template_Keywords.png
-	
-
-
-| WebFF Excel Spreadsheet Data Entry
-
-
-| Metadata
-
-.. figure:: ../images/CG_template_Metadata.png
-	
-
-
-
-*Atom Types
-
-The atom types for Martini are general in nature, and each entry can stand for a number of similar but related chemical moeities. 
-
-
-.. figure:: ../images/CG_template_Keywords.png
-
 
 
 .. figure:: ../images/CG_template_References.png
@@ -69,10 +42,10 @@ The atom types for Martini are general in nature, and each entry can stand for a
 
 
 
-*Potentials 
-
-
 | Atom Types
+
+
+The atom types for Martini are general in nature, and each entry can stand for a number of similar but related chemical moeities. 
 
 .. figure:: ../images/CG_template_AtomTypes.png
 	
@@ -83,8 +56,9 @@ The atom types for Martini are general in nature, and each entry can stand for a
 .. figure:: ../images/CG_template_Bonds.png
 	
 
-
 .. figure:: ../images/CG_template_Angles.png
+
+.. figure:: ../images/CG_template_NonBonds.png
 	
 
 
