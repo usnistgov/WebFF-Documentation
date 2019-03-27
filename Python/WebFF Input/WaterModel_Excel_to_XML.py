@@ -33,6 +33,9 @@ def excel_xml(input, output):
     if "Keywords" in sheet_names:
         sheet = xls_file.sheet_by_name("Keywords")
         FF.ReadExcelMetaData_Keywords(sheet,root)
+    if "References" in sheet_names:
+	    sheet = xls_file.sheet_by_name("References")
+	    FF.ReadExcelMetaData_References(sheet,root)
         
     #Water Models 
     if "WaterModel-3Site-Rigid" in sheet_names:
