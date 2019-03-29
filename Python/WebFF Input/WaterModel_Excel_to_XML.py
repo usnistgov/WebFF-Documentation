@@ -63,7 +63,25 @@ def excel_xml(input, output):
 	text_file.write(xml.toprettyxml().encode("UTF-8"))
 	text_file.close()
     
+
 if __name__ == "__main__":
-    input = str((sys.argv[1]))
-    output = str((sys.argv[2]))
-    excel_xml(input, output)
+
+# Find argc size ... 
+    argc = len(sys.argv)
+
+# Test argc value ... 
+    if argc == 3: 
+        excel_file = str((sys.argv[1]))
+        xml_file = str((sys.argv[2]))
+    else:
+        print("Usage: WaterModel_to_XML.py Excel_Input_File XML_Output_File")
+        sys.exit()
+
+# Check for Excel template file existence and proceed ... 
+    if os.path.isfile(sys.argv[1]): 
+        print("Execute file conversion")
+        excel_xml(excel_file, xml_file)
+    else: 
+        print("Error: Specified Excel_Input_File does not exist")
+        print("Usage: Class1_Excel_to_XML.py Excel_Input_File XML_Output_File")
+        sys.exit()
