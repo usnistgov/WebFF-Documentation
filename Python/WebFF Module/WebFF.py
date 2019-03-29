@@ -2554,28 +2554,27 @@ def ReadExcelWaterPotential_3Site(sheet, sub_root):
 
     # Data elements
 
-    AA=xls_sheet.row_values(14)[0] # R_OH
+    AA=str(xls_sheet.row_values(14)[0]) # R_OH
     ET.SubElement(sub_root, "R_OH").text = AA
-    BB=xls_sheet.row_values(14)[1] # Theta_HOH
+    BB=str(xls_sheet.row_values(14)[1]) # Theta_HOH
     ET.SubElement(sub_root, "Theta_HOH").text = BB
-    CC=xls_sheet.row_values(14)[2] # A
+    CC=str(xls_sheet.row_values(14)[2]) # A
     ET.SubElement(sub_root, "A").text = CC
-    DD=xls_sheet.row_values(14)[3] # B
+    DD=str(xls_sheet.row_values(14)[3]) # B
     ET.SubElement(sub_root, "B").text = DD
-    EE=xls_sheet.row_values(14)[4] # q_O
+    EE=str(xls_sheet.row_values(14)[4]) # q_O
     ET.SubElement(sub_root, "q_O").text = EE
-    FF=xls_sheet.row_values(14)[5] # q_H
+    FF=str(xls_sheet.row_values(14)[5]) # q_H
     ET.SubElement(sub_root, "q_H").text = FF
-    if len(xls_sheet.row_values(14)[6]) != 0: # EnergyDispersion
-        GG=xls_sheet.row_values(14)[6]
+    if len(str(xls_sheet.row_values(14)[6])) != 0: # EnergyDispersion
+        GG=str(xls_sheet.row_values(14)[6])
         ET.SubElement(sub_root, "EnergyDispersion").text = GG
-    if len(xls_sheet.row_values(14)[7]) != 0: # sigma
-        HH=xls_sheet.row_values(14)[7]
+    if len(str(xls_sheet.row_values(14)[7])) != 0: # sigma
+        HH=str(xls_sheet.row_values(14)[7])
         ET.SubElement(sub_root, "sigma").text = HH
-    if len(xls_sheet.row_values(14)[8]) != 0: # epsilon
-        II=xls_sheet.row_values(14)[8]
+    if len(str(xls_sheet.row_values(14)[8])) != 0: # epsilon
+        II=str(xls_sheet.row_values(14)[8])
         ET.SubElement(sub_root, "epsilon").text = II
-
 def ReadExcelWaterPotential_4Site(sheet, sub_root): 
     ''' Reads in the WaterPotential-4Site sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
@@ -2599,25 +2598,25 @@ def ReadExcelWaterPotential_4Site(sheet, sub_root):
 
     # Data elements
 
-    AA=xls_sheet.row_values(14)[0] # R_OH
+    AA=str(xls_sheet.row_values(14)[0]) # R_OH
     ET.SubElement(sub_root, "R_OH").text = AA
-    BB=xls_sheet.row_values(14)[1] # R_OM
+    BB=str(xls_sheet.row_values(14)[1]) # R_OM
     ET.SubElement(sub_root, "R_OM").text = BB
-    CC=xls_sheet.row_values(14)[2] # Theta_HOH
+    CC=str(xls_sheet.row_values(14)[2]) # Theta_HOH
     ET.SubElement(sub_root, "Theta_HOH").text = CC
-    DD=xls_sheet.row_values(14)[3] # A
+    DD=str(xls_sheet.row_values(14)[3]) # A
     ET.SubElement(sub_root, "A").text = DD
-    EE=xls_sheet.row_values(14)[4] # B
+    EE=str(xls_sheet.row_values(14)[4]) # B
     ET.SubElement(sub_root, "B").text = EE
-    FF=xls_sheet.row_values(14)[5] # q_M
+    FF=str(xls_sheet.row_values(14)[5]) # q_M
     ET.SubElement(sub_root, "q_M").text = FF
-    GG=xls_sheet.row_values(14)[6] # q_H
+    GG=str(xls_sheet.row_values(14)[6]) # q_H
     ET.SubElement(sub_root, "q_H").text = GG
-    if len(xls_sheet.row_values(14)[7]) != 0: # sigma
-        HH=xls_sheet.row_values(14)[7]
+    if len(str(xls_sheet.row_values(14)[7])) != 0: # sigma
+        HH=str(xls_sheet.row_values(14)[7])
         ET.SubElement(sub_root, "sigma").text = HH
-    if len(xls_sheet.row_values(14)[8]) != 0: # epsilon
-        II=xls_sheet.row_values(14)[8]
+    if len(str(xls_sheet.row_values(14)[8])) != 0: # epsilon
+        II=str(xls_sheet.row_values(14)[8])
         ET.SubElement(sub_root, "epsilon").text = II
 
 def ReadExcelWaterPotential_5Site(sheet, sub_root): 
@@ -2643,31 +2642,31 @@ def ReadExcelWaterPotential_5Site(sheet, sub_root):
 
     # Data elements
 
-    AA=xls_sheet.row_values(14)[0] # R_OH
+    AA=str(xls_sheet.row_values(14)[0]) # R_OH
     ET.SubElement(sub_root, "R_OH").text = AA
-    BB=xls_sheet.row_values(14)[1] # R_OL
+    BB=str(xls_sheet.row_values(14)[1]) # R_OL
     ET.SubElement(sub_root, "R_OL").text = BB
-    CC=xls_sheet.row_values(14)[2] # Theta_HOH
+    CC=str(xls_sheet.row_values(14)[2]) # Theta_HOH
     ET.SubElement(sub_root, "Theta_HOH").text = CC
-    DD=xls_sheet.row_values(14)[3] # Theta_LOL
+    DD=str(xls_sheet.row_values(14)[3]) # Theta_LOL
     ET.SubElement(sub_root, "Theta_LOL").text = DD
-    EE=xls_sheet.row_values(14)[4] # A
+    EE=str(xls_sheet.row_values(14)[4]) # A
     ET.SubElement(sub_root, "A").text = EE
-    FF=xls_sheet.row_values(14)[5] # B
+    FF=str(xls_sheet.row_values(14)[5]) # B
     ET.SubElement(sub_root, "B").text = FF
-    GG=xls_sheet.row_values(14)[6] # q_L
+    GG=str(xls_sheet.row_values(14)[6]) # q_L
     ET.SubElement(sub_root, "q_L").text = GG
-    HH=xls_sheet.row_values(14)[7] # q_H
+    HH=str(xls_sheet.row_values(14)[7]) # q_H
     ET.SubElement(sub_root, "q_L").text = HH
-    II=xls_sheet.row_values(14)[8] # R-L
+    II=str(xls_sheet.row_values(14)[8]) # R-L
     ET.SubElement(sub_root, "R-L").text = II
-    JJ=xls_sheet.row_values(14)[9] # R-ij
+    JJ=str(xls_sheet.row_values(14)[9]) # R-ij
     ET.SubElement(sub_root, "R-ij").text = JJ
-    if len(xls_sheet.row_values(14)[10]) != 0: # sigma
-        KK=xls_sheet.row_values(14)[10]
+    if len(str(xls_sheet.row_values(14)[10])) != 0: # sigma
+        KK=str(xls_sheet.row_values(14)[10])
         ET.SubElement(sub_root, "sigma").text = KK
-    if len(xls_sheet.row_values(14)[11]) != 0: # epsilon
-        LL=xls_sheet.row_values(14)[11]
+    if len(str(xls_sheet.row_values(14)[11])) != 0: # epsilon
+        LL=str(xls_sheet.row_values(14)[11])
         ET.SubElement(sub_root, "epsilon").text = LL
 
 # The set of functions below (all begin with XMLToParams) convert XML to .params format
