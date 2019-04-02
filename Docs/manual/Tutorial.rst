@@ -101,6 +101,22 @@ Atomistic Force-Field Data
 
 
 
+Water Models
+------------
+
+| Metadata
+
+.. figure:: ../images/TIP3P_tutorial_Journal_Reference.png
+
+.. figure:: ../images/TIP3P_tutorial_Metadata.png
+
+.. figure:: ../images/TIP3P_tutorial_Keywords.png
+
+
+| 3-site
+
+.. figure:: ../images/TIP3P_tutorial_3-site_Rigid.png
+
 
 References
 ----------
@@ -111,5 +127,5 @@ References
 
 #. Jiří Vymětal and Jiří Vondrášek, "Parametrization of 2,2,2-Trifluoroethanol Based on the Generalized Amber Force Field Provides Realistic Agreement between Experimental and Calculated Properties of Pure Liquid as Well as Water-Mixed Solutions", J. Phys. Chem. B, 118 (35), pp 10390–10404, (2014).
 
-
+#. William L. Jorgensen, Jayaraman Chandrasekhar, Jeffry D. Madura, Roger W. Impey and Michael L. Klein, "Comparison of simple potential functions for simulating liquid water",  J. Chem. Phys., 79 (2), pp. 926–935, (1983).
 
