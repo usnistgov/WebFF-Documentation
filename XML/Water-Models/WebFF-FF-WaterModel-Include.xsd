@@ -248,29 +248,26 @@
                                     <xs:attribute name="comment" type="xs:string" use="optional" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="AtomType-CoarseGrained">
+                            <xs:element name="AtomType-Generic">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="CGType" maxOccurs="unbounded">
+                                        <xs:element name="AtomType" maxOccurs="unbounded">
                                             <xs:complexType>
                                                 <xs:complexContent>
-                                                    <xs:extension base="AtomTemplate-CoarseGrained">
+                                                    <xs:extension base="AtomTemplate-Generic">
                                                         <xs:attribute name="Description" type="xs:string" use="optional" />
-                                                        <xs:attribute name="AtomicMass-CG" type="xs:float" use="optional" />
-                                                        <xs:attribute name="AtomicSize-CG" type="xs:float" use="optional" />
+                                                        <xs:attribute name="Element" type="xs:string" use="optional" />
+                                                        <xs:attribute name="AtomicNumber" type="xs:positiveInteger" use="optional" />
+                                                        <xs:attribute name="AtomicMass" type="xs:float" use="optional" />
                                                     </xs:extension>
                                                 </xs:complexContent>
                                             </xs:complexType>
                                         </xs:element>
                                     </xs:sequence>
-                                    <xs:attribute name="Nomenclature" use="optional">
+                                    <xs:attribute name="Nomenclature" use="required">
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
-                                                <xs:enumeration value="SMILES" />
-                                                <xs:enumeration value="SMARTS" />
-                                                <xs:enumeration value="CurlySMILES" />
-                                                <xs:enumeration value="SLN" />
-                                                <xs:enumeration value="InChI" />
+                                                <xs:enumeration value="Generic" />
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
@@ -282,7 +279,7 @@
                 </xs:element>
                 <xs:element name="BondPotential" minOccurs="0">
                     <xs:complexType>
-                        <xs:sequence>
+                        <xs:choice>
                             <xs:element name="BondPotential-Harmonic" minOccurs="0">
                                 <xs:complexType>
                                     <xs:sequence>
@@ -350,12 +347,12 @@
                                     <xs:attribute name="R0-units" type="BondPotential-Morse-R0-Units" />
                                 </xs:complexType>
                             </xs:element>
-                        </xs:sequence>
+                        </xs:choice>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="AnglePotential" minOccurs="0">
                     <xs:complexType>
-                        <xs:sequence>
+                        <xs:choice>
                             <xs:element name="AnglePotential-Harmonic" minOccurs="0">
                                 <xs:complexType>
                                     <xs:sequence>
@@ -424,12 +421,12 @@
                                     <xs:attribute name="Theta0-units" type="AnglePotential-COS2-Angle-Units" />
                                 </xs:complexType>
                             </xs:element>
-                        </xs:sequence>
+                        </xs:choice>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="NonBondPotential" minOccurs="0">
                     <xs:complexType>
-                        <xs:sequence>
+                        <xs:choice>
                             <xs:element name="NonBondPotential-LJ" minOccurs="0">
                                 <xs:complexType>
                                     <xs:sequence>
@@ -544,7 +541,7 @@
                                     </xs:attribute>
                                 </xs:complexType>
                             </xs:element>
-                        </xs:sequence>
+                        </xs:choice>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="BondIncrementTable" minOccurs="0">
