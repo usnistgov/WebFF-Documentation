@@ -50,6 +50,54 @@ def excel_xml(input, output):
         sub_root = ET.SubElement(root, "WaterModel")
         sheet = xls_file.sheet_by_name("WaterModel-5Site-Rigid")
         FF.ReadExcelWaterPotential_5Site(sheet,sub_root)
+		
+    #Atom Types
+    if  "AtomType-ATDL" in sheet_names: 
+        sheet = xls_file.sheet_by_name("AtomType-ATDL")
+        FF.ReadExcelAtomTypes_ATDL(sheet, root)
+    if  "AtomType-Generic" in sheet_names: 
+        sheet = xls_file.sheet_by_name("AtomType-Generic")
+        FF.ReadExcelAtomTypes_Generic(sheet, root)
+		
+    #Bond Potentials 
+    if "BondPotential-Harmonic" in sheet_names:
+        sub_root = ET.SubElement(root, "BondPotential")
+        sheet = xls_file.sheet_by_name("BondPotential-Harmonic")
+        FF.ReadExcelBondPotential_Harmonic(sheet,sub_root) 
+    if "BondPotential-Morse" in sheet_names:
+        sub_root = ET.SubElement(root, "BondPotential")
+        sheet = xls_file.sheet_by_name("BondPotential-Morse")
+        FF.ReadExcelBondPotential_Morse(sheet,sub_root)
+		
+    #Angle Potentials
+    if  "AnglePotential-Harmonic" in sheet_names: 
+        sub_root = ET.SubElement(root, "AnglePotential")
+        sheet = xls_file.sheet_by_name("AnglePotential-Harmonic")
+        FF.ReadExcelAnglePotential_Harmonic(sheet,sub_root)
+    if  "AnglePotential-COS2" in sheet_names: 
+        sub_root = ET.SubElement(root, "AnglePotential")
+        sheet = xls_file.sheet_by_name("AnglePotential-COS2")
+        FF.ReadExcelAnglePotential_COS2(sheet,sub_root)
+		
+    #Non Bonded Potentials
+    if "NonBondPotential-LJ" in sheet_names: 
+        sub_root = ET.SubElement(root, "NonBondPotential")
+        sheet = xls_file.sheet_by_name("NonBondPotential-LJ")
+        FF.ReadExcelNonBondPotential_LJ(sheet, sub_root)
+    if "NonBondPotential-LJ2" in sheet_names: 
+        sub_root = ET.SubElement(root, "NonBondPotential")
+        sheet = xls_file.sheet_by_name("NonBondPotential-LJ2")
+        FF.ReadExcelNonBondPotential_LJ2(sheet, sub_root)	
+    if "NonBondPotential-LJ2-AB" in sheet_names: 
+	    sub_root = ET.SubElement(root, "NonBondPotential")
+	    sheet = xls_file.sheet_by_name("NonBondPotential-LJ2-AB")
+		
+    #Other information     
+    if  "BondIncrements" in sheet_names: 
+        sub_root = ET.SubElement(root, "BondIncrementTable")
+        sheet = xls_file.sheet_by_name("BondIncrements")
+        FF.ReadExcelBondIncrements(sheet, sub_root)
+
         
     # Create a ElementTree, which is the structure corresponding to the Xml Document
     tree = ET.ElementTree(root)
