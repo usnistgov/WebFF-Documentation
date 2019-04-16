@@ -2695,6 +2695,31 @@ def XMLToParamsNonBondPotential_LJ_Rmin(root, output_file):
             f.write("".rjust(11))
         f.write("\n") 
 
+def XMLToParamsNonBondPotential_LJ(root, output_file):
+    f = output_file
+    f.write("NONBONDED\n\n" ) 
+    f.write("!\n!V(Lennard-Jones) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]\n!\n" )
+    f.write("!epsilon: " + ((root.find('./NonBondPotential/NonBond-LJ-Rmin')).attrib['epsilon-units']).encode('utf-8')+", ")
+    f.write("Eps,i,j = sqrt(eps,i * eps,j)\n")
+    f.write("!Rmin/2: "+ ((root.find('./NonBondPotential/NonBond-LJ-Rmin')).attrib['Rmin-units']).encode('utf-8')+", ")
+    f.write("Rmin,i,j = Rmin/2,i + Rmin/2,j\n")
+    for nonbond in root.findall('./NonBondPotential/NonBond-LJ-Rmin/NonBond'):
+        if len(str(nonbond.find("AtomType")))!=0 and str(nonbond.find("AtomType")) != "None":
+            f.write( nonbond.find("AtomType").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        #Insert a column of Zeros purely for formatting purposes
+        f.write(("%.6f" %0).rjust(0))
+        if len(str(nonbond.find("epsilon")))!=0 and str(nonbond.find("epsilon")) != "None": 
+            f.write(("%.6f" % float(nonbond.find("epsilon").text)).rjust(12))
+        else:
+            f.write("".rjust(12))
+        if len(str(nonbond.find("Rmin")))!=0 and str(nonbond.find("Rmin")) != "None":
+            f.write(("%.6f" % float(nonbond.find("Rmin").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        f.write("\n")
+		
 def XMLToParamsBondPotential_Harmonic(root, output_file):
     f = output_file
     f.write("BONDS\n!\n" )
@@ -2719,7 +2744,38 @@ def XMLToParamsBondPotential_Harmonic(root, output_file):
         else:
             f.write("".rjust(11))
        
-        f.write("\n")     
+        f.write("\n")   
+
+def XMLToParamsBondPotential_Morse(root, output_file):
+    f = output_file
+    f.write("BONDS\n!\n" )
+    f.write("!V(bond) = D*[(1-exp(-A(R-R0))]^2\n!\n")
+    f.write("!D: " + ((root.find('./BondPotential/BondPotential-Morse')).attrib['D-units']).encode('utf-8')+"\n")
+    f.write("!A: " + ((root.find('./BondPotential/BondPotential-Morse')).attrib['A-units']).encode('utf-8')+"\n")
+    f.write("!R0: " + ((root.find('./BondPotential/BondPotential-Morse')).attrib['R0-units']).encode('utf-8')+"\n!\n")
+    for bond in root.findall('./BondPotential/BondPotential-Morse/Bond'):
+        if len(str(bond.find("AT-1")))!=0 and str(bond.find("AT-1")) != "None":
+            f.write(bond.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(bond.find("AT-2")))!=0 and str(bond.find("AT-2")) != "None":
+            f.write(bond.find("AT-2").text.ljust(5))
+        else:
+            f.write("".ljust(5))
+        if len(str(bond.find("D")))!=0 and str(bond.find("D")) != "None": 
+            f.write(("%.4f" %float(bond.find("D").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(bond.find("A")))!=0 and str(bond.find("A")) != "None": 
+            f.write(("%.1f" %float(bond.find("A").text)).ljust(7))
+        else:
+            f.write("".ljust(7))        
+        if len(str(bond.find("R0")))!=0 and str(bond.find("R0")) != "None": 
+            f.write(("%.1f" %float(bond.find("R0").text)).ljust(11))
+        else:
+            f.write("".ljust(11))
+       
+        f.write("\n") 	
         
 def XMLToParamsAnglePotential_Harmonic(root, output_file):
     f = output_file
@@ -2728,6 +2784,36 @@ def XMLToParamsAnglePotential_Harmonic(root, output_file):
     f.write("!Ktheta: " + ((root.find('./AnglePotential/AnglePotential-Harmonic')).attrib['Ka-units']).encode('utf-8')+"\n")
     f.write("!Theta0: " + ((root.find('./AnglePotential/AnglePotential-Harmonic')).attrib['Theta0-units']).encode('utf-8')+"\n!\n")
     for angle in root.findall('./AnglePotential/AnglePotential-Harmonic/Angle'):
+        if len(str(angle.find("AT-1")))!=0 and str(angle.find("AT-1")) != "None":
+         f.write(angle.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("AT-2")))!=0 and str(angle.find("AT-2")) != "None":
+            f.write(angle.find("AT-2").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("AT-3")))!=0 and str(angle.find("AT-3")) != "None":
+            f.write(angle.find("AT-3").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("Ka")))!=0 and str(angle.find("Ka")) != "None": 
+            f.write(("%.3f" %float(angle.find("Ka").text)).rjust(7))
+        else:
+            f.write("".rjust(7))
+        if len(str(angle.find("Theta0")))!=0 and str(angle.find("Theta0")) != "None": 
+            f.write(("%.2f" %float(angle.find("Theta0").text)).rjust(11))
+        else: 
+            f.write("".rjust(11))
+        
+        f.write("\n")
+		
+def XMLToParamsAnglePotential_COS2(root, output_file):
+    f = output_file
+    f.write("ANGLES\n!\n" )
+    f.write("!V(angle) = Ka*[cos(Theta)-cos(Theta0)]^2\n!\n")
+    f.write("!Ktheta: " + ((root.find('./AnglePotential/AnglePotential-COS2')).attrib['Ka-units']).encode('utf-8')+"\n")
+    f.write("!Theta0: " + ((root.find('./AnglePotential/AnglePotential-COS2')).attrib['Theta0-units']).encode('utf-8')+"\n!\n")
+    for angle in root.findall('./AnglePotential/AnglePotential-COS2/Angle'):
         if len(str(angle.find("AT-1")))!=0 and str(angle.find("AT-1")) != "None":
          f.write(angle.find("AT-1").text.ljust(6))
         else:
@@ -2787,6 +2873,50 @@ def XMLToParamsDihedralPotential_CHARMM(root, output_file):
         else:
             f.write("".rjust(7))
         f.write("\n")
+		
+def XMLToParamsDihedralPotential_FourierSimple(root, output_file):
+    f = output_file
+    f.write("DIHEDRALS\n!\n" )
+    f.write("!V(dihedral) = K1*[1+cos(Phi)]+K2*[1+cos(2*Phi)]+K3*[1+cos(3*Phi)]+K4*[1+cos(4*Phi)]+K5*[1+cos(5*Phi)]\n!\n")
+    f.write("!Kn: " + ((root.find('./DihedralPotential/DihedralPotential-FourierSimple')).attrib['Kn-units']).encode('utf-8')+"\n!\n")
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-FourierSimple/Dihedral'):
+        if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
+            f.write(dihedral.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-2")))!=0 and str(dihedral.find("AT-2")) != "None":
+            f.write(dihedral.find("AT-2").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-3")))!=0 and str(dihedral.find("AT-3")) != "None":
+            f.write(dihedral.find("AT-3").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-4")))!=0 and str(dihedral.find("AT-4")) != "None":
+            f.write(dihedral.find("AT-4").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(dihedral.find("K1")))!=0 and str(dihedral.find("K1")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K1").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("K2")))!=0 and str(dihedral.find("K2")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K2").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("K3")))!=0 and str(dihedral.find("K3")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K3").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("K4")))!=0 and str(dihedral.find("K4")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K4").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("K5")))!=0 and str(dihedral.find("K5")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K5").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        f.write("\n")
 def XMLToParamsImproperPotential_Harmonic(root, output_file):
     f = output_file
     f.write("IMPROPER\n!\n")
@@ -2821,6 +2951,45 @@ def XMLToParamsImproperPotential_Harmonic(root, output_file):
             f.write(("%.4f" %float(improper.find("Chi0").text)).rjust(11))
         else:
             f.write("".rjust(11))
+        f.write("\n")
+		
+def XMLToParamsImproperPotential_CHARMM(root, output_file):
+    f = output_file
+    f.write("IMPROPER\n!\n")
+    f.write("!V(improper) = Kd*[1+cos(N*Phi+Phi0)]\n!\n" )
+    f.write("!Kpsi: " + ((root.find('./ImproperPotential/ImproperPotential-CHARMM')).attrib['Kd-units']).encode('utf-8')+"\n")
+    f.write("!n: multiplicity\n")
+    f.write("!delta: " + ((root.find('./ImproperPotential/ImproperPotential-CHARMM')).attrib['Phi0-units']).encode('utf-8')+"\n!\n")
+        
+    for improper in root.findall('./ImproperPotential/ImproperPotential-CHARMM/Improper'):
+        if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
+            f.write(improper.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(improper.find("AT-2")))!=0 and str(improper.find("AT-2")) != "None":
+            f.write(improper.find("AT-2").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(improper.find("AT-3")))!=0 and str(improper.find("AT-3")) != "None":
+            f.write(improper.find("AT-3").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(improper.find("AT-4")))!=0 and str(improper.find("AT-4")) != "None":
+            f.write(improper.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("Kd")))!=0 and str(improper.find("Kd")) != "None": 
+            f.write(("%.5f" %float(improper.find("Kd").text)).rjust(8))
+        else:
+            f.write("".rjust(8))
+        if len(str(dihedral.find("N")))!=0 and str(improper.find("N")) != "None": 
+            f.write(("%.0f"%float((improper.find("N").text))).ljust(4))
+        else:
+            f.write("".ljust(4))
+        if len(str(dihedral.find("Phi0")))!=0 and str(improper.find("Phi0")) != "None": 
+            f.write(("%.3f" %float(improper.find("Phi0").text)).rjust(7))
+        else:
+            f.write("".rjust(7))
         f.write("\n")
 def XMLToParamsAtomTypes(root, output_file):
     f = output_file
@@ -2916,7 +3085,7 @@ def XMLtoFrcEquivalenceTable(root, output_file):
 def XMLtoFrcBondPotential_Harmonic(root, output_file): 
     f = output_file
     f.write("#quadratic_bond\n\n" )
-    f.write("> E = kb*(b-b0)^2\n\n")
+    f.write("> E = K*(R-R0)^2\n\n")
     f.write("!Ver  Ref     I     J      b0      kb\n")
     f.write("!---- ---    ----  ----  -----   -------\n")
     for bond in root.findall('./BondPotential/BondPotential-Harmonic/Bond'):
@@ -2942,6 +3111,43 @@ def XMLtoFrcBondPotential_Harmonic(root, output_file):
             f.write("".ljust(8))
         if len(str(bond.find("K")))!=0 and str(bond.find("K")) != "None": 
             f.write(("%.1f" %float(bond.find("K").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n") 
+def XMLtoFrcBondPotential_Morse(root, output_file):
+    f = output_file
+    f.write("#XXXXXXX\n\n" )
+    f.write("> E = D*[(1-exp(-A(R-R0))]^2\n\n")
+    f.write("!Ver  Ref      I      J    D    A    R0  \n")
+    f.write("!---- ---    ----  ----   ----  ---  ----\n")
+    for bond in root.findall('./BondPotential/BondPotential-Morse/Bond'):
+        if "version" in bond.attrib.keys():
+            f.write(" " +bond.attrib["version"].ljust(6))
+        else:
+            f.write(" ".ljust(6))
+        if "reference" in bond.attrib.keys():
+            f.write(("%.0f" %float(bond.attrib["reference"])).ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(bond.find("AT-1")))!=0 and str(bond.find("AT-1")) != "None":
+            f.write(bond.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(bond.find("AT-2")))!=0 and str(bond.find("AT-2")) != "None":
+            f.write(bond.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(bond.find("D")))!=0 and str(bond.find("D")) != "None": 
+            f.write(("%.4f" %float(bond.find("D").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(bond.find("A")))!=0 and str(bond.find("A")) != "None": 
+            f.write(("%.1f" %float(bond.find("A").text)).ljust(7))
+        else:
+            f.write("".ljust(7))        
+        if len(str(bond.find("R0")))!=0 and str(bond.find("R0")) != "None": 
+            f.write(("%.1f" %float(bond.find("R0").text)).ljust(0))
         else:
             f.write("".ljust(0))
         f.write("\n")
@@ -2983,6 +3189,47 @@ def XMLtoFrcAnglePotential_Harmonic(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n") 
+def XMLtoFrcAnglePotential_COS2(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("> E = (1/2)*Ka*[cos(Theta)-cos(Theta0)]^2\n\n")
+    f.write("!Ver  Ref     I     J    K      Theta0    Ka         Comment\n")
+    f.write("!---- ---    ----  ---- ----    ------   -----       -------\n")
+    for angle in root.findall('./AnglePotential/AnglePotential-COS2/Angle'):
+        if "version" in angle.attrib.keys():
+            f.write(" " +angle.attrib["version"].ljust(6))
+        else:
+            f.write(" ".ljust(6))
+        if "reference" in angle.attrib.keys():
+            f.write(("%.0f" %float(angle.attrib["reference"])).ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("AT-1")))!=0 and str(angle.find("AT-1")) != "None":
+            f.write(angle.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("AT-2")))!=0 and str(angle.find("AT-2")) != "None":
+            f.write(angle.find("AT-2").text.ljust(5))
+        else:
+            f.write("".ljust(5))
+        if len(str(angle.find("AT-3")))!=0 and str(angle.find("AT-3")) != "None":
+            f.write(angle.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(angle.find("Theta0")))!=0 and str(angle.find("Theta0")) != "None": 
+            f.write(("%.2f" %float(angle.find("Theta0").text)).ljust(10))
+        else: 
+            f.write("".ljust(10))
+        if len(str(angle.find("Ka")))!=0 and str(angle.find("Ka")) != "None": 
+            f.write(("%.2f" %float(angle.find("Ka").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if "comment" in angle.attrib.keys():
+		    f.write(" " +angle.attrib["comment"].ljust(10))
+        else:
+            f.write("".ljust(10))
+        f.write("\n")
+    f.write("\n")    
 def XMLtoFrcImproperPotential_CHARMM(root, output_file): 
     f = output_file
     f.write("#out_of_plane\n\n" )
@@ -3024,6 +3271,55 @@ def XMLtoFrcImproperPotential_CHARMM(root, output_file):
             f.write("".ljust(9))
         if len(str(improper.find("Phi0")))!=0 and str(improper.find("Phi0")) != "None": 
             f.write(("%.1f" %float(improper.find("Phi0").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcImproperPotential_FourierSimple(root, output_file):
+    f = output_file
+    f.write("#XXXXXXX\n\n" )
+    f.write("> E = Ki*[C0+C1*cos(w)+C2*cos(2*w)]\n\n")
+    f.write("!Ver  Ref    I      J      K      L      Ki      C0    C1    C2     \n")
+    f.write("!---- ---  -----  -----  -----  -----   -----   ----  ----   ----    \n")
+    for improper in root.findall('./ImproperPotential/ImproperPotential-FourierSimple/Improper'):
+        if "version" in improper.attrib.keys():
+            f.write(" " +improper.attrib["version"].ljust(6))
+        else:
+            f.write(" ".ljust(6))
+        if "reference" in improper.attrib.keys():
+            f.write(("%.0f" %float(improper.attrib["reference"])).ljust(4))
+        else:
+            f.write("".ljust(4))
+        if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
+            f.write(improper.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-2")))!=0 and str(improper.find("AT-2")) != "None":
+            f.write(improper.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-3")))!=0 and str(improper.find("AT-3")) != "None":
+                f.write(improper.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-4")))!=0 and str(improper.find("AT-4")) != "None":
+            f.write(improper.find("AT-4").text.ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(improper.find("Ki")))!=0 and str(improper.find("Ki")) != "None": 
+            f.write(("%.6f" %float(improper.find("Ki").text)).ljust(13))
+        else:
+            f.write("".ljust(13))
+        if len(str(improper.find("C0")))!=0 and str(improper.find("C0")) != "None": 
+            f.write(("%.4f" %float(improper.find("C0").text)).ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(improper.find("C1")))!=0 and str(improper.find("C1")) != "None": 
+            f.write(("%.4f" %float(improper.find("C1").text)).ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(improper.find("C2")))!=0 and str(improper.find("C2")) != "None": 
+            f.write(("%.4f" %float(improper.find("C2").text)).ljust(0))
         else:
             f.write("".ljust(0))
         f.write("\n")
@@ -3081,6 +3377,55 @@ def XMLtoFrcDihedralPotential_FourierSimple(root, output_file):
             f.write("".rjust(11))
         f.write("\n")
     f.write("\n")
+def XMLtoFrcDihedralPotential_CHARMM(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("> E = Kd*[1+cos(N*Phi-Phi0)]\n\n")
+    f.write("!Ver  Ref    I      J      K      L        Kd         N         Phi0  \n")
+    f.write("!---- ---  -----  -----  -----  -----   --------   --------   ------  \n")
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-CHARMM/Dihedral'):
+        if "version" in dihedral.attrib.keys():
+            f.write(" " +dihedral.attrib["version"].ljust(6))
+        else:
+            f.write(" ".ljust(6))
+        if "reference" in dihedral.attrib.keys():
+            f.write(("%.0f" %float(dihedral.attrib["reference"])).ljust(4))
+        else:
+            f.write("".ljust(4))
+        if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
+            f.write(dihedral.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-2")))!=0 and str(dihedral.find("AT-2")) != "None":
+            f.write(dihedral.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-3")))!=0 and str(dihedral.find("AT-3")) != "None":
+            f.write(dihedral.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-4")))!=0 and str(dihedral.find("AT-4")) != "None":
+            f.write(dihedral.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("Kd")))!=0 and str(dihedral.find("Kd")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("Kd").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("K2")))!=0 and str(dihedral.find("K2")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K2").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        if len(str(dihedral.find("N")))!=0 and str(dihedral.find("N")) != "None": 
+            f.write(("%.1f" %float(dihedral.find("N").text)).rjust(5))
+        else:
+            f.write("".rjust(5))
+        if len(str(dihedral.find("Phi0")))!=0 and str(dihedral.find("Phi0")) != "None" : 
+            f.write(("%.6f" %float(dihedral.find("Phi0").text)).rjust(0))
+        else:
+            f.write("".rjust(0)) 
+        f.write("\n")
+    f.write("\n")
 def XMLtoFrcNonBond_LJ(root, output_file):
     f = output_file
     f.write("#nonbond(12-6)\n\n" )
@@ -3089,6 +3434,36 @@ def XMLtoFrcNonBond_LJ(root, output_file):
     f.write("!Ver  Ref     I        sigma       eps       \n")
     f.write("!---- ---    ----    ---------  ---------   \n")
     for nonbond in root.findall('./NonBondPotential/NonBond-LJ/NonBond'):
+        if "version" in nonbond.attrib.keys():
+            f.write(" " +nonbond.attrib["version"].ljust(6))
+        else:
+            f.write(" ".ljust(6))
+        if "reference" in nonbond.attrib.keys():
+            f.write(("%.0f" %float(nonbond.attrib["reference"])).ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(nonbond.find("AtomType")))!=0 and str(nonbond.find("AtomType")) != "None":
+            f.write(nonbond.find("AtomType").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("sigma")))!=0 and str(nonbond.find("sigma")) != "None":
+            f.write(("%.3f" %float(nonbond.find("sigma").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("epsilon")))!=0 and str(nonbond.find("epsilon")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLToFrcNonBondPotential_LJ_Rmin(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("@type ??\n\n" )
+    f.write("> E = epsilon*[(Rmin/R)^12-2*(Rmin/R)^6]\n\n")
+    f.write("!Ver  Ref     I        sigma       eps       \n")
+    f.write("!---- ---    ----    ---------  ---------   \n")
+    for nonbond in root.findall('./NonBondPotential/NonBond-LJ-Rmin/NonBond'):
         if "version" in nonbond.attrib.keys():
             f.write(" " +nonbond.attrib["version"].ljust(6))
         else:
