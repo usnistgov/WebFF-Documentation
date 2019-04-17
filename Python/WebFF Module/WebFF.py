@@ -3038,7 +3038,36 @@ def XMLtoFrcAtomTypes(root, output_file):
         else:
             f.write("".ljust(0))
         f.write("\n")
-    f.write("\n") 
+    f.write("\n")
+def XMLtoFrcAtomTypesCG(root, output_file): 
+    f = output_file
+    f.write("#atom_types \n\n" )
+    f.write("> Atom type definitions (set the mass of atom types)\n\n")
+    f.write("!Ver  Ref  Name    Mass      Description \n")
+    f.write("!---- ---  ----  ----------  ----------- \n")
+    for atomtype in root.findall('./AtomTypes/AtomType-CoarseGrained/CGType'):
+        if "version" in atomtype.attrib.keys():
+            f.write(" " +atomtype.attrib["version"].ljust(7))
+        else:
+            f.write(" ".ljust(7))
+        if "reference" in atomtype.attrib.keys():
+            f.write(atomtype.attrib["reference"].ljust(4))
+        else:
+            f.write("".ljust(4))
+        if len(str(atomtype.find("CG-Name")))!=0 and str(atomtype.find("CG-Name")) != "None":
+            f.write(atomtype.find("CG-Name").text.ljust(7))
+        else:
+            f.write("".atomtype.find("CG-Name").text.ljust(7))
+        if "AtomicMass-CG"in atomtype.attrib.keys():
+            f.write(("%.3f" %float(atomtype.attrib["AtomicMass-CG"])).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if "Description" in atomtype.attrib.keys(): 
+            f.write(atomtype.attrib["Description"].ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n") 	
 def XMLtoFrcEquivalenceTable(root, output_file): 
     f = output_file
     f.write("#\n#equivalence\n\n" )
