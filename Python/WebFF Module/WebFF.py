@@ -2698,12 +2698,12 @@ def XMLToParamsNonBondPotential_LJ_Rmin(root, output_file):
 def XMLToParamsNonBondPotential_LJ(root, output_file):
     f = output_file
     f.write("NONBONDED\n\n" ) 
-    f.write("!\n!V(Lennard-Jones) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]\n!\n" )
-    f.write("!epsilon: " + ((root.find('./NonBondPotential/NonBond-LJ-Rmin')).attrib['epsilon-units']).encode('utf-8')+", ")
-    f.write("Eps,i,j = sqrt(eps,i * eps,j)\n")
-    f.write("!Rmin/2: "+ ((root.find('./NonBondPotential/NonBond-LJ-Rmin')).attrib['Rmin-units']).encode('utf-8')+", ")
-    f.write("Rmin,i,j = Rmin/2,i + Rmin/2,j\n")
-    for nonbond in root.findall('./NonBondPotential/NonBond-LJ-Rmin/NonBond'):
+    f.write("!\n!V(Lennard-Jones) = 4*epsilon*[(sigma/R)^12-(sigma/R)^6]\n!\n" )
+    f.write("!epsilon: " + ((root.find('./NonBondPotential/NonBond-LJ')).attrib['LJ-epsilon-units']).encode('utf-8')+", ")
+    #f.write("Eps,i,j = sqrt(eps,i * eps,j)\n")
+    f.write("!Rmin/2: "+ ((root.find('./NonBondPotential/NonBond-LJ')).attrib['LJ-sigma-units']).encode('utf-8')+", ")
+    #f.write("Rmin,i,j = Rmin/2,i + Rmin/2,j\n")
+    for nonbond in root.findall('./NonBondPotential/NonBond-LJ/NonBond'):
         if len(str(nonbond.find("AtomType")))!=0 and str(nonbond.find("AtomType")) != "None":
             f.write( nonbond.find("AtomType").text.ljust(6))
         else:
