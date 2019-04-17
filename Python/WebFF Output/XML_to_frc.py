@@ -3,14 +3,17 @@ import xml.etree.ElementTree as ET
 import sys                                # Python standard library
 import WebFF as FF                        # Webff module
 #Calls functions from the webff.py module to translate XML data into the .frc format
-def xml_frc(input, output): 
+def xml_frc(input, output, AToutput): 
     #parses the XMl tree and establishes the root
     tree = ET.parse(input)
-    root = tree.getroot() 
+    root = tree.getroot()
     #opens the output file
     f = open(output, 'w+') 
-    f.write("!"+((root.find("./Force-Field-Header/Description")).text)+"\n\n" )
-    f.write("#version	"+((root.find("./Force-Field-Header/Force-Field-Name")).text)+"\n\n")
+    f.write("!"+str((root.find("./Force-Field-Header/Description")).text)+"\n\n" )
+    f.write("#version	"+str((root.find("./Force-Field-Header/Force-Field-Name")).text)+"\n\n")
+    A = open(AToutput, 'w+') 
+    A.write("!"+str((root.find("./Force-Field-Header/Description")).text)+"\n\n" )
+    A.write("#version	"+str((root.find("./Force-Field-Header/Force-Field-Name")).text)+"\n\n")
     #creates a list of all top level (potential types) elements
     top_elements= (root.findall("*"))
     tags_elements = []
@@ -19,7 +22,8 @@ def xml_frc(input, output):
     #Calls the appropriate webff.py function for each potential style present
 	#Atom Types
     if "AtomTypes" in tags_elements: 
-        FF.XMLtoFrcAtomTypes(root, f)
+        if root.find("AtomTypes/*").tag == "AtomType-CoarseGrained":
+            FF.XMLtoFrcAtomTypesCG(root, A)
 	#Equivalence Tables
     if "EquivalenceTable" in tags_elements: 
         FF.XMLtoFrcEquivalenceTable(root, f)
@@ -60,8 +64,10 @@ def xml_frc(input, output):
 	    FF.download(ele.find("./Reference").text)
     #closes the output file
     f.close()
+    A.close()
 #Allows this script to be called form the command line with input variables
 if __name__ == "__main__":
     input = str((sys.argv[1]))
     output = str((sys.argv[2]))
-    xml_frc(input, output)
+    AToutput = str((sys.argv[3]))
+    xml_frc(input, output, AToutput)
