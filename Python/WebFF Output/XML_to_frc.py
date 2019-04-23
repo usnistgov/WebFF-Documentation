@@ -8,22 +8,29 @@ def xml_frc(input, output, AToutput):
     tree = ET.parse(input)
     root = tree.getroot()
     #opens the output file
-    f = open(output, 'w+') 
+    f = open(output + '.frc', 'w+') 
     f.write("!"+str((root.find("./Force-Field-Header/Description")).text)+"\n\n" )
     f.write("#version	"+str((root.find("./Force-Field-Header/Force-Field-Name")).text)+"\n\n")
-    A = open(AToutput, 'w+') 
+    A = open(AToutput + '.tem', 'w+') 
     A.write("!"+str((root.find("./Force-Field-Header/Description")).text)+"\n\n" )
     A.write("#version	"+str((root.find("./Force-Field-Header/Force-Field-Name")).text)+"\n\n")
-    #creates a list of all top level (potential types) elements
+	#Need to open output files for different Atom type formats as well as charges
+    
+	#creates a list of all top level (potential types) elements
     top_elements= (root.findall("*"))
     tags_elements = []
     for ele in top_elements:
         tags_elements.append(ele.tag)
     #Calls the appropriate webff.py function for each potential style present
+	
 	#Atom Types
     if "AtomTypes" in tags_elements: 
         if root.find("AtomTypes/*").tag == "AtomType-CoarseGrained":
             FF.XMLtoFrcAtomTypesCG(root, A)
+	#Above if statement Needed for all Atom Types
+	
+	#If statement needed to check for charges
+	
 	#Equivalence Tables
     if "EquivalenceTable" in tags_elements: 
         FF.XMLtoFrcEquivalenceTable(root, f)
@@ -33,6 +40,12 @@ def xml_frc(input, output, AToutput):
             FF.XMLtoFrcBondPotential_Harmonic(root, f)
         if root.find("BondPotential/*").tag == "BondPotential-Morse": 
             FF.XMLtoFrcBondPotential_Morse(root, f)
+        if root.find("BondPotential/*").tag == "BondPotential-Class2": 
+            FF.XMLtoFrcBondPotential_Class2(root, f)
+        if root.find("BondPotential/*").tag == "BondPotential-FENE": 
+            FF.XMLtoFrcBondPotential_FENE(root, f)
+        if root.find("BondPotential/*").tag == "BondPotential-Tabular": 
+            FF.XMLToTableBondPotential_Tabular(root, f)
 	#Angle Potentials
     if "AnglePotential" in tags_elements:
         if root.find("AnglePotential/*").tag == "AnglePotential-Harmonic": 
