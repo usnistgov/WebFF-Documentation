@@ -28,6 +28,12 @@ def xml_params(input, output):
             FF.XMLToParamsBondPotential_Harmonic(root, f)
         if root.find("BondPotential/*").tag == "BondPotential-Morse":
             FF.XMLToParamsBondPotential_Morse(root, f)
+        if root.find("BondPotential/*").tag == "BondPotential-Class2": 
+            FF.XMLtoParamsBondPotential_Class2(root, f)
+        if root.find("BondPotential/*").tag == "BondPotential-FENE": 
+            FF.XMLtoParamsBondPotential_FENE(root, f)
+        if root.find("BondPotential/*").tag == "BondPotential-Tabular": 
+            FF.XMLToTableBondPotential_Tabular(root, f)
 	#Angle Potentials
     if "AnglePotential" in tags_elements:
         if root.find("AnglePotential/*").tag == "AnglePotential-Harmonic": 
