@@ -62,6 +62,31 @@ def xml_params(input, output):
     f.close()
 #Allows this script to be called form the command line with input variables
 if __name__ == "__main__":
-    input = str((sys.argv[1]))
-    output = str((sys.argv[2]))
-    xml_params(input, output)
+# Usage: XML_to_params.py
+#
+# Argument #1: XML file output from WebFF
+# Argument #2: File name for converted output 
+#
+# Synopsis: The script reads force-field data in XML format and produces two
+# output files. FF_NAME.params contains the FF parameters and FF_NAME.tem 
+# contains the atom types.
+#
+# Find argc size ... 
+    argc = len(sys.argv)
+
+# Test argc value ... 
+    if argc == 3: 
+        xml_file = str((sys.argv[1]))
+        ff_filestring = str((sys.argv[2]))
+    else:
+        print("Usage: XML_to_params.py FF_File.xml FF_NAME")
+        sys.exit()
+
+# Check for XML file existence and proceed ... 
+    if os.path.isfile(sys.argv[1]): 
+        print("Execute file conversion")
+        xml_params(xml_file, ff_filestring)
+    else: 
+        print("Error: Specified XML File does not exist")
+        print("Usage: XML_to_params.py FF_File.xml FF_NAME")
+        sys.exit(
