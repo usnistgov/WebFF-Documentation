@@ -2866,6 +2866,31 @@ def XMLToParamsAnglePotential_Harmonic(root, output_file):
         
         f.write("\n")
 		
+def XMLToParamsAnglePotential_Cosine(root, output_file):
+    f = output_file
+    f.write("ANGLES\n!\n" )
+    f.write("!V(angle) = Ka*[1+cos(theta)]\n!\n")
+    f.write("!Ktheta: " + ((root.find('./AnglePotential/AnglePotential-Cosine')).attrib['Ka-units']).encode('utf-8')+"\n")
+    for angle in root.findall('./AnglePotential/AnglePotential-Cosine/Angle'):
+        if len(str(angle.find("AT-1")))!=0 and str(angle.find("AT-1")) != "None":
+         f.write(angle.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("AT-2")))!=0 and str(angle.find("AT-2")) != "None":
+            f.write(angle.find("AT-2").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("AT-3")))!=0 and str(angle.find("AT-3")) != "None":
+            f.write(angle.find("AT-3").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("Ka")))!=0 and str(angle.find("Ka")) != "None": 
+            f.write(("%.3f" %float(angle.find("Ka").text)).rjust(7))
+        else:
+            f.write("".rjust(7))
+        
+        f.write("\n")
+
 def XMLToParamsAnglePotential_COS2(root, output_file):
     f = output_file
     f.write("ANGLES\n!\n" )
@@ -2895,6 +2920,85 @@ def XMLToParamsAnglePotential_COS2(root, output_file):
             f.write("".rjust(11))
         
         f.write("\n")
+		
+def XMLToParamsAnglePotential_CHARMM(root, output_file):
+    f = output_file
+    f.write("ANGLES\n!\n" )
+    f.write("!V(angle) = Ka*(Theta-Theta0)^2+Kub*(R-Rub)^2\n!\n")
+    f.write("!Ktheta: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Ka-units']).encode('utf-8')+"\n")
+    f.write("!Theta0: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Theta0-units']).encode('utf-8')+"\n!\n")
+	f.write("!Kub: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Kub-units']).encode('utf-8')+"\n!\n")
+	f.write("!Rub: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Rub-units']).encode('utf-8')+"\n!\n")
+    for angle in root.findall('./AnglePotential/AnglePotential-CHARMM/Angle'):
+        if len(str(angle.find("AT-1")))!=0 and str(angle.find("AT-1")) != "None":
+         f.write(angle.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("AT-2")))!=0 and str(angle.find("AT-2")) != "None":
+            f.write(angle.find("AT-2").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("AT-3")))!=0 and str(angle.find("AT-3")) != "None":
+            f.write(angle.find("AT-3").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("Ka")))!=0 and str(angle.find("Ka")) != "None": 
+            f.write(("%.3f" %float(angle.find("Ka").text)).rjust(7))
+        else:
+            f.write("".rjust(7))
+        if len(str(angle.find("Theta0")))!=0 and str(angle.find("Theta0")) != "None": 
+            f.write(("%.2f" %float(angle.find("Theta0").text)).rjust(11))
+        else: 
+            f.write("".rjust(11))
+        if len(str(angle.find("Kub")))!=0 and str(angle.find("Kub")) != "None": 
+            f.write(("%.3f" %float(angle.find("Kub").text)).rjust(7))
+        else:
+            f.write("".rjust(7))
+        if len(str(angle.find("Rub")))!=0 and str(angle.find("Rub")) != "None": 
+            f.write(("%.3f" %float(angle.find("Rub").text)).rjust(7))
+        else:
+            f.write("".rjust(7))
+        
+        f.write("\n")
+
+def XMLToParamsAnglePotential_Class2(root, output_file):
+    f = output_file
+    f.write("ANGLES\n!\n" )
+    f.write("!V(angle) = K2*(Theta-Theta0)^2+K3*(Theta-Theta0)^3+K4*(Theta-Theta0)^4\n!\n")
+    f.write("!K: " + ((root.find('./AnglePotential/AnglePotential-Class2')).attrib['K-units']).encode('utf-8')+"\n")
+    f.write("!Theta0: " + ((root.find('./AnglePotential/AnglePotential-Class2')).attrib['Theta0-units']).encode('utf-8')+"\n!\n")
+    for angle in root.findall('./AnglePotential/AnglePotential-Class2/Angle'):
+        if len(str(angle.find("AT-1")))!=0 and str(angle.find("AT-1")) != "None":
+         f.write(angle.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("AT-2")))!=0 and str(angle.find("AT-2")) != "None":
+            f.write(angle.find("AT-2").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("AT-3")))!=0 and str(angle.find("AT-3")) != "None":
+            f.write(angle.find("AT-3").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("K2")))!=0 and str(angle.find("K2")) != "None": 
+            f.write(("%.3f" %float(angle.find("K2").text)).rjust(7))
+        else:
+            f.write("".rjust(7))
+        if len(str(angle.find("K3")))!=0 and str(angle.find("K3")) != "None": 
+            f.write(("%.3f" %float(angle.find("K3").text)).rjust(7))
+        else:
+            f.write("".rjust(7))
+        if len(str(angle.find("K4")))!=0 and str(angle.find("K4")) != "None": 
+            f.write(("%.3f" %float(angle.find("K4").text)).rjust(7))
+        else:
+            f.write("".rjust(7))
+        if len(str(angle.find("Theta0")))!=0 and str(angle.find("Theta0")) != "None": 
+            f.write(("%.2f" %float(angle.find("Theta0").text)).rjust(11))
+        else: 
+            f.write("".rjust(11))
+        
+        f.write("\n")		
+#Dihedral Potentials
 def XMLToParamsDihedralPotential_CHARMM(root, output_file):
     f = output_file
     f.write("DIHEDRALS\n!\n" )
@@ -3060,6 +3164,8 @@ def XMLToParamsAtomTypes(root, output_file):
             masses.append(atomType.find("AtomType-Name").text)
             f.write("\n") 
 # The set of functions below (all begin with XMLToFrc) convert XML to .frc format
+
+#Atom Types
 def XMLtoFrcAtomTypes(root, output_file): 
     f = output_file
     f.write("#atom_types \n\n" )
@@ -3110,7 +3216,9 @@ def XMLtoFrcAtomTypesCG(root, output_file):
         else:
             f.write("".ljust(0))
         f.write("\n")
-    f.write("\n") 	
+    f.write("\n") 
+
+#Equivalence Table	
 def XMLtoFrcEquivalenceTable(root, output_file): 
     f = output_file
     f.write("#\n#equivalence\n\n" )
@@ -3146,6 +3254,7 @@ def XMLtoFrcEquivalenceTable(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n") 
+
 #XML to Frc Bond Potentials
 def XMLtoFrcBondPotential_Harmonic(root, output_file): 
     f = output_file
@@ -3259,6 +3368,8 @@ def XMLtoFrcBondPotential_FENE(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+
+#Angle Potentials
 def XMLtoFrcAnglePotential_Harmonic(root, output_file): 
     f = output_file
     f.write("#quadratic_angle\n\n" )
@@ -3320,7 +3431,119 @@ def XMLtoFrcAnglePotential_COS2(root, output_file):
         else:
             f.write("".ljust(10))
         f.write("\n")
-    f.write("\n")    
+    f.write("\n")   
+def XMLtoFrcAnglePotential_Cosine(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("> E = Ka*[1+cos(theta)]\n\n")
+    f.write("! I     J    K     Ka    Comment\n")
+    f.write("!---- ---- ----   -----  -------\n")
+    for angle in root.findall('./AnglePotential/AnglePotential-Cosine/Angle'):
+        if len(str(angle.find("AT-1")))!=0 and str(angle.find("AT-1")) != "None":
+            f.write(angle.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("AT-2")))!=0 and str(angle.find("AT-2")) != "None":
+            f.write(angle.find("AT-2").text.ljust(5))
+        else:
+            f.write("".ljust(5))
+        if len(str(angle.find("AT-3")))!=0 and str(angle.find("AT-3")) != "None":
+            f.write(angle.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(angle.find("Ka")))!=0 and str(angle.find("Ka")) != "None": 
+            f.write(("%.2f" %float(angle.find("Ka").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if "comment" in angle.attrib.keys():
+		    f.write(" " +angle.attrib["comment"].ljust(10))
+        else:
+            f.write("".ljust(10))
+        f.write("\n")
+    f.write("\n") 
+
+def XMLtoFrcAnglePotential_CHARMM(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("> E = Ka*(Theta-Theta0)^2+Kub*(R-Rub)^2\n\n")
+    f.write("!I     J    K      Theta0    Ka     Kub    Rub    Comment\n")
+    f.write("!----  ---- ----    ------  -----  -----  -----   -------\n")
+    for angle in root.findall('./AnglePotential/AnglePotential-CHARMM/Angle'):
+        if len(str(angle.find("AT-1")))!=0 and str(angle.find("AT-1")) != "None":
+            f.write(angle.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("AT-2")))!=0 and str(angle.find("AT-2")) != "None":
+            f.write(angle.find("AT-2").text.ljust(5))
+        else:
+            f.write("".ljust(5))
+        if len(str(angle.find("AT-3")))!=0 and str(angle.find("AT-3")) != "None":
+            f.write(angle.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(angle.find("Theta0")))!=0 and str(angle.find("Theta0")) != "None": 
+            f.write(("%.2f" %float(angle.find("Theta0").text)).ljust(10))
+        else: 
+            f.write("".ljust(10))
+        if len(str(angle.find("Ka")))!=0 and str(angle.find("Ka")) != "None": 
+            f.write(("%.2f" %float(angle.find("Ka").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(angle.find("Kub")))!=0 and str(angle.find("Kub")) != "None":
+            f.write(angle.find("Kub").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(angle.find("Rub")))!=0 and str(angle.find("Rub")) != "None":
+            f.write(angle.find("Rub").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if "comment" in angle.attrib.keys():
+		    f.write(" " +angle.attrib["comment"].ljust(10))
+        else:
+            f.write("".ljust(10))
+        f.write("\n")
+    f.write("\n")
+	
+def XMLtoFrcAnglePotential_Class2(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("> E = K2*(Theta-Theta0)^2+K3*(Theta-Theta0)^3+K4*(Theta-Theta0)^4\n\n")
+    f.write("!I     J    K    K2   K3   K4   Theta0 \n")
+    f.write("!---- ---- ----  ---  --- ---   -------\n")
+    for angle in root.findall('./AnglePotential/AnglePotential-Class2/Angle'):
+        if len(str(angle.find("AT-1")))!=0 and str(angle.find("AT-1")) != "None":
+            f.write(angle.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(angle.find("AT-2")))!=0 and str(angle.find("AT-2")) != "None":
+            f.write(angle.find("AT-2").text.ljust(5))
+        else:
+            f.write("".ljust(5))
+        if len(str(angle.find("AT-3")))!=0 and str(angle.find("AT-3")) != "None":
+            f.write(angle.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(angle.find("K2")))!=0 and str(angle.find("K2")) != "None": 
+            f.write(("%.1f" %float(angle.find("K2").text)).ljust(5))
+        else:
+            f.write("".ljust(5))
+        if len(str(angle.find("K3")))!=0 and str(angle.find("K3")) != "None": 
+            f.write(("%.1f" %float(angle.find("K3").text)).ljust(5))
+        else:
+            f.write("".ljust(5))
+        if len(str(angle.find("K4")))!=0 and str(angle.find("K4")) != "None": 
+            f.write(("%.1f" %float(angle.find("K4").text)).ljust(5))
+        else:
+            f.write("".ljust(5))
+        if len(str(angle.find("Theta0")))!=0 and str(angle.find("Theta0")) != "None": 
+            f.write(("%.2f" %float(angle.find("Theta0").text)).ljust(10))
+        else: 
+            f.write("".ljust(10))
+        f.write("\n")
+    f.write("\n") 
+	
+
+#Improper Potentials	
 def XMLtoFrcImproperPotential_CHARMM(root, output_file): 
     f = output_file
     f.write("#out_of_plane\n\n" )
