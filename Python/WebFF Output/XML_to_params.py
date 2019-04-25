@@ -1,5 +1,6 @@
 #Importing libraries and modules
 import xml.etree.ElementTree as ET
+import glob, os                           # Python standard library
 import sys                                # Python standard library
 import WebFF as FF                        # Webff module
 #Calls functions from the webff.py module to translate XML data into the .params format
@@ -40,6 +41,14 @@ def xml_params(input, output):
             FF.XMLToParamsAnglePotential_Harmonic(root, f)
         if root.find("AnglePotential/*").tag == "AnglePotential-COS2": 
             FF.XMLToParamsAnglePotential_COS2(root, f)
+        if root.find("AnglePotential/*").tag == "AnglePotential-Cosine": 
+            FF.XMLtoParamsAnglePotential_Cosine(root, f)
+        if root.find("AnglePotential/*").tag == "AnglePotential-CHARMM": 
+            FF.XMLtoParamsAnglePotential_CHARMM(root, f)
+        if root.find("AnglePotential/*").tag == "AnglePotential-Class2": 
+            FF.XMLtoParamsAnglePotential_Class2(root, f)
+        if root.find("AnglePotential/*").tag == "AnglePotential-Tabular": 
+            FF.XMLToTableAnglePotential_Tabular(root, f)
 	#Dihedral Potentials
     if "DihedralPotential" in tags_elements:
         if root.find("DihedralPotential/*").tag == "DihedralPotential-CHARMM": 
