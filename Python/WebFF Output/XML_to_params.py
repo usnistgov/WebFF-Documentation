@@ -98,4 +98,4 @@ if __name__ == "__main__":
     else: 
         print("Error: Specified XML File does not exist")
         print("Usage: XML_to_params.py FF_File.xml FF_NAME")
-        sys.exit(
+        sys.exit()
