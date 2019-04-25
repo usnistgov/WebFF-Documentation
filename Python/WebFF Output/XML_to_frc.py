@@ -21,6 +21,7 @@ def xml_frc(input, output):
     if "AtomTypes" in tags_elements: 
         if root.find("AtomTypes/*").tag == "AtomType-CoarseGrained":
             FF.XMLtoFrcAtomTypesCG(root, A)
+		FF.XMLtoFrcAtomTypes(root, f)
 	#Equivalence Tables
     if "EquivalenceTable" in tags_elements: 
         FF.XMLtoFrcEquivalenceTable(root, f)
