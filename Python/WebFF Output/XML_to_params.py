@@ -9,7 +9,7 @@ def xml_params(input, output):
     tree = ET.parse(input)
     root = tree.getroot() 
     #Open the output file
-    f = open(output, 'w+') 
+    f = open(output + '.params', 'w+') 
     #creates a  list of all top level elements (potential types)
     top_elements= (root.findall("*"))
     tags_elements = []
