@@ -1,5 +1,6 @@
 #Importing libraries and modules
 import xml.etree.ElementTree as ET
+import glob, os                           # Python standard library
 import sys                                # Python standard library
 import WebFF as FF                        # Webff module
 #Calls functions from the webff.py module to translate XML data into the .frc format
@@ -19,9 +20,7 @@ def xml_frc(input, output):
     #Calls the appropriate webff.py function for each potential style present	
 	#Atom Types
     if "AtomTypes" in tags_elements: 
-        if root.find("AtomTypes/*").tag == "AtomType-CoarseGrained":
-            FF.XMLtoFrcAtomTypesCG(root, A)
-		FF.XMLtoFrcAtomTypes(root, f)
+        FF.XMLtoFrcAtomTypes(root, f)
 	#Equivalence Tables
     if "EquivalenceTable" in tags_elements: 
         FF.XMLtoFrcEquivalenceTable(root, f)
@@ -43,6 +42,15 @@ def xml_frc(input, output):
             FF.XMLtoFrcAnglePotential_Harmonic(root, f)
         if root.find("AnglePotential/*").tag == "AnglePotential-COS2": 
             FF.XMLtoFrcAnglePotential_COS2(root, f)
+        if root.find("AnglePotential/*").tag == "AnglePotential-Cosine": 
+            FF.XMLtoFrcAnglePotential_Cosine(root, f)
+        if root.find("AnglePotential/*").tag == "AnglePotential-CHARMM": 
+            FF.XMLtoFrcAnglePotential_CHARMM(root, f)
+        if root.find("AnglePotential/*").tag == "AnglePotential-Class2": 
+            FF.XMLtoFrcAnglePotential_Class2(root, f)
+        if root.find("AnglePotential/*").tag == "AnglePotential-Tabular": 
+            FF.XMLToTableAnglePotential_Tabular(root, f)
+			
 	#Improper Potentials
     if "ImproperPotential" in tags_elements:
         if root.find("ImproperPotential/*").tag == "ImproperPotential-CHARMM": 
@@ -68,7 +76,7 @@ def xml_frc(input, output):
 	    FF.download(ele.find("./Reference").text)
     #closes the output file
     f.close()
-    A.close()
+
 #Allows this script to be called form the command line with input variables
 
 if __name__ == "__main__":
