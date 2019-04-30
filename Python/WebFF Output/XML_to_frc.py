@@ -61,8 +61,20 @@ def xml_frc(input, output):
     if "DihedralPotential" in tags_elements:
         if root.find("DihedralPotential/*").tag == "DihedralPotential-FourierSimple": 
             FF.XMLtoFrcDihedralPotential_FourierSimple(root, f)
+        if root.find("DihedralPotential/*").tag == "DihedralPotential-Fourier": 
+            FF.XMLtoFrcDihedralPotential_Fourier(root, f)
         if root.find("DihedralPotential/*").tag == "DihedralPotential-CHARMM": 
             FF.XMLtoFrcDihedralPotential_CHARMM(root, f)
+        if root.find("DihedralPotential/*").tag == "DihedralPotential-Harmonic": 
+            FF.XMLtoFrcDihedralPotential_Harmonic(root, f)
+        if root.find("DihedralPotential/*").tag == "DihedralPotential-Class2": 
+            FF.XMLtoFrcDihedralPotential_Class2(root, f)
+        if root.find("DihedralPotential/*").tag == "DihedralPotential-OPLS": 
+            FF.XMLtoFrcDihedralPotential_OPLS(root, f)
+        if root.find("DihedralPotential/*").tag == "DihedralPotential-Quadratic": 
+            FF.XMLtoFrcDihedralPotential_Quadratic(root, f)
+        if root.find("DihedralPotential/*").tag == "DihedralPotential-Tabular": 
+            FF.XMLToTableDihedralPotential_Tabular(root, f)
 	#Non Bonded Potentials
     if "NonBondPotential" in tags_elements:
         if root.find("NonBondPotential/*").tag == "NonBond-LJ": 
