@@ -3036,7 +3036,42 @@ def XMLToParamsDihedralPotential_CHARMM(root, output_file):
         else:
             f.write("".rjust(7))
         f.write("\n")
-		
+def XMLToParamsDihedralPotential_Harmonic(root, output_file):
+    f = output_file
+    f.write("DIHEDRALS\n!\n" )
+    f.write("!V(dihedral) = Kd*[1+Ns*cos(N*Phi)]\n!\n")
+    f.write("!Kd: " + ((root.find('./DihedralPotential/DihedralPotential-Harmonic')).attrib['Kd-units']).encode('utf-8')+"\n")
+    f.write("!n: multiplicity\n")
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-Harmonic/Dihedral'):
+        if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
+            f.write(dihedral.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-2")))!=0 and str(dihedral.find("AT-2")) != "None":
+            f.write(dihedral.find("AT-2").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-3")))!=0 and str(dihedral.find("AT-3")) != "None":
+            f.write(dihedral.find("AT-3").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-4")))!=0 and str(dihedral.find("AT-4")) != "None":
+            f.write(dihedral.find("AT-4").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(dihedral.find("Kd")))!=0 and str(dihedral.find("Kd")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("Kd").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("Ns")))!=0 and str(dihedral.find("Ns")) != "None": 
+            f.write(("%.0f"%float((dihedral.find("Ns").text))).ljust(4))
+        else:
+            f.write("".ljust(4))
+        if len(str(dihedral.find("N")))!=0 and str(dihedral.find("N")) != "None": 
+            f.write(("%.0f"%float((dihedral.find("N").text))).ljust(4))
+        else:
+            f.write("".ljust(4))
+        f.write("\n")		
 def XMLToParamsDihedralPotential_FourierSimple(root, output_file):
     f = output_file
     f.write("DIHEDRALS\n!\n" )
@@ -3080,6 +3115,211 @@ def XMLToParamsDihedralPotential_FourierSimple(root, output_file):
         else:
             f.write("".ljust(8))
         f.write("\n")
+def XMLToParamsDihedralPotential_Fourier(root, output_file):
+    f = output_file
+    f.write("DIHEDRALS\n!\n" )
+    f.write("!V(dihedral) = K1*[1+cos(N1*Phi-D1)]+K2*[1+cos(N2*Phi-D2)]+K3*[1+cos(N3*Phi-D3)]+K4*[1+cos(N4*Phi-D4)]+K5*[1+cos(N5*Phi-D5)]\n!\n")
+    f.write("!Kn: " + ((root.find('./DihedralPotential/DihedralPotential-Fourier')).attrib['Kn-units']).encode('utf-8')+"\n!\n")
+    f.write("!Dn: " + ((root.find('./DihedralPotential/DihedralPotential-Fourier')).attrib['Dn-units']).encode('utf-8')+"\n!\n")
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-Fourier/Dihedral'):
+        if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
+            f.write(dihedral.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-2")))!=0 and str(dihedral.find("AT-2")) != "None":
+            f.write(dihedral.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-3")))!=0 and str(dihedral.find("AT-3")) != "None":
+            f.write(dihedral.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-4")))!=0 and str(dihedral.find("AT-4")) != "None":
+            f.write(dihedral.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("K1")))!=0 and str(dihedral.find("K1")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K1").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("N1")))!=0 and str(dihedral.find("N1")) != "None": 
+            f.write(("%.1f" %float(dihedral.find("N1").text)).rjust(5))
+        else:
+            f.write("".rjust(5))
+        if len(str(dihedral.find("D1")))!=0 and str(dihedral.find("D1")) != "None": 
+            f.write(("%.2f" %float(dihedral.find("D1").text)).rjust(10))
+        else:
+            f.write("".rjust(10))
+        if len(str(dihedral.find("K2")))!=0 and str(dihedral.find("K2")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K2").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("N2")))!=0 and str(dihedral.find("N2")) != "None": 
+            f.write(("%.1f" %float(dihedral.find("N2").text)).rjust(5))
+        else:
+            f.write("".rjust(5))
+        if len(str(dihedral.find("D2")))!=0 and str(dihedral.find("D2")) != "None": 
+            f.write(("%.2f" %float(dihedral.find("D2").text)).rjust(10))
+        else:
+            f.write("".rjust(10))
+        if len(str(dihedral.find("K3")))!=0 and str(dihedral.find("K3")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K3").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("N3")))!=0 and str(dihedral.find("N3")) != "None": 
+            f.write(("%.1f" %float(dihedral.find("N3").text)).rjust(5))
+        else:
+            f.write("".rjust(5))
+        if len(str(dihedral.find("D3")))!=0 and str(dihedral.find("D3")) != "None": 
+            f.write(("%.2f" %float(dihedral.find("D3").text)).rjust(10))
+        else:
+            f.write("".rjust(10))
+        if len(str(dihedral.find("K4")))!=0 and str(dihedral.find("K4")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K4").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("N4")))!=0 and str(dihedral.find("N4")) != "None": 
+            f.write(("%.1f" %float(dihedral.find("N4").text)).rjust(5))
+        else:
+            f.write("".rjust(5))
+        if len(str(dihedral.find("D4")))!=0 and str(dihedral.find("D4")) != "None": 
+            f.write(("%.2f" %float(dihedral.find("D4").text)).rjust(10))
+        else:
+            f.write("".rjust(10))
+        if len(str(dihedral.find("K5")))!=0 and str(dihedral.find("K5")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K5").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("N5")))!=0 and str(dihedral.find("N5")) != "None": 
+            f.write(("%.1f" %float(dihedral.find("N5").text)).rjust(5))
+        else:
+            f.write("".rjust(5))
+        if len(str(dihedral.find("D5")))!=0 and str(dihedral.find("D5")) != "None": 
+            f.write(("%.2f" %float(dihedral.find("D5").text)).rjust(10))
+        else:
+            f.write("".rjust(10))
+        f.write("\n")
+def XMLToParamsDihedralPotential_Class2(root, output_file):
+    f = output_file
+    f.write("DIHEDRALS\n!\n" )
+    f.write("!V(dihedral) = K1*[1-cos(Phi-Phi1)]+K2*[1-cos(2*Phi-Phi2)]+K3*[1-cos(3*Phi-Phi3)]\n!\n")
+    f.write("!Kn: " + ((root.find('./DihedralPotential/DihedralPotential-Class2')).attrib['Kn-units']).encode('utf-8')+"\n!\n")
+    f.write("!Phin: " + ((root.find('./DihedralPotential/DihedralPotential-Class2')).attrib['Phin-units']).encode('utf-8')+"\n!\n")
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-Class2/Dihedral'):
+        if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
+            f.write(dihedral.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-2")))!=0 and str(dihedral.find("AT-2")) != "None":
+            f.write(dihedral.find("AT-2").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-3")))!=0 and str(dihedral.find("AT-3")) != "None":
+            f.write(dihedral.find("AT-3").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-4")))!=0 and str(dihedral.find("AT-4")) != "None":
+            f.write(dihedral.find("AT-4").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(dihedral.find("K1")))!=0 and str(dihedral.find("K1")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K1").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("K2")))!=0 and str(dihedral.find("K2")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K2").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("K3")))!=0 and str(dihedral.find("K3")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K3").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("Phi1")))!=0 and str(dihedral.find("Phi1")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("Phi1").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("Phi2")))!=0 and str(dihedral.find("Phi2")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("Phi2").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("Phi3")))!=0 and str(dihedral.find("Phi3")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("Phi3").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        f.write("\n")
+def XMLToParamsDihedralPotential_OPLS(root, output_file):
+    f = output_file
+    f.write("DIHEDRALS\n!\n" )
+    f.write("!V(dihedral) = 0.5*{K1*[1+cos(Phi)]+K2*[1-cos(2*Phi)]+K3*[1+cos(3*Phi)]+K4*[1-cos(4*Phi)]}\n!\n")
+    f.write("!Kn: " + ((root.find('./DihedralPotential/DihedralPotential-OPLS')).attrib['Kn-units']).encode('utf-8')+"\n!\n")
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-OPLS/Dihedral'):
+        if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
+            f.write(dihedral.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-2")))!=0 and str(dihedral.find("AT-2")) != "None":
+            f.write(dihedral.find("AT-2").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-3")))!=0 and str(dihedral.find("AT-3")) != "None":
+            f.write(dihedral.find("AT-3").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-4")))!=0 and str(dihedral.find("AT-4")) != "None":
+            f.write(dihedral.find("AT-4").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(dihedral.find("K1")))!=0 and str(dihedral.find("K1")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K1").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("K2")))!=0 and str(dihedral.find("K2")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K2").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("K3")))!=0 and str(dihedral.find("K3")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K3").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("K4")))!=0 and str(dihedral.find("K4")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K4").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        f.write("\n")
+def XMLToParamsDihedralPotential_Quadratic(root, output_file):
+    f = output_file
+    f.write("DIHEDRALS\n!\n" )
+    f.write("!V(dihedral) = Kchi*(Phi-Phi0)^2\n!\n")
+    f.write("!Kchi: " + ((root.find('./DihedralPotential/DihedralPotential-Quadratic')).attrib['Kd-units']).encode('utf-8')+"\n")
+    f.write("!delta: " + ((root.find('./DihedralPotential/DihedralPotential-Quadratic')).attrib['Phi0-units']).encode('utf-8')+"\n!\n")
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-Quadratic/Dihedral'):
+        if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
+            f.write(dihedral.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-2")))!=0 and str(dihedral.find("AT-2")) != "None":
+            f.write(dihedral.find("AT-2").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-3")))!=0 and str(dihedral.find("AT-3")) != "None":
+            f.write(dihedral.find("AT-3").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-4")))!=0 and str(dihedral.find("AT-4")) != "None":
+            f.write(dihedral.find("AT-4").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(dihedral.find("Kd")))!=0 and str(dihedral.find("Kd")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("Kd").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("Phi0")))!=0 and str(dihedral.find("Phi0")) != "None": 
+            f.write(("%.3f" %float(dihedral.find("Phi0").text)).rjust(7))
+        else:
+            f.write("".rjust(7))
+        f.write("\n")
+		
+#Improper Potentials
 def XMLToParamsImproperPotential_Harmonic(root, output_file):
     f = output_file
     f.write("IMPROPER\n!\n")
@@ -3622,6 +3862,8 @@ def XMLtoFrcImproperPotential_FourierSimple(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+	
+#Dihedral Potentials
 def XMLtoFrcDihedralPotential_FourierSimple(root, output_file):    
     f = output_file
     f.write("##torsion_4\n\n" )
@@ -3667,6 +3909,93 @@ def XMLtoFrcDihedralPotential_FourierSimple(root, output_file):
             f.write("".rjust(11))
         f.write("\n")
     f.write("\n")
+def XMLtoFrcDihedralPotential_Fourier(root, output_file):    
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("> E = K1*[1+cos(N1*Phi-D1)]+K2*[1+cos(N2*Phi-D2)]+K3*[1+cos(N3*Phi-D3)]+K4*[1+cos(N4*Phi-D4)]+K5*[1+cos(N5*Phi-D5)]\n\n")
+	f.write("!Kn units: " + ((root.find('./DihedralPotential/DihedralPotential-Fourier')).attrib['Kn-units']).encode('utf-8')+"\n!\n")
+	f.write("!Dn units: " + ((root.find('./DihedralPotential/DihedralPotential-Fourier')).attrib['Dn-units']).encode('utf-8')+"\n!\n")
+    f.write("!I      J      K      L        K1         N1         D1         K2        N2       D2         K3         N3         D3        K4       N4       D4        K5       N5       D5   \n")
+    f.write("!-----  -----  -----  -----   --------   --------   --------   --------  ------   ------    --------   --------   --------  -------  -------  -------  --------  -------  -------\n")
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-Fourier/Dihedral'):
+        if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
+            f.write(dihedral.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-2")))!=0 and str(dihedral.find("AT-2")) != "None":
+            f.write(dihedral.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-3")))!=0 and str(dihedral.find("AT-3")) != "None":
+            f.write(dihedral.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-4")))!=0 and str(dihedral.find("AT-4")) != "None":
+            f.write(dihedral.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("K1")))!=0 and str(dihedral.find("K1")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K1").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("N1")))!=0 and str(dihedral.find("N1")) != "None": 
+            f.write(("%.1f" %float(dihedral.find("N1").text)).rjust(5))
+        else:
+            f.write("".rjust(5))
+        if len(str(dihedral.find("D1")))!=0 and str(dihedral.find("D1")) != "None": 
+            f.write(("%.2f" %float(dihedral.find("D1").text)).rjust(10))
+        else:
+            f.write("".rjust(10))
+        if len(str(dihedral.find("K2")))!=0 and str(dihedral.find("K2")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K2").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("N2")))!=0 and str(dihedral.find("N2")) != "None": 
+            f.write(("%.1f" %float(dihedral.find("N2").text)).rjust(5))
+        else:
+            f.write("".rjust(5))
+        if len(str(dihedral.find("D2")))!=0 and str(dihedral.find("D2")) != "None": 
+            f.write(("%.2f" %float(dihedral.find("D2").text)).rjust(10))
+        else:
+            f.write("".rjust(10))
+        if len(str(dihedral.find("K3")))!=0 and str(dihedral.find("K3")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K3").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("N3")))!=0 and str(dihedral.find("N3")) != "None": 
+            f.write(("%.1f" %float(dihedral.find("N3").text)).rjust(5))
+        else:
+            f.write("".rjust(5))
+        if len(str(dihedral.find("D3")))!=0 and str(dihedral.find("D3")) != "None": 
+            f.write(("%.2f" %float(dihedral.find("D3").text)).rjust(10))
+        else:
+            f.write("".rjust(10))
+        if len(str(dihedral.find("K4")))!=0 and str(dihedral.find("K4")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K4").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("N4")))!=0 and str(dihedral.find("N4")) != "None": 
+            f.write(("%.1f" %float(dihedral.find("N4").text)).rjust(5))
+        else:
+            f.write("".rjust(5))
+        if len(str(dihedral.find("D4")))!=0 and str(dihedral.find("D4")) != "None": 
+            f.write(("%.2f" %float(dihedral.find("D4").text)).rjust(10))
+        else:
+            f.write("".rjust(10))
+        if len(str(dihedral.find("K5")))!=0 and str(dihedral.find("K5")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K5").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("N5")))!=0 and str(dihedral.find("N5")) != "None": 
+            f.write(("%.1f" %float(dihedral.find("N5").text)).rjust(5))
+        else:
+            f.write("".rjust(5))
+        if len(str(dihedral.find("D5")))!=0 and str(dihedral.find("D5")) != "None": 
+            f.write(("%.2f" %float(dihedral.find("D5").text)).rjust(10))
+        else:
+            f.write("".rjust(10))
+        f.write("\n")
+    f.write("\n")
 def XMLtoFrcDihedralPotential_CHARMM(root, output_file):
     f = output_file
     f.write("#XXXXXX\n\n" )
@@ -3708,6 +4037,175 @@ def XMLtoFrcDihedralPotential_CHARMM(root, output_file):
             f.write("".rjust(0)) 
         f.write("\n")
     f.write("\n")
+def XMLtoFrcDihedralPotential_Harmonic(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("> E = Kd*[1+Ns*cos(N*Phi)]\n\n")
+    f.write("!Kd units: " + ((root.find('./DihedralPotential/DihedralPotential-Harmonic')).attrib['Kd-units']).encode('utf-8')+"\n")
+    f.write("!N: multiplicity\n")
+    f.write("!I      J      K      L        Kd         Ns         N  \n")
+    f.write("!-----  -----  -----  -----   --------   --------   -----\n")
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-Harmonic/Dihedral'):
+        if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
+            f.write(dihedral.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-2")))!=0 and str(dihedral.find("AT-2")) != "None":
+            f.write(dihedral.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-3")))!=0 and str(dihedral.find("AT-3")) != "None":
+            f.write(dihedral.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-4")))!=0 and str(dihedral.find("AT-4")) != "None":
+            f.write(dihedral.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("Kd")))!=0 and str(dihedral.find("Kd")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("Kd").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("Ns")))!=0 and str(dihedral.find("Ns")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("Ns").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        if len(str(dihedral.find("N")))!=0 and str(dihedral.find("N")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("N").text)).rjust(5))
+        else:
+            f.write("".rjust(5)) 
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcDihedralPotential_Class2(root, output_file):    
+    f = output_file
+    f.write("##XXXXXX\n\n" )
+    f.write("> E = K1*[1-cos(Phi-Phi1)]+K2*[1-cos(2*Phi-Phi2)]+K3*[1-cos(3*Phi-Phi3)]\n\n")
+    f.write("!Kn units: " + ((root.find('./DihedralPotential/DihedralPotential-Class2')).attrib['Kn-units']).encode('utf-8')+"\n")
+    f.write("!Phin units: " + ((root.find('./DihedralPotential/DihedralPotential-Class2')).attrib['Phin-units']).encode('utf-8')+"\n")
+    f.write("!I      J      K      L        K1         K2         K3         Phi1        Phi2      Phi3  \n")
+    f.write("!-----  -----  -----  -----   --------   --------   --------   --------   --------   -------\n")
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-Class2/Dihedral'):
+        if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
+            f.write(dihedral.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-2")))!=0 and str(dihedral.find("AT-2")) != "None":
+            f.write(dihedral.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-3")))!=0 and str(dihedral.find("AT-3")) != "None":
+            f.write(dihedral.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-4")))!=0 and str(dihedral.find("AT-4")) != "None":
+            f.write(dihedral.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("K1")))!=0 and str(dihedral.find("K1")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K1").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("K2")))!=0 and str(dihedral.find("K2")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K2").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        if len(str(dihedral.find("K3")))!=0 and str(dihedral.find("K3")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K3").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        if len(str(dihedral.find("Phi1")))!=0 and str(dihedral.find("Phi1")) != "None" : 
+            f.write(("%.6f" %float(dihedral.find("Phi1").text)).rjust(11))
+        else:
+            f.write("".rjust(11)) 
+        if len(str(dihedral.find("Phi2")))!=0 and str(dihedral.find("Phi2")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("Phi2").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        if len(str(dihedral.find("Phi3")))!=0 and str(dihedral.find("Phi3")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("Phi3").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcDihedralPotential_OPLS(root, output_file):    
+    f = output_file
+    f.write("##XXXXXX\n\n" )
+    f.write("> E = 0.5*{K1*[1+cos(Phi)]+K2*[1-cos(2*Phi)]+K3*[1+cos(3*Phi)]+K4*[1-cos(4*Phi)]}\n\n")
+    f.write("!Kn: " + ((root.find('./DihedralPotential/DihedralPotential-OPLS')).attrib['Kn-units']).encode('utf-8')+"\n!\n")
+    f.write("!I      J      K      L        K1         K2         K3         K4        \n")
+    f.write("!-----  -----  -----  -----   --------   --------   --------   --------   \n")
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-OPLS/Dihedral'):
+        if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
+            f.write(dihedral.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-2")))!=0 and str(dihedral.find("AT-2")) != "None":
+            f.write(dihedral.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-3")))!=0 and str(dihedral.find("AT-3")) != "None":
+            f.write(dihedral.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-4")))!=0 and str(dihedral.find("AT-4")) != "None":
+            f.write(dihedral.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("K1")))!=0 and str(dihedral.find("K1")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K1").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("K2")))!=0 and str(dihedral.find("K2")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K2").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        if len(str(dihedral.find("K3")))!=0 and str(dihedral.find("K3")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("K3").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        if len(str(dihedral.find("K4")))!=0 and str(dihedral.find("K4")) != "None" : 
+            f.write(("%.6f" %float(dihedral.find("K4").text)).rjust(11))
+        else:
+            f.write("".rjust(11)) 
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcDihedralPotential_Quadratic(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("> E = Kd*(Phi-Phi0)^2\n\n")
+    f.write("!Kd units: " + ((root.find('./DihedralPotential/DihedralPotential-Quadratic')).attrib['Kd-units']).encode('utf-8')+"\n")
+    f.write("!Phi0 units: " + ((root.find('./DihedralPotential/DihedralPotential-Quadratic')).attrib['Phi0-units']).encode('utf-8')+"\n!\n")
+    f.write("!I      J      K      L        Kd          Phi0  \n")
+    f.write("!-----  -----  -----  -----   --------    ------  \n")
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-Quadratic/Dihedral'):
+        if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
+            f.write(dihedral.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-2")))!=0 and str(dihedral.find("AT-2")) != "None":
+            f.write(dihedral.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-3")))!=0 and str(dihedral.find("AT-3")) != "None":
+            f.write(dihedral.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-4")))!=0 and str(dihedral.find("AT-4")) != "None":
+            f.write(dihedral.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("Kd")))!=0 and str(dihedral.find("Kd")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("Kd").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("Phi0")))!=0 and str(dihedral.find("Phi0")) != "None" : 
+            f.write(("%.6f" %float(dihedral.find("Phi0").text)).rjust(0))
+        else:
+            f.write("".rjust(0)) 
+        f.write("\n")
+    f.write("\n")
+	
+#Non Bonded Potentials
 def XMLtoFrcNonBond_LJ(root, output_file):
     f = output_file
     f.write("#nonbond(12-6)\n\n" )
