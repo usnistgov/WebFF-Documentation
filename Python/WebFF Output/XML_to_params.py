@@ -55,6 +55,18 @@ def xml_params(input, output):
             FF.XMLToParamsDihedralPotential_CHARMM(root, f)
         if root.find("DihedralPotential/*").tag == "DihedralPotential-FourierSimple": 
             FF.XMLToParamsDihedralPotential_FourierSimple(root, f)
+        if root.find("DihedralPotential/*").tag == "DihedralPotential-Fourier": 
+            FF.XMLToParamsDihedralPotential_Fourier(root, f)
+        if root.find("DihedralPotential/*").tag == "DihedralPotential-Harmonic": 
+            FF.XMLToParamsDihedralPotential_Harmonic(root, f)
+        if root.find("DihedralPotential/*").tag == "DihedralPotential-Class2": 
+            FF.XMLToParamsDihedralPotential_Class2(root, f)
+        if root.find("DihedralPotential/*").tag == "DihedralPotential-OPLS": 
+            FF.XMLToParamsDihedralPotential_OPLS(root, f)
+        if root.find("DihedralPotential/*").tag == "DihedralPotential-Quadratic": 
+            FF.XMLToParamsDihedralPotential_Quadratic(root, f)
+        if root.find("DihedralPotential/*").tag == "DihedralPotential-Tabular": 
+            FF.XMLToTableDihedralPotential_Tabular(root, f)
 	#Improper Potentials
     if "ImproperPotential" in tags_elements:
         if root.find("ImproperPotential/*").tag == "ImproperPotential-Harmonic":
