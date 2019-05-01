@@ -2670,6 +2670,8 @@ def ReadExcelWaterPotential_5Site(sheet, sub_root):
         ET.SubElement(sub_root, "epsilon").text = LL
 
 # The set of functions below (all begin with XMLTo ) convert XML to .params format
+
+#Non Bonded Potentials
 def XMLToParamsNonBondPotential_LJ_Rmin(root, output_file):
     f = output_file
     f.write("NONBONDED\n\n" ) 
@@ -2834,7 +2836,9 @@ def XMLtoParamsBondPotential_FENE(root, output_file):
         else:
             f.write("".rjust(11))
        
-        f.write("\n")		
+        f.write("\n")
+
+		
 #Angle Potentials		
 def XMLToParamsAnglePotential_Harmonic(root, output_file):
     f = output_file
@@ -2864,8 +2868,7 @@ def XMLToParamsAnglePotential_Harmonic(root, output_file):
         else: 
             f.write("".rjust(11))
         
-        f.write("\n")
-		
+        f.write("\n")		
 def XMLToParamsAnglePotential_Cosine(root, output_file):
     f = output_file
     f.write("ANGLES\n!\n" )
@@ -2890,7 +2893,6 @@ def XMLToParamsAnglePotential_Cosine(root, output_file):
             f.write("".rjust(7))
         
         f.write("\n")
-
 def XMLToParamsAnglePotential_COS2(root, output_file):
     f = output_file
     f.write("ANGLES\n!\n" )
@@ -2919,8 +2921,7 @@ def XMLToParamsAnglePotential_COS2(root, output_file):
         else: 
             f.write("".rjust(11))
         
-        f.write("\n")
-		
+        f.write("\n")	
 def XMLToParamsAnglePotential_CHARMM(root, output_file):
     f = output_file
     f.write("ANGLES\n!\n" )
@@ -2960,7 +2961,6 @@ def XMLToParamsAnglePotential_CHARMM(root, output_file):
             f.write("".rjust(7))
         
         f.write("\n")
-
 def XMLToParamsAnglePotential_Class2(root, output_file):
     f = output_file
     f.write("ANGLES\n!\n" )
@@ -2997,7 +2997,9 @@ def XMLToParamsAnglePotential_Class2(root, output_file):
         else: 
             f.write("".rjust(11))
         
-        f.write("\n")		
+        f.write("\n")	
+
+		
 #Dihedral Potentials
 def XMLToParamsDihedralPotential_CHARMM(root, output_file):
     f = output_file
@@ -3319,7 +3321,7 @@ def XMLToParamsDihedralPotential_Quadratic(root, output_file):
             f.write("".rjust(7))
         f.write("\n")
 		
-#Improper Potentials
+#Improper Potentials Params
 def XMLToParamsImproperPotential_Harmonic(root, output_file):
     f = output_file
     f.write("IMPROPER\n!\n")
@@ -3354,8 +3356,7 @@ def XMLToParamsImproperPotential_Harmonic(root, output_file):
             f.write(("%.4f" %float(improper.find("Chi0").text)).rjust(11))
         else:
             f.write("".rjust(11))
-        f.write("\n")
-		
+        f.write("\n")		
 def XMLToParamsImproperPotential_CHARMM(root, output_file):
     f = output_file
     f.write("IMPROPER\n!\n")
@@ -3394,6 +3395,190 @@ def XMLToParamsImproperPotential_CHARMM(root, output_file):
         else:
             f.write("".rjust(7))
         f.write("\n")
+def XMLToParamsImproperPotential_Class2(root, output_file):
+    f = output_file
+    f.write("IMPROPER\n!\n")
+    f.write("!V(improper) = Ki*(Chi-Chi0)^2\n!\n" )
+    f.write("!Ki: " + ((root.find('./ImproperPotential/ImproperPotential-Class2')).attrib['Ki-units']).encode('utf-8')+"\n")
+    f.write("!Chi0: " + ((root.find('./ImproperPotential/ImproperPotential-Class2')).attrib['Chi0-units']).encode('utf-8')+"\n!\n")
+        
+    for improper in root.findall('./ImproperPotential/ImproperPotential-Class2/Improper'):
+        if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
+            f.write(improper.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-2")))!=0 and str(improper.find("AT-2")) != "None":
+            f.write(improper.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-3")))!=0 and str(improper.find("AT-3")) != "None":
+                f.write(improper.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-4")))!=0 and str(improper.find("AT-4")) != "None":
+            f.write(improper.find("AT-4").text.ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(improper.find("Ki")))!=0 and str(improper.find("Ki")) != "None": 
+            f.write(("%.6f" %float(improper.find("Ki").text)).ljust(13))
+        else:
+            f.write("".ljust(13))
+        if len(str(improper.find("Chi0")))!=0 and str(improper.find("Chi0")) != "None": 
+            f.write(("%.1f" %float(improper.find("Chi0").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLToParamsImproperPotential_COS2(root, output_file):
+    f = output_file
+    f.write("IMPROPER\n!\n")
+    f.write("!V(improper) = Ki*cos(Chi-Chi0)**2\n!\n" )
+    f.write("!Ki: " + ((root.find('./ImproperPotential/ImproperPotential-COS2')).attrib['Ki-units']).encode('utf-8')+"\n")
+    f.write("!Chi0: " + ((root.find('./ImproperPotential/ImproperPotential-COS2')).attrib['Chi0-units']).encode('utf-8')+"\n!\n")
+        
+    for improper in root.findall('./ImproperPotential/ImproperPotential-COS2/Improper'):
+        if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
+            f.write(improper.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-2")))!=0 and str(improper.find("AT-2")) != "None":
+            f.write(improper.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-3")))!=0 and str(improper.find("AT-3")) != "None":
+                f.write(improper.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-4")))!=0 and str(improper.find("AT-4")) != "None":
+            f.write(improper.find("AT-4").text.ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(improper.find("Ki")))!=0 and str(improper.find("Ki")) != "None": 
+            f.write(("%.6f" %float(improper.find("Ki").text)).ljust(13))
+        else:
+            f.write("".ljust(13))
+        if len(str(improper.find("Chi0")))!=0 and str(improper.find("Chi0")) != "None": 
+            f.write(("%.1f" %float(improper.find("Chi0").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")	
+def XMLToParamsImproperPotential_CVFF(root, output_file):
+    f = output_file
+    f.write("IMPROPER\n!\n")
+    f.write("!V(improper) = Ki*[1+Ns*cos(N*Phi)]\n!\n" )
+    f.write("!Ki: " + ((root.find('./ImproperPotential/ImproperPotential-CVFF')).attrib['Ki-units']).encode('utf-8')+"\n")
+    f.write("!n: multiplicity\n")
+        
+    for improper in root.findall('./ImproperPotential/ImproperPotential-CVFF/Improper'):
+        if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
+            f.write(improper.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-2")))!=0 and str(improper.find("AT-2")) != "None":
+            f.write(improper.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-3")))!=0 and str(improper.find("AT-3")) != "None":
+                f.write(improper.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-4")))!=0 and str(improper.find("AT-4")) != "None":
+            f.write(improper.find("AT-4").text.ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(improper.find("Ki")))!=0 and str(improper.find("Ki")) != "None": 
+            f.write(("%.6f" %float(improper.find("Ki").text)).ljust(13))
+        else:
+            f.write("".ljust(13))
+        if len(str(improper.find("Ns")))!=0 and str(improper.find("Ns")) != "None": 
+            f.write(("%.1f" %float(improper.find("Ns").text)).ljust(2))
+        else:
+            f.write("".ljust(2))
+        if len(str(improper.find("N")))!=0 and str(improper.find("N")) != "None": 
+            f.write(("%.1f" %float(improper.find("N").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLToParamsImproperPotential_Fourier(root, output_file):
+    f = output_file
+    f.write("IMPROPER\n!\n")
+    f.write("!V(improper) = Ki*[C0+C1*cos(w)+C2*cos(2*w)]\n!\n" )
+    f.write("!Ki: " + ((root.find('./ImproperPotential/ImproperPotential-Fourier')).attrib['Ki-units']).encode('utf-8')+"\n")
+        
+    for improper in root.findall('./ImproperPotential/ImproperPotential-Fourier/Improper'):
+        if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
+            f.write(improper.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-2")))!=0 and str(improper.find("AT-2")) != "None":
+            f.write(improper.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-3")))!=0 and str(improper.find("AT-3")) != "None":
+                f.write(improper.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-4")))!=0 and str(improper.find("AT-4")) != "None":
+            f.write(improper.find("AT-4").text.ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(improper.find("Ki")))!=0 and str(improper.find("Ki")) != "None": 
+            f.write(("%.6f" %float(improper.find("Ki").text)).ljust(13))
+        else:
+            f.write("".ljust(13))
+        if len(str(improper.find("C0")))!=0 and str(improper.find("C0")) != "None": 
+            f.write(("%.4f" %float(improper.find("C0").text)).ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(improper.find("C1")))!=0 and str(improper.find("C1")) != "None": 
+            f.write(("%.4f" %float(improper.find("C1").text)).ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(improper.find("C2")))!=0 and str(improper.find("C2")) != "None": 
+            f.write(("%.4f" %float(improper.find("C2").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")	
+def XMLToParamsImproperPotential_Umbrella(root, output_file):
+    f = output_file
+    f.write("IMPROPER\n!\n")
+    f.write("!V(improper) = 0.5*K*[{1+cos(w0)}/sin(w0)]^2*[cos(w)-cos(w0)] ~ w0 ≠ 0° <> K*[1-cos(w)] ~ w0 = 0°\n!\n" )
+    f.write("!Kpsi: " + ((root.find('./ImproperPotential/ImproperPotential-Umbrella')).attrib['Ki-units']).encode('utf-8')+"\n")
+    f.write("!psi0: "+ ((root.find('./ImproperPotential/ImproperPotential-Umbrella')).attrib['Chi0-units']).encode('utf-8')+"\n")
+    f.write("!note that the second column of numbers (0) is ignored\n!\n")
+        
+    for improper in root.findall('./ImproperPotential/ImproperPotential-Umbrella/Improper'):
+        if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
+            f.write(improper.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(improper.find("AT-2")))!=0 and str(improper.find("AT-2")) != "None":
+            f.write(improper.find("AT-2").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(improper.find("AT-3")))!=0 and str(improper.find("AT-3")) != "None":
+            f.write(improper.find("AT-3").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(improper.find("AT-4")))!=0 and str(improper.find("AT-4")) != "None":
+            f.write(improper.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("Ki")))!=0 and str(improper.find("Ki")) != "None": 
+            f.write(("%.5f" %float(improper.find("Ki").text)).rjust(8))
+        else:
+            f.write("".rjust(8))
+        f.write((str(0)).rjust(4))
+        if len(str(improper.find("w0")))!=0 and str(improper.find("w0")) != "None": 
+            f.write(("%.4f" %float(improper.find("w0").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        f.write("\n")
+	
+#Atom Types Params
 def XMLToParamsAtomTypes(root, output_file):
     f = output_file
     f.write("MASSES\n")
@@ -3783,12 +3968,12 @@ def XMLtoFrcAnglePotential_Class2(root, output_file):
     f.write("\n") 
 	
 
-#Improper Potentials	
+#Improper Potentials FRC
 def XMLtoFrcImproperPotential_CHARMM(root, output_file): 
     f = output_file
     f.write("#out_of_plane\n\n" )
-    f.write("> E = K1*[1+cos(n*Phi+Phi0)]\n\n")
-    f.write("!I      J      K      L        K1        n       Phi0\n")
+    f.write("> E = Kd*[1+cos(n*Phi+Phi0)]\n\n")
+    f.write("!I      J      K      L        Kd        N       Phi0\n")
     f.write("!-----  -----  -----  -----   -------   --------- -------\n")
     for improper in root.findall('./ImproperPotential/ImproperPotential-CHARMM/Improper'):
         if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
@@ -3858,6 +4043,225 @@ def XMLtoFrcImproperPotential_FourierSimple(root, output_file):
             f.write("".ljust(9))
         if len(str(improper.find("C2")))!=0 and str(improper.find("C2")) != "None": 
             f.write(("%.4f" %float(improper.find("C2").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcImproperPotential_Class2(root, output_file): 
+    f = output_file
+    f.write("#XXXXX\n\n" )
+    f.write("> E = Ki*(Chi-Chi0)^2\n\n")
+    f.write("!Ki units: " + ((root.find('./ImproperPotential/ImproperPotential-Class2')).attrib['Ki-units']).encode('utf-8')+"\n")
+    f.write("!Chi0 units: " + ((root.find('./ImproperPotential/ImproperPotential-Class2')).attrib['Chi0-units']).encode('utf-8')+"\n")
+    f.write("!I      J      K      L        Ki       Chi0\n")
+    f.write("!-----  -----  -----  -----   -------   -------\n")
+    for improper in root.findall('./ImproperPotential/ImproperPotential-Class2/Improper'):
+        if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
+            f.write(improper.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-2")))!=0 and str(improper.find("AT-2")) != "None":
+            f.write(improper.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-3")))!=0 and str(improper.find("AT-3")) != "None":
+                f.write(improper.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-4")))!=0 and str(improper.find("AT-4")) != "None":
+            f.write(improper.find("AT-4").text.ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(improper.find("Ki")))!=0 and str(improper.find("Ki")) != "None": 
+            f.write(("%.6f" %float(improper.find("Ki").text)).ljust(13))
+        else:
+            f.write("".ljust(13))
+        if len(str(improper.find("Chi0")))!=0 and str(improper.find("Chi0")) != "None": 
+            f.write(("%.1f" %float(improper.find("Chi0").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcImproperPotential_COS2(root, output_file): 
+    f = output_file
+    f.write("#XXXXX\n\n" )
+    f.write("> E = Ki*cos(Chi-Chi0)^2\n\n")
+    f.write("!Ki units: " + ((root.find('./ImproperPotential/ImproperPotential-COS2')).attrib['Ki-units']).encode('utf-8')+"\n")
+    f.write("!Chi0 units: " + ((root.find('./ImproperPotential/ImproperPotential-COS2')).attrib['Chi0-units']).encode('utf-8')+"\n")
+    f.write("!I      J      K      L        Ki       Chi0\n")
+    f.write("!-----  -----  -----  -----   -------   -------\n")
+    for improper in root.findall('./ImproperPotential/ImproperPotential-COS2/Improper'):
+        if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
+            f.write(improper.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-2")))!=0 and str(improper.find("AT-2")) != "None":
+            f.write(improper.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-3")))!=0 and str(improper.find("AT-3")) != "None":
+                f.write(improper.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-4")))!=0 and str(improper.find("AT-4")) != "None":
+            f.write(improper.find("AT-4").text.ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(improper.find("Ki")))!=0 and str(improper.find("Ki")) != "None": 
+            f.write(("%.6f" %float(improper.find("Ki").text)).ljust(13))
+        else:
+            f.write("".ljust(13))
+        if len(str(improper.find("Chi0")))!=0 and str(improper.find("Chi0")) != "None": 
+            f.write(("%.1f" %float(improper.find("Chi0").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcImproperPotential_CVFF(root, output_file): 
+    f = output_file
+    f.write("#out_of_plane\n\n" )
+    f.write("> E = Ki*[1+Ns*cos(N*Phi)]\n\n")
+    f.write("!Ki units: " + ((root.find('./ImproperPotential/ImproperPotential-CVFF')).attrib['Ki-units']).encode('utf-8')+"\n")
+    f.write("!I      J      K      L        Ki        Ns     N \n")
+    f.write("!-----  -----  -----  -----   -------   ---    ---\n")
+    for improper in root.findall('./ImproperPotential/ImproperPotential-CVFF/Improper'):
+        if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
+            f.write(improper.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-2")))!=0 and str(improper.find("AT-2")) != "None":
+            f.write(improper.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-3")))!=0 and str(improper.find("AT-3")) != "None":
+                f.write(improper.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-4")))!=0 and str(improper.find("AT-4")) != "None":
+            f.write(improper.find("AT-4").text.ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(improper.find("Ki")))!=0 and str(improper.find("Ki")) != "None": 
+            f.write(("%.6f" %float(improper.find("Ki").text)).ljust(13))
+        else:
+            f.write("".ljust(13))
+        if len(str(improper.find("Ns")))!=0 and str(improper.find("Ns")) != "None": 
+            f.write(("%.1f" %float(improper.find("Ns").text)).ljust(2))
+        else:
+            f.write("".ljust(2))
+        if len(str(improper.find("N")))!=0 and str(improper.find("N")) != "None": 
+            f.write(("%.1f" %float(improper.find("N").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcImproperPotential_Fourier(root, output_file):
+    f = output_file
+    f.write("#XXXXXXX\n\n" )
+    f.write("> E = Ki*[C0+C1*cos(w)+C2*cos(2*w)]\n\n")
+    f.write("!I      J      K      L      Ki      C0    C1    C2     \n")
+    f.write("!-----  -----  -----  -----   -----   ----  ----   ----    \n")
+    for improper in root.findall('./ImproperPotential/ImproperPotential-Fourier/Improper'):
+        if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
+            f.write(improper.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-2")))!=0 and str(improper.find("AT-2")) != "None":
+            f.write(improper.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-3")))!=0 and str(improper.find("AT-3")) != "None":
+                f.write(improper.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-4")))!=0 and str(improper.find("AT-4")) != "None":
+            f.write(improper.find("AT-4").text.ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(improper.find("Ki")))!=0 and str(improper.find("Ki")) != "None": 
+            f.write(("%.6f" %float(improper.find("Ki").text)).ljust(13))
+        else:
+            f.write("".ljust(13))
+        if len(str(improper.find("C0")))!=0 and str(improper.find("C0")) != "None": 
+            f.write(("%.4f" %float(improper.find("C0").text)).ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(improper.find("C1")))!=0 and str(improper.find("C1")) != "None": 
+            f.write(("%.4f" %float(improper.find("C1").text)).ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(improper.find("C2")))!=0 and str(improper.find("C2")) != "None": 
+            f.write(("%.4f" %float(improper.find("C2").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcImproperPotential_Harmonic(root, output_file): 
+    f = output_file
+    f.write("#XXXXX\n\n" )
+    f.write("> E = Ki*(Chi-Chi0)^2\n\n")
+    f.write("!Ki units: " + ((root.find('./ImproperPotential/ImproperPotential-Harmonic')).attrib['Ki-units']).encode('utf-8')+"\n")
+    f.write("!Chi0 units: " + ((root.find('./ImproperPotential/ImproperPotential-Harmonic')).attrib['Chi0-units']).encode('utf-8')+"\n")
+    f.write("!I      J      K      L        Ki       Chi0\n")
+    f.write("!-----  -----  -----  -----   -------   -------\n")
+    for improper in root.findall('./ImproperPotential/ImproperPotential-Harmonic/Improper'):
+        if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
+            f.write(improper.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-2")))!=0 and str(improper.find("AT-2")) != "None":
+            f.write(improper.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-3")))!=0 and str(improper.find("AT-3")) != "None":
+                f.write(improper.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-4")))!=0 and str(improper.find("AT-4")) != "None":
+            f.write(improper.find("AT-4").text.ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(improper.find("Ki")))!=0 and str(improper.find("Ki")) != "None": 
+            f.write(("%.6f" %float(improper.find("Ki").text)).ljust(13))
+        else:
+            f.write("".ljust(13))
+        if len(str(improper.find("Chi0")))!=0 and str(improper.find("Chi0")) != "None": 
+            f.write(("%.1f" %float(improper.find("Chi0").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcImproperPotential_Umbrella(root, output_file): 
+    f = output_file
+    f.write("#XXXXX\n\n" )
+    f.write("> E = 0.5*K*[{1+cos(w0)}/sin(w0)]^2*[cos(w)-cos(w0)] ~ w0 ≠ 0° <> K*[1-cos(w)] ~ w0 = 0°\n\n")
+    f.write("!Ki units: " + ((root.find('./ImproperPotential/ImproperPotential-Umbrella')).attrib['Ki-units']).encode('utf-8')+"\n")
+    f.write("!w0 units: " + ((root.find('./ImproperPotential/ImproperPotential-Umbrella')).attrib['w0-units']).encode('utf-8')+"\n")
+    f.write("!I      J      K      L        Ki       w0\n")
+    f.write("!-----  -----  -----  -----   -------   -------\n")
+    for improper in root.findall('./ImproperPotential/ImproperPotential-Umbrella/Improper'):
+        if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
+            f.write(improper.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-2")))!=0 and str(improper.find("AT-2")) != "None":
+            f.write(improper.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-3")))!=0 and str(improper.find("AT-3")) != "None":
+                f.write(improper.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(improper.find("AT-4")))!=0 and str(improper.find("AT-4")) != "None":
+            f.write(improper.find("AT-4").text.ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(improper.find("Ki")))!=0 and str(improper.find("Ki")) != "None": 
+            f.write(("%.6f" %float(improper.find("Ki").text)).ljust(13))
+        else:
+            f.write("".ljust(13))
+        if len(str(improper.find("w0")))!=0 and str(improper.find("w0")) != "None": 
+            f.write(("%.1f" %float(improper.find("w0").text)).ljust(0))
         else:
             f.write("".ljust(0))
         f.write("\n")
