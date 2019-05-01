@@ -73,6 +73,16 @@ def xml_params(input, output):
             FF.XMLToParamsImproperPotential_Harmonic(root, f)
         if root.find("ImproperPotential/*").tag == "ImproperPotential-CHARMM":
             FF.XMLToParamsImproperPotential_CHARMM(root, f)
+        if root.find("ImproperPotential/*").tag == "ImproperPotential-Class2":
+            FF.XMLToParamsImproperPotential_Class2(root, f)
+        if root.find("ImproperPotential/*").tag == "ImproperPotential-COS2":
+            FF.XMLToParamsImproperPotential_COS2(root, f)
+        if root.find("ImproperPotential/*").tag == "ImproperPotential-CVFF":
+            FF.XMLToParamsImproperPotential_CVFF(root, f)
+        if root.find("ImproperPotential/*").tag == "ImproperPotential-Fourier":
+            FF.XMLToParamsImproperPotential_Fourier(root, f)
+        if root.find("ImproperPotential/*").tag == "ImproperPotential-Umbrella":
+            FF.XMLToParamsImproperPotential_Umbrella(root, f)
 	#Atom Types
     if "AtomTypes" in tags_elements: 
         FF.XMLToParamsAtomTypes(root, f)
