@@ -57,6 +57,18 @@ def xml_frc(input, output):
             FF.XMLtoFrcImproperPotential_CHARMM(root, f)
         if root.find("ImproperPotential/*").tag == "ImproperPotential-FourierSimple": 
             FF.XMLtoFrcImproperPotential_FourierSimple(root, f)
+        if root.find("ImproperPotential/*").tag == "ImproperPotential-Class2": 
+            FF.XMLtoFrcImproperPotential_Class2(root, f)
+        if root.find("ImproperPotential/*").tag == "ImproperPotential-COS2": 
+            FF.XMLtoFrcImproperPotential_COS2(root, f)
+        if root.find("ImproperPotential/*").tag == "ImproperPotential-CVFF": 
+            FF.XMLtoFrcImproperPotential_CVFF(root, f)
+        if root.find("ImproperPotential/*").tag == "ImproperPotential-Fourier": 
+            FF.XMLtoFrcImproperPotential_Fourier(root, f)
+        if root.find("ImproperPotential/*").tag == "ImproperPotential-Harmonic": 
+            FF.XMLtoFrcImproperPotential_Harmonic(root, f)
+        if root.find("ImproperPotential/*").tag == "ImproperPotential-Umbrella": 
+            FF.XMLtoFrcImproperPotential_Umbrella(root, f)
 	#Dihedral Potentials
     if "DihedralPotential" in tags_elements:
         if root.find("DihedralPotential/*").tag == "DihedralPotential-FourierSimple": 
