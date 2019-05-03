@@ -89,10 +89,46 @@ def xml_frc(input, output):
             FF.XMLToTableDihedralPotential_Tabular(root, f)
 	#Non Bonded Potentials
     if "NonBondPotential" in tags_elements:
-        if root.find("NonBondPotential/*").tag == "NonBond-LJ": 
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ": 
             FF.XMLtoFrcNonBond_LJ(root, f)
-        if root.find("NonBondPotential/*").tag == "NonBond-LJ-Rmin": 
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ2": 
+            FF.XMLtoFrcNonBond_LJ2(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ-Rmin": 
             FF.XMLToFrcNonBondPotential_LJ_Rmin(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ-AB": 
+            FF.XMLToFrcNonBondPotential_LJ_AB(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ2-AB": 
+            FF.XMLToFrcNonBondPotential_LJ2_AB(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-Class2": 
+            FF.XMLToFrcNonBondPotential_Class2(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-EnergyRenorm": 
+            FF.XMLToFrcNonBondPotential_EnergyRenorm(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-Mie": 
+            FF.XMLToFrcNonBondPotential_Mie(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-Soft": 
+            FF.XMLToFrcNonBondPotential_Soft(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-Tabular": 
+            FF.XMLToTableNonBondPotential_Tabular(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-Weeks-Chandler-Anderson": 
+            FF.XMLToFrcNonBondPotential_Weeks_Chandler_Anderson(root, f)
+	#Cross Potentials
+    if "CrossPotential" in tags_elements: 
+        if root.find("CrossPotential/*").tag == "CrossPotential-BondBond":
+           FF.XMLtoFrcCrossPotential_BondBond(root, f)
+        if root.find("CrossPotential/*").tag == "CrossPotential-BondBond13":
+           FF.XMLtoFrcCrossPotential_BondBond13(root, f)
+        if root.find("CrossPotential/*").tag == "CrossPotential-AngleAngle":
+           FF.XMLtoFrcCrossPotential_AngleAngle(root, f)
+        if root.find("CrossPotential/*").tag == "CrossPotential-BondAngle":
+           FF.XMLtoFrcCrossPotential_BondAngle(root, f)
+        if root.find("CrossPotential/*").tag == "CrossPotential-MiddleBondTorsion":
+           FF.XMLtoFrcCrossPotential_MiddleBondTorsion(root, f)
+        if root.find("CrossPotential/*").tag == "CrossPotential-EndBondTorsion":
+           FF.XMLtoFrcCrossPotential_EndBondTorsion(root, f)
+        if root.find("CrossPotential/*").tag == "CrossPotential-AngleTorsion":
+           FF.XMLtoFrcCrossPotential_AngleTorsion(root, f)
+        if root.find("CrossPotential/*").tag == "CrossPotential-AngleAngleTorsion":
+           FF.XMLtoFrcCrossPotential_AngleAngleTorsion(root, f)
     if "BondIncrements" in tags_elements: 
         FF.XMLtoFrcBondIncrements(root, f)
     for ele in root.findall("./Force-Field-Header/Attachment"):
