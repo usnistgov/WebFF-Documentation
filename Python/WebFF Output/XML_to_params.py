@@ -19,10 +19,28 @@ def xml_params(input, output):
     #If the potential style is present calls the appropriate webff.py function on it
 	#Non Bond Potentials
     if "NonBondPotential" in tags_elements:
-        if root.find("NonBondPotential/*").tag == "NonBond-LJ-Rmin": 
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ-Rmin": 
             FF.XMLToParamsNonBondPotential_LJ_Rmin(root, f)
-        if root.find("NonBondPotential/*").tag == "NonBond-LJ": 
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ": 
             FF.XMLToParamsNonBondPotential_LJ(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ2": 
+            FF.XMLtoParamsNonBond_LJ2(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ-AB": 
+            FF.XMLtoParamsNonBondPotential_LJ_AB(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ2-AB": 
+            FF.XMLtoParamsNonBondPotential_LJ2_AB(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-Class2": 
+            FF.XMLtoParamsNonBondPotential_Class2(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-EnergyRenorm": 
+            FF.XMLtoParamsNonBondPotential_EnergyRenorm(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-Mie": 
+            FF.XMLtoParamsNonBondPotential_Mie(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-Soft": 
+            FF.XMLtoParamsNonBondPotential_Soft(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-Tabular": 
+            FF.XMLtoTableNonBondPotential_Tabular(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-Weeks-Chandler-Anderson": 
+            FF.XMLtoParamsNonBondPotential_Weeks_Chandler_Anderson(root, f)
 	#Bond Potentials
     if "BondPotential" in tags_elements:
         if root.find("BondPotential/*").tag == "BondPotential-Harmonic":
@@ -83,6 +101,24 @@ def xml_params(input, output):
             FF.XMLToParamsImproperPotential_Fourier(root, f)
         if root.find("ImproperPotential/*").tag == "ImproperPotential-Umbrella":
             FF.XMLToParamsImproperPotential_Umbrella(root, f)
+	#Cross Potentials
+    if "CrossPotential" in tags_elements: 
+        if root.find("CrossPotential/*").tag == "CrossPotential-BondBond":
+           FF.XMLtoParamsCrossPotential_BondBond(root, f)
+        if root.find("CrossPotential/*").tag == "CrossPotential-BondBond13":
+           FF.XMLtoParamsCrossPotential_BondBond13(root, f)
+        if root.find("CrossPotential/*").tag == "CrossPotential-AngleAngle":
+           FF.XMLtoParamsCrossPotential_AngleAngle(root, f)
+        if root.find("CrossPotential/*").tag == "CrossPotential-BondAngle":
+           FF.XMLtoParamsCrossPotential_BondAngle(root, f)
+        if root.find("CrossPotential/*").tag == "CrossPotential-MiddleBondTorsion":
+           FF.XMLtoParamsCrossPotential_MiddleBondTorsion(root, f)
+        if root.find("CrossPotential/*").tag == "CrossPotential-EndBondTorsion":
+           FF.XMLtoParamsCrossPotential_EndBondTorsion(root, f)
+        if root.find("CrossPotential/*").tag == "CrossPotential-AngleTorsion":
+           FF.XMLtoParamsCrossPotential_AngleTorsion(root, f)
+        if root.find("CrossPotential/*").tag == "CrossPotential-AngleAngleTorsion":
+           FF.XMLtoParamsCrossPotential_AngleAngleTorsion(root, f)
 	#Atom Types
     if "AtomTypes" in tags_elements: 
         FF.XMLToParamsAtomTypes(root, f)
