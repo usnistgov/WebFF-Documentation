@@ -1,4 +1,4 @@
-''' This modual contains functions that translate data between excel, XMl, and molecular dynamics text formats
+ ''' This modual contains functions that translate data between excel, XMl, and molecular dynamics text formats
 '''
 import xml.etree.ElementTree as ET 		  # Python standard library	
 import xlrd                               # NEEDs to be installed
@@ -2722,7 +2722,7 @@ def XMLToParamsNonBondPotential_LJ(root, output_file):
             f.write("".rjust(11))
         f.write("\n")
 
-#Bond Potentials		
+#Bond Potentials Params	
 def XMLToParamsBondPotential_Harmonic(root, output_file):
     f = output_file
     f.write("BONDS\n!\n" )
@@ -2873,7 +2873,7 @@ def XMLToParamsAnglePotential_Cosine(root, output_file):
     f = output_file
     f.write("ANGLES\n!\n" )
     f.write("!V(angle) = Ka*[1+cos(theta)]\n!\n")
-    f.write("!Ktheta: " + ((root.find('./AnglePotential/AnglePotential-Cosine')).attrib['Ka-units']).encode('utf-8')+"\n")
+    f.write("!Ktheta: " + ((root.find('./AnglePotential/AnglePotential-Cosine')).attrib['Ka-units']).encode('utf-8')+"\n!\n")
     for angle in root.findall('./AnglePotential/AnglePotential-Cosine/Angle'):
         if len(str(angle.find("AT-1")))!=0 and str(angle.find("AT-1")) != "None":
          f.write(angle.find("AT-1").text.ljust(6))
@@ -2927,8 +2927,8 @@ def XMLToParamsAnglePotential_CHARMM(root, output_file):
     f.write("ANGLES\n!\n" )
     f.write("!V(angle) = Ka*(Theta-Theta0)^2+Kub*(R-Rub)^2\n!\n")
     f.write("!Ktheta: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Ka-units']).encode('utf-8')+"\n")
-    f.write("!Theta0: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Theta0-units']).encode('utf-8')+"\n!\n")
-	f.write("!Kub: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Kub-units']).encode('utf-8')+"\n!\n")
+    f.write("!Theta0: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Theta0-units']).encode('utf-8')+"\n")
+	f.write("!Kub: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Kub-units']).encode('utf-8')+"\n")
 	f.write("!Rub: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Rub-units']).encode('utf-8')+"\n!\n")
     for angle in root.findall('./AnglePotential/AnglePotential-CHARMM/Angle'):
         if len(str(angle.find("AT-1")))!=0 and str(angle.find("AT-1")) != "None":
@@ -3043,7 +3043,7 @@ def XMLToParamsDihedralPotential_Harmonic(root, output_file):
     f.write("DIHEDRALS\n!\n" )
     f.write("!V(dihedral) = Kd*[1+Ns*cos(N*Phi)]\n!\n")
     f.write("!Kd: " + ((root.find('./DihedralPotential/DihedralPotential-Harmonic')).attrib['Kd-units']).encode('utf-8')+"\n")
-    f.write("!n: multiplicity\n")
+    f.write("!n: multiplicity\n!\n")
     for dihedral in root.findall('./DihedralPotential/DihedralPotential-Harmonic/Dihedral'):
         if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
             f.write(dihedral.find("AT-1").text.ljust(6))
@@ -3121,7 +3121,7 @@ def XMLToParamsDihedralPotential_Fourier(root, output_file):
     f = output_file
     f.write("DIHEDRALS\n!\n" )
     f.write("!V(dihedral) = K1*[1+cos(N1*Phi-D1)]+K2*[1+cos(N2*Phi-D2)]+K3*[1+cos(N3*Phi-D3)]+K4*[1+cos(N4*Phi-D4)]+K5*[1+cos(N5*Phi-D5)]\n!\n")
-    f.write("!Kn: " + ((root.find('./DihedralPotential/DihedralPotential-Fourier')).attrib['Kn-units']).encode('utf-8')+"\n!\n")
+    f.write("!Kn: " + ((root.find('./DihedralPotential/DihedralPotential-Fourier')).attrib['Kn-units']).encode('utf-8')+"\n")
     f.write("!Dn: " + ((root.find('./DihedralPotential/DihedralPotential-Fourier')).attrib['Dn-units']).encode('utf-8')+"\n!\n")
     for dihedral in root.findall('./DihedralPotential/DihedralPotential-Fourier/Dihedral'):
         if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
@@ -3205,7 +3205,7 @@ def XMLToParamsDihedralPotential_Class2(root, output_file):
     f = output_file
     f.write("DIHEDRALS\n!\n" )
     f.write("!V(dihedral) = K1*[1-cos(Phi-Phi1)]+K2*[1-cos(2*Phi-Phi2)]+K3*[1-cos(3*Phi-Phi3)]\n!\n")
-    f.write("!Kn: " + ((root.find('./DihedralPotential/DihedralPotential-Class2')).attrib['Kn-units']).encode('utf-8')+"\n!\n")
+    f.write("!Kn: " + ((root.find('./DihedralPotential/DihedralPotential-Class2')).attrib['Kn-units']).encode('utf-8')+"\n")
     f.write("!Phin: " + ((root.find('./DihedralPotential/DihedralPotential-Class2')).attrib['Phin-units']).encode('utf-8')+"\n!\n")
     for dihedral in root.findall('./DihedralPotential/DihedralPotential-Class2/Dihedral'):
         if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
@@ -3468,7 +3468,7 @@ def XMLToParamsImproperPotential_CVFF(root, output_file):
     f.write("IMPROPER\n!\n")
     f.write("!V(improper) = Ki*[1+Ns*cos(N*Phi)]\n!\n" )
     f.write("!Ki: " + ((root.find('./ImproperPotential/ImproperPotential-CVFF')).attrib['Ki-units']).encode('utf-8')+"\n")
-    f.write("!n: multiplicity\n")
+    f.write("!n: multiplicity\n!\n")
         
     for improper in root.findall('./ImproperPotential/ImproperPotential-CVFF/Improper'):
         if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
@@ -3505,7 +3505,7 @@ def XMLToParamsImproperPotential_Fourier(root, output_file):
     f = output_file
     f.write("IMPROPER\n!\n")
     f.write("!V(improper) = Ki*[C0+C1*cos(w)+C2*cos(2*w)]\n!\n" )
-    f.write("!Ki: " + ((root.find('./ImproperPotential/ImproperPotential-Fourier')).attrib['Ki-units']).encode('utf-8')+"\n")
+    f.write("!Ki: " + ((root.find('./ImproperPotential/ImproperPotential-Fourier')).attrib['Ki-units']).encode('utf-8')+"\n!\n")
         
     for improper in root.findall('./ImproperPotential/ImproperPotential-Fourier/Improper'):
         if len(str(improper.find("AT-1")))!=0 and str(improper.find("AT-1")) != "None":
@@ -3577,6 +3577,355 @@ def XMLToParamsImproperPotential_Umbrella(root, output_file):
         else:
             f.write("".rjust(11))
         f.write("\n")
+
+#Cross Potentials Params
+def XMLtoParamsCrossPotential_BondBond(root, output_file):
+    f = output_file
+    f.write("CROSS\n!\n")
+    f.write("!V(cross) = M*(R-R1)*(R-R2)\n!\n" )
+    f.write("!M: " + ((root.find('./CrossPotential/CrossPotential-BondBond')).attrib['M-units']).encode('utf-8')+"\n")
+    f.write("!Ri: " + ((root.find('./CrossPotential/CrossPotential-BondBond')).attrib['Ri-units']).encode('utf-8')+"\n!\n")
+    for cross in root.findall('./CrossPotential/CrossPotential-BondBond/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("M")))!=0 and str(cross.find("M")) != "None": 
+            f.write(("%.6f" %float(cross.find("M").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R1")))!=0 and str(cross.find("R1")) != "None": 
+            f.write(("%.3f" %float(cross.find("R1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R2")))!=0 and str(cross.find("R2")) != "None": 
+            f.write(("%.3f" %float(cross.find("R2").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoParamsCrossPotential_BondBond13(root, output_file):
+    f = output_file
+    f.write("CROSS\n!\n")
+    f.write("!V(cross) = N*(Rij-R1)*(Rkl-R3)\n!\n" )
+    f.write("!N: " + ((root.find('./CrossPotential/CrossPotential-BondBond13')).attrib['N-units']).encode('utf-8')+"\n")
+    f.write("!Ri: " + ((root.find('./CrossPotential/CrossPotential-BondBond13')).attrib['Ri-units']).encode('utf-8')+"\n!\n")
+    for cross in root.findall('./CrossPotential/CrossPotential-BondBond13/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("M")))!=0 and str(cross.find("M")) != "None": 
+            f.write(("%.6f" %float(cross.find("M").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R1")))!=0 and str(cross.find("R1")) != "None": 
+            f.write(("%.3f" %float(cross.find("R1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R3")))!=0 and str(cross.find("R3")) != "None": 
+            f.write(("%.3f" %float(cross.find("R3").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoParamsCrossPotential_AngleAngle(root, output_file):
+    f = output_file
+    f.write("CROSS\n!\n")
+    f.write("!V(cross) = M1*(Theta-Theta1)(Theta-Theta3)+M2*(Theta-Theta1)(Theta-Theta2)+M3*(Theta-Theta2)(Theta-Theta3)\n!\n" )
+    f.write("!M: " + ((root.find('./CrossPotential/CrossPotential-AngleAngle')).attrib['M-units']).encode('utf-8')+"\n")
+    f.write("!Theta: " + ((root.find('./CrossPotential/CrossPotential-AngleAngle')).attrib['Theta-units']).encode('utf-8')+"\n!\n")
+        for cross in root.findall('./CrossPotential/CrossPotential-AngleAngle/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-4")))!=0 and str(cross.find("AT-4")) != "None":
+            f.write(cross.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("M1")))!=0 and str(cross.find("M1")) != "None": 
+            f.write(("%.6f" %float(cross.find("M1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("M2")))!=0 and str(cross.find("M2")) != "None": 
+            f.write(("%.6f" %float(cross.find("M2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("M3")))!=0 and str(cross.find("M3")) != "None": 
+            f.write(("%.6f" %float(cross.find("M3").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("Theta1")))!=0 and str(cross.find("Theta1")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("Theta2")))!=0 and str(cross.find("Theta2")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("Theta3")))!=0 and str(cross.find("Theta3")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta3").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoParamsCrossPotential_BondAngle(root, output_file):
+    f = output_file
+    f.write("CROSS\n!\n")
+    f.write("!V(cross) = N1*(R-R1)*(Theta-Theta0)+N2*(R-R2)*(Theta-Theta0)\n!\n" )
+    f.write("!N: " + ((root.find('./CrossPotential/CrossPotential-BondAngle')).attrib['N-units']).encode('utf-8')+"\n")
+    f.write("!Ri: " + ((root.find('./CrossPotential/CrossPotential-BondAngle')).attrib['Ri-units']).encode('utf-8')+"\n")
+    f.write("!Theta0: " + ((root.find('./CrossPotential/CrossPotential-BondAngle')).attrib['Theta0-units']).encode('utf-8')+"\n!\n")
+    for cross in root.findall('./CrossPotential/CrossPotential-BondAngle/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("Theta0")))!=0 and str(cross.find("Theta0")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta0").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("N1")))!=0 and str(cross.find("N1")) != "None": 
+            f.write(("%.6f" %float(cross.find("N1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("N2")))!=0 and str(cross.find("N2")) != "None": 
+            f.write(("%.6f" %float(cross.find("N2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R1")))!=0 and str(cross.find("R1")) != "None": 
+            f.write(("%.3f" %float(cross.find("R1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R2")))!=0 and str(cross.find("R2")) != "None": 
+            f.write(("%.3f" %float(cross.find("R2").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoParamsCrossPotential_MiddleBondTorsion(root, output_file):
+    f = output_file
+    f.write("CROSS\n!\n")
+    f.write("!V(cross) = (R-R2)*[A1*cos(Phi)+A2*cos(2*Phi)+A3*cos(3*Phi)]\n!\n" )
+    f.write("!A: " + ((root.find('./CrossPotential/CrossPotential-MiddleBondTorsion')).attrib['A-units']).encode('utf-8')+"\n")
+    f.write("!R: " + ((root.find('./CrossPotential/CrossPotential-MiddleBondTorsion')).attrib['R-units']).encode('utf-8')+"\n!\n")
+    for cross in root.findall('./CrossPotential/CrossPotential-MiddleBondTorsion/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("A1")))!=0 and str(cross.find("A1")) != "None": 
+            f.write(("%.6f" %float(cross.find("A1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("A2")))!=0 and str(cross.find("A2")) != "None": 
+            f.write(("%.6f" %float(cross.find("A2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("A3")))!=0 and str(cross.find("A3")) != "None": 
+            f.write(("%.6f" %float(cross.find("A3").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R2")))!=0 and str(cross.find("R2")) != "None": 
+            f.write(("%.3f" %float(cross.find("R2").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoParamsCrossPotential_EndBondTorsion(root, output_file):
+    f = output_file
+    f.write("CROSS\n!\n")
+    f.write("!V(cross) = (R-R1)*[B1*cos(Phi)+B2*cos(2*Phi)+B3*cos(3*Phi)]+(R-R3)*[C1*cos(Phi)+C2*cos(2*Phi)+C3*cos(3*Phi)]\n!\n" )	
+    f.write("!B: " + ((root.find('./CrossPotential/CrossPotential-EndBondTorsion')).attrib['B-units']).encode('utf-8')+"\n")
+    f.write("!C: " + ((root.find('./CrossPotential/CrossPotential-EndBondTorsion')).attrib['C-units']).encode('utf-8')+"\n")
+    f.write("!R: " + ((root.find('./CrossPotential/CrossPotential-EndBondTorsion')).attrib['R-units']).encode('utf-8')+"\n!\n")
+    for cross in root.findall('./CrossPotential/CrossPotential-EndBondTorsion/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-4")))!=0 and str(cross.find("AT-4")) != "None":
+            f.write(cross.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("B1")))!=0 and str(cross.find("B1")) != "None": 
+            f.write(("%.6f" %float(cross.find("B1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("B2")))!=0 and str(cross.find("B2")) != "None": 
+            f.write(("%.6f" %float(cross.find("B2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("B3")))!=0 and str(cross.find("B3")) != "None": 
+            f.write(("%.6f" %float(cross.find("B3").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("C1")))!=0 and str(cross.find("C1")) != "None": 
+            f.write(("%.6f" %float(cross.find("C1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("C2")))!=0 and str(cross.find("C2")) != "None": 
+            f.write(("%.6f" %float(cross.find("C2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("C3")))!=0 and str(cross.find("C3")) != "None": 
+            f.write(("%.6f" %float(cross.find("C3").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R1")))!=0 and str(cross.find("R1")) != "None": 
+            f.write(("%.3f" %float(cross.find("R1").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("R3")))!=0 and str(cross.find("R3")) != "None": 
+            f.write(("%.3f" %float(cross.find("R3").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoParamsCrossPotential_AngleTorsion(root, output_file):
+    f = output_file
+    f.write("CROSS\n!\n")
+    f.write("!V(cross) = (Theta-Theta1)*[D1*cos(Phi)+D2*cos(2*Phi)+D3*cos(3*Phi)]+(Theta-Theta2)*[E1*cos(Phi)+E2*cos(2*Phi)+E3*cos(3*Phi)]\n!\n")
+    f.write("!D: " + ((root.find('./CrossPotential/CrossPotential-AngleTorsion')).attrib['D-units']).encode('utf-8')+"\n")
+    f.write("!E: " + ((root.find('./CrossPotential/CrossPotential-AngleTorsion')).attrib['E-units']).encode('utf-8')+"\n")
+    f.write("!Theta: " + ((root.find('./CrossPotential/CrossPotential-AngleTorsion')).attrib['Theta-units']).encode('utf-8')+"\n!\n")
+    for cross in root.findall('./CrossPotential/CrossPotential-AngleTorsion/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-4")))!=0 and str(cross.find("AT-4")) != "None":
+            f.write(cross.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("D1")))!=0 and str(cross.find("D1")) != "None": 
+            f.write(("%.6f" %float(cross.find("D1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("D2")))!=0 and str(cross.find("D2")) != "None": 
+            f.write(("%.6f" %float(cross.find("D2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("D3")))!=0 and str(cross.find("D3")) != "None": 
+            f.write(("%.6f" %float(cross.find("D3").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("E1")))!=0 and str(cross.find("E1")) != "None": 
+            f.write(("%.6f" %float(cross.find("E1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("E2")))!=0 and str(cross.find("E2")) != "None": 
+            f.write(("%.6f" %float(cross.find("E2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("E3")))!=0 and str(cross.find("E3")) != "None": 
+            f.write(("%.6f" %float(cross.find("E3").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("Theta1")))!=0 and str(cross.find("Theta1")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta1").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("Theta2")))!=0 and str(cross.find("Theta2")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta2").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoParamsCrossPotential_AngleAngleTorsion(root, output_file):
+    f = output_file
+    f.write("CROSS\n!\n")
+    f.write("!V(cross) = M(Theta-Theta1)*(Theta-Theta2)*cos(Phi)\n!\n")
+    f.write("!M: " + ((root.find('./CrossPotential/CrossPotential-AngleAngleTorsion')).attrib['M-units']).encode('utf-8')+"\n")
+    f.write("!Theta: " + ((root.find('./CrossPotential/CrossPotential-AngleAngleTorsion')).attrib['Theta-units']).encode('utf-8')+"\n!\n")
+    for cross in root.findall('./CrossPotential/CrossPotential-AngleAngleTorsion/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-4")))!=0 and str(cross.find("AT-4")) != "None":
+            f.write(cross.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("M")))!=0 and str(cross.find("M")) != "None": 
+            f.write(("%.6f" %float(cross.find("M").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("Theta1")))!=0 and str(cross.find("Theta1")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta1").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("Theta2")))!=0 and str(cross.find("Theta2")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta2").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
 	
 #Atom Types Params
 def XMLToParamsAtomTypes(root, output_file):
@@ -4615,6 +4964,8 @@ def XMLtoFrcNonBond_LJ(root, output_file):
     f.write("#nonbond(12-6)\n\n" )
     f.write("@type r-eps\n@combination geometric\n\n" )
     f.write("> E = 4*eps((sigma/r)^12 - (sigma/r)^6)\n\n")
+    f.write("epsilon units: " + ((root.find('./NonBondPotential/NonBondPotential-LJ')).attrib['epsilon-units']).encode('utf-8')+"\n")
+    f.write("sigma units: " + ((root.find('./NonBondPotential/NonBondPotential-LJ')).attrib['sigma-units']).encode('utf-8')+"\n")
     f.write("!I        sigma       eps       \n")
     f.write("!----    ---------  ---------   \n")
     for nonbond in root.findall('./NonBondPotential/NonBond-LJ/NonBond'):
@@ -4632,14 +4983,14 @@ def XMLtoFrcNonBond_LJ(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
-def XMLToFrcNonBondPotential_LJ_Rmin(root, output_file):
+def XMLtoFrcNonBond_LJ96(root, output_file):
     f = output_file
     f.write("#XXXXXX\n\n" )
-    f.write("@type ??\n\n" )
-    f.write("> E = epsilon*[(Rmin/R)^12-2*(Rmin/R)^6]\n\n")
+    f.write("@type XXXXX\n\n" )
+    f.write("> E = epsilon*[2*(sigma/R)^9-3*(sigma/R)^6]\n\n")
     f.write("!I        sigma       eps       \n")
     f.write("!----    ---------  ---------   \n")
-    for nonbond in root.findall('./NonBondPotential/NonBond-LJ-Rmin/NonBond'):
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-LJ96/NonBond'):
         if len(str(nonbond.find("AtomType")))!=0 and str(nonbond.find("AtomType")) != "None":
             f.write(nonbond.find("AtomType").text.ljust(9))
         else:
@@ -4654,6 +5005,636 @@ def XMLToFrcNonBondPotential_LJ_Rmin(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+def XMLtoFrcNonBond_LJ2(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("@type XXXXXXX\n\n" )
+    f.write("> E = 4*epsilon*[(sigma/R)^12-(sigma/R)^6]\n\n")
+    f.write("!I    J       epsilon       sigma       \n")
+    f.write("!---- ----   ---------  ---------   \n")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-LJ2/NonBond'):
+        if len(str(nonbond.find("AT-1")))!=0 and str(nonbond.find("AT-1")) != "None":
+            f.write(nonbond.find("AT-1").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("AT-2")))!=0 and str(nonbond.find("AT-2")) != "None":
+            f.write(nonbond.find("AT-2").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("epsilon")))!=0 and str(nonbond.find("epsilon")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("sigma")))!=0 and str(nonbond.find("sigma")) != "None":
+            f.write(("%.3f" %float(nonbond.find("sigma").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLToFrcNonBondPotential_LJ_Rmin(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("@type ??\n\n" )
+    f.write("> E = epsilon*[(Rmin/R)^12-2*(Rmin/R)^6]\n\n")
+    f.write("!I        sigma       eps       \n")
+    f.write("!----    ---------  ---------   \n")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-LJ-Rmin/NonBond'):
+        if len(str(nonbond.find("AtomType")))!=0 and str(nonbond.find("AtomType")) != "None":
+            f.write(nonbond.find("AtomType").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("sigma")))!=0 and str(nonbond.find("sigma")) != "None":
+            f.write(("%.3f" %float(nonbond.find("sigma").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("epsilon")))!=0 and str(nonbond.find("epsilon")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLToFrcNonBondPotential_LJ_AB(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("@type ??\n\n" )
+    f.write("> E = A/(R^12)-B/(R^6)\n\n")
+    f.write("!I           A          B       \n")
+    f.write("!----    ---------  ---------   \n")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-LJ-AB/NonBond'):
+        if len(str(nonbond.find("AtomType")))!=0 and str(nonbond.find("AtomType")) != "None":
+            f.write(nonbond.find("AtomType").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("A")))!=0 and str(nonbond.find("A")) != "None":
+            f.write(("%.6f" %float(nonbond.find("A").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("B")))!=0 and str(nonbond.find("B")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("B").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLToFrcNonBondPotential_LJ2_AB(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("@type ??\n\n" )
+    f.write("> E = A/(R^12)-B/(R^6)\n\n")
+    f.write("!I     J         A          B       \n")
+    f.write("!----  ----  ---------  ---------   \n")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-LJ2-AB/NonBond'):
+        if len(str(nonbond.find("AT-1")))!=0 and str(nonbond.find("AT-1")) != "None":
+            f.write(nonbond.find("AT-1").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("AT-2")))!=0 and str(nonbond.find("AT-2")) != "None":
+            f.write(nonbond.find("AT-2").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("A")))!=0 and str(nonbond.find("A")) != "None":
+            f.write(("%.6f" %float(nonbond.find("A").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("B")))!=0 and str(nonbond.find("B")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("B").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLToFrcNonBondPotential_Class2(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("@type ??\n\n" )
+    f.write("> E = epsilon*[(Rmin/R)^12-2*(Rmin/R)^6]\n\n")
+    f.write("!I        sigma       eps       \n")
+    f.write("!----    ---------  ---------   \n")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-Class2/NonBond'):
+        if len(str(nonbond.find("AtomType")))!=0 and str(nonbond.find("AtomType")) != "None":
+            f.write(nonbond.find("AtomType").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("sigma")))!=0 and str(nonbond.find("sigma")) != "None":
+            f.write(("%.3f" %float(nonbond.find("sigma").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("epsilon")))!=0 and str(nonbond.find("epsilon")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcNonBond_EnergyRenorm(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("@type XXXXXXX\n\n" )
+    f.write("> E = [epsilon_g+[(epsilon_A-epsilon_g)/(1+exp(-k_sig*(T-T_sig)))]]*[((sigma*(a*T+b))/R)^12-((sigma*(a*T+b))/R)^6]\n\n")
+    f.write("!I    J      epsilon_g  epsilon_A     sigma      a       b       k_sig        T-sig       \n")
+    f.write("!---- ----   ---------  ---------    -------   ------  ------   -------      --------     \n")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-EnergyRenorm/NonBond'):
+        if len(str(nonbond.find("AT-1")))!=0 and str(nonbond.find("AT-1")) != "None":
+            f.write(nonbond.find("AT-1").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("AT-2")))!=0 and str(nonbond.find("AT-2")) != "None":
+            f.write(nonbond.find("AT-2").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("epsilon_g")))!=0 and str(nonbond.find("epsilon_g")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon_g").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("epsilon_A")))!=0 and str(nonbond.find("epsilon_A")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon_A").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("sigma")))!=0 and str(nonbond.find("sigma")) != "None":
+            f.write(("%.3f" %float(nonbond.find("sigma").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("a")))!=0 and str(nonbond.find("a")) != "None":
+            f.write(("%.3f" %float(nonbond.find("a").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("b")))!=0 and str(nonbond.find("b")) != "None":
+            f.write(("%.3f" %float(nonbond.find("b").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("k_sig")))!=0 and str(nonbond.find("k_sig")) != "None":
+            f.write(("%.3f" %float(nonbond.find("k_sig").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("T_sig")))!=0 and str(nonbond.find("T_sig")) != "None":
+            f.write(("%.3f" %float(nonbond.find("T_sig").text)).ljust(0))
+        else:
+            f.write("".ljust(0))			
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcNonBond_Mie(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("@type XXXXXXX\n\n" )
+    f.write("> E = C*epsilon*[(sigma/R)^m_rep-(sigma/R)^n_att]\n\n")
+    f.write("epsilon units: " + ((root.find('./NonBondPotential/NonBondPotential-Mie')).attrib['epsilon-units']).encode('utf-8')+"\n")
+    f.write("sigma units: " + ((root.find('./NonBondPotential/NonBondPotential-Mie')).attrib['sigma-units']).encode('utf-8')+"\n")
+    f.write("!I      J      C       epsilon     sigma      m_rep     n_att   \n")
+    f.write("!---- ----  -------   ---------   -------     ------    ------  \n")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-Mie/NonBond'):
+        if len(str(nonbond.find("AT-1")))!=0 and str(nonbond.find("AT-1")) != "None":
+            f.write(nonbond.find("AT-1").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("AT-2")))!=0 and str(nonbond.find("AT-2")) != "None":
+            f.write(nonbond.find("AT-2").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("C")))!=0 and str(nonbond.find("C")) != "None":
+            f.write(("%.6f" %float(nonbond.find("C").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("epsilon")))!=0 and str(nonbond.find("epsilon")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("sigma")))!=0 and str(nonbond.find("sigma")) != "None":
+            f.write(("%.3f" %float(nonbond.find("sigma").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("m_rep")))!=0 and str(nonbond.find("m_rep")) != "None":
+            f.write(("%.3f" %float(nonbond.find("m_rep").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("n_att")))!=0 and str(nonbond.find("n_att")) != "None":
+            f.write(("%.3f" %float(nonbond.find("n_att").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcNonBond_Soft(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("@type XXXXXXX\n\n" )
+    f.write("> E = a_ij*[1+cos(pi*r/r_c)]\n\n")
+    f.write("a_ij units: " + ((root.find('./NonBondPotential/NonBondPotential-Soft')).attrib['a_ij-units']).encode('utf-8')+"\n")
+    f.write("r_c units: " + ((root.find('./NonBondPotential/NonBondPotential-Soft')).attrib['r_c-units']).encode('utf-8')+"\n")
+    f.write("!I    J         a_ij       r_c       \n")
+    f.write("!---- ----   ---------  ---------   \n")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-Soft/NonBond'):
+        if len(str(nonbond.find("AT-1")))!=0 and str(nonbond.find("AT-1")) != "None":
+            f.write(nonbond.find("AT-1").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("AT-2")))!=0 and str(nonbond.find("AT-2")) != "None":
+            f.write(nonbond.find("AT-2").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("a_ij")))!=0 and str(nonbond.find("a_ij")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("a_ij").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("r_c")))!=0 and str(nonbond.find("r_c")) != "None":
+            f.write(("%.3f" %float(nonbond.find("r_c").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLToFrcNonBondPotential_Weeks_Chandler_Anderson(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("@type ??\n\n" )
+    f.write("> E = 4*epsilon*[((sigma/R)^-12)-((sigma/R)^-6)+(1/4)]\n\n")
+    f.write("epsilon units: " + ((root.find('./NonBondPotential/NonBondPotential-Weeks-Chandler-Anderson')).attrib['epsilon-units']).encode('utf-8')+"\n")
+    f.write("sigma units: " + ((root.find('./NonBondPotential/NonBondPotential-Weeks-Chandler-Anderson')).attrib['sigma-units']).encode('utf-8')+"\n")
+    f.write("!I     J      epsilon    sigma     r_cut  \n")
+    f.write("!----  ----  ---------  ---------  ------- \n")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-Weeks-Chandler-Anderson/NonBond'):
+        if len(str(nonbond.find("AT-1")))!=0 and str(nonbond.find("AT-1")) != "None":
+            f.write(nonbond.find("AT-1").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("AT-2")))!=0 and str(nonbond.find("AT-2")) != "None":
+            f.write(nonbond.find("AT-2").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("epsilon")))!=0 and str(nonbond.find("epsilon")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("sigma")))!=0 and str(nonbond.find("sigma")) != "None":
+            f.write(("%.3f" %float(nonbond.find("sigma").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("r_cut")))!=0 and str(nonbond.find("r_cut")) != "None":
+            f.write(("%.3f" %float(nonbond.find("r_cut").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+#Cross Potentials Frc
+def XMLtoFrcCrossPotential_BondBond(root, output_file):
+    f = output_file
+    f.write("XXXXXX\n\n")
+    f.write("> E = M*(R-R1)*(R-R2)\n\n")
+    f.write("M units: " + ((root.find('./CrossPotential/CrossPotential-BondBond')).attrib['M-units']).encode('utf-8')+"\n")
+    f.write("Ri units: " + ((root.find('./CrossPotential/CrossPotential-BondBond')).attrib['Ri-units']).encode('utf-8')+"\n")
+    f.write("!I      J      K        M      R1     R2  \n")
+    f.write("!----  ----   ----  --------  -----  -----\n")
+    for cross in root.findall('./CrossPotential/CrossPotential-BondBond/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("M")))!=0 and str(cross.find("M")) != "None": 
+            f.write(("%.6f" %float(cross.find("M").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R1")))!=0 and str(cross.find("R1")) != "None": 
+            f.write(("%.3f" %float(cross.find("R1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R2")))!=0 and str(cross.find("R2")) != "None": 
+            f.write(("%.3f" %float(cross.find("R2").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcCrossPotential_BondBond13(root, output_file):
+    f = output_file
+    f.write("XXXXXX\n\n")
+    f.write("> E = N*(Rij-R1)*(Rkl-R3)\n\n")
+    f.write("N units: " + ((root.find('./CrossPotential/CrossPotential-BondBond13')).attrib['N-units']).encode('utf-8')+"\n")
+    f.write("Ri units: " + ((root.find('./CrossPotential/CrossPotential-BondBond13')).attrib['Ri-units']).encode('utf-8')+"\n")
+    f.write("!I      J      K        N      R1     R3  \n")
+    f.write("!----  ----   ----  --------  -----  -----\n")
+    for cross in root.findall('./CrossPotential/CrossPotential-BondBond13/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("N")))!=0 and str(cross.find("N")) != "None": 
+            f.write(("%.6f" %float(cross.find("N").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R1")))!=0 and str(cross.find("R1")) != "None": 
+            f.write(("%.3f" %float(cross.find("R1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R3")))!=0 and str(cross.find("R3")) != "None": 
+            f.write(("%.3f" %float(cross.find("R3").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcCrossPotential_AngleAngle(root, output_file):
+    f = output_file
+    f.write("XXXXXX\n\n")
+    f.write("> E = M1*(Theta-Theta1)(Theta-Theta3)+M2*(Theta-Theta1)(Theta-Theta2)+M3*(Theta-Theta2)(Theta-Theta3)\n\n")
+    f.write("M units: " + ((root.find('./CrossPotential/CrossPotential-AngleAngle')).attrib['M-units']).encode('utf-8')+"\n")
+    f.write("Theta units: " + ((root.find('./CrossPotential/CrossPotential-AngleAngle')).attrib['Theta-units']).encode('utf-8')+"\n")
+    f.write("!I      J      K     L     M1       M2      M3      Theta1       Theta2       Theta3   \n")
+    f.write("!---- ----   ----  ----  ------  -------  -------  ---------   ---------     --------- \n")
+    for cross in root.findall('./CrossPotential/CrossPotential-AngleAngle/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-4")))!=0 and str(cross.find("AT-4")) != "None":
+            f.write(cross.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("M1")))!=0 and str(cross.find("M1")) != "None": 
+            f.write(("%.6f" %float(cross.find("M1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("M2")))!=0 and str(cross.find("M2")) != "None": 
+            f.write(("%.6f" %float(cross.find("M2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("M3")))!=0 and str(cross.find("M3")) != "None": 
+            f.write(("%.6f" %float(cross.find("M3").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("Theta1")))!=0 and str(cross.find("Theta1")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("Theta2")))!=0 and str(cross.find("Theta2")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("Theta3")))!=0 and str(cross.find("Theta3")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta3").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcCrossPotential_BondAngle(root, output_file):
+    f = output_file
+    f.write("XXXXXX\n\n")
+    f.write("> E = N1*(R-R1)*(Theta-Theta0)+N2*(R-R2)*(Theta-Theta0)\n\n")
+    f.write("N units: " + ((root.find('./CrossPotential/CrossPotential-BondAngle')).attrib['N-units']).encode('utf-8')+"\n")
+    f.write("Ri units: " + ((root.find('./CrossPotential/CrossPotential-BondAngle')).attrib['Ri-units']).encode('utf-8')+"\n")
+    f.write("Theta0 units: " + ((root.find('./CrossPotential/CrossPotential-BondAngle')).attrib['Theta0-units']).encode('utf-8')+"\n")
+    f.write("!I      J      K        Theta0      N1       N2       R1     R2   \n")
+    f.write("!----  ----   ----     --------  -------   -------   ----   ----   \n")
+    for cross in root.findall('./CrossPotential/CrossPotential-BondAngle/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("Theta0")))!=0 and str(cross.find("Theta0")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta0").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("N1")))!=0 and str(cross.find("N1")) != "None": 
+            f.write(("%.6f" %float(cross.find("N1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("N2")))!=0 and str(cross.find("N2")) != "None": 
+            f.write(("%.6f" %float(cross.find("N2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R1")))!=0 and str(cross.find("R1")) != "None": 
+            f.write(("%.3f" %float(cross.find("R1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R2")))!=0 and str(cross.find("R2")) != "None": 
+            f.write(("%.3f" %float(cross.find("R2").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcCrossPotential_MiddleBondTorsion(root, output_file):
+    f = output_file
+    f.write("XXXXXX\n\n")
+    f.write("> E = (R-R2)*[A1*cos(Phi)+A2*cos(2*Phi)+A3*cos(3*Phi)]\n\n")
+    f.write("A units: " + ((root.find('./CrossPotential/CrossPotential-MiddleBondTorsion')).attrib['A-units']).encode('utf-8')+"\n")
+    f.write("R units: " + ((root.find('./CrossPotential/CrossPotential-MiddleBondTorsion')).attrib['R-units']).encode('utf-8')+"\n")
+    f.write("!I      J      K      L        A1       A2        A3      R2   \n")
+    f.write("!----  ----   ----   ----    ------   -------  -------   ----   \n")
+    for cross in root.findall('./CrossPotential/CrossPotential-MiddleBondTorsion/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("A1")))!=0 and str(cross.find("A1")) != "None": 
+            f.write(("%.6f" %float(cross.find("A1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("A2")))!=0 and str(cross.find("A2")) != "None": 
+            f.write(("%.6f" %float(cross.find("A2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("A3")))!=0 and str(cross.find("A3")) != "None": 
+            f.write(("%.6f" %float(cross.find("A3").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R2")))!=0 and str(cross.find("R2")) != "None": 
+            f.write(("%.3f" %float(cross.find("R2").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcCrossPotential_EndBondTorsion(root, output_file):
+    f = output_file
+    f.write("XXXXXX\n\n")
+    f.write("> E = (R-R1)*[B1*cos(Phi)+B2*cos(2*Phi)+B3*cos(3*Phi)]+(R-R3)*[C1*cos(Phi)+C2*cos(2*Phi)+C3*cos(3*Phi)]\n\n")
+    f.write("B units: " + ((root.find('./CrossPotential/CrossPotential-EndBondTorsion')).attrib['B-units']).encode('utf-8')+"\n")
+    f.write("C units: " + ((root.find('./CrossPotential/CrossPotential-EndBondTorsion')).attrib['C-units']).encode('utf-8')+"\n")
+    f.write("R units: " + ((root.find('./CrossPotential/CrossPotential-EndBondTorsion')).attrib['R-units']).encode('utf-8')+"\n")
+    f.write("!I      J      K      L        B1       B2        B3        C1        C2        C3         R1      R3   \n")
+    f.write("!----  ----   ----   ----   --------   -------  -------   --------   --------  --------  ------   ------ \n")
+    for cross in root.findall('./CrossPotential/CrossPotential-EndBondTorsion/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-4")))!=0 and str(cross.find("AT-4")) != "None":
+            f.write(cross.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("B1")))!=0 and str(cross.find("B1")) != "None": 
+            f.write(("%.6f" %float(cross.find("B1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("B2")))!=0 and str(cross.find("B2")) != "None": 
+            f.write(("%.6f" %float(cross.find("B2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("B3")))!=0 and str(cross.find("B3")) != "None": 
+            f.write(("%.6f" %float(cross.find("B3").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("C1")))!=0 and str(cross.find("C1")) != "None": 
+            f.write(("%.6f" %float(cross.find("C1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("C2")))!=0 and str(cross.find("C2")) != "None": 
+            f.write(("%.6f" %float(cross.find("C2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("C3")))!=0 and str(cross.find("C3")) != "None": 
+            f.write(("%.6f" %float(cross.find("C3").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("R1")))!=0 and str(cross.find("R1")) != "None": 
+            f.write(("%.3f" %float(cross.find("R1").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("R3")))!=0 and str(cross.find("R3")) != "None": 
+            f.write(("%.3f" %float(cross.find("R3").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcCrossPotential_AngleTorsion(root, output_file):
+    f = output_file
+    f.write("XXXXXX\n\n")
+    f.write("> E = (Theta-Theta1)*[D1*cos(Phi)+D2*cos(2*Phi)+D3*cos(3*Phi)]+(Theta-Theta2)*[E1*cos(Phi)+E2*cos(2*Phi)+E3*cos(3*Phi)]\n\n")
+    f.write("D units: " + ((root.find('./CrossPotential/CrossPotential-AngleTorsion')).attrib['D-units']).encode('utf-8')+"\n")
+    f.write("E units: " + ((root.find('./CrossPotential/CrossPotential-AngleTorsion')).attrib['E-units']).encode('utf-8')+"\n")
+    f.write("Theta units: " + ((root.find('./CrossPotential/CrossPotential-AngleTorsion')).attrib['Theta-units']).encode('utf-8')+"\n")
+    f.write("!I      J      K      L        D1       D2        D3        E1         E2        E3       Theta1   Theta2  \n")
+    f.write("!----  ----   ----   ----   --------   -------  -------   --------   --------  --------   ------   ------ \n")
+    for cross in root.findall('./CrossPotential/CrossPotential-AngleTorsion/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-4")))!=0 and str(cross.find("AT-4")) != "None":
+            f.write(cross.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("D1")))!=0 and str(cross.find("D1")) != "None": 
+            f.write(("%.6f" %float(cross.find("D1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("D2")))!=0 and str(cross.find("D2")) != "None": 
+            f.write(("%.6f" %float(cross.find("D2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("D3")))!=0 and str(cross.find("D3")) != "None": 
+            f.write(("%.6f" %float(cross.find("D3").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("E1")))!=0 and str(cross.find("E1")) != "None": 
+            f.write(("%.6f" %float(cross.find("E1").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("E2")))!=0 and str(cross.find("E2")) != "None": 
+            f.write(("%.6f" %float(cross.find("E2").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("E3")))!=0 and str(cross.find("E3")) != "None": 
+            f.write(("%.6f" %float(cross.find("E3").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("Theta1")))!=0 and str(cross.find("Theta1")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta1").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("Theta2")))!=0 and str(cross.find("Theta2")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta2").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoFrcCrossPotential_AngleAngleTorsion(root, output_file):
+    f = output_file
+    f.write("XXXXXX\n\n")
+    f.write("> E = M(Theta-Theta1)*(Theta-Theta2)*cos(Phi)\n\n")
+    f.write("M units: " + ((root.find('./CrossPotential/CrossPotential-AngleAngleTorsion')).attrib['M-units']).encode('utf-8')+"\n")
+    f.write("Theta units: " + ((root.find('./CrossPotential/CrossPotential-AngleAngleTorsion')).attrib['Theta-units']).encode('utf-8')+"\n")
+    f.write("!I      J      K      L        M       Theta1   Theta2  \n")
+    f.write("!----  ----   ----   ----   --------   ------   ------ \n")
+    for cross in root.findall('./CrossPotential/CrossPotential-AngleAngleTorsion/Cross'):
+        if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
+            f.write(cross.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-2")))!=0 and str(cross.find("AT-2")) != "None":
+            f.write(cross.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-3")))!=0 and str(cross.find("AT-3")) != "None":
+            f.write(cross.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("AT-4")))!=0 and str(cross.find("AT-4")) != "None":
+            f.write(cross.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("M")))!=0 and str(cross.find("M")) != "None": 
+            f.write(("%.6f" %float(cross.find("M").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(cross.find("Theta1")))!=0 and str(cross.find("Theta1")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta1").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(cross.find("Theta2")))!=0 and str(cross.find("Theta2")) != "None": 
+            f.write(("%.3f" %float(cross.find("Theta2").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+	
+#Bond Increments Frc			
 def XMLtoFrcBondIncrements(root, output_file):
     f = output_file
     f.write("##bond_increments\n\n" )
