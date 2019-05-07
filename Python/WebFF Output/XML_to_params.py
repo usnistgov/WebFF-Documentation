@@ -24,7 +24,9 @@ def xml_params(input, output):
         if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ": 
             FF.XMLToParamsNonBondPotential_LJ(root, f)
         if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ2": 
-            FF.XMLtoParamsNonBond_LJ2(root, f)
+            FF.XMLtoParamsNonBondPotential_LJ2(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ96": 
+            FF.XMLtoParamsNonBondPotential_LJ96(root, f)
         if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ-AB": 
             FF.XMLtoParamsNonBondPotential_LJ_AB(root, f)
         if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ2-AB": 
