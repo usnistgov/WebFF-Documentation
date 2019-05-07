@@ -90,9 +90,11 @@ def xml_frc(input, output):
 	#Non Bonded Potentials
     if "NonBondPotential" in tags_elements:
         if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ": 
-            FF.XMLtoFrcNonBond_LJ(root, f)
+            FF.XMLtoFrcNonBondPotential_LJ(root, f)
         if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ2": 
-            FF.XMLtoFrcNonBond_LJ2(root, f)
+            FF.XMLtoFrcNonBondPotential_LJ2(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ96": 
+            FF.XMLtoFrcNonBondPotential_LJ96(root, f)
         if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ-Rmin": 
             FF.XMLToFrcNonBondPotential_LJ_Rmin(root, f)
         if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ-AB": 
