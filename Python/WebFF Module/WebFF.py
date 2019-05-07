@@ -2671,16 +2671,16 @@ def ReadExcelWaterPotential_5Site(sheet, sub_root):
 
 # The set of functions below (all begin with XMLTo ) convert XML to .params format
 
-#Non Bonded Potentials
+#Non Bonded Potentials Params
 def XMLToParamsNonBondPotential_LJ_Rmin(root, output_file):
     f = output_file
     f.write("NONBONDED\n\n" ) 
     f.write("!\n!V(Lennard-Jones) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]\n!\n" )
-    f.write("!epsilon: " + ((root.find('./NonBondPotential/NonBond-LJ-Rmin')).attrib['epsilon-units']).encode('utf-8')+", ")
+    f.write("!epsilon: " + ((root.find('./NonBondPotential/NonBondPotential-LJ-Rmin')).attrib['epsilon-units']).encode('utf-8')+", ")
     f.write("Eps,i,j = sqrt(eps,i * eps,j)\n")
-    f.write("!Rmin/2: "+ ((root.find('./NonBondPotential/NonBond-LJ-Rmin')).attrib['Rmin-units']).encode('utf-8')+", ")
+    f.write("!Rmin/2: "+ ((root.find('./NonBondPotential/NonBondPotential-LJ-Rmin')).attrib['Rmin-units']).encode('utf-8')+", ")
     f.write("Rmin,i,j = Rmin/2,i + Rmin/2,j\n")
-    for nonbond in root.findall('./NonBondPotential/NonBond-LJ-Rmin/NonBond'):
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-LJ-Rmin/NonBond'):
         if len(str(nonbond.find("AtomType")))!=0 and str(nonbond.find("AtomType")) != "None":
             f.write( nonbond.find("AtomType").text.ljust(6))
         else:
@@ -2696,16 +2696,136 @@ def XMLToParamsNonBondPotential_LJ_Rmin(root, output_file):
         else:
             f.write("".rjust(11))
         f.write("\n") 
-
 def XMLToParamsNonBondPotential_LJ(root, output_file):
     f = output_file
     f.write("NONBONDED\n\n" ) 
     f.write("!\n!V(Lennard-Jones) = 4*epsilon*[(sigma/R)^12-(sigma/R)^6]\n!\n" )
-    f.write("!epsilon: " + ((root.find('./NonBondPotential/NonBond-LJ')).attrib['LJ-epsilon-units']).encode('utf-8')+", ")
+    f.write("!epsilon: " + ((root.find('./NonBondPotential/NonBondPotential-LJ')).attrib['LJ-epsilon-units']).encode('utf-8')+", ")
     #f.write("Eps,i,j = sqrt(eps,i * eps,j)\n")
-    f.write("!Rmin/2: "+ ((root.find('./NonBondPotential/NonBond-LJ')).attrib['LJ-sigma-units']).encode('utf-8')+", ")
+    f.write("!Rmin/2: "+ ((root.find('./NonBondPotential/NonBondPotential-LJ')).attrib['LJ-sigma-units']).encode('utf-8')+", ")
     #f.write("Rmin,i,j = Rmin/2,i + Rmin/2,j\n")
-    for nonbond in root.findall('./NonBondPotential/NonBond-LJ/NonBond'):
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-LJ/NonBond'):
+        if len(str(nonbond.find("AtomType")))!=0 and str(nonbond.find("AtomType")) != "None":
+            f.write( nonbond.find("AtomType").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        #Insert a column of Zeros purely for formatting purposes
+        # f.write(("%.6f" %0).rjust(0))
+        if len(str(nonbond.find("epsilon")))!=0 and str(nonbond.find("epsilon")) != "None": 
+            f.write(("%.6f" % float(nonbond.find("epsilon").text)).rjust(12))
+        else:
+            f.write("".rjust(12))
+        if len(str(nonbond.find("Rmin")))!=0 and str(nonbond.find("Rmin")) != "None":
+            f.write(("%.6f" % float(nonbond.find("Rmin").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        f.write("\n")
+def XMLToParamsNonBondPotential_LJ2(root, output_file):
+    f = output_file
+    f.write("NONBONDED\n\n" ) 
+    f.write("!\n!V(Lennard-Jones) = 4*epsilon*[(sigma/R)^12-(sigma/R)^6]\n!\n" )
+    f.write("!epsilon: " + ((root.find('./NonBondPotential/NonBondPotential-LJ2')).attrib['LJ-epsilon-units']).encode('utf-8')+", ")
+    #f.write("Eps,i,j = sqrt(eps,i * eps,j)\n")
+    f.write("!Rmin/2: "+ ((root.find('./NonBondPotential/NonBondPotential-LJ2')).attrib['LJ-sigma-units']).encode('utf-8')+", ")
+    #f.write("Rmin,i,j = Rmin/2,i + Rmin/2,j\n")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-LJ2/NonBond'):
+        if len(str(nonbond.find("AT-1")))!=0 and str(nonbond.find("AT-1")) != "None":
+            f.write(nonbond.find("AT-1").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("AT-2")))!=0 and str(nonbond.find("AT-2")) != "None":
+            f.write(nonbond.find("AT-2").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("epsilon")))!=0 and str(nonbond.find("epsilon")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("sigma")))!=0 and str(nonbond.find("sigma")) != "None":
+            f.write(("%.3f" %float(nonbond.find("sigma").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLToParamsNonBondPotential_LJ96(root, output_file):
+    f = output_file
+    f.write("NONBONDED\n\n" ) 
+    f.write("!\n!V(Lennard-Jones) = epsilon*[2*(sigma/R)^9-3*(sigma/R)^6]\n!\n" )
+    f.write("!epsilon: " + ((root.find('./NonBondPotential/NonBondPotential-LJ96')).attrib['epsilon-units']).encode('utf-8')+", ")
+    f.write("!Rmin/2: "+ ((root.find('./NonBondPotential/NonBondPotential-LJ96')).attrib['sigma-units']).encode('utf-8')+", ")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-LJ96/NonBond'):
+        if len(str(nonbond.find("AtomType")))!=0 and str(nonbond.find("AtomType")) != "None":
+            f.write( nonbond.find("AtomType").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        #Insert a column of Zeros purely for formatting purposes
+        # f.write(("%.6f" %0).rjust(0))
+        if len(str(nonbond.find("epsilon")))!=0 and str(nonbond.find("epsilon")) != "None": 
+            f.write(("%.6f" % float(nonbond.find("epsilon").text)).rjust(12))
+        else:
+            f.write("".rjust(12))
+        if len(str(nonbond.find("Rmin")))!=0 and str(nonbond.find("Rmin")) != "None":
+            f.write(("%.6f" % float(nonbond.find("Rmin").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        f.write("\n")
+def XMLToParamsNonBondPotential_LJ_AB(root, output_file):
+    f = output_file
+    f.write("NONBONDED\n\n" ) 
+    f.write("!\n!V(Lennard-Jones) = A/(R^12)-B/(R^6)\n!\n" )
+    f.write("!A: " + ((root.find('./NonBondPotential/NonBondPotential-LJ-AB')).attrib['A-units']).encode('utf-8')+", ")
+    f.write("!B: "+ ((root.find('./NonBondPotential/NonBondPotential-LJ-AB')).attrib['B-units']).encode('utf-8')+", ")
+    f.write("!Combining Rule: "+ ((root.find('./NonBondPotential/NonBondPotential-LJ-AB')).attrib['Combining-Rule']).encode('utf-8')+", ")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-LJ-AB/NonBond'):
+        if len(str(nonbond.find("AtomType")))!=0 and str(nonbond.find("AtomType")) != "None":
+            f.write(nonbond.find("AtomType").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("A")))!=0 and str(nonbond.find("A")) != "None":
+            f.write(("%.6f" %float(nonbond.find("A").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("B")))!=0 and str(nonbond.find("B")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("B").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLToParamsNonBondPotential_LJ2_AB(root, output_file):
+    f = output_file
+    f.write("NONBONDED\n\n" ) 
+    f.write("!\n!V(Lennard-Jones) = A/(R^12)-B/(R^6)\n!\n" )
+    f.write("!A: " + ((root.find('./NonBondPotential/NonBondPotential-LJ2-AB')).attrib['A-units']).encode('utf-8')+", ")
+    f.write("!B: "+ ((root.find('./NonBondPotential/NonBondPotential-LJ2-AB')).attrib['B-units']).encode('utf-8')+", ")
+    f.write("!Combining Rule: "+ ((root.find('./NonBondPotential/NonBondPotential-LJ-AB')).attrib['Combining-Rule']).encode('utf-8')+", ")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-LJ2-AB/NonBond'):
+        if len(str(nonbond.find("AT-1")))!=0 and str(nonbond.find("AT-1")) != "None":
+            f.write(nonbond.find("AT-1").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("AT-2")))!=0 and str(nonbond.find("AT-2")) != "None":
+            f.write(nonbond.find("AT-2").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("A")))!=0 and str(nonbond.find("A")) != "None":
+            f.write(("%.6f" %float(nonbond.find("A").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("B")))!=0 and str(nonbond.find("B")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("B").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLToParamsNonBondPotential_Class2(root, output_file):
+    f = output_file
+    f.write("NONBONDED\n\n" ) 
+    f.write("!\n!V(Class 2) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]\n!\n" )
+    f.write("!epsilon: " + ((root.find('./NonBondPotential/NonBondPotential-Class2')).attrib['epsilon-units']).encode('utf-8')+", ")
+    f.write("Eps,i,j = sqrt(eps,i * eps,j)\n")
+    f.write("!Rmin/2: "+ ((root.find('./NonBondPotential/NonBondPotential-Class2')).attrib['Rmin-units']).encode('utf-8')+", ")
+    f.write("Rmin,i,j = Rmin/2,i + Rmin/2,j\n")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-Class2/NonBond'):
         if len(str(nonbond.find("AtomType")))!=0 and str(nonbond.find("AtomType")) != "None":
             f.write( nonbond.find("AtomType").text.ljust(6))
         else:
@@ -2720,7 +2840,144 @@ def XMLToParamsNonBondPotential_LJ(root, output_file):
             f.write(("%.6f" % float(nonbond.find("Rmin").text)).rjust(11))
         else:
             f.write("".rjust(11))
+        f.write("\n") 
+def XMLToParamsNonBondPotential_EnergyRenorm(root, output_file):
+    f = output_file
+    f.write("NONBONDED\n\n" ) 
+    f.write("!\n!V(Energy Renormalization) = [epsilon_g+[(epsilon_A-epsilon_g)/(1+exp(-k_sig*(T-T_sig)))]]*[((sigma*(a*T+b))/R)^12-((sigma*(a*T+b))/R)^6]\n!\n" )
+    f.write("!epsilon: " + ((root.find('./NonBondPotential/NonBondPotential-EnergyRenorm')).attrib['epsilon-units']).encode('utf-8')+", ")
+    f.write("!sigma: "+ ((root.find('./NonBondPotential/NonBondPotential-EnergyRenorm')).attrib['sigma-units']).encode('utf-8')+", ")
+    f.write("!T_sig: "+ ((root.find('./NonBondPotential/NonBondPotential-EnergyRenorm')).attrib['T_sig-units']).encode('utf-8')+", ")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-EnergyRenorm/NonBond'):
+        if len(str(nonbond.find("AT-1")))!=0 and str(nonbond.find("AT-1")) != "None":
+            f.write(nonbond.find("AT-1").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("AT-2")))!=0 and str(nonbond.find("AT-2")) != "None":
+            f.write(nonbond.find("AT-2").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("epsilon_g")))!=0 and str(nonbond.find("epsilon_g")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon_g").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("epsilon_A")))!=0 and str(nonbond.find("epsilon_A")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon_A").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("sigma")))!=0 and str(nonbond.find("sigma")) != "None":
+            f.write(("%.3f" %float(nonbond.find("sigma").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("a")))!=0 and str(nonbond.find("a")) != "None":
+            f.write(("%.3f" %float(nonbond.find("a").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("b")))!=0 and str(nonbond.find("b")) != "None":
+            f.write(("%.3f" %float(nonbond.find("b").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("k_sig")))!=0 and str(nonbond.find("k_sig")) != "None":
+            f.write(("%.3f" %float(nonbond.find("k_sig").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("T_sig")))!=0 and str(nonbond.find("T_sig")) != "None":
+            f.write(("%.3f" %float(nonbond.find("T_sig").text)).ljust(0))
+        else:
+            f.write("".ljust(0))			
         f.write("\n")
+    f.write("\n")
+def XMLToParamsNonBondPotential_Mie(root, output_file):
+    f = output_file
+    f.write("NONBONDED\n\n" ) 
+    f.write("!\n!V(Mie) = C*epsilon*[(sigma/R)^m_rep-(sigma/R)^n_att]\n!\n" )
+    f.write("!epsilon: " + ((root.find('./NonBondPotential/NonBondPotential-Mie')).attrib['epsilon-units']).encode('utf-8')+", ")
+    f.write("!sigma: "+ ((root.find('./NonBondPotential/NonBondPotential-Mie')).attrib['sigma-units']).encode('utf-8')+", ")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-Mie/NonBond'):
+        if len(str(nonbond.find("AT-1")))!=0 and str(nonbond.find("AT-1")) != "None":
+            f.write(nonbond.find("AT-1").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("AT-2")))!=0 and str(nonbond.find("AT-2")) != "None":
+            f.write(nonbond.find("AT-2").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("C")))!=0 and str(nonbond.find("C")) != "None":
+            f.write(("%.6f" %float(nonbond.find("C").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("epsilon")))!=0 and str(nonbond.find("epsilon")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("sigma")))!=0 and str(nonbond.find("sigma")) != "None":
+            f.write(("%.3f" %float(nonbond.find("sigma").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("m_rep")))!=0 and str(nonbond.find("m_rep")) != "None":
+            f.write(("%.3f" %float(nonbond.find("m_rep").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("n_att")))!=0 and str(nonbond.find("n_att")) != "None":
+            f.write(("%.3f" %float(nonbond.find("n_att").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")	
+def XMLToParamsNonBondPotential_Soft(root, output_file):
+    f = output_file
+    f.write("NONBONDED\n\n" ) 
+    f.write("!\n!V(Soft) = a_ij*[1+cos(pi*r/r_c)]\n!\n" )
+    f.write("!a_ij: " + ((root.find('./NonBondPotential/NonBondPotential-Soft')).attrib['a_ij-units']).encode('utf-8')+", ")
+    f.write("!r_c: "+ ((root.find('./NonBondPotential/NonBondPotential-Soft')).attrib['r_c-units']).encode('utf-8')+", ")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-Soft/NonBond'):
+        if len(str(nonbond.find("AT-1")))!=0 and str(nonbond.find("AT-1")) != "None":
+            f.write(nonbond.find("AT-1").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("AT-2")))!=0 and str(nonbond.find("AT-2")) != "None":
+            f.write(nonbond.find("AT-2").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("a_ij")))!=0 and str(nonbond.find("a_ij")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("a_ij").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("r_c")))!=0 and str(nonbond.find("r_c")) != "None":
+            f.write(("%.3f" %float(nonbond.find("r_c").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLtoParamsNonBondPotential_Weeks_Chandler_Anderson(root, output_file):
+    f = output_file
+    f.write("NONBONDED\n\n" ) 
+    f.write("!\n!V(WCA) = 4*epsilon*[((sigma/R)^-12)-((sigma/R)^-6)+(1/4)]\n!\n" )
+    f.write("!epsilon: " + ((root.find('./NonBondPotential/NonBondPotential-Weeks-Chandler-Anderson')).attrib['epsilon-units']).encode('utf-8')+", ")
+    f.write("!sigma: "+ ((root.find('./NonBondPotential/NonBondPotential-Weeks-Chandler-Anderson')).attrib['sigma-units']).encode('utf-8')+", ")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-Weeks-Chandler-Anderson/NonBond'):
+        if len(str(nonbond.find("AT-1")))!=0 and str(nonbond.find("AT-1")) != "None":
+            f.write(nonbond.find("AT-1").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("AT-2")))!=0 and str(nonbond.find("AT-2")) != "None":
+            f.write(nonbond.find("AT-2").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("epsilon")))!=0 and str(nonbond.find("epsilon")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("sigma")))!=0 and str(nonbond.find("sigma")) != "None":
+            f.write(("%.3f" %float(nonbond.find("sigma").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("r_cut")))!=0 and str(nonbond.find("r_cut")) != "None":
+            f.write(("%.3f" %float(nonbond.find("r_cut").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
 
 #Bond Potentials Params	
 def XMLToParamsBondPotential_Harmonic(root, output_file):
@@ -2839,7 +3096,7 @@ def XMLtoParamsBondPotential_FENE(root, output_file):
         f.write("\n")
 
 		
-#Angle Potentials		
+#Angle Potentials Params	
 def XMLToParamsAnglePotential_Harmonic(root, output_file):
     f = output_file
     f.write("ANGLES\n!\n" )
@@ -3000,7 +3257,7 @@ def XMLToParamsAnglePotential_Class2(root, output_file):
         f.write("\n")	
 
 		
-#Dihedral Potentials
+#Dihedral Potentials Params
 def XMLToParamsDihedralPotential_CHARMM(root, output_file):
     f = output_file
     f.write("DIHEDRALS\n!\n" )
@@ -4959,7 +5216,7 @@ def XMLtoFrcDihedralPotential_Quadratic(root, output_file):
     f.write("\n")
 	
 #Non Bonded Potentials
-def XMLtoFrcNonBond_LJ(root, output_file):
+def XMLtoFrcNonBondPotential_LJ(root, output_file):
     f = output_file
     f.write("#nonbond(12-6)\n\n" )
     f.write("@type r-eps\n@combination geometric\n\n" )
@@ -4983,7 +5240,7 @@ def XMLtoFrcNonBond_LJ(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
-def XMLtoFrcNonBond_LJ96(root, output_file):
+def XMLtoFrcNonBondPotential_LJ96(root, output_file):
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type XXXXX\n\n" )
@@ -5005,7 +5262,7 @@ def XMLtoFrcNonBond_LJ96(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
-def XMLtoFrcNonBond_LJ2(root, output_file):
+def XMLtoFrcNonBondPotential_LJ2(root, output_file):
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type XXXXXXX\n\n" )
@@ -5123,7 +5380,7 @@ def XMLToFrcNonBondPotential_Class2(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
-def XMLtoFrcNonBond_EnergyRenorm(root, output_file):
+def XMLtoFrcNonBondPotential_EnergyRenorm(root, output_file):
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type XXXXXXX\n\n" )
@@ -5169,7 +5426,7 @@ def XMLtoFrcNonBond_EnergyRenorm(root, output_file):
             f.write("".ljust(0))			
         f.write("\n")
     f.write("\n")
-def XMLtoFrcNonBond_Mie(root, output_file):
+def XMLtoFrcNonBondPotential_Mie(root, output_file):
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type XXXXXXX\n\n" )
@@ -5209,7 +5466,7 @@ def XMLtoFrcNonBond_Mie(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
-def XMLtoFrcNonBond_Soft(root, output_file):
+def XMLtoFrcNonBondPotential_Soft(root, output_file):
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type XXXXXXX\n\n" )
@@ -5269,6 +5526,8 @@ def XMLToFrcNonBondPotential_Weeks_Chandler_Anderson(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+	
+	
 #Cross Potentials Frc
 def XMLtoFrcCrossPotential_BondBond(root, output_file):
     f = output_file
