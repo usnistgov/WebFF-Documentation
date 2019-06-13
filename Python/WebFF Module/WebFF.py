@@ -1,4 +1,8 @@
- ''' This modual contains functions that translate data between excel, XMl, and molecular dynamics text formats
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# -*- coding: ascii -*-
+# -*- coding: latin-1 -*-
+''' This modual contains functions that translate data between excel, XMl, and molecular dynamics text formats
 '''
 import xml.etree.ElementTree as ET 		  # Python standard library	
 import xlrd                               # NEEDs to be installed
@@ -3185,8 +3189,8 @@ def XMLToParamsAnglePotential_CHARMM(root, output_file):
     f.write("!V(angle) = Ka*(Theta-Theta0)^2+Kub*(R-Rub)^2\n!\n")
     f.write("!Ktheta: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Ka-units']).encode('utf-8')+"\n")
     f.write("!Theta0: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Theta0-units']).encode('utf-8')+"\n")
-	f.write("!Kub: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Kub-units']).encode('utf-8')+"\n")
-	f.write("!Rub: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Rub-units']).encode('utf-8')+"\n!\n")
+    f.write("!Kub: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Kub-units']).encode('utf-8')+"\n")
+    f.write("!Rub: " + ((root.find('./AnglePotential/AnglePotential-CHARMM')).attrib['Rub-units']).encode('utf-8')+"\n!\n")
     for angle in root.findall('./AnglePotential/AnglePotential-CHARMM/Angle'):
         if len(str(angle.find("AT-1")))!=0 and str(angle.find("AT-1")) != "None":
          f.write(angle.find("AT-1").text.ljust(6))
@@ -3908,7 +3912,7 @@ def XMLtoParamsCrossPotential_AngleAngle(root, output_file):
     f.write("!V(cross) = M1*(Theta-Theta1)(Theta-Theta3)+M2*(Theta-Theta1)(Theta-Theta2)+M3*(Theta-Theta2)(Theta-Theta3)\n!\n" )
     f.write("!M: " + ((root.find('./CrossPotential/CrossPotential-AngleAngle')).attrib['M-units']).encode('utf-8')+"\n")
     f.write("!Theta: " + ((root.find('./CrossPotential/CrossPotential-AngleAngle')).attrib['Theta-units']).encode('utf-8')+"\n!\n")
-        for cross in root.findall('./CrossPotential/CrossPotential-AngleAngle/Cross'):
+    for cross in root.findall('./CrossPotential/CrossPotential-AngleAngle/Cross'):
         if len(str(cross.find("AT-1")))!=0 and str(cross.find("AT-1")) != "None":
             f.write(cross.find("AT-1").text.ljust(7))
         else:
@@ -4923,8 +4927,8 @@ def XMLtoFrcDihedralPotential_Fourier(root, output_file):
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("> E = K1*[1+cos(N1*Phi-D1)]+K2*[1+cos(N2*Phi-D2)]+K3*[1+cos(N3*Phi-D3)]+K4*[1+cos(N4*Phi-D4)]+K5*[1+cos(N5*Phi-D5)]\n\n")
-	f.write("!Kn units: " + ((root.find('./DihedralPotential/DihedralPotential-Fourier')).attrib['Kn-units']).encode('utf-8')+"\n!\n")
-	f.write("!Dn units: " + ((root.find('./DihedralPotential/DihedralPotential-Fourier')).attrib['Dn-units']).encode('utf-8')+"\n!\n")
+    f.write("!Kn units: " + ((root.find('./DihedralPotential/DihedralPotential-Fourier')).attrib['Kn-units']).encode('utf-8')+"\n!\n")
+    f.write("!Dn units: " + ((root.find('./DihedralPotential/DihedralPotential-Fourier')).attrib['Dn-units']).encode('utf-8')+"\n!\n")
     f.write("!I      J      K      L        K1         N1         D1         K2        N2       D2         K3         N3         D3        K4       N4       D4        K5       N5       D5   \n")
     f.write("!-----  -----  -----  -----   --------   --------   --------   --------  ------   ------    --------   --------   --------  -------  -------  -------  --------  -------  -------\n")
     for dihedral in root.findall('./DihedralPotential/DihedralPotential-Fourier/Dihedral'):
