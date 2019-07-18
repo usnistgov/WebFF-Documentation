@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<!--Created with Liquid XML 2015 Developer Bundle Edition 13.2.3.6018 (http://www.liquid-technologies.com)-->
+<!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:include schemaLocation="..\Include\WebFF-Include.xsd" />
     <xs:include schemaLocation="..\Include\WebFF-Include-AtomTypes.xsd" />
@@ -597,6 +597,33 @@
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="DihedralPotential-Multiharmonic">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Dihedral" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Dihedral-Multiharmonic">
+                                                        <xs:attribute name="comment" type="xs:string" />
+                                                        <xs:attribute name="version" type="VersionString" />
+                                                        <xs:attribute name="reference" type="xs:string" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style" type="xs:string" />
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="A1+A2*cos(Phi)+A3*cos^2(Phi)+A4*cos^3(Phi)+A5*cos^4(Phi)" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="convention" type="Conventions" />
+                                    <xs:attribute name="An-units" type="Energy-Units" />
                                 </xs:complexType>
                             </xs:element>
                         </xs:choice>
