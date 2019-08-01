@@ -75,7 +75,9 @@ References
 
 1. `LAMMPS Quadratic Dihedral Potential`_.
 
-2. `Liquid XML Studio`_.
+2. `GROMACS Fourier (Simple) Dihedral Potential`_.
+
+3. `Liquid XML Studio`_.
 
 .. _LAMMPS Quadratic Dihedral Potential: http://lammps.sandia.gov/doc/dihedral_quadratic.html
 
