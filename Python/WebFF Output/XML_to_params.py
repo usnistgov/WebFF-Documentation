@@ -43,6 +43,8 @@ def xml_params(input, output):
             FF.XMLtoTableNonBondPotential_Tabular(root, f)
         if root.find("NonBondPotential/*").tag == "NonBondPotential-Weeks-Chandler-Anderson": 
             FF.XMLtoParamsNonBondPotential_Weeks_Chandler_Anderson(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ-GROMACS": 
+            FF.XMLToParamsNonBondPotential_LJ_GROMACS(root, f)
 	#Bond Potentials
     if "BondPotential" in tags_elements:
         if root.find("BondPotential/*").tag == "BondPotential-Harmonic":
@@ -85,6 +87,8 @@ def xml_params(input, output):
             FF.XMLToParamsDihedralPotential_OPLS(root, f)
         if root.find("DihedralPotential/*").tag == "DihedralPotential-Quadratic": 
             FF.XMLToParamsDihedralPotential_Quadratic(root, f)
+        if root.find("DihedralPotential/*").tag == "DihedralPotential-Multiharmonic": 
+            FF.XMLToParamsDihedralPotential_Multiharmonic(root, f)
         if root.find("DihedralPotential/*").tag == "DihedralPotential-Tabular": 
             FF.XMLToTableDihedralPotential_Tabular(root, f)
 	#Improper Potentials
