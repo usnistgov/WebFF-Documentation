@@ -85,6 +85,8 @@ def xml_frc(input, output):
             FF.XMLtoFrcDihedralPotential_OPLS(root, f)
         if root.find("DihedralPotential/*").tag == "DihedralPotential-Quadratic": 
             FF.XMLtoFrcDihedralPotential_Quadratic(root, f)
+        if root.find("DihedralPotential/*").tag == "DihedralPotential-Multiharmonic": 
+            FF.XMLtoFrcDihedralPotential_Multiharmonic(root, f)
         if root.find("DihedralPotential/*").tag == "DihedralPotential-Tabular": 
             FF.XMLToTableDihedralPotential_Tabular(root, f)
 	#Non Bonded Potentials
@@ -113,6 +115,8 @@ def xml_frc(input, output):
             FF.XMLToTableNonBondPotential_Tabular(root, f)
         if root.find("NonBondPotential/*").tag == "NonBondPotential-Weeks-Chandler-Anderson": 
             FF.XMLToFrcNonBondPotential_Weeks_Chandler_Anderson(root, f)
+        if root.find("NonBondPotential/*").tag == "NonBondPotential-LJ-GROMACS": 
+            FF.XMLToFrcNonBondPotential_LJ_GROMACS(root, f)
 	#Cross Potentials
     if "CrossPotential" in tags_elements: 
         if root.find("CrossPotential/*").tag == "CrossPotential-BondBond":
