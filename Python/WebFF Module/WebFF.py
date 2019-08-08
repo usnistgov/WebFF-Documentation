@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # -*- coding: ascii -*-
 # -*- coding: latin-1 -*-
-''' This modual contains functions that translate data between excel, XMl, and molecular dynamics text formats
+''' This module contains functions that translate data between Excel, XML, and molecular dynamics text formats
 '''
 import xml.etree.ElementTree as ET 		  # Python standard library	
 import xlrd                               # NEEDs to be installed
@@ -10,7 +10,7 @@ import xlrd                               # NEEDs to be installed
 
 #function below beginning with ReadExcel read in individual sheet from the webff excel template and translate them into XML that fits the webff XML schema
 def ReadExcelMetaData_Header(sheet, sub_root): 
-    ''' Reads in the MetaData sheet from the webFF excel template. 
+    ''' Reads in the MetaData sheet from the WebFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -637,7 +637,42 @@ def ReadExcelDihedralPotential_Fourier(sheet, sub_root):
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
 		else:
 		    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
-            
+def ReadExcelDihedralPotential_Multiharmonic(sheet, sub_root): 
+    ''' Reads in the DihedralPotential-Multiharmonic sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''
+    xls_sheet = sheet
+
+    AA=xls_sheet.row_values(2)[1]
+    BB=xls_sheet.row_values(3)[1]
+    CC=xls_sheet.row_values(4)[1]
+    DD=xls_sheet.row_values(5)[1]
+
+    sheet = ET.SubElement(sub_root, "DihedralPotential-Multiharmonic", {'style':AA, 'formula':BB, 'convention':CC, 'An-units':DD})
+
+    # Row 8 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(7))
+
+    for row_num in xrange(8, xls_sheet.nrows):
+        attribute_idx1 = xls_sheet_header.index("comment")
+        attribute_idx2 = xls_sheet_header.index("version")
+        attribute_idx3 = xls_sheet_header.index("reference")
+        cur_entry = ET.SubElement(sheet, "Dihedral")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
+            ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
+            ET.Element.set(cur_entry, 'version', str((xls_sheet.row_values(row_num)[attribute_idx2])))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
+            ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+            if (len(str(cell_value))!=0) :
+                if col_num == attribute_idx1:
+                    continue 
+                elif col_num == attribute_idx2:
+                    continue
+                elif col_num == attribute_idx3:
+                    continue
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)            
 def ReadExcelImproperPotential_CVFF(sheet, sub_root): 
     ''' Reads in the ImproperPotential-CVFF sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
@@ -1245,7 +1280,42 @@ def ReadExcelNonBondPotential_EnergyRenorm (sheet, sub_root):
 			elif col_num == attribute_idx3:
 				continue 
 			ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+def ReadExcelNonBondPotential_LJGROMACS(sheet, sub_root): 
+    ''' Reads in the NonBondPotential-LJ-GROMACS sheet from the webFF excel template. 
+    Arguments are the sheet and the XML element that is the parent for the data.
+    '''
+    xls_sheet = sheet
 
+    AA=xls_sheet.row_values(2)[1]
+    BB=xls_sheet.row_values(3)[1]
+    CC=xls_sheet.row_values(4)[1]
+    DD=xls_sheet.row_values(5)[1]
+    EE=xls_sheet.row_values(6)[1]
+
+    sheet = ET.SubElement(sub_root, "NonBondPotential-LJ-GROMACS", {'style':AA, 'formula':BB, 'epsilon-units':CC, 'sigma-units':DD, 'r-units':EE})
+
+    # Row 8 is the header
+    xls_sheet_header = map(str, xls_sheet.row_values(8))
+
+    for row_num in xrange(9, xls_sheet.nrows):
+        attribute_idx1 = xls_sheet_header.index("comment")
+        attribute_idx2 = xls_sheet_header.index("version")
+        attribute_idx3 = xls_sheet_header.index("reference")
+        cur_entry = ET.SubElement(sheet, "NonBond")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
+            ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
+            ET.Element.set(cur_entry, 'version', str((xls_sheet.row_values(row_num)[attribute_idx2])))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
+            ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+			if col_num == attribute_idx1:
+				continue 
+			elif col_num == attribute_idx2:
+				continue
+			elif col_num == attribute_idx3:
+				continue 
+			ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
 def ReadExcelDissipativePotential_Langevin(sheet, sub_root): 
     ''' Reads in the DissipativePotential-Langevin sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
@@ -2821,6 +2891,41 @@ def XMLToParamsNonBondPotential_LJ2_AB(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+def XMLToParamsNonBondPotential_LJ_GROMACS(root, output_file):
+    f = output_file
+    f.write("NONBONDED\n\n" ) 
+    f.write("!\n!V(Lennard-Jones) = 4*epsilon*[(sigma/R)^12-(sigma/R)^6] + S_LJ(R)\n!\n" )
+    f.write("epsilon: " + ((root.find('./NonBondPotential/NonBondPotential-LJ-GROMACS')).attrib['epsilon-units']).encode('utf-8')+", ")
+    f.write("sigma: " + ((root.find('./NonBondPotential/NonBondPotential-LJ-GROMACS')).attrib['sigma-units']).encode('utf-8')+", ")
+    f.write("r: " + ((root.find('./NonBondPotential/NonBondPotential-LJ-GROMACS')).attrib['r-units']).encode('utf-8'))
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-LJ-GROMACS/NonBond'):
+        if len(str(nonbond.find("AT-1")))!=0 and str(nonbond.find("AT-1")) != "None":
+            f.write(nonbond.find("AT-1").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("AT-2")))!=0 and str(nonbond.find("AT-2")) != "None":
+            f.write(nonbond.find("AT-2").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("epsilon")))!=0 and str(nonbond.find("epsilon")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("sigma")))!=0 and str(nonbond.find("sigma")) != "None":
+            f.write(("%.3f" %float(nonbond.find("sigma").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("r_1")))!=0 and str(nonbond.find("r_1")) != "None":
+            f.write(("%.3f" %float(nonbond.find("r_1").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("r_cut")))!=0 and str(nonbond.find("r_cut")) != "None":
+            f.write(("%.3f" %float(nonbond.find("r_cut").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+	
 def XMLToParamsNonBondPotential_Class2(root, output_file):
     f = output_file
     f.write("NONBONDED\n\n" ) 
@@ -3580,6 +3685,49 @@ def XMLToParamsDihedralPotential_Quadratic(root, output_file):
             f.write(("%.3f" %float(dihedral.find("Phi0").text)).rjust(7))
         else:
             f.write("".rjust(7))
+        f.write("\n")
+def XMLToParamsDihedralPotential_Multiharmonic(root, output_file):
+    f = output_file
+    f.write("DIHEDRALS\n!\n" )
+    f.write("!V(dihedral) = A1+A2*cos(Phi)+A3*cos^2(Phi)+A4*cos^3(Phi)+A5*cos^4(Phi)\n!\n")
+    f.write("!An: " + ((root.find('./DihedralPotential/DihedralPotential-Multiharmonic')).attrib['An-units']).encode('utf-8')+"\n!\n")
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-Multiharmonic/Dihedral'):
+        if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
+            f.write(dihedral.find("AT-1").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-2")))!=0 and str(dihedral.find("AT-2")) != "None":
+            f.write(dihedral.find("AT-2").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-3")))!=0 and str(dihedral.find("AT-3")) != "None":
+            f.write(dihedral.find("AT-3").text.ljust(6))
+        else:
+            f.write("".ljust(6))
+        if len(str(dihedral.find("AT-4")))!=0 and str(dihedral.find("AT-4")) != "None":
+            f.write(dihedral.find("AT-4").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(dihedral.find("A1")))!=0 and str(dihedral.find("K1")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K1").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("A2")))!=0 and str(dihedral.find("K2")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K2").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("A3")))!=0 and str(dihedral.find("K3")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K3").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("A4")))!=0 and str(dihedral.find("K4")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K4").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
+        if len(str(dihedral.find("A5")))!=0 and str(dihedral.find("K5")) != "None": 
+            f.write(( "%.4f"%float(dihedral.find("K5").text)).ljust(8))
+        else:
+            f.write("".ljust(8))
         f.write("\n")
 		
 #Improper Potentials Params
@@ -5218,7 +5366,51 @@ def XMLtoFrcDihedralPotential_Quadratic(root, output_file):
             f.write("".rjust(0)) 
         f.write("\n")
     f.write("\n")
-	
+def XMLtoFrcDihedralPotential_Multiharmonic(root, output_file):    
+    f = output_file
+    f.write("##XXXXXXX\n\n" )
+    f.write("> E = A1+A2*cos(Phi)+A3*cos^2(Phi)+A4*cos^3(Phi)+A5*cos^4(Phi)\n\n")
+    f.write("!I      J      K      L        A1         A2         A3         A4        A5\n")
+    f.write("!-----  -----  -----  -----   --------   --------   --------    -------   --------\n")
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-Multiharmonic/Dihedral'):
+        if len(str(dihedral.find("AT-1")))!=0 and str(dihedral.find("AT-1")) != "None":
+            f.write(dihedral.find("AT-1").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-2")))!=0 and str(dihedral.find("AT-2")) != "None":
+            f.write(dihedral.find("AT-2").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-3")))!=0 and str(dihedral.find("AT-3")) != "None":
+            f.write(dihedral.find("AT-3").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("AT-4")))!=0 and str(dihedral.find("AT-4")) != "None":
+            f.write(dihedral.find("AT-4").text.ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(dihedral.find("A1")))!=0 and str(dihedral.find("A1")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("A1").text)).rjust(9))
+        else:
+            f.write("".rjust(9))
+        if len(str(dihedral.find("A2")))!=0 and str(dihedral.find("A2")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("A2").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        if len(str(dihedral.find("A3")))!=0 and str(dihedral.find("A3")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("A3").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        if len(str(dihedral.find("A4")))!=0 and str(dihedral.find("A4")) != "None" : 
+            f.write(("%.6f" %float(dihedral.find("A4").text)).rjust(11))
+        else:
+            f.write("".rjust(11)) 
+        if len(str(dihedral.find("A5")))!=0 and str(dihedral.find("A5")) != "None": 
+            f.write(("%.6f" %float(dihedral.find("A5").text)).rjust(11))
+        else:
+            f.write("".rjust(11))
+        f.write("\n")
+    f.write("\n")	
 #Non Bonded Potentials
 def XMLtoFrcNonBondPotential_LJ(root, output_file):
     f = output_file
@@ -5522,6 +5714,43 @@ def XMLToFrcNonBondPotential_Weeks_Chandler_Anderson(root, output_file):
             f.write("".ljust(10))
         if len(str(nonbond.find("sigma")))!=0 and str(nonbond.find("sigma")) != "None":
             f.write(("%.3f" %float(nonbond.find("sigma").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("r_cut")))!=0 and str(nonbond.find("r_cut")) != "None":
+            f.write(("%.3f" %float(nonbond.find("r_cut").text)).ljust(0))
+        else:
+            f.write("".ljust(0))
+        f.write("\n")
+    f.write("\n")
+def XMLToFrcNonBondPotential_LJ_GROMACS(root, output_file):
+    f = output_file
+    f.write("#XXXXXX\n\n" )
+    f.write("@type ??\n\n" )
+    f.write("> E = 4*epsilon*[(sigma/R)^12-(sigma/R)^6] + S_LJ(R)\n\n")
+    f.write("epsilon units: " + ((root.find('./NonBondPotential/NonBondPotential-LJ-GROMACS')).attrib['epsilon-units']).encode('utf-8')+"\n")
+    f.write("sigma units: " + ((root.find('./NonBondPotential/NonBondPotential-LJ-GROMACS')).attrib['sigma-units']).encode('utf-8')+"\n")
+    f.write("r units: " + ((root.find('./NonBondPotential/NonBondPotential-LJ-GROMACS')).attrib['r-units']).encode('utf-8')+"\n")
+    f.write("!I     J      epsilon    sigma     r_1     r_cut  \n")
+    f.write("!----  ----  ---------  ---------  ------  ------ \n")
+    for nonbond in root.findall('./NonBondPotential/NonBondPotential-LJ-GROMACS/NonBond'):
+        if len(str(nonbond.find("AT-1")))!=0 and str(nonbond.find("AT-1")) != "None":
+            f.write(nonbond.find("AT-1").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("AT-2")))!=0 and str(nonbond.find("AT-2")) != "None":
+            f.write(nonbond.find("AT-2").text.ljust(9))
+        else:
+            f.write("".ljust(9))
+        if len(str(nonbond.find("epsilon")))!=0 and str(nonbond.find("epsilon")) != "None": 
+            f.write(("%.6f" %float(nonbond.find("epsilon").text)).ljust(10))
+        else:
+            f.write("".ljust(10))
+        if len(str(nonbond.find("sigma")))!=0 and str(nonbond.find("sigma")) != "None":
+            f.write(("%.3f" %float(nonbond.find("sigma").text)).ljust(7))
+        else:
+            f.write("".ljust(7))
+        if len(str(nonbond.find("r_1")))!=0 and str(nonbond.find("r_1")) != "None":
+            f.write(("%.3f" %float(nonbond.find("r_1").text)).ljust(7))
         else:
             f.write("".ljust(7))
         if len(str(nonbond.find("r_cut")))!=0 and str(nonbond.find("r_cut")) != "None":
