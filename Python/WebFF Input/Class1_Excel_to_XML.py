@@ -108,7 +108,10 @@ def excel_xml(input, output):
         sub_root = ET.SubElement(root, "DihedralPotential")
         sheet = xls_file.sheet_by_name("DihedralPotential-Fourier")
         FF.ReadExcelDihedralPotential_Fourier(sheet, sub_root)  
-
+    if "DihedralPotential-Multiharmonic" in sheet_names: 
+        sub_root = ET.SubElement(root, "DihedralPotential")
+        sheet = xls_file.sheet_by_name("DihedralPotential-Multiharmonic")
+        FF.ReadExcelDihedralPotential_Multiharmonic(sheet, sub_root) 
 
     # Improper Potentials
     
