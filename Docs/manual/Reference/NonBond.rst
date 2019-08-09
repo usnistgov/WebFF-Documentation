@@ -13,6 +13,7 @@ Non-Bond Potentials
    NonBond-LJ-AB
    NonBond-LJ2-AB
    NonBond-LJ-Rmin
+   NonBond-LJ-GROMACS
    NonBond-Class2
    NonBond-EnergyRenorm
    NonBond-Mie
