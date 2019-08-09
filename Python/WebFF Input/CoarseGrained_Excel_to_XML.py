@@ -72,9 +72,13 @@ def excel_xml(input, output):
         sub_root = ET.SubElement(root, "AnglePotential")
         sheet = xls_file.sheet_by_name("AnglePotential-COS2")
         FF.ReadExcelAnglePotential_COS2(sheet,sub_root)
-    if  "AnglePotential-Tabular" in sheet_names: 
+    if  "AnglePotential-Tabular-1" in sheet_names: 
         sub_root = ET.SubElement(root, "AnglePotential")
-        sheet = xls_file.sheet_by_name("AnglePotential-Tabular")
+        sheet = xls_file.sheet_by_name("AnglePotential-Tabular-1")
+        FF.ReadExcelAnglePotential_Tabular(sheet,sub_root)
+    if  "AnglePotential-Tabular-2" in sheet_names: 
+        sub_root = ET.SubElement(root, "AnglePotential")
+        sheet = xls_file.sheet_by_name("AnglePotential-Tabular-2")
         FF.ReadExcelAnglePotential_Tabular(sheet,sub_root)
 
     #Dihedral Potentials
