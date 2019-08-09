@@ -13,5 +13,6 @@ Dihedral Potentials
    Dihedral-Harmonic
    Dihedral-OPLS
    Dihedral-Quadratic
+   Dihedral-Multiharmonic
    Dihedral-Tabular
 
