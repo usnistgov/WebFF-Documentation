@@ -1,4 +1,4 @@
-.. _NonBond-LJ:
+.. _NonBond-LJ-GROMACS:
 
 Non-Bond Lennard-Jones GROMACS Potential  
 ================================
