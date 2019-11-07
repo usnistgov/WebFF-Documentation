@@ -78,7 +78,16 @@ References
 
 2. `Liquid XML Studio`_.
 
+3. Wenjie Xia, Jake Song, Cheol Jeong, David D. Hsu, Frederick R. Phelan Jr., Jack F. Douglas, Sinan Keten, "Energy-Renormalization for Achieving Temperature Transferable Coarse-Graining of Polymer Dynamics," Macromolecules, 50 (21), pp. 8787–8796, (2017). DOI: 10.1021/acs.macromol.7b01717
+
+4. Wenjie Xia, Jake Song, Nitin H. Krishnamurthy, Frederick R. Phelan Jr., Sinan Keten, Jack F. Douglas, "Energy Renormalization for Coarse-Graining the Dynamics of a Model Glass-Forming Liquid," Journal of Physical Chemistry B,  122 (6), pp. 2040-2045, (2018). DOI: 10.1021/acs.jpcb.8b00321
+
+5. Jake Song, David D. Hsu, Kenneth R. Shull, Frederick R. Phelan Jr., Jack F. Douglas, Wenjie Xia, Sinan Keten, "Energy Renormalization Method for the Coarse-Graining of Polymer Viscoelasticity," Macromolecules, 51(10), pp. 3818–3827, (2018). DOI: 10.1021/acs.macromol.7b02560
+
+6. Wenjie Xia, Nitin K. Hansoge, Wen-Sheng Xu, Frederick R. Phelan Jr., Sinan Keten, and Jack F. Douglas, "Energy renormalization for coarse-graining polymers having different segmental structures," Science Advances  5(4), eaav4683, (19 Apr 2019). DOI: 10.1126/sciadv.aav4683 
+
 .. _LAMMPS Mie Pair Potential: https://lammps.sandia.gov/doc/pair_mie.html
 
 .. _Liquid XML Studio: https://www.liquid-technologies.com/
+
 
