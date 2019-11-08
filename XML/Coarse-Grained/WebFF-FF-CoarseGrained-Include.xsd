@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<!--Created with Liquid XML 2015 Developer Bundle Edition 13.2.3.6018 (http://www.liquid-technologies.com)-->
+<!--Created with Liquid Studio 2017 - XML Editor Edition 15.1.12.7658 (https://www.liquid-technologies.com)-->
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:include schemaLocation="..\Include\WebFF-Include.xsd" />
     <xs:include schemaLocation="..\Include\WebFF-Include-Angles.xsd" />
@@ -113,7 +113,7 @@
                                     <xs:attribute name="R0-units" type="BondPotential-Harmonic-BondLength-Units" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="BondPotential-Tabular" minOccurs="0">
+                            <xs:element name="BondPotential-Tabular" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
                                     <xs:sequence>
                                         <xs:element name="AT-1" type="xs:string" />
@@ -299,7 +299,7 @@
                                     <xs:attribute name="Theta0-units" type="AnglePotential-COS2-Angle-Units" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="AnglePotential-Tabular" minOccurs="0">
+                            <xs:element name="AnglePotential-Tabular" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
                                     <xs:sequence>
                                         <xs:element name="AT-1" type="xs:string" />
@@ -449,7 +449,7 @@
                                     </xs:attribute>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="DihedralPotential-Tabular" minOccurs="0">
+                            <xs:element name="DihedralPotential-Tabular" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
                                     <xs:sequence>
                                         <xs:element name="AT-1" type="xs:string" />
@@ -496,6 +496,39 @@
                                     <xs:attribute name="comment" type="xs:string" use="optional" />
                                     <xs:attribute name="version" type="VersionString" use="optional" />
                                     <xs:attribute name="reference" type="xs:string" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="DihedralPotential-Multiharmonic" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Dihedral" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="Dihedral-Multiharmonic">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Multiharmonic" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="A1+A2*cos(Phi)+A3*cos^2(Phi)+A4*cos^3(Phi)+A5*cos^4(Phi)" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="convention" type="Conventions" use="optional" />
+                                    <xs:attribute name="An-units" type="Energy-Units" />
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
@@ -742,7 +775,7 @@
                                     <xs:attribute name="sigma-units" type="LJ2-sigma-units" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="NonBondPotential-Tabular" minOccurs="0">
+                            <xs:element name="NonBondPotential-Tabular" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
                                     <xs:sequence>
                                         <xs:element name="AT-1" type="xs:string" />
@@ -919,6 +952,47 @@
                                     </xs:attribute>
                                     <xs:attribute name="a_ij-units" type="Soft-a_ij-units" />
                                     <xs:attribute name="r_c-units" type="Soft-r_c-units" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="NonBondPotential-LJ-GROMACS" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NonBond">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="NonBond-LJ-GROMACS">
+                                                        <xs:attribute name="comment" type="xs:string" use="optional" />
+                                                        <xs:attribute name="version" type="VersionString" use="optional" />
+                                                        <xs:attribute name="reference" type="xs:string" use="optional" />
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="style">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Lennard-Jones (12-6)" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="formula">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="4*epsilon*[(sigma/R)^12-(sigma/R)^6] + S_LJ(R)" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="epsilon-units" type="LJ-epsilon-units" />
+                                    <xs:attribute name="sigma-units" type="LJ-sigma-units" />
+                                    <xs:attribute name="r-units">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Å" />
+                                                <xs:enumeration value="nm" />
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>

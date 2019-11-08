@@ -1,32 +1,38 @@
-.. _Dihedral-Quadratic:
+.. _Dihedral-Multiharmonic:
 
-Quadratic Dihedral  
+Multi-Harmonic Dihedral  
 ==================
 
 Functional Form
 ---------------
 
-The **quadratic dihedral potential** has the functional form:
+The **Multi-Harmonic dihedral potential** has the functional form:
 
-:math:`E = {K_{d,ijkl}} \cdot \left( {{\phi_{ijkl}} - {\phi_{0,ijkl}}} \right)^2`
+:math:`E={{A}_{1,ijkl}}+{{A}_{2,ijkl}}\cos \left( {{\phi }_{ijkl}} \right) +{{A}_{3,ijkl}}{\cos}^{2}\left( {{\phi }_{ijkl}} \right) +{{A}_{4,ijkl}}{\cos}^{3}\left( {{\phi }_{ijkl}} \right) +{{A}_{5,ijkl}}{\cos}^{4}\left( {{\phi }_{ijkl}} \right)`
+
+
 
 The force-field parameters for this potential and units are given by:
+
 
 ====================== ======================================== ================
 **Equation Symbol**      **Parameter Definition**                 **Units**
 ---------------------- ---------------------------------------- ----------------
-:math:`K_{d,ijkl}`     Dihedral coefficient for atoms [i,j,k,l] energy/degrees^2
-:math:`\phi_{0,ijkl}`  Equilibrium Dihedral for atoms [i,j,k,l] degrees
+:math:`A_{1,ijkl}`     Dihedral coefficient for atoms [i,j,k,l] energy
+:math:`A_{2,ijkl}`     Dihedral coefficient for atoms [i,j,k,l] energy
+:math:`A_{3,ijkl}`     Dihedral coefficient for atoms [i,j,k,l] energy
+:math:`A_{4,ijkl}`     Dihedral coefficient for atoms [i,j,k,l] energy
+:math:`A_{5,ijkl}`     Dihedral coefficient for atoms [i,j,k,l] energy
 ====================== ======================================== ================
 
 
 XML Schema
 ----------
 
-The XML schema for the **quadratic dihedral potential** has the following representation (design mode representation using Liquid XML Studio):
+The XML schema for the **Fourier dihedral potential** has the following representation (design mode representation using Liquid XML Studio):
 
-.. image:: ../../images/Dihedral-Quadratic.png
-	:align: left
+.. image:: ../../images/Dihedral-Multiharmonic.png
+	:align: center
 
 The relationship between the equation symbols and XML schema notations are given by:
 
@@ -41,21 +47,27 @@ The relationship between the equation symbols and XML schema notations are given
 +------------------------------------------------+-----------------------+---------------------+
 | Atom type of atom [l]                          | :math:`l`             | AT-4                |
 +------------------------------------------------+-----------------------+---------------------+
-| Dihedral coefficient for atoms [i,j,k,l]       | :math:`K_{d,ijkl}`    | Kd                  |
+| Dihedral coefficient for atoms [i,j,k,l]       | :math:`A_{1,ijkl}`    | A1                  |
 +------------------------------------------------+-----------------------+---------------------+
-| Equilibrium dihedral angle for atoms [i,j,k,l] | :math:`\phi_{0,ijkl}` | Phi0                |
+| Dihedral coefficient for atoms [i,j,k,l]       | :math:`A_{2,ijkl}`    | A2                  |
 +------------------------------------------------+-----------------------+---------------------+
+| Dihedral coefficient for atoms [i,j,k,l]       | :math:`A_{3,ijkl}`    | A3                  |
++------------------------------------------------+-----------------------+---------------------+
+| Dihedral coefficient for atoms [i,j,k,l]       | :math:`A_{4,ijkl}`    | A4                  |
++------------------------------------------------+-----------------------+---------------------+
+| Dihedral coefficient for atoms [i,j,k,l]       | :math:`A_{5,ijkl}`    | A5                  |
++------------------------------------------------+-----------------------+---------------------+
+
 
 The general attributes (describing the entire data set) are given by:
 
 ====================== =============== =======================================
 **General Attributes** **Cardinality** **Value**               
 ---------------------- --------------- ---------------------------------------
-style                  Fixed           Quadratic
-formula                Fixed           Kd*(Phi_Phi0)^2
+style                  Fixed           Fourier
+formula                Fixed           Enumerations specified in schema
 convention             Optional        Enumerations specified in schema
-Kd-units               Required        Enumerations specified in schema
-Phi0-units             Required        Enumerations specified in schema
+An-units               Required        Enumerations specified in schema
 ====================== =============== =======================================
 
 The specific attributes (attached to each set of parameters) are given by:
@@ -73,15 +85,11 @@ Note that an XML document will be rejected from being entered into the WebFF dat
 References
 ----------
 
-1. `LAMMPS Quadratic Dihedral Potential`_.
+1. `LAMMPS Multi-Harmonic Dihedral Potential`_.
 
-2. `GROMACS Quadratic Dihedral Potential`_.
+2. `Liquid XML Studio`_.
 
-3. `Liquid XML Studio`_.
-
-.. _LAMMPS Quadratic Dihedral Potential: http://lammps.sandia.gov/doc/dihedral_quadratic.html
-
-.. _GROMACS Quadratic Bond Potential: http://manual.gromacs.org/documentation/2016.3/manual-2016.3.pdf
+.. _LAMMPS Fourier Dihedral Potential: https://lammps.sandia.gov/doc/dihedral_multi_harmonic.html
 
 .. _Liquid XML Studio: https://www.liquid-technologies.com/
 

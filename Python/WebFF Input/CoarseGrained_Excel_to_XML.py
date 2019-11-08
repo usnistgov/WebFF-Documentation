@@ -72,9 +72,13 @@ def excel_xml(input, output):
         sub_root = ET.SubElement(root, "AnglePotential")
         sheet = xls_file.sheet_by_name("AnglePotential-COS2")
         FF.ReadExcelAnglePotential_COS2(sheet,sub_root)
-    if  "AnglePotential-Tabular" in sheet_names: 
+    if  "AnglePotential-Tabular-1" in sheet_names: 
         sub_root = ET.SubElement(root, "AnglePotential")
-        sheet = xls_file.sheet_by_name("AnglePotential-Tabular")
+        sheet = xls_file.sheet_by_name("AnglePotential-Tabular-1")
+        FF.ReadExcelAnglePotential_Tabular(sheet,sub_root)
+    if  "AnglePotential-Tabular-2" in sheet_names: 
+        sub_root = ET.SubElement(root, "AnglePotential")
+        sheet = xls_file.sheet_by_name("AnglePotential-Tabular-2")
         FF.ReadExcelAnglePotential_Tabular(sheet,sub_root)
 
     #Dihedral Potentials
@@ -86,7 +90,10 @@ def excel_xml(input, output):
         sub_root = ET.SubElement(root, "DihedralPotential")
         sheet = xls_file.sheet_by_name("DihedralPotential-Tabular")
         FF.ReadExcelDihedralPotential_Tabular(sheet, sub_root)
-		
+    if "DihedralPotential-Multiharmonic" in sheet_names: 
+        sub_root = ET.SubElement(root, "DihedralPotential")
+        sheet = xls_file.sheet_by_name("DihedralPotential-Multiharmonic")
+        FF.ReadExcelDihedralPotential_Multiharmonic(sheet, sub_root) 		
     #Non Bonded Potentials
     if "NonBondPotential-LJ" in sheet_names: 
         sub_root = ET.SubElement(root, "NonBondPotential")
@@ -116,10 +123,6 @@ def excel_xml(input, output):
         sub_root = ET.SubElement(root, "NonBondPotential")
         sheet = xls_file.sheet_by_name("NonBondPotential-WCA")
         FF.ReadExcelNonBondPotential_WCA(sheet, sub_root)
-    if "NonBondPotential-Tabular" in sheet_names: 
-        sub_root = ET.SubElement(root, "NonBondPotential")
-        sheet = xls_file.sheet_by_name("NonBondPotential-Tabular")
-        FF.ReadExcelNonBondPotential_Tabular(sheet, sub_root)
     if "NonBondPotential-Mie" in sheet_names: 
         sub_root = ET.SubElement(root, "NonBondPotential")
         sheet = xls_file.sheet_by_name("NonBondPotential-Mie")
@@ -132,6 +135,10 @@ def excel_xml(input, output):
         sub_root = ET.SubElement(root, "NonBondPotential")
         sheet = xls_file.sheet_by_name("NonBondPotential-Soft")
         FF.ReadExcelNonBondPotential_Soft(sheet, sub_root)
+    if "NonBondPotential-LJ-GROMACS" in sheet_names: 
+        sub_root = ET.SubElement(root, "NonBondPotential")
+        sheet = xls_file.sheet_by_name("NonBondPotential-LJ-GROMACS")
+        FF.ReadExcelNonBondPotential_LJGROMACS(sheet, sub_root)
 
     #Dissipative Potentials
     if "DissipativePotential-Langevin" in sheet_names: 
