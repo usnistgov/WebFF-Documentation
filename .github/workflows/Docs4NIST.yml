@@ -1,0 +1,23 @@
+name: "Build Documentation"
+
+on: [push, pull_request, delete]
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: usnistgov/Docs4NIST@0.5
+        with:
+          docs-folder: docs/
+          pages-branch: 'master'
+          pages-url: 'https://pages.nist.gov'
+          formats: ''
+          build-html-command: make html
+          build-epub-command: make epub
+          build-pdf-command: make latexpdf
+          pre-build-command: ''
+          apt-packages: ''
+          pip-requirements: ''
+          conda-environment: ''
+          push-pulls-pages: false
+          include-header-footer: true
