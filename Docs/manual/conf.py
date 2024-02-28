@@ -20,13 +20,13 @@ sys.path.insert(0, os.path.abspath('../../Python/WebFF Module/'))
 # -- Project information -----------------------------------------------------
 
 project = u'WebFF'
-copyright = u'2018, Frederick R. Phelan Jr.'
+copyright = u'Official contribution of the National Institute of Standards and Technology; not subject to copyright in the United States'
 author = u'Frederick R. Phelan Jr.'
 
 # The short X.Y version
 version = u''
 # The full version, including alpha/beta/rc tags
-release = u'1.0.0'
+release = u'0.5.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -41,6 +41,8 @@ release = u'1.0.0'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.mathjax',
+    'sphinx.ext.autosummary',
+    'sphinx.ext.napoleon',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
