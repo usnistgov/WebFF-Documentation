@@ -20,4 +20,4 @@ jobs:
           pip-requirements: ''
           conda-environment: ''
           push-pulls-pages: false
-          include-header-footer: true
+          insert-header-footer: true
