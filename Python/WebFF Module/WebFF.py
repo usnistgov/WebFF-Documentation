@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET 		  # Python standard library
 import xlrd                               # NEEDs to be installed
 
 #
-# ReadExcel Functions: below beginning with ReadExcel read in individual sheet from the webff excel template and translate them into XML that fits the webff XML schema
+# ReadExcel Functions: Reads individual sheets from the WebFF Excel template and translate them into XML that fits the WebFF XML schema.
 #
 
 def ReadExcelMetaData_Header(sheet, sub_root): 
