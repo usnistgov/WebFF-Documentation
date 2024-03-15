@@ -2,15 +2,19 @@
 # -*- coding: utf-8 -*-
 # -*- coding: ascii -*-
 # -*- coding: latin-1 -*-
-''' This module contains functions that translate data between Excel, XML, and molecular dynamics text formats
+'''
+WebFF module: Contains functions that translate data between Excel, XML, and molecular dynamics text formats. 
 '''
 import xml.etree.ElementTree as ET 		  # Python standard library	
 import xlrd                               # NEEDs to be installed
 
+#
+# ReadExcel Functions: below beginning with ReadExcel read in individual sheet from the webff excel template and translate them into XML that fits the webff XML schema
+#
 
-#function below beginning with ReadExcel read in individual sheet from the webff excel template and translate them into XML that fits the webff XML schema
 def ReadExcelMetaData_Header(sheet, sub_root): 
-    ''' Reads in the MetaData sheet from the WebFF excel template. 
+    ''' 
+    Reads in the MetaData sheet from the WebFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -33,9 +37,13 @@ def ReadExcelMetaData_Header(sheet, sub_root):
     field1 = ET.SubElement(field4, "Name").text = xls_sheet.row_values(13)[1]
     field1 = ET.SubElement(field4, "Affiliation").text = xls_sheet.row_values(14)[1]
     field2 = ET.SubElement(field4, "email").text = xls_sheet.row_values(15)[1]
+    return
+
+
 
 def ReadExcelMetaData_Keywords(sheet, root): 
-    ''' Reads in the Keywords sheet from the webFF excel template. 
+    ''' 
+    Reads in the Keywords sheet from the WebFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -49,9 +57,13 @@ def ReadExcelMetaData_Keywords(sheet, root):
         for row_num , cell_value in enumerate(xls_sheet.col_values(col_num)[5:]):
             if (len(str(cell_value))!=0 and str(cell_value) != "?") :
                 ET.SubElement(sub_root, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
 
 def ReadExcelMetaData_References(sheet, root): 
-    ''' Reads in the Keywords sheet from the webFF excel template. 
+    ''' 
+    Reads in the Keywords sheet from the WebFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -68,9 +80,13 @@ def ReadExcelMetaData_References(sheet, root):
         for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)): 
             if (len(xls_sheet.row_values(row_num)[col_num]))!=0 :
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = xls_sheet.row_values(row_num)[col_num]
+    return
+
+
 
 def ReadExcelBondPotential_Harmonic(sheet, sub_root): 
-    ''' Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
+    ''' 
+    Reads in the BondPotential-Harmonic sheet from the WebFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -105,9 +121,13 @@ def ReadExcelBondPotential_Harmonic(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
 
 def ReadExcelBondPotential_FENE(sheet, sub_root): 
-    ''' Reads in the BondPotential-FENE sheet from the webFF excel template. 
+    ''' 
+    Reads in the BondPotential-FENE sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -142,9 +162,13 @@ def ReadExcelBondPotential_FENE(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
 
 def ReadExcelBondPotential_Quartic(sheet, sub_root): 
-    ''' Reads in the BondPotential-Quartic sheet from the webFF excel template. 
+    ''' 
+    Reads in the BondPotential-Quartic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -179,9 +203,13 @@ def ReadExcelBondPotential_Quartic(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
 
 def ReadExcelBondPotential_Morse(sheet, sub_root): 
-    ''' Reads in the BondPotential-Morse sheet from the webFF excel template. 
+    '''
+    Reads in the BondPotential-Morse sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -217,8 +245,13 @@ def ReadExcelBondPotential_Morse(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 def ReadExcelAnglePotential_Harmonic(sheet, sub_root): 
-    ''' Reads in the AnglePotential-Harmonic sheet from the webFF excel template. 
+    ''' 
+    Reads in the AnglePotential-Harmonic sheet from the WebFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -257,9 +290,13 @@ def ReadExcelAnglePotential_Harmonic(sheet, sub_root):
                 elif col_num == attribute_idx4: 
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
+    return
+
+
 
 def ReadExcelAnglePotential_COS2(sheet, sub_root): 
-    ''' Reads in the AnglePotential-COS2 sheet from the webFF excel template. 
+    ''' 
+    Reads in the AnglePotential-COS2 sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -299,9 +336,13 @@ def ReadExcelAnglePotential_COS2(sheet, sub_root):
                 elif col_num == attribute_idx4: 
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
 
 def ReadExcelAnglePotential_Cosine(sheet, sub_root): 
-    ''' Reads in the AnglePotential-Cosine sheet from the webFF excel template. 
+    '''
+    Reads in the AnglePotential-Cosine sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -341,9 +382,13 @@ def ReadExcelAnglePotential_Cosine(sheet, sub_root):
                 elif col_num == attribute_idx4: 
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
+    return
+
+
 
 def ReadExcelAnglePotential_CHARMM(sheet, sub_root): 
-    ''' Reads in the AnglePotential-CHARMM sheet from the webFF excel template. 
+    '''
+    Reads in the AnglePotential-CHARMM sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -386,9 +431,13 @@ def ReadExcelAnglePotential_CHARMM(sheet, sub_root):
                 elif col_num == attribute_idx4: 
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
 
 def ReadExcelDihedralPotential_CHARMM(sheet, sub_root): 
-    ''' Reads in the DihedralPotential-CHARMM sheet from the webFF excel template. 
+    '''
+    Reads in the DihedralPotential-CHARMM sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -404,32 +453,36 @@ def ReadExcelDihedralPotential_CHARMM(sheet, sub_root):
     xls_sheet_header = map(str, xls_sheet.row_values(8))
 
     for row_num in xrange(9, xls_sheet.nrows):
-	attribute_idx1 = xls_sheet_header.index("comment")
-	attribute_idx2 = xls_sheet_header.index("version")
-	attribute_idx3 = xls_sheet_header.index("reference")
-	force_integer_idx1 = xls_sheet_header.index("N")
-	cur_entry = ET.SubElement(sheet, "Dihedral")
-	if (xls_sheet.cell_value(row_num, attribute_idx1)) :
-	    ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
-	if (xls_sheet.cell_value(row_num, attribute_idx2)) :
-	    ET.Element.set(cur_entry, 'version', str((xls_sheet.row_values(row_num)[attribute_idx2])))
-	if (xls_sheet.cell_value(row_num, attribute_idx3)) :
-	    ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
-	for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
-	    if (len(str(cell_value))!=0) :
-		if col_num == attribute_idx1:
-		    continue
-		elif col_num == attribute_idx2:
-		    continue
-		elif col_num == attribute_idx3:
-		    continue
-		elif col_num == force_integer_idx1:
-		    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		else:
-		    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+        attribute_idx1 = xls_sheet_header.index("comment")
+        attribute_idx2 = xls_sheet_header.index("version")
+        attribute_idx3 = xls_sheet_header.index("reference")
+        force_integer_idx1 = xls_sheet_header.index("N")
+        cur_entry = ET.SubElement(sheet, "Dihedral")
+        if (xls_sheet.cell_value(row_num, attribute_idx1)) :
+            ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
+        if (xls_sheet.cell_value(row_num, attribute_idx2)) :
+            ET.Element.set(cur_entry, 'version', str((xls_sheet.row_values(row_num)[attribute_idx2])))
+        if (xls_sheet.cell_value(row_num, attribute_idx3)) :
+            ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
+        for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
+            if (len(str(cell_value))!=0) :
+                if col_num == attribute_idx1:
+                    continue
+                elif col_num == attribute_idx2:
+                    continue
+                elif col_num == attribute_idx3:
+                    continue
+                elif col_num == force_integer_idx1:
+                    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
+                else:
+                    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
 
 def ReadExcelDihedralPotential_Harmonic(sheet,sub_root): 
-    ''' Reads in the DihedralPotential-Harmonic sheet from the webFF excel template. 
+    '''
+    Reads in the DihedralPotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -448,8 +501,8 @@ def ReadExcelDihedralPotential_Harmonic(sheet,sub_root):
         attribute_idx1 = xls_sheet_header.index("comment")
         attribute_idx2 = xls_sheet_header.index("version")
         attribute_idx3 = xls_sheet_header.index("reference")
-	force_integer_idx1 = xls_sheet_header.index("Ns")
-	force_integer_idx2 = xls_sheet_header.index("N")
+        force_integer_idx1 = xls_sheet_header.index("Ns")
+        force_integer_idx2 = xls_sheet_header.index("N")
         cur_entry = ET.SubElement(sheet, "Dihedral")
         if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
             ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
@@ -465,15 +518,19 @@ def ReadExcelDihedralPotential_Harmonic(sheet,sub_root):
                     continue
                 elif col_num == attribute_idx3:
                     continue
-		elif col_num == force_integer_idx1:
+                elif col_num == force_integer_idx1:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		elif col_num == force_integer_idx2:
+                elif col_num == force_integer_idx2:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		else:
-		    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+                else:
+                    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
 
 def ReadExcelDihedralPotential_Quadratic(sheet, sub_root): 
-    ''' Reads in the DihedralPotential-Quadratic sheet from the webFF excel template. 
+    '''
+    Reads in the DihedralPotential-Quadratic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -509,9 +566,13 @@ def ReadExcelDihedralPotential_Quadratic(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
 
 def ReadExcelDihedralPotential_OPLS(sheet, sub_root): 
-    ''' Reads in the DihedralPotential-OPLS sheet from the webFF excel template. 
+    '''
+    Reads in the DihedralPotential-OPLS sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -546,9 +607,13 @@ def ReadExcelDihedralPotential_OPLS(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
 
 def ReadExcelDihedralPotential_FourierSimple(sheet, sub_root): 
-    ''' Reads in the DihedralPotential-FourierSimple sheet from the webFF excel template. 
+    '''
+    Reads in the DihedralPotential-FourierSimple sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -583,9 +648,13 @@ def ReadExcelDihedralPotential_FourierSimple(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
+    return
+
+
 
 def ReadExcelDihedralPotential_Fourier(sheet, sub_root): 
-    ''' Reads in the DihedralPotential-Fourier sheet from the webFF excel template. 
+    '''
+    Reads in the DihedralPotential-Fourier sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -605,11 +674,11 @@ def ReadExcelDihedralPotential_Fourier(sheet, sub_root):
         attribute_idx1 = xls_sheet_header.index("comment")
         attribute_idx2 = xls_sheet_header.index("version")
         attribute_idx3 = xls_sheet_header.index("reference")
-	force_integer_idx1 = xls_sheet_header.index("N1")
-	force_integer_idx2 = xls_sheet_header.index("N2")
-	force_integer_idx3 = xls_sheet_header.index("N3")
-	force_integer_idx4 = xls_sheet_header.index("N4")
-	force_integer_idx5 = xls_sheet_header.index("N5")
+        force_integer_idx1 = xls_sheet_header.index("N1")
+        force_integer_idx2 = xls_sheet_header.index("N2")
+        force_integer_idx3 = xls_sheet_header.index("N3")
+        force_integer_idx4 = xls_sheet_header.index("N4")
+        force_integer_idx5 = xls_sheet_header.index("N5")
         cur_entry = ET.SubElement(sheet, "Dihedral")
         if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
             ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
@@ -625,20 +694,25 @@ def ReadExcelDihedralPotential_Fourier(sheet, sub_root):
                     continue
                 elif col_num == attribute_idx3:
                     continue
-		elif col_num == force_integer_idx1:
+                elif col_num == force_integer_idx1:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		elif col_num == force_integer_idx2:
+                elif col_num == force_integer_idx2:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		elif col_num == force_integer_idx3:
+                elif col_num == force_integer_idx3:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		elif col_num == force_integer_idx4:
+                elif col_num == force_integer_idx4:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		elif col_num == force_integer_idx5:
+                elif col_num == force_integer_idx5:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		else:
-		    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+                else:
+                    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 def ReadExcelDihedralPotential_Multiharmonic(sheet, sub_root): 
-    ''' Reads in the DihedralPotential-Multiharmonic sheet from the webFF excel template. 
+    '''
+    Reads in the DihedralPotential-Multiharmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -673,8 +747,13 @@ def ReadExcelDihedralPotential_Multiharmonic(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)            
+    return
+
+
+
 def ReadExcelImproperPotential_CVFF(sheet, sub_root): 
-    ''' Reads in the ImproperPotential-CVFF sheet from the webFF excel template. 
+    '''
+    Reads in the ImproperPotential-CVFF sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -693,8 +772,8 @@ def ReadExcelImproperPotential_CVFF(sheet, sub_root):
         attribute_idx1 = xls_sheet_header.index("comment")
         attribute_idx2 = xls_sheet_header.index("version")
         attribute_idx3 = xls_sheet_header.index("reference")
-	force_integer_idx1 = xls_sheet_header.index("Ns")
-	force_integer_idx2 = xls_sheet_header.index("N")
+        force_integer_idx1 = xls_sheet_header.index("Ns")
+        force_integer_idx2 = xls_sheet_header.index("N")
         cur_entry = ET.SubElement(sheet, "Improper")
         if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
             ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
@@ -710,15 +789,20 @@ def ReadExcelImproperPotential_CVFF(sheet, sub_root):
                     continue
                 elif col_num == attribute_idx3:
                     continue
-		elif col_num == force_integer_idx1:
+                elif col_num == force_integer_idx1:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		elif col_num == force_integer_idx2:
+                elif col_num == force_integer_idx2:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		else:
+                else:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelImproperPotential_COS2(sheet, sub_root): 
-    ''' Reads in the ImporperPotential-COS2 sheet from the webFF excel template. 
+    '''
+    Reads in the ImporperPotential-COS2 sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -754,8 +838,13 @@ def ReadExcelImproperPotential_COS2(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 def ReadExcelImproperPotential_Harmonic(sheet, sub_root): 
-    ''' Reads in the ImporperPotential-Harmonic sheet from the webFF excel template. 
+    '''
+    Reads in the ImporperPotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -791,9 +880,14 @@ def ReadExcelImproperPotential_Harmonic(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelImproperPotential_Fourier(sheet, sub_root): 
-    ''' Reads in the ImporperPotential-Fourier sheet from the webFF excel template. 
+    '''
+    Reads in the ImporperPotential-Fourier sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -828,9 +922,14 @@ def ReadExcelImproperPotential_Fourier(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
+    return
+
+
+
 
 def ReadExcelImproperPotential_Umbrella(sheet, sub_root): 
-    ''' Reads in the ImporperPotential-Umbrella sheet from the webFF excel template. 
+    '''
+    Reads in the ImporperPotential-Umbrella sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -866,9 +965,14 @@ def ReadExcelImproperPotential_Umbrella(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
+    return
+
+
+
 
 def ReadExcelImproperPotential_CHARMM(sheet, sub_root): 
-    ''' Reads in the ImporperPotential-CHARMM sheet from the webFF excel template. 
+    ''' 
+    Reads in the ImporperPotential-CHARMM sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -887,7 +991,7 @@ def ReadExcelImproperPotential_CHARMM(sheet, sub_root):
         attribute_idx1 = xls_sheet_header.index("comment")
         attribute_idx2 = xls_sheet_header.index("version")
         attribute_idx3 = xls_sheet_header.index("reference")
-	force_integer_idx1 = xls_sheet_header.index("N")
+        force_integer_idx1 = xls_sheet_header.index("N")
         cur_entry = ET.SubElement(sheet, "Improper")
         if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
             ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
@@ -903,13 +1007,18 @@ def ReadExcelImproperPotential_CHARMM(sheet, sub_root):
                     continue
                 elif col_num == attribute_idx3:
                     continue
-		elif col_num == force_integer_idx1:
+                elif col_num == force_integer_idx1:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		else:
-		    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+                else:
+                    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelNonBondPotential_LJ(sheet, sub_root): 
-    ''' Reads in the NonBondPotential-LJ sheet from the webFF excel template. 
+    '''
+    Reads in the NonBondPotential-LJ sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -945,9 +1054,14 @@ def ReadExcelNonBondPotential_LJ(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelNonBondPotential_LJRmin(sheet, sub_root): 
-    ''' Reads in the NonBondPotential-LJRmin sheet from the webFF excel template. 
+    '''
+    Reads in the NonBondPotential-LJRmin sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -983,9 +1097,14 @@ def ReadExcelNonBondPotential_LJRmin(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
+    return
+
+
+
 
 def ReadExcelNonBondPotential_LJAB(sheet, sub_root): 
-    ''' Reads in the NonBondPotential-LJAB sheet from the webFF excel template. 
+    '''
+    Reads in the NonBondPotential-LJAB sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1021,9 +1140,14 @@ def ReadExcelNonBondPotential_LJAB(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelNonBondPotential_LJ2AB(sheet, sub_root): 
-    ''' Reads in the NonBondPotential-LJ2AB sheet from the WebFF excel template. 
+    '''
+    Reads in the NonBondPotential-LJ2AB sheet from the WebFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1058,9 +1182,14 @@ def ReadExcelNonBondPotential_LJ2AB(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelNonBondPotential_LJ96 (sheet, sub_root): 
-    ''' Reads in the NonBondPotential-LJRmin sheet from the webFF excel template. 
+    '''
+    Reads in the NonBondPotential-LJRmin sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1088,16 +1217,21 @@ def ReadExcelNonBondPotential_LJ96 (sheet, sub_root):
         if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
             ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
         for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
-			if col_num == attribute_idx1:
-				continue 
-			elif col_num == attribute_idx2:
-				continue
-			elif col_num == attribute_idx3:
-				continue 
-			ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+            if col_num == attribute_idx1:
+                continue 
+            elif col_num == attribute_idx2:
+                continue
+            elif col_num == attribute_idx3:
+                continue 
+            ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelNonBondPotential_LJ962 (sheet, sub_root): 
-    ''' Reads in the NonBondPotential-LJ962 sheet from the webFF excel template. 
+    '''
+    Reads in the NonBondPotential-LJ962 sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1124,16 +1258,21 @@ def ReadExcelNonBondPotential_LJ962 (sheet, sub_root):
         if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
             ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
         for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
-			if col_num == attribute_idx1:
-				continue 
-			elif col_num == attribute_idx2:
-				continue
-			elif col_num == attribute_idx3:
-				continue 
-			ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+            if col_num == attribute_idx1:
+                continue 
+            elif col_num == attribute_idx2:
+                continue
+            elif col_num == attribute_idx3:
+                continue 
+            ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelNonBondPotential_LJ2(sheet, sub_root): 
-    ''' Reads in the NonBondPotential-LJ2 sheet from the webFF excel template. 
+    '''
+    Reads in the NonBondPotential-LJ2 sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     ''' 
     xls_sheet = sheet
@@ -1169,9 +1308,14 @@ def ReadExcelNonBondPotential_LJ2(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelNonBondPotential_WCA(sheet, sub_root): 
-    ''' Reads in the NonBondPotential-WCA sheet from the webFF excel template. 
+    '''
+    Reads in the NonBondPotential-WCA sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1206,9 +1350,14 @@ def ReadExcelNonBondPotential_WCA(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
 
-def ReadExcelNonBondPotential_Mie(sheet, sub_root): 
-    ''' Reads in the NonBondPotential-Mie sheet from the webFF excel template. 
+
+
+
+def ReadExcelNonBondPotential_Mie(sheet, sub_root):
+    '''
+    Reads in the NonBondPotential-Mie sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1243,9 +1392,14 @@ def ReadExcelNonBondPotential_Mie(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelNonBondPotential_EnergyRenorm (sheet, sub_root): 
-    ''' Reads in the NonBondPotential-EnergyRenorm sheet from the webFF excel template. 
+    '''
+    Reads in the NonBondPotential-EnergyRenorm sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1273,15 +1427,20 @@ def ReadExcelNonBondPotential_EnergyRenorm (sheet, sub_root):
         if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
             ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
         for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
-			if col_num == attribute_idx1:
-				continue 
-			elif col_num == attribute_idx2:
-				continue
-			elif col_num == attribute_idx3:
-				continue 
-			ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+            if col_num == attribute_idx1:
+                continue 
+            elif col_num == attribute_idx2:
+                continue
+            elif col_num == attribute_idx3:
+                continue 
+            ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 def ReadExcelNonBondPotential_LJGROMACS(sheet, sub_root): 
-    ''' Reads in the NonBondPotential-LJ-GROMACS sheet from the webFF excel template. 
+    '''
+    Reads in the NonBondPotential-LJ-GROMACS sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1309,15 +1468,20 @@ def ReadExcelNonBondPotential_LJGROMACS(sheet, sub_root):
         if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
             ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
         for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
-			if col_num == attribute_idx1:
-				continue 
-			elif col_num == attribute_idx2:
-				continue
-			elif col_num == attribute_idx3:
-				continue 
-			ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+            if col_num == attribute_idx1:
+                continue 
+            elif col_num == attribute_idx2:
+                continue
+            elif col_num == attribute_idx3:
+                continue 
+            ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 def ReadExcelDissipativePotential_Langevin(sheet, sub_root): 
-    ''' Reads in the DissipativePotential-Langevin sheet from the webFF excel template. 
+    '''
+    Reads in the DissipativePotential-Langevin sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1351,11 +1515,16 @@ def ReadExcelDissipativePotential_Langevin(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
 
-#Soft Potentials
+
+#
+# SECTION: Soft Potentials
+#
 
 def ReadExcelSoftPotential_DPD(sheet, sub_root): 
-    ''' Reads in the SoftPotential-DPD sheet from the webFF excel template. 
+    '''
+    Reads in the SoftPotential-DPD sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1391,9 +1560,14 @@ def ReadExcelSoftPotential_DPD(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelSoftPotential_SRP(sheet, sub_root): 
-    ''' Reads in the SoftPotential-SRP sheet from the webFF excel template. 
+    '''
+    Reads in the SoftPotential-SRP sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1428,9 +1602,14 @@ def ReadExcelSoftPotential_SRP(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelEquivalenceTable(sheet, sub_root): 
-    ''' Reads in the Equivalence-Table sheet from the webFF excel template. 
+    '''
+    Reads in the Equivalence-Table sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''   
     xls_sheet = sheet
@@ -1458,9 +1637,14 @@ def ReadExcelEquivalenceTable(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)   
+    return
+
+
+
 
 def ReadExcelAutoEquivalenceTable(sheet, sub_root): 
-    ''' Reads in the Equivalence-Table sheet from the webFF excel template. 
+    '''
+    Reads in the Equivalence-Table sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''   
     xls_sheet = sheet
@@ -1488,9 +1672,14 @@ def ReadExcelAutoEquivalenceTable(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)  
+    return
+
+
+
 
 def ReadExcelBondIncrements(sheet, sub_root): 
-    ''' Reads in the Bond-Increments sheet from the webFF excel template. 
+    '''
+    Reads in the Bond-Increments sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''   
     xls_sheet = sheet
@@ -1518,9 +1707,14 @@ def ReadExcelBondIncrements(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelAtomTypes(sheet,root): 
-    ''' Reads in the Atom-Types sheet from the webFF excel template. 
+    '''
+    Reads in the Atom-Types sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''   
     xls_sheet = sheet
@@ -1557,9 +1751,14 @@ def ReadExcelAtomTypes(sheet,root):
                 elif col_num == attribute_idx4:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelAtomTypes_ATDL(sheet,root): 
-    ''' Reads in the AtomTypes-ATDL sheet from the webFF excel template. 
+    '''
+    Reads in the AtomTypes-ATDL sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''   
     xls_sheet = sheet
@@ -1568,10 +1767,10 @@ def ReadExcelAtomTypes_ATDL(sheet,root):
 
     AA=xls_sheet.row_values(2)[1]
     if (len(xls_sheet.row_values(3)[1]) != 0) :
-    	BB=xls_sheet.row_values(3)[1]
-	sheet = ET.SubElement(funko, "AtomType-ATDL", {'Nomenclature':AA, 'comment':BB})
+        BB=xls_sheet.row_values(3)[1]
+        sheet = ET.SubElement(funko, "AtomType-ATDL", {'Nomenclature':AA, 'comment':BB})
     else :
-	sheet = ET.SubElement(funko, "AtomType-ATDL", {'Nomenclature':AA})
+        sheet = ET.SubElement(funko, "AtomType-ATDL", {'Nomenclature':AA})
     
     # Row 5 is the header
     xls_sheet_header = map(str, xls_sheet.row_values(5))
@@ -1602,9 +1801,14 @@ def ReadExcelAtomTypes_ATDL(sheet,root):
                 elif col_num == attribute_idx4:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelAtomTypes_DFF(sheet,root): 
-    ''' Reads in the AtomTypes-DFF sheet from the webFF excel template. 
+    '''
+    Reads in the AtomTypes-DFF sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''   
     xls_sheet = sheet
@@ -1613,10 +1817,10 @@ def ReadExcelAtomTypes_DFF(sheet,root):
 
     AA=xls_sheet.row_values(2)[1]
     if (len(xls_sheet.row_values(3)[1]) != 0) :
-    	BB=xls_sheet.row_values(3)[1]
-	sheet = ET.SubElement(funko, "AtomType-DFF", {'Nomenclature':AA, 'comment':BB})
+        BB=xls_sheet.row_values(3)[1]
+        sheet = ET.SubElement(funko, "AtomType-DFF", {'Nomenclature':AA, 'comment':BB})
     else :
-	sheet = ET.SubElement(funko, "AtomType-DFF", {'Nomenclature':AA})
+        sheet = ET.SubElement(funko, "AtomType-DFF", {'Nomenclature':AA})
     
     # Row 5 is the header
     xls_sheet_header = map(str, xls_sheet.row_values(5))
@@ -1647,9 +1851,14 @@ def ReadExcelAtomTypes_DFF(sheet,root):
                 elif col_num == attribute_idx4:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelAtomTypes_Generic(sheet,root): 
-    ''' Reads in the AtomTypes-Generic sheet from the webFF excel template. 
+    '''
+    Reads in the AtomTypes-Generic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''   
     xls_sheet = sheet
@@ -1658,10 +1867,10 @@ def ReadExcelAtomTypes_Generic(sheet,root):
 
     AA=xls_sheet.row_values(2)[1]
     if (len(xls_sheet.row_values(3)[1]) != 0) :
-    	BB=xls_sheet.row_values(3)[1]
-	sheet = ET.SubElement(funko, "AtomType-Generic", {'Nomenclature':AA, 'comment':BB})
+        BB=xls_sheet.row_values(3)[1]
+        sheet = ET.SubElement(funko, "AtomType-Generic", {'Nomenclature':AA, 'comment':BB})
     else :
-	sheet = ET.SubElement(funko, "AtomType-Generic", {'Nomenclature':AA})
+        sheet = ET.SubElement(funko, "AtomType-Generic", {'Nomenclature':AA})
     
     # Row 5 is the header
     xls_sheet_header = map(str, xls_sheet.row_values(5))
@@ -1692,9 +1901,14 @@ def ReadExcelAtomTypes_Generic(sheet,root):
                 elif col_num == attribute_idx4:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelAtomTypes_CoarseGrained(sheet,root): 
-    ''' Reads in the AtomTypes-ATDL sheet from the webFF excel template. 
+    '''
+    Reads in the AtomTypes-ATDL sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''   
     xls_sheet = sheet
@@ -1728,9 +1942,14 @@ def ReadExcelAtomTypes_CoarseGrained(sheet,root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelAtomTypeAttributes(sheet,root): 
-    ''' Reads in the Atom-Types-Attributes sheet from the webFF excel template. 
+    '''
+    Reads in the Atom-Types-Attributes sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''   
     xls_sheet1 = sheet
@@ -1743,22 +1962,27 @@ def ReadExcelAtomTypeAttributes(sheet,root):
             AtomTypeName = (child.find("AtomType-Name"))
             if(AtomTypeName.text == str(xls_sheet1.cell_value(row_num, 0))): 
                 # Check if there is already an attribute to avoid creating incorrect duplicate attribute elements 
-		if(child.find("Atom-Attributes") == None) :
+                if(child.find("Atom-Attributes") == None) :
                     sheet1 = ET.SubElement(child, "Atom-Attributes")
                     sheet2 = ET.SubElement(sheet1, "Attribute")
-		else :
-		    sheet2 = ET.SubElement(child.find("Atom-Attributes"), "Attribute")
-                for col_num, cell_value in enumerate(xls_sheet1.row_values(row_num)):
-                    if (len(str(cell_value))!=0) :
-                        if col_num == attribute_idx1:
-                            continue    
-                        if(type(cell_value) == float): 
-                            ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(int(cell_value)) 
+                else :
+                    sheet2 = ET.SubElement(child.find("Atom-Attributes"), "Attribute")
+                    for col_num, cell_value in enumerate(xls_sheet1.row_values(row_num)):
+                        if (len(str(cell_value))!=0) :
+                            if col_num == attribute_idx1:
+                                continue    
+                            if(type(cell_value) == float): 
+                                ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(int(cell_value)) 
                         else:
                             ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelAtomTypeAttributes_Generic(sheet,root): 
-    ''' Reads in the Atom-Attributes-Generic sheet from the webFF excel template. 
+    '''
+    Reads in the Atom-Attributes-Generic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''   
     xls_sheet1 = sheet
@@ -1771,24 +1995,29 @@ def ReadExcelAtomTypeAttributes_Generic(sheet,root):
             AtomTypeName = (child.find("AtomType-Name"))
             if(AtomTypeName.text == str(xls_sheet1.cell_value(row_num, 0))): 
                 # Check if there is already an attribute to avoid creating incorrect duplicate attribute elements 
-		if(child.find("Atom-Attributes") == None) :
+                if(child.find("Atom-Attributes") == None) :
                     sheet1 = ET.SubElement(child, "Atom-Attributes")
                     sheet2 = ET.SubElement(sheet1, "Attribute")
-		else :
-		    sheet2 = ET.SubElement(child.find("Atom-Attributes"), "Attribute")
-                for col_num, cell_value in enumerate(xls_sheet1.row_values(row_num)):
-                    if (len(str(cell_value))!=0) :
-                        if col_num == attribute_idx1:
-                            continue
-			if col_num == 5:
-			    ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value)
-                        elif(type(cell_value) == float): 
-                            ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(int(cell_value))
-                        else:
-                            ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value)
+                else :
+                    sheet2 = ET.SubElement(child.find("Atom-Attributes"), "Attribute")
+                    for col_num, cell_value in enumerate(xls_sheet1.row_values(row_num)):
+                        if (len(str(cell_value))!=0) :
+                            if col_num == attribute_idx1:
+                                continue
+                            if col_num == 5:
+                                ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value)
+                            elif(type(cell_value) == float): 
+                                ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(int(cell_value))
+                            else:
+                                ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelAtomTypeAttributes_DFF(sheet,root): 
-    ''' Reads in the Atom-Attributes-DFF sheet from the webFF excel template. 
+    '''
+    Reads in the Atom-Attributes-DFF sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''   
     xls_sheet1 = sheet
@@ -1800,36 +2029,49 @@ def ReadExcelAtomTypeAttributes_DFF(sheet,root):
         for child in root.findall("./AtomTypes/AtomType-DFF/AtomType"): 
             AtomTypeName = (child.find("AtomType-Name"))
             if(AtomTypeName.text == str(xls_sheet1.cell_value(row_num, 0))):
-		# Check if there is already an attribute to avoid creating incorrect duplicate attribute elements 
-		if(child.find("Atom-Attributes") == None) :
+                # Check if there is already an attribute to avoid creating incorrect duplicate attribute elements 
+                if(child.find("Atom-Attributes") == None) :
                     sheet1 = ET.SubElement(child, "Atom-Attributes")
                     sheet2 = ET.SubElement(sheet1, "Attribute")
-		else :
-		    sheet2 = ET.SubElement(child.find("Atom-Attributes"), "Attribute")
-                for col_num, cell_value in enumerate(xls_sheet1.row_values(row_num)):
-                    if (len(str(cell_value))!=0) :
-                        if col_num == attribute_idx1:
-                            continue    
-                        if col_num == 5:
-			    ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value)
-                        elif(type(cell_value) == float): 
-                            ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(int(cell_value))
-                        else:
-                            ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value)
+                else :
+                    sheet2 = ET.SubElement(child.find("Atom-Attributes"), "Attribute")
+                    for col_num, cell_value in enumerate(xls_sheet1.row_values(row_num)):
+                        if (len(str(cell_value))!=0) :
+                            if col_num == attribute_idx1:
+                                continue    
+                            if col_num == 5:
+                                ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value)
+                            elif(type(cell_value) == float): 
+                                ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(int(cell_value))
+                            else:
+                                ET.SubElement(sheet2, xls_sheet1_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelRelationTree_DFF(sheet,root): 
-    ''' Reads in the RelationTree-DFF sheet from the webFF excel template. 
+    '''
+    Reads in the RelationTree-DFF sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''   
     xls_sheet = sheet
     RT=xls_sheet.row_values(4)[1]
     if (len(str(RT))!=0) :
-	temp = root.find("./AtomTypes/AtomType-DFF")
-	ET.SubElement(temp, "DFFRelationTree").text = str(RT)
+        temp = root.find("./AtomTypes/AtomType-DFF")
+        ET.SubElement(temp, "DFFRelationTree").text = str(RT)
+    return
 
-#Class2 functions
+
+
+
+#
+# Class2 functions
+#
+
 def ReadExcelBondPotential_Class2(sheet, sub_root): 
-    ''' Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
+    '''
+    Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1851,7 +2093,7 @@ def ReadExcelBondPotential_Class2(sheet, sub_root):
         #cur_entry = ET.SubElement(sheet, "Bond", comment=str((xls_sheet.row_values(row_num)[attribute_idx1])),
         #                          version=str(xls_sheet.row_values(row_num)[attribute_idx2]),
         #                          reference=str(xls_sheet.row_values(row_num)[attribute_idx3]))
-	cur_entry = ET.SubElement(sheet, "Bond")
+        cur_entry = ET.SubElement(sheet, "Bond")
         if (xls_sheet.cell_value(row_num, attribute_idx1)) : 
             ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx1])))
         if (xls_sheet.cell_value(row_num, attribute_idx2)) : 
@@ -1866,9 +2108,14 @@ def ReadExcelBondPotential_Class2(sheet, sub_root):
             elif col_num == attribute_idx3:
                 continue
             ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
-    
+    return
+
+
+
+
 def ReadExcelAnglePotential_Class2(sheet, sub_root): 
-    ''' Reads in the AnglePotential-Harmonic sheet from the webFF excel template. 
+    '''
+    Reads in the AnglePotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1894,7 +2141,7 @@ def ReadExcelAnglePotential_Class2(sheet, sub_root):
             ET.Element.set(cur_entry, 'comment', str((xls_sheet.row_values(row_num)[attribute_idx2])))
         if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
             ET.Element.set(cur_entry, 'version', str((xls_sheet.row_values(row_num)[attribute_idx3])))
-	if (xls_sheet.cell_value(row_num, attribute_idx4)) : 
+        if (xls_sheet.cell_value(row_num, attribute_idx4)) : 
             ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
         for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
             if col_num == attribute_idx1:
@@ -1906,9 +2153,14 @@ def ReadExcelAnglePotential_Class2(sheet, sub_root):
             elif col_num == attribute_idx4: 
                 continue
             ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
+    return
+
+
+
 
 def ReadExcelDihedralPotential_Class2(sheet, sub_root): 
-    ''' Reads in the DihedralPotential-CHARMM sheet from the webFF excel template. 
+    '''
+    Reads in the DihedralPotential-CHARMM sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1942,9 +2194,14 @@ def ReadExcelDihedralPotential_Class2(sheet, sub_root):
             elif col_num == attribute_idx3:
                 continue
             ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
-          
-def ReadExcelImproperPotential_Class2(sheet, sub_root): 
-    ''' Reads in the ImporperPotential-Harmonic sheet from the webFF excel template. 
+    return
+
+
+
+
+def ReadExcelImproperPotential_Class2(sheet, sub_root):
+    '''
+    Reads in the ImporperPotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -1972,16 +2229,21 @@ def ReadExcelImproperPotential_Class2(sheet, sub_root):
         if (xls_sheet.cell_value(row_num, attribute_idx3)) : 
             ET.Element.set(cur_entry, 'reference', str((xls_sheet.row_values(row_num)[attribute_idx3])))
         for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
-			if col_num == attribute_idx1:
-				continue 
-			elif col_num == attribute_idx2:
-				continue
-			elif col_num == attribute_idx3:
-				continue
-			ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
-            
+            if col_num == attribute_idx1:
+                continue 
+            elif col_num == attribute_idx2:
+                continue
+            elif col_num == attribute_idx3:
+                continue
+            ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
+    return
+
+
+
+
 def ReadExcelCrossPotential_BondBond(sheet, sub_root): 
-    ''' Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
+    '''
+    Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2015,9 +2277,14 @@ def ReadExcelCrossPotential_BondBond(sheet, sub_root):
             elif col_num == attribute_idx3:
                 continue
             ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
-            
+    return
+
+
+
+
 def ReadExcelCrossPotential_BondBond13(sheet, sub_root): 
-    ''' Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
+    '''
+    Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2051,9 +2318,14 @@ def ReadExcelCrossPotential_BondBond13(sheet, sub_root):
             elif col_num == attribute_idx3:
                 continue
             ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
-            
+    return
+
+
+
+
 def ReadExcelCrossPotential_AngleAngle(sheet, sub_root): 
-    ''' Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
+    '''
+    Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2087,9 +2359,14 @@ def ReadExcelCrossPotential_AngleAngle(sheet, sub_root):
             elif col_num == attribute_idx3:
                 continue
             ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
-           
+    return
+
+
+
+
 def ReadExcelCrossPotential_BondAngle(sheet, sub_root): 
-    ''' Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
+    '''
+    Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2123,9 +2400,14 @@ def ReadExcelCrossPotential_BondAngle(sheet, sub_root):
             elif col_num == attribute_idx3:
                 continue
             ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
-            
+    return
+
+
+
+
 def ReadExcelCrossPotential_MiddleBondTorsion(sheet, sub_root): 
-    ''' Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
+    '''
+    Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2159,9 +2441,14 @@ def ReadExcelCrossPotential_MiddleBondTorsion(sheet, sub_root):
             elif col_num == attribute_idx3:
                 continue
             ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
-            
+    return
+
+
+
+
 def ReadExcelCrossPotential_EndBondTorsion(sheet, sub_root): 
-    ''' Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
+    '''
+    Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2196,9 +2483,14 @@ def ReadExcelCrossPotential_EndBondTorsion(sheet, sub_root):
             elif col_num == attribute_idx3:
                 continue
             ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
-            
+    return
+
+
+
+
 def ReadExcelCrossPotential_AngleTorsion(sheet, sub_root): 
-    ''' Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
+    '''
+    Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2233,9 +2525,14 @@ def ReadExcelCrossPotential_AngleTorsion(sheet, sub_root):
             elif col_num == attribute_idx3:
                 continue
             ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
-            
+    return
+
+
+
+
 def ReadExcelCrossPotential_AngleAngleTorsion(sheet, sub_root): 
-    ''' Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
+    '''
+    Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2244,7 +2541,6 @@ def ReadExcelCrossPotential_AngleAngleTorsion(sheet, sub_root):
     BB=xls_sheet.row_values(3)[1]
     CC=xls_sheet.row_values(4)[1]
     DD=xls_sheet.row_values(5)[1]
-
 
     sheet = ET.SubElement(sub_root, "CrossPotential-AngleAngleTorsion", {'style':AA, 'formula':BB, 'M-units':CC, 'Theta-units':DD})
 
@@ -2270,9 +2566,14 @@ def ReadExcelCrossPotential_AngleAngleTorsion(sheet, sub_root):
             elif col_num == attribute_idx3:
                 continue
             ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
-            
+    return
+
+
+
+
 def ReadExcelCrossPotential_AngleAngleTorsion(sheet, sub_root): 
-    ''' Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
+    '''
+    Reads in the BondPotential-Harmonic sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2281,7 +2582,6 @@ def ReadExcelCrossPotential_AngleAngleTorsion(sheet, sub_root):
     BB=xls_sheet.row_values(3)[1]
     CC=xls_sheet.row_values(4)[1]
     DD=xls_sheet.row_values(5)[1]
-
 
     sheet = ET.SubElement(sub_root, "CrossPotential-AngleAngleTorsion", {'style':AA, 'formula':BB, 'M-units':CC, 'Theta-units':DD})
 
@@ -2307,9 +2607,14 @@ def ReadExcelCrossPotential_AngleAngleTorsion(sheet, sub_root):
             elif col_num == attribute_idx3:
                 continue
             ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value) 
-            
+    return
+
+
+
+
 def ReadExcelNonBondPotential_LJClass2(sheet, sub_root): 
-    ''' Reads in the NonBondPotential-LJClass2 sheet from the webFF excel template. 
+    '''
+    Reads in the NonBondPotential-LJClass2 sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2345,11 +2650,17 @@ def ReadExcelNonBondPotential_LJClass2(sheet, sub_root):
                 elif col_num == attribute_idx3:
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
 
-#Coarse grained potentials (Tabular form)
+
+
+#
+# Coarse-grained potentials (Tabular form)
+#
 
 def ReadExcelBondPotential_Tabular(sheet, sub_root): 
-    ''' Reads in the BondPotential-Tabular sheet from the webFF excel template. 
+    '''
+    Reads in the BondPotential-Tabular sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2383,27 +2694,32 @@ def ReadExcelBondPotential_Tabular(sheet, sub_root):
 
     # Handling optional data
     if (xls_sheet.row_values(15)[1]) :
-	ET.SubElement(sheet, "fplo").text = str(xls_sheet.row_values(15)[1])
+        ET.SubElement(sheet, "fplo").text = str(xls_sheet.row_values(15)[1])
     if (xls_sheet.row_values(16)[1]) :
-	ET.SubElement(sheet, "fphi").text = str(xls_sheet.row_values(16)[1])
+        ET.SubElement(sheet, "fphi").text = str(xls_sheet.row_values(16)[1])
     if (xls_sheet.row_values(17)[1]) :
-	ET.SubElement(sheet, "EQ").text = str(xls_sheet.row_values(17)[1])
+        ET.SubElement(sheet, "EQ").text = str(xls_sheet.row_values(17)[1])
 
     # Row 19 is the header
     xls_sheet_header = map(str, xls_sheet.row_values(19))
 
     for row_num in xrange(20, xls_sheet.nrows):
-	force_integer_idx1 = xls_sheet_header.index("index")
+        force_integer_idx1 = xls_sheet_header.index("index")
         cur_entry = ET.SubElement(sheet, "Bond")
         for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
             if (len(str(cell_value))!=0) :
                 if col_num == force_integer_idx1:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		else :
-                    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+            else :
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelAnglePotential_Tabular(sheet, sub_root): 
-    ''' Reads in the AnglePotential-Tabular sheet from the webFF excel template. 
+    '''
+    Reads in the AnglePotential-Tabular sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2439,27 +2755,32 @@ def ReadExcelAnglePotential_Tabular(sheet, sub_root):
 
     # Handling optional data
     if (xls_sheet.row_values(16)[1]) :
-	ET.SubElement(sheet, "fplo").text = str(xls_sheet.row_values(16)[1])
+        ET.SubElement(sheet, "fplo").text = str(xls_sheet.row_values(16)[1])
     if (xls_sheet.row_values(17)[1]) :
-	ET.SubElement(sheet, "fphi").text = str(xls_sheet.row_values(17)[1])
+        ET.SubElement(sheet, "fphi").text = str(xls_sheet.row_values(17)[1])
     if (xls_sheet.row_values(18)[1]) :
-	ET.SubElement(sheet, "EQ").text = str(xls_sheet.row_values(18)[1])
+        ET.SubElement(sheet, "EQ").text = str(xls_sheet.row_values(18)[1])
 
     # Row 20 is the header
     xls_sheet_header = map(str, xls_sheet.row_values(20))
 
     for row_num in xrange(21, xls_sheet.nrows):
-	force_integer_idx1 = xls_sheet_header.index("index")
+        force_integer_idx1 = xls_sheet_header.index("index")
         cur_entry = ET.SubElement(sheet, "Angle")
         for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
             if (len(str(cell_value))!=0) :
                 if col_num == force_integer_idx1:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		else :
-                    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+            else :
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelDihedralPotential_Tabular(sheet, sub_root): 
-    ''' Reads in the DihedralPotential-Tabular sheet from the webFF excel template. 
+    '''
+    Reads in the DihedralPotential-Tabular sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2497,27 +2818,32 @@ def ReadExcelDihedralPotential_Tabular(sheet, sub_root):
 
     # Handling optional data
     if (xls_sheet.row_values(17)[1]) :
-	ET.SubElement(sheet, "NOF").text = str(xls_sheet.row_values(17)[1])
+        ET.SubElement(sheet, "NOF").text = str(xls_sheet.row_values(17)[1])
     if (xls_sheet.row_values(18)[1]) :
-	ET.SubElement(sheet, "CHECKU").text = str(xls_sheet.row_values(18)[1])
+        ET.SubElement(sheet, "CHECKU").text = str(xls_sheet.row_values(18)[1])
     if (xls_sheet.row_values(19)[1]) :
-	ET.SubElement(sheet, "CHECKF").text = str(xls_sheet.row_values(19)[1])
+        ET.SubElement(sheet, "CHECKF").text = str(xls_sheet.row_values(19)[1])
 
     # Row 21 is the header
     xls_sheet_header = map(str, xls_sheet.row_values(21))
 
     for row_num in xrange(22, xls_sheet.nrows):
-	force_integer_idx1 = xls_sheet_header.index("index")
+        force_integer_idx1 = xls_sheet_header.index("index")
         cur_entry = ET.SubElement(sheet, "Dihedral")
         for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
             if (len(str(cell_value))!=0) :
                 if col_num == force_integer_idx1:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		else :
-                    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+            else :
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
 
 def ReadExcelNonBondPotential_Tabular(sheet, sub_root): 
-    ''' Reads in the NonBondPotential-Tabular sheet from the webFF excel template. 
+    '''
+    Reads in the NonBondPotential-Tabular sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2552,29 +2878,34 @@ def ReadExcelNonBondPotential_Tabular(sheet, sub_root):
 
     # Handling optional data
     if (xls_sheet.row_values(16)[1]) :
-	ET.SubElement(sheet, "rlo").text = str(xls_sheet.row_values(16)[1])
+        ET.SubElement(sheet, "rlo").text = str(xls_sheet.row_values(16)[1])
     if (xls_sheet.row_values(17)[1]) :
-	ET.SubElement(sheet, "rhi").text = str(xls_sheet.row_values(17)[1])
+        ET.SubElement(sheet, "rhi").text = str(xls_sheet.row_values(17)[1])
     if (xls_sheet.row_values(18)[1]) :
-	ET.SubElement(sheet, "fplo").text = str(xls_sheet.row_values(18)[1])
+        ET.SubElement(sheet, "fplo").text = str(xls_sheet.row_values(18)[1])
     if (xls_sheet.row_values(19)[1]) :
-	ET.SubElement(sheet, "fphi").text = str(xls_sheet.row_values(19)[1])
+        ET.SubElement(sheet, "fphi").text = str(xls_sheet.row_values(19)[1])
 
     # Row 21 is the header
     xls_sheet_header = map(str, xls_sheet.row_values(21))
 
     for row_num in xrange(22, xls_sheet.nrows):
-	force_integer_idx1 = xls_sheet_header.index("index")
+        force_integer_idx1 = xls_sheet_header.index("index")
         cur_entry = ET.SubElement(sheet, "NonBond")
         for col_num, cell_value in enumerate(xls_sheet.row_values(row_num)):
             if (len(str(cell_value))!=0) :
                 if col_num == force_integer_idx1:
                     ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(int(cell_value))
-		else :
-                    ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
-				
+            else :
+                ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
+    return
+
+
+
+
 def ReadExcelAutoEquivalenceTable(sheet, sub_root): 
-    ''' Reads in the Equivalence-Table sheet from the webFF excel template. 
+    '''
+    Reads in the Equivalence-Table sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''   
     xls_sheet = sheet
@@ -2603,10 +2934,13 @@ def ReadExcelAutoEquivalenceTable(sheet, sub_root):
                     continue
                 ET.SubElement(cur_entry, xls_sheet_header[col_num]).text = str(cell_value)
    
-#WaterModel function
-
+#
+# Water Model functions
+#
+                
 def ReadExcelWaterPotential_3Site(sheet, sub_root): 
-    ''' Reads in the WaterPotential-3Site sheet from the webFF excel template. 
+    '''
+    Reads in the WaterPotential-3Site sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2649,8 +2983,13 @@ def ReadExcelWaterPotential_3Site(sheet, sub_root):
     if len(str(xls_sheet.row_values(14)[8])) != 0: # epsilon
         II=str(xls_sheet.row_values(14)[8])
         ET.SubElement(sub_root, "epsilon").text = II
+    return
+
+
+
 def ReadExcelWaterPotential_4Site(sheet, sub_root): 
-    ''' Reads in the WaterPotential-4Site sheet from the webFF excel template. 
+    '''
+    Reads in the WaterPotential-4Site sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2692,9 +3031,14 @@ def ReadExcelWaterPotential_4Site(sheet, sub_root):
     if len(str(xls_sheet.row_values(14)[8])) != 0: # epsilon
         II=str(xls_sheet.row_values(14)[8])
         ET.SubElement(sub_root, "epsilon").text = II
+    return
 
-def ReadExcelWaterPotential_5Site(sheet, sub_root): 
-    ''' Reads in the WaterPotential-5Site sheet from the webFF excel template. 
+
+
+
+def ReadExcelWaterPotential_5Site(sheet, sub_root):
+    '''
+    Reads in the WaterPotential-5Site sheet from the webFF excel template. 
     Arguments are the sheet and the XML element that is the parent for the data.
     '''
     xls_sheet = sheet
@@ -2742,11 +3086,19 @@ def ReadExcelWaterPotential_5Site(sheet, sub_root):
     if len(str(xls_sheet.row_values(14)[11])) != 0: # epsilon
         LL=str(xls_sheet.row_values(14)[11])
         ET.SubElement(sub_root, "epsilon").text = LL
+    return
 
+#
 # The set of functions below (all begin with XMLTo ) convert XML to .params format
+#
 
-#Non Bonded Potentials Params
+#
+# Non-Bonded Potentials Params
+#
 def XMLToParamsNonBondPotential_LJ_Rmin(root, output_file):
+    '''
+    Writes XML data for non-bonded LJ-Rmin potential in Vega format.
+    '''
     f = output_file
     f.write("NONBONDED\n\n" ) 
     f.write("!\n!V(Lennard-Jones) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]\n!\n" )
@@ -2770,7 +3122,14 @@ def XMLToParamsNonBondPotential_LJ_Rmin(root, output_file):
         else:
             f.write("".rjust(11))
         f.write("\n") 
+    return
+
+
+
 def XMLToParamsNonBondPotential_LJ(root, output_file):
+    '''
+    Writes XML data for non-bonded LJ potential in Vega format.
+    '''
     f = output_file
     f.write("NONBONDED\n\n" ) 
     f.write("!\n!V(Lennard-Jones) = 4*epsilon*[(sigma/R)^12-(sigma/R)^6]\n!\n" )
@@ -2794,7 +3153,14 @@ def XMLToParamsNonBondPotential_LJ(root, output_file):
         else:
             f.write("".rjust(11))
         f.write("\n")
+    return
+
+
+
 def XMLToParamsNonBondPotential_LJ2(root, output_file):
+    '''
+    Writes XML data for non-bonded LJ2 potential in Vega format.
+    '''
     f = output_file
     f.write("NONBONDED\n\n" ) 
     f.write("!\n!V(Lennard-Jones) = 4*epsilon*[(sigma/R)^12-(sigma/R)^6]\n!\n" )
@@ -2821,7 +3187,14 @@ def XMLToParamsNonBondPotential_LJ2(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLToParamsNonBondPotential_LJ96(root, output_file):
+    '''
+    Writes XML data for non-bonded LJ96 potential in Vega format.
+    '''
     f = output_file
     f.write("NONBONDED\n\n" ) 
     f.write("!\n!V(Lennard-Jones) = epsilon*[2*(sigma/R)^9-3*(sigma/R)^6]\n!\n" )
@@ -2843,7 +3216,14 @@ def XMLToParamsNonBondPotential_LJ96(root, output_file):
         else:
             f.write("".rjust(11))
         f.write("\n")
+    return
+
+
+
 def XMLToParamsNonBondPotential_LJ_AB(root, output_file):
+    '''
+    Writes XML data for non-bonded LJ-AB potential in Vega format.
+    '''
     f = output_file
     f.write("NONBONDED\n\n" ) 
     f.write("!\n!V(Lennard-Jones) = A/(R^12)-B/(R^6)\n!\n" )
@@ -2865,7 +3245,15 @@ def XMLToParamsNonBondPotential_LJ_AB(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
+
 def XMLToParamsNonBondPotential_LJ2_AB(root, output_file):
+    '''
+    Writes XML data for non-bonded LJ2-AB potential in Vega format.
+    '''
     f = output_file
     f.write("NONBONDED\n\n" ) 
     f.write("!\n!V(Lennard-Jones) = A/(R^12)-B/(R^6)\n!\n" )
@@ -2891,7 +3279,15 @@ def XMLToParamsNonBondPotential_LJ2_AB(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
+
 def XMLToParamsNonBondPotential_LJ_GROMACS(root, output_file):
+    '''
+    Writes XML data for non-bonded LJ-Gromacs potential in Vega format.
+    '''
     f = output_file
     f.write("NONBONDED\n\n" ) 
     f.write("!\n!V(Lennard-Jones) = 4*epsilon*[(sigma/R)^12-(sigma/R)^6] + S_LJ(R)\n!\n" )
@@ -2925,8 +3321,15 @@ def XMLToParamsNonBondPotential_LJ_GROMACS(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
-	
+    return
+
+
+
+
 def XMLToParamsNonBondPotential_Class2(root, output_file):
+    '''
+    Writes XML data for non-bonded LJ Class2 potential in Vega format.
+    '''
     f = output_file
     f.write("NONBONDED\n\n" ) 
     f.write("!\n!V(Class 2) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]\n!\n" )
@@ -2950,7 +3353,15 @@ def XMLToParamsNonBondPotential_Class2(root, output_file):
         else:
             f.write("".rjust(11))
         f.write("\n") 
+        return
+
+
+
+
 def XMLToParamsNonBondPotential_EnergyRenorm(root, output_file):
+    '''
+    Writes XML data for non-bonded LJ Energy Renormalization potential in Vega format.
+    '''
     f = output_file
     f.write("NONBONDED\n\n" ) 
     f.write("!\n!V(Energy Renormalization) = [epsilon_g+[(epsilon_A-epsilon_g)/(1+exp(-k_sig*(T-T_sig)))]]*[((sigma*(a*T+b))/R)^12-((sigma*(a*T+b))/R)^6]\n!\n" )
@@ -2996,7 +3407,15 @@ def XMLToParamsNonBondPotential_EnergyRenorm(root, output_file):
             f.write("".ljust(0))			
         f.write("\n")
     f.write("\n")
+    return
+
+
+
+
 def XMLToParamsNonBondPotential_Mie(root, output_file):
+    '''
+    Writes XML data for non-bonded LJ Mie potential in Vega format.
+    '''
     f = output_file
     f.write("NONBONDED\n\n" ) 
     f.write("!\n!V(Mie) = C*epsilon*[(sigma/R)^m_rep-(sigma/R)^n_att]\n!\n" )
@@ -3032,8 +3451,16 @@ def XMLToParamsNonBondPotential_Mie(root, output_file):
         else:
             f.write("".ljust(0))
         f.write("\n")
-    f.write("\n")	
+    f.write("\n")
+    return
+
+
+
+
 def XMLToParamsNonBondPotential_Soft(root, output_file):
+    '''
+    Writes XML data for non-bonded soft potential in Vega format.
+    '''
     f = output_file
     f.write("NONBONDED\n\n" ) 
     f.write("!\n!V(Soft) = a_ij*[1+cos(pi*r/r_c)]\n!\n" )
@@ -3058,7 +3485,15 @@ def XMLToParamsNonBondPotential_Soft(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
+
 def XMLtoParamsNonBondPotential_Weeks_Chandler_Anderson(root, output_file):
+    '''
+    Writes XML data for non-bonded LJ-WCA potential in Vega format.
+    '''
     f = output_file
     f.write("NONBONDED\n\n" ) 
     f.write("!\n!V(WCA) = 4*epsilon*[((sigma/R)^-12)-((sigma/R)^-6)+(1/4)]\n!\n" )
@@ -3087,9 +3522,16 @@ def XMLtoParamsNonBondPotential_Weeks_Chandler_Anderson(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
 
-#Bond Potentials Params	
+
+
+# Vega: Bond Potentials Forms
+
 def XMLToParamsBondPotential_Harmonic(root, output_file):
+    '''
+    Writes XML data for harmonic bond potential in Vega format.
+    '''
     f = output_file
     f.write("BONDS\n!\n" )
     f.write("!V(bond) = Kb(b - b0)**2\n!\n")
@@ -3113,9 +3555,16 @@ def XMLToParamsBondPotential_Harmonic(root, output_file):
         else:
             f.write("".rjust(11))
        
-        f.write("\n\n\n")   
+        f.write("\n\n\n")
+    return
+
+
+
 
 def XMLToParamsBondPotential_Morse(root, output_file):
+    '''
+    Writes XML data for Morse bond potential in Vega format.
+    '''
     f = output_file
     f.write("BONDS\n!\n" )
     f.write("!V(bond) = D*[(1-exp(-A(R-R0))]^2\n!\n")
@@ -3144,8 +3593,16 @@ def XMLToParamsBondPotential_Morse(root, output_file):
         else:
             f.write("".ljust(5))
        
-        f.write("\n") 	
+        f.write("\n")
+    return
+
+
+
+
 def XMLtoParamsBondPotential_Class2(root, output_file):
+    '''
+    Writes XML data for Class2 bond potential in Vega format.
+    '''
     f = output_file
     f.write("BONDS\n!\n" )
     f.write("!V(bond) = K2*(R-R0)^2+K3*(R-R0)^3+K4*(R-R0)^4\n!\n")
@@ -3177,8 +3634,16 @@ def XMLtoParamsBondPotential_Class2(root, output_file):
         else:
             f.write("".ljust(5))
        
-        f.write("\n") 
+        f.write("\n")
+    return
+
+
+
+
 def XMLtoParamsBondPotential_FENE(root, output_file):
+    '''
+    Writes XML data for FENE bond potential in Vega format.
+    '''
     f = output_file
     f.write("BONDS\n!\n" )
     f.write("!V(bond) = Kb(b - b0)**2\n!\n")
@@ -3203,10 +3668,17 @@ def XMLtoParamsBondPotential_FENE(root, output_file):
             f.write("".rjust(11))
        
         f.write("\n")
+    return
+
+
 
 		
-#Angle Potentials Params	
+# Vega: Angle Potentials Params	
+
 def XMLToParamsAnglePotential_Harmonic(root, output_file):
+    '''
+    Writes XML data for harmonic angle potential in Vega format.
+    '''
     f = output_file
     f.write("ANGLES\n!\n" )
     f.write("!V(angle) = Ktheta(Theta - Theta0)**2\n!\n")
@@ -3234,8 +3706,15 @@ def XMLToParamsAnglePotential_Harmonic(root, output_file):
         else: 
             f.write("".rjust(11))
         
-        f.write("\n")		
+        f.write("\n")
+    return
+
+
+
 def XMLToParamsAnglePotential_Cosine(root, output_file):
+    '''
+    Writes XML data for cosine angle potential in Vega format.
+    '''
     f = output_file
     f.write("ANGLES\n!\n" )
     f.write("!V(angle) = Ka*[1+cos(theta)]\n!\n")
@@ -3259,7 +3738,14 @@ def XMLToParamsAnglePotential_Cosine(root, output_file):
             f.write("".rjust(7))
         
         f.write("\n")
+    return
+
+
+
 def XMLToParamsAnglePotential_COS2(root, output_file):
+    '''
+    Writes XML data for cosine-squared angle potential in Vega format.
+    '''
     f = output_file
     f.write("ANGLES\n!\n" )
     f.write("!V(angle) = Ka*[cos(Theta)-cos(Theta0)]^2\n!\n")
@@ -3287,8 +3773,15 @@ def XMLToParamsAnglePotential_COS2(root, output_file):
         else: 
             f.write("".rjust(11))
         
-        f.write("\n")	
+        f.write("\n")
+    return
+
+
+
 def XMLToParamsAnglePotential_CHARMM(root, output_file):
+    '''
+    Writes XML data for CHARMM angle potential in Vega format.
+    '''
     f = output_file
     f.write("ANGLES\n!\n" )
     f.write("!V(angle) = Ka*(Theta-Theta0)^2+Kub*(R-Rub)^2\n!\n")
@@ -3327,7 +3820,14 @@ def XMLToParamsAnglePotential_CHARMM(root, output_file):
             f.write("".rjust(7))
         
         f.write("\n")
+    return
+
+
+
 def XMLToParamsAnglePotential_Class2(root, output_file):
+    '''
+    Writes XML data for Class2 angle potential in Vega format.
+    '''
     f = output_file
     f.write("ANGLES\n!\n" )
     f.write("!V(angle) = K2*(Theta-Theta0)^2+K3*(Theta-Theta0)^3+K4*(Theta-Theta0)^4\n!\n")
@@ -3363,11 +3863,17 @@ def XMLToParamsAnglePotential_Class2(root, output_file):
         else: 
             f.write("".rjust(11))
         
-        f.write("\n")	
+        f.write("\n")
+    return
+
 
 		
-#Dihedral Potentials Params
+# Vega: Dihedral Potentials Forms
+
 def XMLToParamsDihedralPotential_CHARMM(root, output_file):
+    '''
+    Writes XML data for CHARMM dihedral potential in Vega format.
+    '''
     f = output_file
     f.write("DIHEDRALS\n!\n" )
     f.write("!V(dihedral) = Kchi(1 + cos(n(chi) + delta))\n!\n")
@@ -3404,7 +3910,14 @@ def XMLToParamsDihedralPotential_CHARMM(root, output_file):
         else:
             f.write("".rjust(7))
         f.write("\n")
+    return
+
+
+
 def XMLToParamsDihedralPotential_Harmonic(root, output_file):
+    '''
+    Writes XML data for harmonic dihedral potential in Vega format.
+    '''
     f = output_file
     f.write("DIHEDRALS\n!\n" )
     f.write("!V(dihedral) = Kd*[1+Ns*cos(N*Phi)]\n!\n")
@@ -3439,8 +3952,15 @@ def XMLToParamsDihedralPotential_Harmonic(root, output_file):
             f.write(("%.0f"%float((dihedral.find("N").text))).ljust(4))
         else:
             f.write("".ljust(4))
-        f.write("\n")		
+        f.write("\n")
+    return
+
+
+
 def XMLToParamsDihedralPotential_FourierSimple(root, output_file):
+    '''
+    Writes XML data for Fourier-simple dihedral potential in Vega format.
+    '''
     f = output_file
     f.write("DIHEDRALS\n!\n" )
     f.write("!V(dihedral) = K1*[1+cos(Phi)]+K2*[1+cos(2*Phi)]+K3*[1+cos(3*Phi)]+K4*[1+cos(4*Phi)]+K5*[1+cos(5*Phi)]\n!\n")
@@ -3483,7 +4003,14 @@ def XMLToParamsDihedralPotential_FourierSimple(root, output_file):
         else:
             f.write("".ljust(8))
         f.write("\n")
+    return
+
+
+
 def XMLToParamsDihedralPotential_Fourier(root, output_file):
+    '''
+    Writes XML data for Fourier dihedral potential in Vega format.
+    '''
     f = output_file
     f.write("DIHEDRALS\n!\n" )
     f.write("!V(dihedral) = K1*[1+cos(N1*Phi-D1)]+K2*[1+cos(N2*Phi-D2)]+K3*[1+cos(N3*Phi-D3)]+K4*[1+cos(N4*Phi-D4)]+K5*[1+cos(N5*Phi-D5)]\n!\n")
@@ -3567,7 +4094,14 @@ def XMLToParamsDihedralPotential_Fourier(root, output_file):
         else:
             f.write("".rjust(10))
         f.write("\n")
+    return
+
+
+
 def XMLToParamsDihedralPotential_Class2(root, output_file):
+    '''
+    Writes XML data for Class2 dihedral potential in Vega format.
+    '''
     f = output_file
     f.write("DIHEDRALS\n!\n" )
     f.write("!V(dihedral) = K1*[1-cos(Phi-Phi1)]+K2*[1-cos(2*Phi-Phi2)]+K3*[1-cos(3*Phi-Phi3)]\n!\n")
@@ -3615,7 +4149,14 @@ def XMLToParamsDihedralPotential_Class2(root, output_file):
         else:
             f.write("".ljust(8))
         f.write("\n")
+    return
+
+
+
 def XMLToParamsDihedralPotential_OPLS(root, output_file):
+    '''
+    Writes XML data for OPLS dihedral potential in Vega format.
+    '''
     f = output_file
     f.write("DIHEDRALS\n!\n" )
     f.write("!V(dihedral) = 0.5*{K1*[1+cos(Phi)]+K2*[1-cos(2*Phi)]+K3*[1+cos(3*Phi)]+K4*[1-cos(4*Phi)]}\n!\n")
@@ -3654,7 +4195,14 @@ def XMLToParamsDihedralPotential_OPLS(root, output_file):
         else:
             f.write("".ljust(8))
         f.write("\n")
+    return
+
+
+
 def XMLToParamsDihedralPotential_Quadratic(root, output_file):
+    '''
+    Writes XML data for Quadratic dihedral potential in Vega format.
+    '''
     f = output_file
     f.write("DIHEDRALS\n!\n" )
     f.write("!V(dihedral) = Kchi*(Phi-Phi0)^2\n!\n")
@@ -3686,7 +4234,14 @@ def XMLToParamsDihedralPotential_Quadratic(root, output_file):
         else:
             f.write("".rjust(7))
         f.write("\n")
+    return
+
+
+
 def XMLToParamsDihedralPotential_Multiharmonic(root, output_file):
+    '''
+    Writes XML data for Multiharmonic dihedral potential in Vega format.
+    '''
     f = output_file
     f.write("DIHEDRALS\n!\n" )
     f.write("!V(dihedral) = A1+A2*cos(Phi)+A3*cos^2(Phi)+A4*cos^3(Phi)+A5*cos^4(Phi)\n!\n")
@@ -3729,9 +4284,16 @@ def XMLToParamsDihedralPotential_Multiharmonic(root, output_file):
         else:
             f.write("".ljust(8))
         f.write("\n")
-		
-#Improper Potentials Params
+    return
+
+
+
+# Vega: Improper Potentials Forms
+
 def XMLToParamsImproperPotential_Harmonic(root, output_file):
+    '''
+    Writes XML data for harmonic improper potential in Vega format.
+    '''
     f = output_file
     f.write("IMPROPER\n!\n")
     f.write("!V(improper) = Kpsi(psi - psi0)**2\n!\n" )
@@ -3765,8 +4327,15 @@ def XMLToParamsImproperPotential_Harmonic(root, output_file):
             f.write(("%.4f" %float(improper.find("Chi0").text)).rjust(11))
         else:
             f.write("".rjust(11))
-        f.write("\n")		
+        f.write("\n")
+    return
+
+
+
 def XMLToParamsImproperPotential_CHARMM(root, output_file):
+    '''
+    Writes XML data for CHARMM improper potential in Vega format.
+    '''
     f = output_file
     f.write("IMPROPER\n!\n")
     f.write("!V(improper) = Kd*[1+cos(N*Phi+Phi0)]\n!\n" )
@@ -3804,7 +4373,14 @@ def XMLToParamsImproperPotential_CHARMM(root, output_file):
         else:
             f.write("".rjust(7))
         f.write("\n")
+    return
+
+
+
 def XMLToParamsImproperPotential_Class2(root, output_file):
+    '''
+    Writes XML data for Class2 improper potential in Vega format.
+    '''
     f = output_file
     f.write("IMPROPER\n!\n")
     f.write("!V(improper) = Ki*(Chi-Chi0)^2\n!\n" )
@@ -3838,7 +4414,14 @@ def XMLToParamsImproperPotential_Class2(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLToParamsImproperPotential_COS2(root, output_file):
+    '''
+    Writes XML data for cosine-squared improper potential in Vega format.
+    '''
     f = output_file
     f.write("IMPROPER\n!\n")
     f.write("!V(improper) = Ki*cos(Chi-Chi0)**2\n!\n" )
@@ -3871,8 +4454,15 @@ def XMLToParamsImproperPotential_COS2(root, output_file):
         else:
             f.write("".ljust(0))
         f.write("\n")
-    f.write("\n")	
+    f.write("\n")
+    return
+
+
+
 def XMLToParamsImproperPotential_CVFF(root, output_file):
+    '''
+    Writes XML data for CVFF improper potential in Vega format.
+    '''
     f = output_file
     f.write("IMPROPER\n!\n")
     f.write("!V(improper) = Ki*[1+Ns*cos(N*Phi)]\n!\n" )
@@ -3910,7 +4500,14 @@ def XMLToParamsImproperPotential_CVFF(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLToParamsImproperPotential_Fourier(root, output_file):
+    '''
+    Writes XML data for Fourier improper potential in Vega format.
+    '''
     f = output_file
     f.write("IMPROPER\n!\n")
     f.write("!V(improper) = Ki*[C0+C1*cos(w)+C2*cos(2*w)]\n!\n" )
@@ -3950,8 +4547,15 @@ def XMLToParamsImproperPotential_Fourier(root, output_file):
         else:
             f.write("".ljust(0))
         f.write("\n")
-    f.write("\n")	
+    f.write("\n")
+    return
+
+
+
 def XMLToParamsImproperPotential_Umbrella(root, output_file):
+    '''
+    Writes XML data for Umbrella improper potential in Vega format.
+    '''
     f = output_file
     f.write("IMPROPER\n!\n")
     f.write("!V(improper) = 0.5*K*[{1+cos(w0)}/sin(w0)]^2*[cos(w)-cos(w0)] ~ w0 ≠ 0° <> K*[1-cos(w)] ~ w0 = 0°\n!\n" )
@@ -3986,9 +4590,16 @@ def XMLToParamsImproperPotential_Umbrella(root, output_file):
         else:
             f.write("".rjust(11))
         f.write("\n")
+    return
 
-#Cross Potentials Params
+
+
+# Vega: Cross Potentials Forms
+
 def XMLtoParamsCrossPotential_BondBond(root, output_file):
+    '''
+    Writes XML data for Bond-Bond Cross potential in Vega format.
+    '''
     f = output_file
     f.write("CROSS\n!\n")
     f.write("!V(cross) = M*(R-R1)*(R-R2)\n!\n" )
@@ -4021,7 +4632,14 @@ def XMLtoParamsCrossPotential_BondBond(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoParamsCrossPotential_BondBond13(root, output_file):
+    '''
+    Writes XML data for Bond-Bond13 Cross potential in Vega format.
+    '''
     f = output_file
     f.write("CROSS\n!\n")
     f.write("!V(cross) = N*(Rij-R1)*(Rkl-R3)\n!\n" )
@@ -4054,7 +4672,14 @@ def XMLtoParamsCrossPotential_BondBond13(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoParamsCrossPotential_AngleAngle(root, output_file):
+    '''
+    Writes XML data for Angle-Angle Cross potential in Vega format.
+    '''
     f = output_file
     f.write("CROSS\n!\n")
     f.write("!V(cross) = M1*(Theta-Theta1)(Theta-Theta3)+M2*(Theta-Theta1)(Theta-Theta2)+M3*(Theta-Theta2)(Theta-Theta3)\n!\n" )
@@ -4103,7 +4728,14 @@ def XMLtoParamsCrossPotential_AngleAngle(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoParamsCrossPotential_BondAngle(root, output_file):
+    '''
+    Writes XML data for Bond-Angle Cross potential in Vega format.
+    '''
     f = output_file
     f.write("CROSS\n!\n")
     f.write("!V(cross) = N1*(R-R1)*(Theta-Theta0)+N2*(R-R2)*(Theta-Theta0)\n!\n" )
@@ -4145,7 +4777,14 @@ def XMLtoParamsCrossPotential_BondAngle(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoParamsCrossPotential_MiddleBondTorsion(root, output_file):
+    '''
+    Writes XML data for Middle-Bond Torsion Cross potential in Vega format.
+    '''
     f = output_file
     f.write("CROSS\n!\n")
     f.write("!V(cross) = (R-R2)*[A1*cos(Phi)+A2*cos(2*Phi)+A3*cos(3*Phi)]\n!\n" )
@@ -4182,7 +4821,14 @@ def XMLtoParamsCrossPotential_MiddleBondTorsion(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoParamsCrossPotential_EndBondTorsion(root, output_file):
+    '''
+    Writes XML data for End-Bond Torsion Cross potential in Vega format.
+    '''
     f = output_file
     f.write("CROSS\n!\n")
     f.write("!V(cross) = (R-R1)*[B1*cos(Phi)+B2*cos(2*Phi)+B3*cos(3*Phi)]+(R-R3)*[C1*cos(Phi)+C2*cos(2*Phi)+C3*cos(3*Phi)]\n!\n" )	
@@ -4240,7 +4886,14 @@ def XMLtoParamsCrossPotential_EndBondTorsion(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoParamsCrossPotential_AngleTorsion(root, output_file):
+    '''
+    Writes XML data for Angle Torsion Cross potential in Vega format.
+    '''
     f = output_file
     f.write("CROSS\n!\n")
     f.write("!V(cross) = (Theta-Theta1)*[D1*cos(Phi)+D2*cos(2*Phi)+D3*cos(3*Phi)]+(Theta-Theta2)*[E1*cos(Phi)+E2*cos(2*Phi)+E3*cos(3*Phi)]\n!\n")
@@ -4298,7 +4951,14 @@ def XMLtoParamsCrossPotential_AngleTorsion(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoParamsCrossPotential_AngleAngleTorsion(root, output_file):
+    '''
+    Writes XML data for Angle-Angle Torsion Cross potential in Vega format.
+    '''
     f = output_file
     f.write("CROSS\n!\n")
     f.write("!V(cross) = M(Theta-Theta1)*(Theta-Theta2)*cos(Phi)\n!\n")
@@ -4335,9 +4995,16 @@ def XMLtoParamsCrossPotential_AngleAngleTorsion(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
-	
-#Atom Types Params
+    return
+
+
+
+# Vega: Atom Types Forms
+
 def XMLToParamsAtomTypes(root, output_file):
+    '''
+    Writes XML data for Atom Types in Vega format.
+    '''
     f = output_file
     f.write("MASSES\n")
     masses = []
@@ -4346,10 +5013,18 @@ def XMLToParamsAtomTypes(root, output_file):
             f.write((atomType.find("AtomType-Name").text) + " " + "%.5f" %float(atomType.attrib["AtomicMass"]))
             masses.append(atomType.find("AtomType-Name").text)
             f.write("\n") 
-# The set of functions below (all begin with XMLToFrc) convert XML to .frc format
+    return
 
-#Atom Types
+
+#
+# XML -to- FRC output functions (.frc output format)
+#
+
+# FRC: Atom Types
 def XMLtoFrcAtomTypes(root, output_file): 
+    '''
+    Writes XML data for Atom Types in FRC format.
+    '''
     f = output_file
     f.write("#atom_types \n\n" )
     f.write("> Atom type definitions (set the mass of atom types)\n\n")
@@ -4379,7 +5054,14 @@ def XMLtoFrcAtomTypes(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
-def XMLtoFrcAtomTypesCG(root, output_file): 
+    return
+
+
+
+def XMLtoFrcAtomTypesCG(root, output_file):
+    '''
+    Writes XML data for coarse-grained Atom Types in FRC format.
+    '''
     f = output_file
     f.write("#atom_types \n\n" )
     f.write("> Atom type definitions (set the mass of atom types)\n\n")
@@ -4399,10 +5081,16 @@ def XMLtoFrcAtomTypesCG(root, output_file):
         else:
             f.write("".ljust(0))
         f.write("\n")
-    f.write("\n") 
+    f.write("\n")
+    return
 
-#Equivalence Table	
+
+
+# FRC: Equivalence Table	
 def XMLtoFrcEquivalenceTable(root, output_file): 
+    '''
+    Writes XML data for Equivalence Table in FRC format.
+    '''
     f = output_file
     f.write("#\n#equivalence\n\n" )
     f.write("> Equivalence table\n\n")
@@ -4436,10 +5124,17 @@ def XMLtoFrcEquivalenceTable(root, output_file):
         else:
             f.write("".ljust(0))
         f.write("\n")
-    f.write("\n") 
+    f.write("\n")
+    return
 
-#XML to Frc Bond Potentials
+
+
+# FRC: Bond Potentials Forms
+
 def XMLtoFrcBondPotential_Harmonic(root, output_file): 
+    '''
+    Writes XML data for harmonic bond potential in FRC format.
+    '''
     f = output_file
     f.write("#quadratic_bond\n\n" )
     f.write("> E = K*(R-R0)^2\n\n")
@@ -4464,7 +5159,14 @@ def XMLtoFrcBondPotential_Harmonic(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n") 
+    return
+
+
+
 def XMLtoFrcBondPotential_Morse(root, output_file):
+    '''
+    Writes XML data for Morse bond potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXXX\n\n" )
     f.write("> E = D*[(1-exp(-A(R-R0))]^2\n\n")
@@ -4493,7 +5195,14 @@ def XMLtoFrcBondPotential_Morse(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n") 
+    return
+
+
+
 def XMLtoFrcBondPotential_Class2(root, output_file): 
+    '''
+    Writes XML data for Class2 bond potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("> E = K2*(R-R0)^2+K3*(R-R0)^3+K4*(R-R0)^4\n\n")
@@ -4526,7 +5235,14 @@ def XMLtoFrcBondPotential_Class2(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcBondPotential_FENE(root, output_file): 
+    '''
+    Writes XML data for FENE bond potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("> E = (-[(K*R0^2)/2]*ln[1-(R/R0)^2])\n\n")
@@ -4551,9 +5267,16 @@ def XMLtoFrcBondPotential_FENE(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
 
-#Angle Potentials
+
+
+# FRC: Angle Potentials Forms
+
 def XMLtoFrcAnglePotential_Harmonic(root, output_file): 
+    '''
+    Writes XML data for harmonic angle potential in FRC format.
+    '''
     f = output_file
     f.write("#quadratic_angle\n\n" )
     f.write("> E = K2 * (th - th0)^2\n\n")
@@ -4582,7 +5305,14 @@ def XMLtoFrcAnglePotential_Harmonic(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n") 
+    return
+
+
+
 def XMLtoFrcAnglePotential_COS2(root, output_file):
+    '''
+    Writes XML data for cosine-squared angle potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("> E = (1/2)*Ka*[cos(Theta)-cos(Theta0)]^2\n\n")
@@ -4610,12 +5340,19 @@ def XMLtoFrcAnglePotential_COS2(root, output_file):
         else:
             f.write("".ljust(10))
         if "comment" in angle.attrib.keys():
-		    f.write(" " +angle.attrib["comment"].ljust(10))
+            f.write(" " +angle.attrib["comment"].ljust(10))
         else:
             f.write("".ljust(10))
         f.write("\n")
-    f.write("\n")   
+    f.write("\n")
+    return
+
+
+
 def XMLtoFrcAnglePotential_Cosine(root, output_file):
+    '''
+    Writes XML data for cosine angle potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("> E = Ka*[1+cos(theta)]\n\n")
@@ -4639,13 +5376,19 @@ def XMLtoFrcAnglePotential_Cosine(root, output_file):
         else:
             f.write("".ljust(10))
         if "comment" in angle.attrib.keys():
-		    f.write(" " +angle.attrib["comment"].ljust(10))
+            f.write(" " +angle.attrib["comment"].ljust(10))
         else:
             f.write("".ljust(10))
         f.write("\n")
-    f.write("\n") 
+    f.write("\n")
+    return
+
+
 
 def XMLtoFrcAnglePotential_CHARMM(root, output_file):
+    '''
+    Writes XML data for CHARMM angle potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("> E = Ka*(Theta-Theta0)^2+Kub*(R-Rub)^2\n\n")
@@ -4681,13 +5424,19 @@ def XMLtoFrcAnglePotential_CHARMM(root, output_file):
         else:
             f.write("".ljust(7))
         if "comment" in angle.attrib.keys():
-		    f.write(" " +angle.attrib["comment"].ljust(10))
+            f.write(" " +angle.attrib["comment"].ljust(10))
         else:
             f.write("".ljust(10))
         f.write("\n")
     f.write("\n")
-	
+    return
+
+
+
 def XMLtoFrcAnglePotential_Class2(root, output_file):
+    '''
+    Writes XML data for Class2 angle potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("> E = K2*(Theta-Theta0)^2+K3*(Theta-Theta0)^3+K4*(Theta-Theta0)^4\n\n")
@@ -4723,11 +5472,17 @@ def XMLtoFrcAnglePotential_Class2(root, output_file):
         else: 
             f.write("".ljust(10))
         f.write("\n")
-    f.write("\n") 
+    f.write("\n")
+    return
 	
 
-#Improper Potentials FRC
+
+# FRC: Improper Potentials Forms
+
 def XMLtoFrcImproperPotential_CHARMM(root, output_file): 
+    '''
+    Writes XML data for CHARMM improper potential in FRC format.
+    '''
     f = output_file
     f.write("#out_of_plane\n\n" )
     f.write("> E = Kd*[1+cos(n*Phi+Phi0)]\n\n")
@@ -4764,7 +5519,14 @@ def XMLtoFrcImproperPotential_CHARMM(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcImproperPotential_FourierSimple(root, output_file):
+    '''
+    Writes XML data for Fourier simple improper potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXXX\n\n" )
     f.write("> E = Ki*[C0+C1*cos(w)+C2*cos(2*w)]\n\n")
@@ -4805,7 +5567,14 @@ def XMLtoFrcImproperPotential_FourierSimple(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcImproperPotential_Class2(root, output_file): 
+    '''
+    Writes XML data for Class2 improper potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXX\n\n" )
     f.write("> E = Ki*(Chi-Chi0)^2\n\n")
@@ -4840,7 +5609,14 @@ def XMLtoFrcImproperPotential_Class2(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcImproperPotential_COS2(root, output_file): 
+    '''
+    Writes XML data for cosine-squared improper potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXX\n\n" )
     f.write("> E = Ki*cos(Chi-Chi0)^2\n\n")
@@ -4875,7 +5651,14 @@ def XMLtoFrcImproperPotential_COS2(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcImproperPotential_CVFF(root, output_file): 
+    '''
+    Writes XML data for CVFF improper potential in FRC format.
+    '''
     f = output_file
     f.write("#out_of_plane\n\n" )
     f.write("> E = Ki*[1+Ns*cos(N*Phi)]\n\n")
@@ -4913,7 +5696,14 @@ def XMLtoFrcImproperPotential_CVFF(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcImproperPotential_Fourier(root, output_file):
+    '''
+    Writes XML data for Fourier improper potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXXX\n\n" )
     f.write("> E = Ki*[C0+C1*cos(w)+C2*cos(2*w)]\n\n")
@@ -4954,7 +5744,14 @@ def XMLtoFrcImproperPotential_Fourier(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcImproperPotential_Harmonic(root, output_file): 
+    '''
+    Writes XML data for harmonic improper potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXX\n\n" )
     f.write("> E = Ki*(Chi-Chi0)^2\n\n")
@@ -4989,7 +5786,14 @@ def XMLtoFrcImproperPotential_Harmonic(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcImproperPotential_Umbrella(root, output_file): 
+    '''
+    Writes XML data for Umbrella improper potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXX\n\n" )
     f.write("> E = 0.5*K*[{1+cos(w0)}/sin(w0)]^2*[cos(w)-cos(w0)] ~ w0 ≠ 0° <> K*[1-cos(w)] ~ w0 = 0°\n\n")
@@ -5024,9 +5828,16 @@ def XMLtoFrcImproperPotential_Umbrella(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
-	
-#Dihedral Potentials
-def XMLtoFrcDihedralPotential_FourierSimple(root, output_file):    
+    return
+
+
+
+# FRC: Dihedral Potentials Forms
+
+def XMLtoFrcDihedralPotential_FourierSimple(root, output_file):
+    '''
+    Writes XML data for Fourier simple dihedral potential in FRC format.
+    '''
     f = output_file
     f.write("##torsion_4\n\n" )
     f.write("> E = K1*[1+cos(Phi)] + K2*[1+cos(2*Phi)] + K3*[1+cos(3*Phi)] + K4*[1+cos(4*Phi)]\n\n")
@@ -5071,7 +5882,14 @@ def XMLtoFrcDihedralPotential_FourierSimple(root, output_file):
             f.write("".rjust(11))
         f.write("\n")
     f.write("\n")
-def XMLtoFrcDihedralPotential_Fourier(root, output_file):    
+    return
+
+
+
+def XMLtoFrcDihedralPotential_Fourier(root, output_file):
+    '''
+    Writes XML data for Fourier dihedral potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("> E = K1*[1+cos(N1*Phi-D1)]+K2*[1+cos(N2*Phi-D2)]+K3*[1+cos(N3*Phi-D3)]+K4*[1+cos(N4*Phi-D4)]+K5*[1+cos(N5*Phi-D5)]\n\n")
@@ -5158,7 +5976,14 @@ def XMLtoFrcDihedralPotential_Fourier(root, output_file):
             f.write("".rjust(10))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcDihedralPotential_CHARMM(root, output_file):
+    '''
+    Writes XML data for CHARMM dihedral potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("> E = Kd*[1+cos(N*Phi-Phi0)]\n\n")
@@ -5199,7 +6024,14 @@ def XMLtoFrcDihedralPotential_CHARMM(root, output_file):
             f.write("".rjust(0)) 
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcDihedralPotential_Harmonic(root, output_file):
+    '''
+    Writes XML data for harmonic dihedral potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("> E = Kd*[1+Ns*cos(N*Phi)]\n\n")
@@ -5238,7 +6070,14 @@ def XMLtoFrcDihedralPotential_Harmonic(root, output_file):
             f.write("".rjust(5)) 
         f.write("\n")
     f.write("\n")
-def XMLtoFrcDihedralPotential_Class2(root, output_file):    
+    return
+
+
+
+def XMLtoFrcDihedralPotential_Class2(root, output_file):
+    '''
+    Writes XML data for Class2 dihedral potential in FRC format.
+    '''
     f = output_file
     f.write("##XXXXXX\n\n" )
     f.write("> E = K1*[1-cos(Phi-Phi1)]+K2*[1-cos(2*Phi-Phi2)]+K3*[1-cos(3*Phi-Phi3)]\n\n")
@@ -5289,7 +6128,14 @@ def XMLtoFrcDihedralPotential_Class2(root, output_file):
             f.write("".rjust(11))
         f.write("\n")
     f.write("\n")
-def XMLtoFrcDihedralPotential_OPLS(root, output_file):    
+    return
+
+
+
+def XMLtoFrcDihedralPotential_OPLS(root, output_file):
+    '''
+    Writes XML data for OPLS dihedral potential in FRC format.
+    '''
     f = output_file
     f.write("##XXXXXX\n\n" )
     f.write("> E = 0.5*{K1*[1+cos(Phi)]+K2*[1-cos(2*Phi)]+K3*[1+cos(3*Phi)]+K4*[1-cos(4*Phi)]}\n\n")
@@ -5331,7 +6177,14 @@ def XMLtoFrcDihedralPotential_OPLS(root, output_file):
             f.write("".rjust(11)) 
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcDihedralPotential_Quadratic(root, output_file):
+    '''
+    Writes XML data for quadratic dihedral potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("> E = Kd*(Phi-Phi0)^2\n\n")
@@ -5366,7 +6219,14 @@ def XMLtoFrcDihedralPotential_Quadratic(root, output_file):
             f.write("".rjust(0)) 
         f.write("\n")
     f.write("\n")
-def XMLtoFrcDihedralPotential_Multiharmonic(root, output_file):    
+    return
+
+
+
+def XMLtoFrcDihedralPotential_Multiharmonic(root, output_file):
+    '''
+    Writes XML data for Multiharmonic dihedral potential in FRC format.
+    '''
     f = output_file
     f.write("##XXXXXXX\n\n" )
     f.write("> E = A1+A2*cos(Phi)+A3*cos^2(Phi)+A4*cos^3(Phi)+A5*cos^4(Phi)\n\n")
@@ -5410,9 +6270,17 @@ def XMLtoFrcDihedralPotential_Multiharmonic(root, output_file):
         else:
             f.write("".rjust(11))
         f.write("\n")
-    f.write("\n")	
-#Non Bonded Potentials
+    f.write("\n")
+    return
+
+
+
+# FRC: Non-Bonded Potentials Forms
+
 def XMLtoFrcNonBondPotential_LJ(root, output_file):
+    '''
+    Writes XML data for LJ non-bonded potential in FRC format.
+    '''
     f = output_file
     f.write("#nonbond(12-6)\n\n" )
     f.write("@type r-eps\n@combination geometric\n\n" )
@@ -5436,7 +6304,14 @@ def XMLtoFrcNonBondPotential_LJ(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcNonBondPotential_LJ96(root, output_file):
+    '''
+    Writes XML data for LJ96 non-bonded potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type XXXXX\n\n" )
@@ -5458,7 +6333,14 @@ def XMLtoFrcNonBondPotential_LJ96(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcNonBondPotential_LJ2(root, output_file):
+    '''
+    Writes XML data for LJ2 non-bonded potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type XXXXXXX\n\n" )
@@ -5484,7 +6366,14 @@ def XMLtoFrcNonBondPotential_LJ2(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLToFrcNonBondPotential_LJ_Rmin(root, output_file):
+    '''
+    Writes XML data for LJ-Rmin non-bonded potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type ??\n\n" )
@@ -5506,7 +6395,14 @@ def XMLToFrcNonBondPotential_LJ_Rmin(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLToFrcNonBondPotential_LJ_AB(root, output_file):
+    '''
+    Writes XML data for LJ-AB non-bonded potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type ??\n\n" )
@@ -5528,7 +6424,14 @@ def XMLToFrcNonBondPotential_LJ_AB(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLToFrcNonBondPotential_LJ2_AB(root, output_file):
+    '''
+    Writes XML data for LJ2-AB non-bonded potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type ??\n\n" )
@@ -5554,7 +6457,14 @@ def XMLToFrcNonBondPotential_LJ2_AB(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLToFrcNonBondPotential_Class2(root, output_file):
+    '''
+    Writes XML data for Class2 non-bonded potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type ??\n\n" )
@@ -5576,7 +6486,14 @@ def XMLToFrcNonBondPotential_Class2(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcNonBondPotential_EnergyRenorm(root, output_file):
+    '''
+    Writes XML data for Energy-Renormalization non-bonded potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type XXXXXXX\n\n" )
@@ -5622,7 +6539,14 @@ def XMLtoFrcNonBondPotential_EnergyRenorm(root, output_file):
             f.write("".ljust(0))			
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcNonBondPotential_Mie(root, output_file):
+    '''
+    Writes XML data for LJ-Mie non-bonded potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type XXXXXXX\n\n" )
@@ -5662,7 +6586,14 @@ def XMLtoFrcNonBondPotential_Mie(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcNonBondPotential_Soft(root, output_file):
+    '''
+    Writes XML data for Soft non-bonded potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type XXXXXXX\n\n" )
@@ -5690,7 +6621,14 @@ def XMLtoFrcNonBondPotential_Soft(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLToFrcNonBondPotential_Weeks_Chandler_Anderson(root, output_file):
+    '''
+    Writes XML data for LJ-WCA non-bonded potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type ??\n\n" )
@@ -5722,7 +6660,14 @@ def XMLToFrcNonBondPotential_Weeks_Chandler_Anderson(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLToFrcNonBondPotential_LJ_GROMACS(root, output_file):
+    '''
+    Writes XML data for LJ-Gromacs non-bonded potential in FRC format.
+    '''
     f = output_file
     f.write("#XXXXXX\n\n" )
     f.write("@type ??\n\n" )
@@ -5759,10 +6704,16 @@ def XMLToFrcNonBondPotential_LJ_GROMACS(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
 	
-	
-#Cross Potentials Frc
+# FRC: Cross Potentials Forms
+
 def XMLtoFrcCrossPotential_BondBond(root, output_file):
+    '''
+    Writes XML data for Bond-Bond cross potential in FRC format.
+    '''
     f = output_file
     f.write("XXXXXX\n\n")
     f.write("> E = M*(R-R1)*(R-R2)\n\n")
@@ -5797,7 +6748,14 @@ def XMLtoFrcCrossPotential_BondBond(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return 
+
+
+
 def XMLtoFrcCrossPotential_BondBond13(root, output_file):
+    '''
+    Writes XML data for Bond-Bond13 cross potential in FRC format.
+    '''
     f = output_file
     f.write("XXXXXX\n\n")
     f.write("> E = N*(Rij-R1)*(Rkl-R3)\n\n")
@@ -5832,7 +6790,14 @@ def XMLtoFrcCrossPotential_BondBond13(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcCrossPotential_AngleAngle(root, output_file):
+    '''
+    Writes XML data for Angle-Angle cross potential in FRC format.
+    '''
     f = output_file
     f.write("XXXXXX\n\n")
     f.write("> E = M1*(Theta-Theta1)(Theta-Theta3)+M2*(Theta-Theta1)(Theta-Theta2)+M3*(Theta-Theta2)(Theta-Theta3)\n\n")
@@ -5883,7 +6848,14 @@ def XMLtoFrcCrossPotential_AngleAngle(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcCrossPotential_BondAngle(root, output_file):
+    '''
+    Writes XML data for Bond-Angle cross potential in FRC format.
+    '''
     f = output_file
     f.write("XXXXXX\n\n")
     f.write("> E = N1*(R-R1)*(Theta-Theta0)+N2*(R-R2)*(Theta-Theta0)\n\n")
@@ -5927,7 +6899,14 @@ def XMLtoFrcCrossPotential_BondAngle(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcCrossPotential_MiddleBondTorsion(root, output_file):
+    '''
+    Writes XML data for Middle-Bond Torsion cross potential in FRC format.
+    '''
     f = output_file
     f.write("XXXXXX\n\n")
     f.write("> E = (R-R2)*[A1*cos(Phi)+A2*cos(2*Phi)+A3*cos(3*Phi)]\n\n")
@@ -5966,7 +6945,14 @@ def XMLtoFrcCrossPotential_MiddleBondTorsion(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcCrossPotential_EndBondTorsion(root, output_file):
+    '''
+    Writes XML data for End-Bond Torsion cross potential in FRC format.
+    '''
     f = output_file
     f.write("XXXXXX\n\n")
     f.write("> E = (R-R1)*[B1*cos(Phi)+B2*cos(2*Phi)+B3*cos(3*Phi)]+(R-R3)*[C1*cos(Phi)+C2*cos(2*Phi)+C3*cos(3*Phi)]\n\n")
@@ -6026,7 +7012,14 @@ def XMLtoFrcCrossPotential_EndBondTorsion(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcCrossPotential_AngleTorsion(root, output_file):
+    '''
+    Writes XML data for Bond-Bond cross potential in FRC format.
+    '''
     f = output_file
     f.write("XXXXXX\n\n")
     f.write("> E = (Theta-Theta1)*[D1*cos(Phi)+D2*cos(2*Phi)+D3*cos(3*Phi)]+(Theta-Theta2)*[E1*cos(Phi)+E2*cos(2*Phi)+E3*cos(3*Phi)]\n\n")
@@ -6086,7 +7079,14 @@ def XMLtoFrcCrossPotential_AngleTorsion(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
+
+
+
 def XMLtoFrcCrossPotential_AngleAngleTorsion(root, output_file):
+    '''
+    Writes XML data for Angle-Angle Torsion cross potential in FRC format.
+    '''
     f = output_file
     f.write("XXXXXX\n\n")
     f.write("> E = M(Theta-Theta1)*(Theta-Theta2)*cos(Phi)\n\n")
@@ -6125,8 +7125,11 @@ def XMLtoFrcCrossPotential_AngleAngleTorsion(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
-	
-#Bond Increments Frc			
+    return
+
+
+# FRC: Bond Increments Form	
+
 def XMLtoFrcBondIncrements(root, output_file):
     f = output_file
     f.write("##bond_increments\n\n" )
@@ -6151,161 +7154,193 @@ def XMLtoFrcBondIncrements(root, output_file):
             f.write("".ljust(0))
         f.write("\n")
     f.write("\n")
+    return
 
-# Converting between tabular XMLs and LAMMPS' .table format
+
+#
+# FRC: Converting between tabular XMLs and LAMMPS' .table format
+#
+
 def XMLToTableBondPotential_Tabular(root, output_file):
-	f = open(output_file, 'w+')
-	root = ET.parse(root).getroot()
+    '''
+    Writes XML data for tabular bond potential in FRC format.
+    '''
+    f = open(output_file, 'w+')
+    root = ET.parse(root).getroot()
 
 	# Line 1
 	# Write keyword
-	f.write((root.findtext('./BondPotential/BondPotential-Tabular/keyword')).encode('utf-8') + '\n')
+    f.write((root.findtext('./BondPotential/BondPotential-Tabular/keyword')).encode('utf-8') + '\n')
 	
 	# Line 2
 	# Write N, the number of table entries per column
-	f.write("N " + (root.findtext('./BondPotential/BondPotential-Tabular/N')).encode('utf-8'))
+    f.write("N " + (root.findtext('./BondPotential/BondPotential-Tabular/N')).encode('utf-8'))
 	# Checking if fplo and fphi both exist before writing them to file
-	if (root.find('./BondPotential/BondPotential-Tabular/fplo') is not None) and (root.find('./BondPotential/BondPotential-Tabular/fphi') is not None):
-		f.write(" FP " + (root.findtext('./BondPotential/BondPotential-Tabular/fplo')).encode('utf-8'))
-		f.write(" " + (root.findtext('./BondPotential/BondPotential-Tabular/fphi')).encode('utf-8'))
+    if (root.find('./BondPotential/BondPotential-Tabular/fplo') is not None) and (root.find('./BondPotential/BondPotential-Tabular/fphi') is not None):
+        f.write(" FP " + (root.findtext('./BondPotential/BondPotential-Tabular/fplo')).encode('utf-8'))
+        f.write(" " + (root.findtext('./BondPotential/BondPotential-Tabular/fphi')).encode('utf-8'))
 	# Checking if EQ exists before writing
-	if (root.find('./BondPotential/BondPotential-Tabular/EQ') is not None):
-		f.write(" EQ " + (root.findtext('./BondPotential/BondPotential-Tabular/EQ')).encode('utf-8'))
+    if (root.find('./BondPotential/BondPotential-Tabular/EQ') is not None):
+        f.write(" EQ " + (root.findtext('./BondPotential/BondPotential-Tabular/EQ')).encode('utf-8'))
 
 	# Skip line 3
-	f.write('\n')
+    f.write('\n')
 
 	# Table data, lines 4 and beyond
-	for bond in root.findall('./BondPotential/BondPotential-Tabular/Bond'):
-		f.write('\n' + bond.findtext('index').encode('utf-8'))
-		f.write(" " + bond.findtext('bond-length').encode('utf-8'))
-		f.write(" " + bond.findtext('energy').encode('utf-8'))
-		f.write(" " + bond.findtext('force').encode('utf-8'))
+    for bond in root.findall('./BondPotential/BondPotential-Tabular/Bond'):
+        f.write('\n' + bond.findtext('index').encode('utf-8'))
+        f.write(" " + bond.findtext('bond-length').encode('utf-8'))
+        f.write(" " + bond.findtext('energy').encode('utf-8'))
+        f.write(" " + bond.findtext('force').encode('utf-8'))
 
 	# Close the file
-	f.close()
+    f.close()
+    return
+
+
 
 def XMLToTableAnglePotential_Tabular(root, output_file):
-	f = open(output_file, 'w+')
-	root = ET.parse(root).getroot()
+    '''
+    Writes XML data for tabular angle potential in FRC format.
+    '''
+    f = open(output_file, 'w+')
+    root = ET.parse(root).getroot()
 
 	# Line 1
 	# Write keyword
-	f.write((root.findtext('./AnglePotential/AnglePotential-Tabular/keyword')).encode('utf-8') + '\n')
+    f.write((root.findtext('./AnglePotential/AnglePotential-Tabular/keyword')).encode('utf-8') + '\n')
 	
 	# Line 2
 	# Write N, the number of table entries per column
-	f.write("N " + (root.findtext('./AnglePotential/AnglePotential-Tabular/N')).encode('utf-8'))
+    f.write("N " + (root.findtext('./AnglePotential/AnglePotential-Tabular/N')).encode('utf-8'))
 	# Checking if fplo and fphi both exist before writing them to file
-	if (root.find('./AnglePotential/AnglePotential-Tabular/fplo') is not None) and (root.find('./AnglePotential/AnglePotential-Tabular/fphi') is not None):
-		f.write(" FP " + (root.findtext('./AnglePotential/AnglePotential-Tabular/fplo')).encode('utf-8'))
-		f.write(" " + (root.findtext('./AnglePotential/AnglePotential-Tabular/fphi')).encode('utf-8'))
+    if (root.find('./AnglePotential/AnglePotential-Tabular/fplo') is not None) and (root.find('./AnglePotential/AnglePotential-Tabular/fphi') is not None):
+        f.write(" FP " + (root.findtext('./AnglePotential/AnglePotential-Tabular/fplo')).encode('utf-8'))
+        f.write(" " + (root.findtext('./AnglePotential/AnglePotential-Tabular/fphi')).encode('utf-8'))
 	# Checking if EQ exists before writing
-	if (root.find('./AnglePotential/AnglePotential-Tabular/EQ') is not None):
-		f.write(" EQ " + (root.findtext('./AnglePotential/AnglePotential-Tabular/EQ')).encode('utf-8'))
+    if (root.find('./AnglePotential/AnglePotential-Tabular/EQ') is not None):
+        f.write(" EQ " + (root.findtext('./AnglePotential/AnglePotential-Tabular/EQ')).encode('utf-8'))
 
 	# Skip line 3
-	f.write('\n')
-	f.write('\n')
+    f.write('\n')
+    f.write('\n')
 
 	# Line 4
 	# Write N, the number of table entries per column
-	f.write("N " + (root.findtext('./AnglePotential/AnglePotential-Tabular/N')).encode('utf-8'))
+    f.write("N " + (root.findtext('./AnglePotential/AnglePotential-Tabular/N')).encode('utf-8'))
 	# Checking if fplo and fphi both exist before writing them to file
-	if (root.find('./AnglePotential/AnglePotential-Tabular/fplo') is not None) and (root.find('./AnglePotential/AnglePotential-Tabular/fphi') is not None):
-		f.write(" FP " + (root.findtext('./AnglePotential/AnglePotential-Tabular/fplo')).encode('utf-8'))
-		f.write(" " + (root.findtext('./AnglePotential/AnglePotential-Tabular/fphi')).encode('utf-8'))
+    if (root.find('./AnglePotential/AnglePotential-Tabular/fplo') is not None) and (root.find('./AnglePotential/AnglePotential-Tabular/fphi') is not None):
+        f.write(" FP " + (root.findtext('./AnglePotential/AnglePotential-Tabular/fplo')).encode('utf-8'))
+        f.write(" " + (root.findtext('./AnglePotential/AnglePotential-Tabular/fphi')).encode('utf-8'))
 
 	# Table data, lines 5 and beyond
-	for angle in root.findall('./AnglePotential/AnglePotential-Tabular/Angle'):
-		f.write('\n' + angle.findtext('index').encode('utf-8'))
-		f.write(" " + angle.findtext('angle').encode('utf-8'))
-		f.write(" " + angle.findtext('energy').encode('utf-8'))
-		f.write(" " + angle.findtext('energy-diff').encode('utf-8'))
+    for angle in root.findall('./AnglePotential/AnglePotential-Tabular/Angle'):
+        f.write('\n' + angle.findtext('index').encode('utf-8'))
+        f.write(" " + angle.findtext('angle').encode('utf-8'))
+        f.write(" " + angle.findtext('energy').encode('utf-8'))
+        f.write(" " + angle.findtext('energy-diff').encode('utf-8'))
 
 	# Close the file
-	f.close()
+    f.close()
+    return
+
+
 
 def XMLToTableDihedralPotential_Tabular(root, output_file):
-	f = open(output_file, 'w+')
-	root = ET.parse(root).getroot()
+    '''
+    Writes XML data for tabular dihedral potential in FRC format.
+    '''
+    f = open(output_file, 'w+')
+    root = ET.parse(root).getroot()
 
 	# Line 1
 	# Write keyword
-	f.write((root.findtext('./DihedralPotential/DihedralPotential-Tabular/keyword')).encode('utf-8') + '\n')
+    f.write((root.findtext('./DihedralPotential/DihedralPotential-Tabular/keyword')).encode('utf-8') + '\n')
 	
 	# Line 2
 	# Write N, the number of table entries per column
-	f.write("N " + (root.findtext('./DihedralPotential/DihedralPotential-Tabular/N')).encode('utf-8'))
+    f.write("N " + (root.findtext('./DihedralPotential/DihedralPotential-Tabular/N')).encode('utf-8'))
 	# Checking if angle-units has been specified
-	if (root.find('./DihedralPotential/DihedralPotential-Tabular')).attrib['angle-units'] is not None:
-		f.write(' ' + ((root.find('./DihedralPotential/DihedralPotential-Tabular')).attrib['angle-units']).upper().encode('utf-8'))
+    if (root.find('./DihedralPotential/DihedralPotential-Tabular')).attrib['angle-units'] is not None:
+        f.write(' ' + ((root.find('./DihedralPotential/DihedralPotential-Tabular')).attrib['angle-units']).upper().encode('utf-8'))
 	# Checking if NOF exists before writing to file
-	if (root.find('./DihedralPotential/DihedralPotential-Tabular/NOF') is not None):
-		if (root.findtext('./DihedralPotential/DihedralPotential-Tabular/NOF')).encode('utf-8') == 'true':
-			f.write(" NOF")
+    if (root.find('./DihedralPotential/DihedralPotential-Tabular/NOF') is not None):
+        if (root.findtext('./DihedralPotential/DihedralPotential-Tabular/NOF')).encode('utf-8') == 'true':
+            f.write(" NOF")
 	# Checking if CHECKU exists before writing
-	if (root.find('./DihedralPotential/DihedralPotential-Tabular/CHECKU') is not None):
-		f.write(" CHECKU " + (root.findtext('./DihedralPotential/DihedralPotential-Tabular/CHECKU')).encode('utf-8'))
+    if (root.find('./DihedralPotential/DihedralPotential-Tabular/CHECKU') is not None):
+        f.write(" CHECKU " + (root.findtext('./DihedralPotential/DihedralPotential-Tabular/CHECKU')).encode('utf-8'))
 	# Checking if CHECKF exists before writing
-	if (root.find('./DihedralPotential/DihedralPotential-Tabular/CHECKF') is not None):
-		f.write(" CHECKF " + (root.findtext('./DihedralPotential/DihedralPotential-Tabular/CHECKF')).encode('utf-8'))
+    if (root.find('./DihedralPotential/DihedralPotential-Tabular/CHECKF') is not None):
+        f.write(" CHECKF " + (root.findtext('./DihedralPotential/DihedralPotential-Tabular/CHECKF')).encode('utf-8'))
 
 	# Skip line 3
-	f.write('\n')
+    f.write('\n')
 
 	# Table data, lines 4 and beyond
-	for dihedral in root.findall('./DihedralPotential/DihedralPotential-Tabular/Dihedral'):
-		f.write('\n' + dihedral.findtext('index').encode('utf-8'))
-		f.write(" " + dihedral.findtext('angle').encode('utf-8'))
-		f.write(" " + dihedral.findtext('energy').encode('utf-8'))
-		f.write(" " + dihedral.findtext('energy-diff').encode('utf-8'))
+    for dihedral in root.findall('./DihedralPotential/DihedralPotential-Tabular/Dihedral'):
+        f.write('\n' + dihedral.findtext('index').encode('utf-8'))
+        f.write(" " + dihedral.findtext('angle').encode('utf-8'))
+        f.write(" " + dihedral.findtext('energy').encode('utf-8'))
+        f.write(" " + dihedral.findtext('energy-diff').encode('utf-8'))
 
 	# Close the file
-	f.close()
+    f.close()
+    return
+
+
 
 def XMLToTableNonBondPotential_Tabular(root, output_file):
-	f = open(output_file, 'w+')
-	root = ET.parse(root).getroot()
+    '''
+    Writes XML data for tabular non-bond potential in FRC format.
+    '''
+    f = open(output_file, 'w+')
+    root = ET.parse(root).getroot()
 
 	# Line 1
 	# Write keyword
-	f.write((root.findtext('./NonBondPotential/NonBondPotential-Tabular/keyword')).encode('utf-8') + '\n')
+    f.write((root.findtext('./NonBondPotential/NonBondPotential-Tabular/keyword')).encode('utf-8') + '\n')
 	
 	# Line 2
 	# Write N, the number of table entries per column
-	f.write("N " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/N')).encode('utf-8'))
+    f.write("N " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/N')).encode('utf-8'))
 	# Checking if interpolation style has been specified
-	if (root.find('./NonBondPotential/NonBondPotential-Tabular')).attrib['Interpolation-style'] is not None:
-		if (root.find('./NonBondPotential/NonBondPotential-Tabular')).attrib['Interpolation-style'] == 'R':
-			f.write(" R " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rlo')).encode('utf-8'))
-			f.write(" " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rhi')).encode('utf-8'))
-		elif (root.find('./NonBondPotential/NonBondPotential-Tabular')).attrib['Interpolation-style'] == 'RSQ':
-			f.write(" RSQ " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rlo')).encode('utf-8'))
-			f.write(" " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rhi')).encode('utf-8'))
-		elif (root.find('./NonBondPotential/NonBondPotential-Tabular')).attrib['Interpolation-style'] == 'BITMAP':
-			f.write(" BITMAP " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rlo')).encode('utf-8'))
-			f.write(" " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rhi')).encode('utf-8'))
+    if (root.find('./NonBondPotential/NonBondPotential-Tabular')).attrib['Interpolation-style'] is not None:
+        if (root.find('./NonBondPotential/NonBondPotential-Tabular')).attrib['Interpolation-style'] == 'R':
+            f.write(" R " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rlo')).encode('utf-8'))
+            f.write(" " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rhi')).encode('utf-8'))
+        elif (root.find('./NonBondPotential/NonBondPotential-Tabular')).attrib['Interpolation-style'] == 'RSQ':
+            f.write(" RSQ " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rlo')).encode('utf-8'))
+            f.write(" " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rhi')).encode('utf-8'))
+        elif (root.find('./NonBondPotential/NonBondPotential-Tabular')).attrib['Interpolation-style'] == 'BITMAP':
+            f.write(" BITMAP " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rlo')).encode('utf-8'))
+            f.write(" " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/rhi')).encode('utf-8'))
 	# Checking if fplo and fphi both exist before writing them to file
-	if (root.find('./NonBondPotential/NonBondPotential-Tabular/fplo') is not None) and (root.find('./NonBondPotential/NonBondPotential-Tabular/fphi') is not None):
-		f.write(" FPRIME " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/fplo')).encode('utf-8'))
-		f.write(" " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/fphi')).encode('utf-8'))
+    if (root.find('./NonBondPotential/NonBondPotential-Tabular/fplo') is not None) and (root.find('./NonBondPotential/NonBondPotential-Tabular/fphi') is not None):
+        f.write(" FPRIME " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/fplo')).encode('utf-8'))
+        f.write(" " + (root.findtext('./NonBondPotential/NonBondPotential-Tabular/fphi')).encode('utf-8'))
 
 	# Skip line 3
-	f.write('\n')
+    f.write('\n')
 
 	# Table data, lines 4 and beyond
-	for non_bond in root.findall('./NonBondPotential/NonBondPotential-Tabular/NonBond'):
-		f.write('\n' + non_bond.findtext('index').encode('utf-8'))
-		f.write(" " + non_bond.findtext('r').encode('utf-8'))
-		f.write(" " + non_bond.findtext('energy').encode('utf-8'))
-		f.write(" " + non_bond.findtext('force').encode('utf-8'))
+    for non_bond in root.findall('./NonBondPotential/NonBondPotential-Tabular/NonBond'):
+        f.write('\n' + non_bond.findtext('index').encode('utf-8'))
+        f.write(" " + non_bond.findtext('r').encode('utf-8'))
+        f.write(" " + non_bond.findtext('energy').encode('utf-8'))
+        f.write(" " + non_bond.findtext('force').encode('utf-8'))
 
 	# Close the file
-	f.close()
-    
+    f.close()
+    return
+
+
+
 # The functions below create a file with citation information taken from an XML file and outputed as a text file 
-def XMLtoCitBib(root, output_file): 
+def XMLtoCitBib(root, output_file):
+    '''
+    Writes XML data for citation data in FRC format.
+    '''
     f = output_file
     if(root.find("./Force-Field-Header/Data-Source/Compact/Reference") != None):
         citation = (root.find("./Force-Field-Header/Data-Source/Compact/Reference").text)
@@ -6315,3 +7350,6 @@ def XMLtoCitBib(root, output_file):
     f.write("Data source citation: webff.nist.gov\n")
     f.write("Data source publication: TBA\n")
     f.write("Force-field data citation: "+ citation +", "+ DOI+ "\n" )
+    return
+
+
