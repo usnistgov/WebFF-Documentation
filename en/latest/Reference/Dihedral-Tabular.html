@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>5.9. Tabular Dihedral &#8212; WebFF 0.5.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=b597d1d3" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=3fadbb4a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Improper Potentials" href="Impropers.html" />
+    <link rel="prev" title="5.8. Multi-Harmonic Dihedral" href="Dihedral-Multiharmonic.html" />
+   
+
+  <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js" type="text/javascript" defer="defer"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Impropers.html" title="6. Improper Potentials"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Dihedral-Multiharmonic.html" title="5.8. Multi-Harmonic Dihedral"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="Dihedrals.html" accesskey="U"><span class="section-number">5. </span>Dihedral Potentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">5.9. </span>Tabular Dihedral</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="tabular-dihedral">
+<span id="dihedral-tabular"></span><h1><span class="section-number">5.9. </span>Tabular Dihedral<a class="headerlink" href="#tabular-dihedral" title="Permalink to this heading">¶</a></h1>
+<section id="tabular-form">
+<h2><span class="section-number">5.9.1. </span>Tabular Form<a class="headerlink" href="#tabular-form" title="Permalink to this heading">¶</a></h2>
+<p>The <strong>tabular dihedral potential</strong> has the parameters:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Parameter</strong></p></td>
+<td><p><strong>Parameter Definition</strong></p></td>
+<td><p><strong>Units</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>N</p></td>
+<td><p>Number of tabulated values</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>NOF</p></td>
+<td><p>Allows omission of forces (energy derivatives) in the table</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>DEGREES</p></td>
+<td><p>Specify degrees as units for the angles</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>RADIANS</p></td>
+<td><p>Specify radians as units for the angles</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>CHECKU</p></td>
+<td><p>File to save interpolated energy table</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHECKF</p></td>
+<td><p>File to save interpolated force table</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>tabular dihedral potential</strong> has the tabulated values:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>index</strong></p></td>
+<td><p><strong>angle</strong></p></td>
+<td><p><strong>energy</strong></p></td>
+<td><p><strong>derivative</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>i_1</p></td>
+<td><p>a_1</p></td>
+<td><p>e_1</p></td>
+<td><p>de_1</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>i_N</p></td>
+<td><p>a_N</p></td>
+<td><p>e_n</p></td>
+<td><p>de_N</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="xml-schema">
+<h2><span class="section-number">5.9.2. </span>XML Schema<a class="headerlink" href="#xml-schema" title="Permalink to this heading">¶</a></h2>
+<p>The XML schema for the <strong>tabular dihedral potential</strong> has the following representation (design mode representation using Liquid XML Studio):</p>
+<img alt="../_images/Dihedral-Tabular.png" class="align-left" src="../_images/Dihedral-Tabular.png" />
+<p>The relationship between the parameters/symbols and XML schema notations are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Parameter Definition</strong></p></td>
+<td><p><strong>Parameter/Symbol</strong></p></td>
+<td><p><strong>Schema Notation</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Atom type of atom [i]</p></td>
+<td><p><span class="math notranslate nohighlight">\(i\)</span></p></td>
+<td><p>AT-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Atom type of atom [j]</p></td>
+<td><p><span class="math notranslate nohighlight">\(j\)</span></p></td>
+<td><p>AT-2</p></td>
+</tr>
+<tr class="row-even"><td><p>Atom type of atom [k]</p></td>
+<td><p><span class="math notranslate nohighlight">\(k\)</span></p></td>
+<td><p>AT-3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Section identifying keyword</p></td>
+<td><p>N/A</p></td>
+<td><p>keyword</p></td>
+</tr>
+<tr class="row-even"><td><p>Number of tabulated values</p></td>
+<td><p>N</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-odd"><td><p>Allows omission of forces in the table</p></td>
+<td><p>NOF</p></td>
+<td><p>NOF</p></td>
+</tr>
+<tr class="row-even"><td><p>Specify degrees as units for the angles</p></td>
+<td><p>DEGREES</p></td>
+<td><p>angle-units</p></td>
+</tr>
+<tr class="row-odd"><td><p>Specify radians as units for the angles</p></td>
+<td><p>RADIANS</p></td>
+<td><p>angle-units</p></td>
+</tr>
+<tr class="row-even"><td><p>File to save interpolated energy table</p></td>
+<td><p>CHECKU</p></td>
+<td><p>CHECKU</p></td>
+</tr>
+<tr class="row-odd"><td><p>File to save interpolated force table</p></td>
+<td><p>CHECKF</p></td>
+<td><p>CHECKF</p></td>
+</tr>
+<tr class="row-even"><td><p>Index</p></td>
+<td><p>index</p></td>
+<td><p>index</p></td>
+</tr>
+<tr class="row-odd"><td><p>Angle</p></td>
+<td><p>angle</p></td>
+<td><p>angle</p></td>
+</tr>
+<tr class="row-even"><td><p>Energy</p></td>
+<td><p>energy</p></td>
+<td><p>energy</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derivate of energy</p></td>
+<td><p>derivative</p></td>
+<td><p>energy-diff</p></td>
+</tr>
+</tbody>
+</table>
+<p>The general attributes (describing the entire data set) are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>General Attributes</strong></p></td>
+<td><p><strong>Cardinality</strong></p></td>
+<td><p><strong>Value/Definition</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>style</p></td>
+<td><p>Fixed</p></td>
+<td><p>Tabular</p></td>
+</tr>
+<tr class="row-odd"><td><p>angle-units</p></td>
+<td><p>Required</p></td>
+<td><p>Enumerations specified in schema</p></td>
+</tr>
+<tr class="row-even"><td><p>energy-units</p></td>
+<td><p>Required</p></td>
+<td><p>Enumerations specified in schema</p></td>
+</tr>
+<tr class="row-odd"><td><p>energy-diff-units</p></td>
+<td><p>Required</p></td>
+<td><p>Enumerations specified in schema</p></td>
+</tr>
+<tr class="row-even"><td><p>comment</p></td>
+<td><p>Optional</p></td>
+<td><p>Comment attached to parameter set</p></td>
+</tr>
+<tr class="row-odd"><td><p>version</p></td>
+<td><p>Optional</p></td>
+<td><p>Version number of parameter set</p></td>
+</tr>
+<tr class="row-even"><td><p>reference</p></td>
+<td><p>Optional</p></td>
+<td><p>Reference attached to parameter set</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that an XML document will be rejected from being entered into the WebFF database if a required attribute is left unspecified.</p>
+</section>
+<section id="references">
+<h2><span class="section-number">5.9.3. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="http://lammps.sandia.gov/doc/dihedral_table.html">LAMMPS Tabular Dihedral Potential</a>.</p></li>
+<li><p><a class="reference external" href="https://www.liquid-technologies.com/">Liquid XML Studio</a>.</p></li>
+</ol>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">5.9. Tabular Dihedral</a><ul>
+<li><a class="reference internal" href="#tabular-form">5.9.1. Tabular Form</a></li>
+<li><a class="reference internal" href="#xml-schema">5.9.2. XML Schema</a></li>
+<li><a class="reference internal" href="#references">5.9.3. References</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="Dihedral-Multiharmonic.html"
+                          title="previous chapter"><span class="section-number">5.8. </span>Multi-Harmonic Dihedral</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="Impropers.html"
+                          title="next chapter"><span class="section-number">6. </span>Improper Potentials</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Reference/Dihedral-Tabular.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Impropers.html" title="6. Improper Potentials"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Dihedral-Multiharmonic.html" title="5.8. Multi-Harmonic Dihedral"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="Dihedrals.html" ><span class="section-number">5. </span>Dihedral Potentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">5.9. </span>Tabular Dihedral</a></li> 
+      </ul>
+    </div>
+
+  
+    <div class="footer" role="contentinfo">
+    &#169; Copyright Official contribution of the National Institute of Standards and Technology; not subject to copyright in the United States.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+
+  <!-- Taken from https://www.filamentgroup.com/lab/html-includes/#another-demo%3A-including-another-html-file -->
+  <iframe src="../_static/ntd2d_menu.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  </body>
+</html>

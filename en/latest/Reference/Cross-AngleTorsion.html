@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>7.7. Cross: Angle-Torsion &#8212; WebFF 0.5.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=b597d1d3" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=3fadbb4a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.8. Cross: Angle-Angle-Torsion" href="Cross-AngleAngleTorsion.html" />
+    <link rel="prev" title="7.6. Cross: End-Bond-Torsion" href="Cross-EndBondTorsion.html" />
+   
+
+  <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js" type="text/javascript" defer="defer"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Cross-AngleAngleTorsion.html" title="7.8. Cross: Angle-Angle-Torsion"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Cross-EndBondTorsion.html" title="7.6. Cross: End-Bond-Torsion"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="Cross.html" accesskey="U"><span class="section-number">7. </span>Cross Potentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7.7. </span>Cross: Angle-Torsion</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="cross-angle-torsion">
+<span id="cross-angletorsion"></span><h1><span class="section-number">7.7. </span>Cross: Angle-Torsion<a class="headerlink" href="#cross-angle-torsion" title="Permalink to this heading">¶</a></h1>
+<section id="functional-form">
+<h2><span class="section-number">7.7.1. </span>Functional Form<a class="headerlink" href="#functional-form" title="Permalink to this heading">¶</a></h2>
+<p>The <strong>Angle-Torsion Cross Potential</strong> has the functional form:</p>
+<p><span class="math notranslate nohighlight">\(E=\left( {{\theta }_{ijk}}-{{\theta }_{1,ijk}} \right)\left[ {{D}_{1,ijkl}}\cos \left( {{\phi }_{ijkl}} \right)+{{D}_{2,ijkl}}\cos \left( 2{{\phi }_{ijkl}} \right)+{{D}_{3,ijkl}}\cos \left( 3{{\phi }_{ijkl}} \right) \right]\)</span>
+<span class="math notranslate nohighlight">\(\qquad +\left( {{\theta }_{jkl}}-{{\theta }_{2,jkl}} \right)\left[ {{E}_{1,ijkl}}\cos \left( {{\phi }_{ijkl}} \right)+{{E}_{2,ijkl}}\cos \left( 2{{\phi }_{ijkl}} \right)+{{E}_{3,ijkl}}\cos \left( 3{{\phi }_{ijkl}} \right) \right]\)</span></p>
+<p>This term is part of the Class2 Dihedral Potential style.</p>
+<p>The force-field parameters for this potential and units are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Equation Symbol</strong></p></td>
+<td><p><strong>Parameter Definition</strong></p></td>
+<td><p><strong>Units</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(D_{1,ijkl}\)</span></p></td>
+<td><p>Cosine term coefficient for atoms [i,j,k,l]</p></td>
+<td><p>energy/degrees</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(D_{2,ijkl}\)</span></p></td>
+<td><p>Cosine term coefficient for atoms [i,j,k,l]</p></td>
+<td><p>energy/degrees</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(D_{3,ijkl}\)</span></p></td>
+<td><p>Cosine term coefficient for atoms [i,j,k,l]</p></td>
+<td><p>energy/degrees</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(E_{1,ijkl}\)</span></p></td>
+<td><p>Cosine term coefficient for atoms [i,j,k,l]</p></td>
+<td><p>energy/degrees</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(E_{2,ijkl}\)</span></p></td>
+<td><p>Cosine term coefficient for atoms [i,j,k,l]</p></td>
+<td><p>energy/degrees</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(E_{3,ijkl}\)</span></p></td>
+<td><p>Cosine term coefficient for atoms [i,j,k,l]</p></td>
+<td><p>energy/degrees</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\({\theta}_{1,ijk}\)</span></p></td>
+<td><p>Equilibrium bond length for atoms [i,j]</p></td>
+<td><p>degrees</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\({\theta}_{2,jkl}\)</span></p></td>
+<td><p>Equilibrium bond length for atoms [k,l]</p></td>
+<td><p>degrees</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="xml-schema">
+<h2><span class="section-number">7.7.2. </span>XML Schema<a class="headerlink" href="#xml-schema" title="Permalink to this heading">¶</a></h2>
+<p>The XML schema for the <strong>Angle-Torsion Cross Potential</strong> has the following representation (design mode representation using Liquid XML Studio):</p>
+<img alt="../_images/Cross-AngleTorsion.png" class="align-left" src="../_images/Cross-AngleTorsion.png" />
+<p>The relationship between the equation symbols and XML schema notations are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Parameter Definition</strong></p></td>
+<td><p><strong>Equation Symbol</strong></p></td>
+<td><p><strong>Schema Notation</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Atom type of atom [i]</p></td>
+<td><p><span class="math notranslate nohighlight">\(i\)</span></p></td>
+<td><p>AT-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Atom type of atom [j]</p></td>
+<td><p><span class="math notranslate nohighlight">\(j\)</span></p></td>
+<td><p>AT-2</p></td>
+</tr>
+<tr class="row-even"><td><p>Atom type of atom [k]</p></td>
+<td><p><span class="math notranslate nohighlight">\(k\)</span></p></td>
+<td><p>AT-3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Atom type of atom [l]</p></td>
+<td><p><span class="math notranslate nohighlight">\(l\)</span></p></td>
+<td><p>AT-4</p></td>
+</tr>
+<tr class="row-even"><td><p>Cosine term coefficient for atoms [i,j,k,l]</p></td>
+<td><p><span class="math notranslate nohighlight">\(D_{1,ijkl}\)</span></p></td>
+<td><p>D1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cosine term coefficient for atoms [i,j,k,l]</p></td>
+<td><p><span class="math notranslate nohighlight">\(D_{2,ijkl}\)</span></p></td>
+<td><p>D2</p></td>
+</tr>
+<tr class="row-even"><td><p>Cosine term coefficient for atoms [i,j,k,l]</p></td>
+<td><p><span class="math notranslate nohighlight">\(D_{3,ijkl}\)</span></p></td>
+<td><p>D3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cosine term coefficient for atoms [i,j,k,l]</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{1,ijkl}\)</span></p></td>
+<td><p>E1</p></td>
+</tr>
+<tr class="row-even"><td><p>Cosine term coefficient for atoms [i,j,k,l]</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{2,ijkl}\)</span></p></td>
+<td><p>E2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cosine term coefficient for atoms [i,j,k,l]</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_{3,ijkl}\)</span></p></td>
+<td><p>E3</p></td>
+</tr>
+<tr class="row-even"><td><p>Equilibrium bond length for atoms [i,j]</p></td>
+<td><p><span class="math notranslate nohighlight">\({\theta}_{1,ijk}\)</span></p></td>
+<td><p>Theta1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Equilibrium bond length for atoms [k,l]</p></td>
+<td><p><span class="math notranslate nohighlight">\({\theta}_{2,jkl}\)</span></p></td>
+<td><p>Theta2</p></td>
+</tr>
+</tbody>
+</table>
+<p>The general attributes (describing the entire data set) are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>General Attributes</strong></p></td>
+<td><p><strong>Cardinality</strong></p></td>
+<td><p><strong>Value/Definition</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>style</p></td>
+<td><p>Fixed</p></td>
+<td><p>AngleTorsion</p></td>
+</tr>
+<tr class="row-odd"><td><p>formula</p></td>
+<td><p>Fixed</p></td>
+<td><p>(Theta-Theta1)*[D1*cos(Phi)+D2*cos(2*Phi)+D3*cos(3*Phi)]+(Theta-Theta2)*[E1*cos(Phi)+E2*cos(2*Phi)+E3*cos(3*Phi)]</p></td>
+</tr>
+<tr class="row-even"><td><p>D-units</p></td>
+<td><p>Required</p></td>
+<td><p>Enumerations specified in schema</p></td>
+</tr>
+<tr class="row-odd"><td><p>E-units</p></td>
+<td><p>Required</p></td>
+<td><p>Enumerations specified in schema</p></td>
+</tr>
+<tr class="row-even"><td><p>Theta-units</p></td>
+<td><p>Required</p></td>
+<td><p>Enumerations specified in schema</p></td>
+</tr>
+</tbody>
+</table>
+<p>The specific attributes (attached to each set of parameters) are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Specific Attributes</strong></p></td>
+<td><p><strong>Cardinality</strong></p></td>
+<td><p><strong>Value/Definition</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>comment</p></td>
+<td><p>Optional</p></td>
+<td><p>Comment attached to parameter set</p></td>
+</tr>
+<tr class="row-odd"><td><p>version</p></td>
+<td><p>Optional</p></td>
+<td><p>Version number of parameter set</p></td>
+</tr>
+<tr class="row-even"><td><p>reference</p></td>
+<td><p>Optional</p></td>
+<td><p>Reference attached to parameter set</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that an XML document will be rejected from being entered into the WebFF database if a required attribute is left unspecified.</p>
+</section>
+<section id="references">
+<h2><span class="section-number">7.7.3. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="http://lammps.sandia.gov/doc/dihedral_class2.html">LAMMPS Class2 Dihedral Potential w/ Angle-Torsion Cross term</a>.</p></li>
+<li><p><a class="reference external" href="http://www.sklogwiki.org/SklogWiki/index.php/COMPASS_force_field">SklogWiki COMPASS Force-Field</a>.</p></li>
+<li><p><a class="reference external" href="https://www.liquid-technologies.com/">Liquid XML Studio</a>.</p></li>
+</ol>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">7.7. Cross: Angle-Torsion</a><ul>
+<li><a class="reference internal" href="#functional-form">7.7.1. Functional Form</a></li>
+<li><a class="reference internal" href="#xml-schema">7.7.2. XML Schema</a></li>
+<li><a class="reference internal" href="#references">7.7.3. References</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="Cross-EndBondTorsion.html"
+                          title="previous chapter"><span class="section-number">7.6. </span>Cross: End-Bond-Torsion</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="Cross-AngleAngleTorsion.html"
+                          title="next chapter"><span class="section-number">7.8. </span>Cross: Angle-Angle-Torsion</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Reference/Cross-AngleTorsion.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Cross-AngleAngleTorsion.html" title="7.8. Cross: Angle-Angle-Torsion"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Cross-EndBondTorsion.html" title="7.6. Cross: End-Bond-Torsion"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="Cross.html" ><span class="section-number">7. </span>Cross Potentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7.7. </span>Cross: Angle-Torsion</a></li> 
+      </ul>
+    </div>
+
+  
+    <div class="footer" role="contentinfo">
+    &#169; Copyright Official contribution of the National Institute of Standards and Technology; not subject to copyright in the United States.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+
+  <!-- Taken from https://www.filamentgroup.com/lab/html-includes/#another-demo%3A-including-another-html-file -->
+  <iframe src="../_static/ntd2d_menu.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  </body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. WebFF &#8212; WebFF 0.5.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/ntd2d.css?v=b597d1d3" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=3fadbb4a"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Force-Field Data Search" href="DataSearch.html" />
+    <link rel="prev" title="Welcome to WebFF’s documentation!" href="index.html" />
+   
+
+  <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js" type="text/javascript" defer="defer"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="DataSearch.html" title="2. Force-Field Data Search"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to WebFF’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>WebFF</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <a class="reference internal image-reference" href="_images/MGI-Logo_2_0.jpg" id="introduction"><img alt="_images/MGI-Logo_2_0.jpg" class="align-right" id="introduction" src="_images/MGI-Logo_2_0.jpg" style="width: 200px;" /></a>
+<section id="webff">
+<h1><span class="section-number">1. </span>WebFF<a class="headerlink" href="#webff" title="Permalink to this heading">¶</a></h1>
+<p>WebFF is an open and extensible molecular dynamics force-field (FF) repository, designed to support the Materials Genome Initiative (MGI) for organic and related soft materials. The repository is built using the NIST <strong>Materials Data Curation System (MDCS)</strong> [<a class="reference external" href="https://mgi.nist.gov/materials-data-curation-system">link</a>] which supports ontology based database descriptions using XML schema.</p>
+<section id="features">
+<h2><span class="section-number">1.1. </span>Features<a class="headerlink" href="#features" title="Permalink to this heading">¶</a></h2>
+<p>Here are some of the main features of WebFF:</p>
+<ul class="simple">
+<li><p>Users interact with the repository through two main portals. The <strong>Data Exploration Portal</strong> [<a class="reference external" href="https://webff.nist.gov/explore">link</a>] supports search for force-field data based on the curated metadata descriptors and download in a number for common formats. We will work with the user community to expand output format coverage per user requests.</p></li>
+<li><p>The <strong>Data Curation Portal</strong> [<a class="reference external" href="https://webff.nist.gov/curate">link</a>] supports upload of published force-field data with appropriate metadata descriptors to support provenance based data sharing. New datasets may be curated interactively or using a python based toolset to upload large datasets en masse. Data curation requires an authorized account.</p></li>
+<li><dl class="simple">
+<dt>The initial release of the repository features three integrated XML schemas:</dt><dd><ol class="arabic simple">
+<li><p>Class I organic force-fields in such as OPLS, Amber and CHARMM style representations</p></li>
+<li><p>Class II style force-fields such as CFF, PCFF, COMPASS and TEAMFF</p></li>
+<li><p>Coarse-Grained models at various levels of granularity</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p>For questions, comments and requests please contact: <a class="reference external" href="mailto:webff&#37;&#52;&#48;nist&#46;gov">webff<span>&#64;</span>nist<span>&#46;</span>gov</a></p></li>
+</ul>
+<p><strong>If you use data from WebFF in your work, we ask that you please cite the following:</strong></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>The main source or the data cited in the XML metadata</p></li>
+<li><p>Frederick R. Phelan Jr., Kathleen Mullin, Pablo Garcia Beltran, Gule Teri, Priyanshu Mishra and Huai Sun, “The Web Force-Field (WebFF) Project: Ontology Based Force-Field Repository for Soft Materials at Multiple Levels of Granularity,” in preparation (2018).</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="external-resources">
+<h2><span class="section-number">1.2. </span>External Resources<a class="headerlink" href="#external-resources" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>WebFF-Documentation</p></td>
+<td><p><a class="reference external" href="https://github.com/usnistgov/WebFF-Documentation"><img alt="GitHub-WebFFDocs" src="_images/GitHub.svg" width="100px" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Materials Data Curation System (MDCS)</p></td>
+<td><p><a class="reference external" href="https://github.com/usnistgov/MDCS"><img alt="GitHub-MDCS" src="_images/GitHub.svg" width="100px" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">1. WebFF</a><ul>
+<li><a class="reference internal" href="#features">1.1. Features</a></li>
+<li><a class="reference internal" href="#external-resources">1.2. External Resources</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Welcome to WebFF’s documentation!</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="DataSearch.html"
+                          title="next chapter"><span class="section-number">2. </span>Force-Field Data Search</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Introduction.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="DataSearch.html" title="2. Force-Field Data Search"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to WebFF’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>WebFF</a></li> 
+      </ul>
+    </div>
+
+  
+    <div class="footer" role="contentinfo">
+    &#169; Copyright Official contribution of the National Institute of Standards and Technology; not subject to copyright in the United States.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+
+  <!-- Taken from https://www.filamentgroup.com/lab/html-includes/#another-demo%3A-including-another-html-file -->
+  <iframe src="_static/ntd2d_menu.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  </body>
+</html>

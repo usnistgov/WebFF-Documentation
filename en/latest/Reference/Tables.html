@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>9. Table Potentials &#8212; WebFF 0.5.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=b597d1d3" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=3fadbb4a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10. Mesoscale Potentials" href="Mesoscale.html" />
+    <link rel="prev" title="8.13. Non-Bond Weeks-Chandler-Anderson Potential" href="NonBond-Weeks-Chandler-Anderson.html" />
+   
+
+  <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js" type="text/javascript" defer="defer"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Mesoscale.html" title="10. Mesoscale Potentials"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="NonBond-Weeks-Chandler-Anderson.html" title="8.13. Non-Bond Weeks-Chandler-Anderson Potential"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">9. </span>Table Potentials</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="table-potentials">
+<h1><span class="section-number">9. </span>Table Potentials<a class="headerlink" href="#table-potentials" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<section id="bond-increment-table">
+<h2><span class="section-number">9.1. </span>Bond Increment Table<a class="headerlink" href="#bond-increment-table" title="Permalink to this heading">¶</a></h2>
+<p>The XML schema for the <strong>bond increment table</strong> has the following representation (design mode representation using Liquid XML Studio):</p>
+<img alt="../_images/Table-BondIncrement.png" class="align-center" src="../_images/Table-BondIncrement.png" />
+<p>The specific elements (describing each set of parameters) are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Parameter Definition</strong></p></td>
+<td><p><strong>Schema Notation</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Atom type of atom [i]</p></td>
+<td><p>AT-I</p></td>
+</tr>
+<tr class="row-odd"><td><p>Atom type of atom [j]</p></td>
+<td><p>AT-J</p></td>
+</tr>
+<tr class="row-even"><td><p>Increment step size for atoms [i,j]</p></td>
+<td><p>Delta-IJ</p></td>
+</tr>
+<tr class="row-odd"><td><p>Increment step size for atoms [j,i]</p></td>
+<td><p>Delta-JI</p></td>
+</tr>
+</tbody>
+</table>
+<p>The specific attributes (attached to each set of parameters) are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Specific Attributes</strong></p></td>
+<td><p><strong>Cardinality</strong></p></td>
+<td><p><strong>Value/Definition</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>comment</p></td>
+<td><p>Optional</p></td>
+<td><p>Comment attached to parameter set</p></td>
+</tr>
+<tr class="row-odd"><td><p>version</p></td>
+<td><p>Optional</p></td>
+<td><p>Version number of parameter set</p></td>
+</tr>
+<tr class="row-even"><td><p>reference</p></td>
+<td><p>Optional</p></td>
+<td><p>Reference attached to parameter set</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="equivalence-table">
+<h2><span class="section-number">9.2. </span>Equivalence Table<a class="headerlink" href="#equivalence-table" title="Permalink to this heading">¶</a></h2>
+<p>The XML schema for the <strong>equivalence table</strong> has the following representation (design mode representation using Liquid XML Studio):</p>
+<img alt="../_images/Table-Equivalence.png" class="align-center" src="../_images/Table-Equivalence.png" />
+<p>The specific elements (describing each set of parameters) are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Parameter Definition</strong></p></td>
+<td><p><strong>Schema Notation</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Atom type of atom [i]</p></td>
+<td><p>AtomType</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>NonBond</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Bond</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Angle</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>Dihedral</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Improper</p></td>
+</tr>
+</tbody>
+</table>
+<p>The specific attributes (attached to each set of parameters) are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Specific Attributes</strong></p></td>
+<td><p><strong>Cardinality</strong></p></td>
+<td><p><strong>Value/Definition</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>comment</p></td>
+<td><p>Optional</p></td>
+<td><p>Comment attached to parameter set</p></td>
+</tr>
+<tr class="row-odd"><td><p>version</p></td>
+<td><p>Optional</p></td>
+<td><p>Version number of parameter set</p></td>
+</tr>
+<tr class="row-even"><td><p>reference</p></td>
+<td><p>Optional</p></td>
+<td><p>Reference attached to parameter set</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="auto-equivalence-table">
+<h2><span class="section-number">9.3. </span>Auto-Equivalence Table<a class="headerlink" href="#auto-equivalence-table" title="Permalink to this heading">¶</a></h2>
+<p>The XML schema for the <strong>auto-equivalence table</strong> has the following representation (design mode representation using Liquid XML Studio):</p>
+<img alt="../_images/Table-AutoEquivalence.png" class="align-center" src="../_images/Table-AutoEquivalence.png" />
+<p>The specific elements (describing each set of parameters) are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Parameter Definition</strong></p></td>
+<td><p><strong>Schema Notation</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Atom type of atom [i]</p></td>
+<td><p>AtomType</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>NonBond</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>BondIncrement</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>Bond</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>AngleEnd</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>AngleApex</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>DihedralEnd</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>DihedralCenter</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>OutOfPlaneEnd</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>OutOfPlaneCenter</p></td>
+</tr>
+</tbody>
+</table>
+<p>The specific attributes (attached to each set of parameters) are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Specific Attributes</strong></p></td>
+<td><p><strong>Cardinality</strong></p></td>
+<td><p><strong>Value/Definition</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>comment</p></td>
+<td><p>Optional</p></td>
+<td><p>Comment attached to parameter set</p></td>
+</tr>
+<tr class="row-odd"><td><p>version</p></td>
+<td><p>Optional</p></td>
+<td><p>Version number of parameter set</p></td>
+</tr>
+<tr class="row-even"><td><p>reference</p></td>
+<td><p>Optional</p></td>
+<td><p>Reference attached to parameter set</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">9. Table Potentials</a><ul>
+<li><a class="reference internal" href="#bond-increment-table">9.1. Bond Increment Table</a></li>
+<li><a class="reference internal" href="#equivalence-table">9.2. Equivalence Table</a></li>
+<li><a class="reference internal" href="#auto-equivalence-table">9.3. Auto-Equivalence Table</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="NonBond-Weeks-Chandler-Anderson.html"
+                          title="previous chapter"><span class="section-number">8.13. </span>Non-Bond Weeks-Chandler-Anderson Potential</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="Mesoscale.html"
+                          title="next chapter"><span class="section-number">10. </span>Mesoscale Potentials</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Reference/Tables.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Mesoscale.html" title="10. Mesoscale Potentials"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="NonBond-Weeks-Chandler-Anderson.html" title="8.13. Non-Bond Weeks-Chandler-Anderson Potential"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">9. </span>Table Potentials</a></li> 
+      </ul>
+    </div>
+
+  
+    <div class="footer" role="contentinfo">
+    &#169; Copyright Official contribution of the National Institute of Standards and Technology; not subject to copyright in the United States.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+
+  <!-- Taken from https://www.filamentgroup.com/lab/html-includes/#another-demo%3A-including-another-html-file -->
+  <iframe src="../_static/ntd2d_menu.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  </body>
+</html>

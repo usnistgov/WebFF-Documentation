@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>8.9. Non-Bond Energy Renormalization Potential &#8212; WebFF 0.5.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=b597d1d3" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=3fadbb4a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8.10. Non-Bond Mie Potential" href="NonBond-Mie.html" />
+    <link rel="prev" title="8.8. Non-Bond Lennard-Jones (Class 2 Form) Potential" href="NonBond-Class2.html" />
+   
+
+  <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js" type="text/javascript" defer="defer"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="NonBond-Mie.html" title="8.10. Non-Bond Mie Potential"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="NonBond-Class2.html" title="8.8. Non-Bond Lennard-Jones (Class 2 Form) Potential"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="NonBond.html" accesskey="U"><span class="section-number">8. </span>Non-Bond Potentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">8.9. </span>Non-Bond Energy Renormalization Potential</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="non-bond-energy-renormalization-potential">
+<span id="nonbond-energyrenorm"></span><h1><span class="section-number">8.9. </span>Non-Bond Energy Renormalization Potential<a class="headerlink" href="#non-bond-energy-renormalization-potential" title="Permalink to this heading">¶</a></h1>
+<section id="functional-form">
+<h2><span class="section-number">8.9.1. </span>Functional Form<a class="headerlink" href="#functional-form" title="Permalink to this heading">¶</a></h2>
+<p>The <strong>non-bond Energy Renormalization potential</strong> has the functional form:</p>
+<p><span class="math notranslate nohighlight">\(E=\left( {{\epsilon }_{A}}-{{\epsilon }_{g}} \right)\left[ \frac{1}{1+{{e}^{-k\left( T-{{T}_{T}} \right)}}} \right]+{{\epsilon }_{g}}\)</span></p>
+<p>The force-field parameters for this potential and units are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Equation Symbol</strong></p></td>
+<td><p><strong>Parameter Definition</strong></p></td>
+<td><p><strong>Units</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\({\epsilon }_{A}\)</span></p></td>
+<td><p>Epsilon value in Arrhenius regime</p></td>
+<td><p>energy/mol</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\({\epsilon }_{g}\)</span></p></td>
+<td><p>Epsilon value in glassy regime</p></td>
+<td><p>energy/mol</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(k\)</span></p></td>
+<td><p>Temperature breadth of the transition</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\({T}_{T}\)</span></p></td>
+<td><p>Crossover point of sigmoidal function</p></td>
+<td><p>temperature</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="xml-schema">
+<h2><span class="section-number">8.9.2. </span>XML Schema<a class="headerlink" href="#xml-schema" title="Permalink to this heading">¶</a></h2>
+<p>The XML schema for the <strong>non-bond Energy Renormalization potential</strong> has the following representation (design mode representation using Liquid XML Studio):</p>
+<img alt="../_images/NonBond-EnergyRenorm.png" class="align-left" src="../_images/NonBond-EnergyRenorm.png" />
+<p>The relationship between the equation symbols and XML schema notations are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Parameter Definition</strong></p></td>
+<td><p><strong>Equation Symbol</strong></p></td>
+<td><p><strong>Schema Notation</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Atom type of atom [i]</p></td>
+<td><p>(implicit)</p></td>
+<td><p>AT1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Atom type of atom [j]</p></td>
+<td><p>(implicit)</p></td>
+<td><p>AT2</p></td>
+</tr>
+<tr class="row-even"><td><p>Epsilon value in Arrhenius regime</p></td>
+<td><p><span class="math notranslate nohighlight">\({\epsilon }_{A}\)</span></p></td>
+<td><p>epsilon_A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Epsilon value in glassy regime</p></td>
+<td><p><span class="math notranslate nohighlight">\({\epsilon }_{g}\)</span></p></td>
+<td><p>epsilon_g</p></td>
+</tr>
+<tr class="row-even"><td><p>Temperature breadth of the transition</p></td>
+<td><p><span class="math notranslate nohighlight">\(k\)</span></p></td>
+<td><p>k_sig</p></td>
+</tr>
+<tr class="row-odd"><td><p>Exponent of attractive term</p></td>
+<td><p><span class="math notranslate nohighlight">\({\gamma }_{att}\)</span></p></td>
+<td><p>n_att</p></td>
+</tr>
+</tbody>
+</table>
+<p>The general attributes (describing the entire data set) are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>General Attributes</strong></p></td>
+<td><p><strong>Cardinality</strong></p></td>
+<td><p><strong>Value/Definition</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>style</p></td>
+<td><p>Fixed</p></td>
+<td><p>Mie</p></td>
+</tr>
+<tr class="row-odd"><td><p>formula</p></td>
+<td><p>Fixed</p></td>
+<td><p>C*epsilon*[(sigma/R)^m_rep-(sigma/R)^n_att]</p></td>
+</tr>
+<tr class="row-even"><td><p>a_ij-units</p></td>
+<td><p>Required</p></td>
+<td><p>Enumerations specified in schema</p></td>
+</tr>
+<tr class="row-odd"><td><p>r_c-units</p></td>
+<td><p>Required</p></td>
+<td><p>Enumerations specified in schema</p></td>
+</tr>
+</tbody>
+</table>
+<p>The specific attributes (attached to each set of parameters) are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Specific Attributes</strong></p></td>
+<td><p><strong>Cardinality</strong></p></td>
+<td><p><strong>Value/Definition</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>comment</p></td>
+<td><p>Optional</p></td>
+<td><p>Comment attached to parameter set</p></td>
+</tr>
+<tr class="row-odd"><td><p>version</p></td>
+<td><p>Optional</p></td>
+<td><p>Version number of parameter set</p></td>
+</tr>
+<tr class="row-even"><td><p>reference</p></td>
+<td><p>Optional</p></td>
+<td><p>Reference attached to parameter set</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that an XML document will be rejected from being entered into the WebFF database if a required attribute is left unspecified.</p>
+</section>
+<section id="references">
+<h2><span class="section-number">8.9.3. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://lammps.sandia.gov/doc/pair_mie.html">LAMMPS Mie Pair Potential</a>.</p></li>
+<li><p><a class="reference external" href="https://www.liquid-technologies.com/">Liquid XML Studio</a>.</p></li>
+<li><p>Wenjie Xia, Jake Song, Cheol Jeong, David D. Hsu, Frederick R. Phelan Jr., Jack F. Douglas, Sinan Keten, “Energy-Renormalization for Achieving Temperature Transferable Coarse-Graining of Polymer Dynamics,” Macromolecules, 50 (21), pp. 8787–8796, (2017). DOI: 10.1021/acs.macromol.7b01717</p></li>
+<li><p>Wenjie Xia, Jake Song, Nitin H. Krishnamurthy, Frederick R. Phelan Jr., Sinan Keten, Jack F. Douglas, “Energy Renormalization for Coarse-Graining the Dynamics of a Model Glass-Forming Liquid,” Journal of Physical Chemistry B,  122 (6), pp. 2040-2045, (2018). DOI: 10.1021/acs.jpcb.8b00321</p></li>
+<li><p>Jake Song, David D. Hsu, Kenneth R. Shull, Frederick R. Phelan Jr., Jack F. Douglas, Wenjie Xia, Sinan Keten, “Energy Renormalization Method for the Coarse-Graining of Polymer Viscoelasticity,” Macromolecules, 51(10), pp. 3818–3827, (2018). DOI: 10.1021/acs.macromol.7b02560</p></li>
+<li><p>Wenjie Xia, Nitin K. Hansoge, Wen-Sheng Xu, Frederick R. Phelan Jr., Sinan Keten, and Jack F. Douglas, “Energy renormalization for coarse-graining polymers having different segmental structures,” Science Advances  5(4), eaav4683, (19 Apr 2019). DOI: 10.1126/sciadv.aav4683</p></li>
+</ol>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">8.9. Non-Bond Energy Renormalization Potential</a><ul>
+<li><a class="reference internal" href="#functional-form">8.9.1. Functional Form</a></li>
+<li><a class="reference internal" href="#xml-schema">8.9.2. XML Schema</a></li>
+<li><a class="reference internal" href="#references">8.9.3. References</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="NonBond-Class2.html"
+                          title="previous chapter"><span class="section-number">8.8. </span>Non-Bond Lennard-Jones (Class 2 Form) Potential</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="NonBond-Mie.html"
+                          title="next chapter"><span class="section-number">8.10. </span>Non-Bond Mie Potential</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Reference/NonBond-EnergyRenorm.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="NonBond-Mie.html" title="8.10. Non-Bond Mie Potential"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="NonBond-Class2.html" title="8.8. Non-Bond Lennard-Jones (Class 2 Form) Potential"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="NonBond.html" ><span class="section-number">8. </span>Non-Bond Potentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">8.9. </span>Non-Bond Energy Renormalization Potential</a></li> 
+      </ul>
+    </div>
+
+  
+    <div class="footer" role="contentinfo">
+    &#169; Copyright Official contribution of the National Institute of Standards and Technology; not subject to copyright in the United States.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+
+  <!-- Taken from https://www.filamentgroup.com/lab/html-includes/#another-demo%3A-including-another-html-file -->
+  <iframe src="../_static/ntd2d_menu.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  </body>
+</html>

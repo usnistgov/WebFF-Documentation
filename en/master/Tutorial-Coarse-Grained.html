@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>7.2. Data Curation for Coarse-Grained Force-Field Data &#8212; WebFF 0.5.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/ntd2d.css?v=b597d1d3" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=3fadbb4a"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7.3. Data Curation for Water Model Force-Field Data" href="Tutorial-Water.html" />
+    <link rel="prev" title="7.1. Data Curation for Atomistic Force-Field Data" href="Tutorial-Atomistic.html" />
+   
+
+  <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js" type="text/javascript" defer="defer"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Tutorial-Water.html" title="7.3. Data Curation for Water Model Force-Field Data"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Tutorial-Atomistic.html" title="7.1. Data Curation for Atomistic Force-Field Data"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="Tutorial.html" accesskey="U"><span class="section-number">7. </span>Tutorial</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7.2. </span>Data Curation for Coarse-Grained Force-Field Data</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="data-curation-for-coarse-grained-force-field-data">
+<span id="tutorial-coarse-grained"></span><h1><span class="section-number">7.2. </span>Data Curation for Coarse-Grained Force-Field Data<a class="headerlink" href="#data-curation-for-coarse-grained-force-field-data" title="Permalink to this heading">¶</a></h1>
+<section id="the-martini-coarse-grained-force-field">
+<h2><span class="section-number">7.2.1. </span>The Martini Coarse-Grained Force-Field<a class="headerlink" href="#the-martini-coarse-grained-force-field" title="Permalink to this heading">¶</a></h2>
+<p>In this tutorial, we show step by step how to curate data for the Martini Coarse-Grained Force-Field into WebFF using the WebFF Excel data template and the WebFF.py Python library.</p>
+<div class="line-block">
+<div class="line">Martini Force-Field Data Source</div>
+</div>
+<figure class="align-default">
+<img alt="_images/Martini_main_reference_PDF.png" src="_images/Martini_main_reference_PDF.png" />
+</figure>
+<figure class="align-default">
+<img alt="_images/itp_screenshot.png" src="_images/itp_screenshot.png" />
+</figure>
+<div class="line-block">
+<div class="line">WebFF Excel Spreadsheet Data Entry</div>
+</div>
+<p>The data for the Martini force-field was ported to the Excel spreadsheet called: WebFF-DocumentationXMLCoarse-GrainedWebFF-CoarseGrained-DataTemplate.xlsx</p>
+<div class="line-block">
+<div class="line">Metadata</div>
+</div>
+<p>There are three sections of Metadata to include</p>
+<figure class="align-default">
+<img alt="_images/CG_template_Metadata.png" src="_images/CG_template_Metadata.png" />
+</figure>
+<figure class="align-default">
+<img alt="_images/CG_template_Keywords.png" src="_images/CG_template_Keywords.png" />
+</figure>
+<figure class="align-default">
+<img alt="_images/CG_template_References.png" src="_images/CG_template_References.png" />
+</figure>
+<div class="line-block">
+<div class="line">Atom Types</div>
+</div>
+<p>The atom types for Martini are general in nature, and each entry can stand for a number of similar but related chemical moeities.</p>
+<figure class="align-default">
+<img alt="_images/CG_template_AtomTypes.png" src="_images/CG_template_AtomTypes.png" />
+</figure>
+<div class="line-block">
+<div class="line">Potentials</div>
+</div>
+<figure class="align-default">
+<img alt="_images/CG_template_Bonds.png" src="_images/CG_template_Bonds.png" />
+</figure>
+<figure class="align-default">
+<img alt="_images/CG_template_Angles.png" src="_images/CG_template_Angles.png" />
+</figure>
+<figure class="align-default">
+<img alt="_images/CG_template_NonBonds.png" src="_images/CG_template_NonBonds.png" />
+</figure>
+<div class="line-block">
+<div class="line">Excel to XML Conversion</div>
+</div>
+<figure class="align-default">
+<img alt="_images/Python_cmd_line_Excel_to_XML.png" src="_images/Python_cmd_line_Excel_to_XML.png" />
+</figure>
+</section>
+<section id="references">
+<h2><span class="section-number">7.2.2. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Siewert J. Marrink, H. Jelger Risselada, Serge Yefimov, D. Peter Tieleman, and Alex H. de Vries, “The MARTINI Force Field:  Coarse Grained Model for Biomolecular Simulations,” J. Phys. Chem. B, 111 (27), pp 7812–7824, (2007).</p></li>
+<li><p>Martini v2.2 Force-Field Parameters, <a class="reference external" href="http://www.cgmartini.nl/images/parameters/ITP/martini_v2.2.itp">http://www.cgmartini.nl/images/parameters/ITP/martini_v2.2.itp</a></p></li>
+</ol>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">7.2. Data Curation for Coarse-Grained Force-Field Data</a><ul>
+<li><a class="reference internal" href="#the-martini-coarse-grained-force-field">7.2.1. The Martini Coarse-Grained Force-Field</a></li>
+<li><a class="reference internal" href="#references">7.2.2. References</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="Tutorial-Atomistic.html"
+                          title="previous chapter"><span class="section-number">7.1. </span>Data Curation for Atomistic Force-Field Data</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="Tutorial-Water.html"
+                          title="next chapter"><span class="section-number">7.3. </span>Data Curation for Water Model Force-Field Data</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Tutorial-Coarse-Grained.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Tutorial-Water.html" title="7.3. Data Curation for Water Model Force-Field Data"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Tutorial-Atomistic.html" title="7.1. Data Curation for Atomistic Force-Field Data"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="Tutorial.html" ><span class="section-number">7. </span>Tutorial</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7.2. </span>Data Curation for Coarse-Grained Force-Field Data</a></li> 
+      </ul>
+    </div>
+
+  
+    <div class="footer" role="contentinfo">
+    &#169; Copyright Official contribution of the National Institute of Standards and Technology; not subject to copyright in the United States.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+
+  <!-- Taken from https://www.filamentgroup.com/lab/html-includes/#another-demo%3A-including-another-html-file -->
+  <iframe src="_static/ntd2d_menu.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  </body>
+</html>

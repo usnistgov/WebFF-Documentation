@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>8.12. Tabular Non-Bond &#8212; WebFF 0.5.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=b597d1d3" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=3fadbb4a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8.13. Non-Bond Weeks-Chandler-Anderson Potential" href="NonBond-Weeks-Chandler-Anderson.html" />
+    <link rel="prev" title="8.11. Non-Bond Soft Potential" href="NonBond-Soft.html" />
+   
+
+  <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js" type="text/javascript" defer="defer"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="NonBond-Weeks-Chandler-Anderson.html" title="8.13. Non-Bond Weeks-Chandler-Anderson Potential"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="NonBond-Soft.html" title="8.11. Non-Bond Soft Potential"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="NonBond.html" accesskey="U"><span class="section-number">8. </span>Non-Bond Potentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">8.12. </span>Tabular Non-Bond</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="tabular-non-bond">
+<span id="nonbond-tabular"></span><h1><span class="section-number">8.12. </span>Tabular Non-Bond<a class="headerlink" href="#tabular-non-bond" title="Permalink to this heading">¶</a></h1>
+<section id="tabular-form">
+<h2><span class="section-number">8.12.1. </span>Tabular Form<a class="headerlink" href="#tabular-form" title="Permalink to this heading">¶</a></h2>
+<p>The <strong>tabular non-bond potential</strong> has the parameters:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Parameter</strong></p></td>
+<td><p><strong>Parameter Definition</strong></p></td>
+<td><p><strong>Units</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>N</p></td>
+<td><p>Number of tabulated values</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>R</p></td>
+<td><p>Interatomic distance (least: rlo, greatest: rhi)</p></td>
+<td><p>length</p></td>
+</tr>
+<tr class="row-even"><td><p>RSQ</p></td>
+<td><p>Interatomic distance squared (least: rlo, greatest: rhi)</p></td>
+<td><p>length^2</p></td>
+</tr>
+<tr class="row-odd"><td><p>BITMAP</p></td>
+<td><p>Determines ordering of tabulated values (least: rlo, greatest: rhi)</p></td>
+<td><p>length</p></td>
+</tr>
+<tr class="row-even"><td><p>FPRIME</p></td>
+<td><p>Derivatives of the force at the innermost (fplo) and outermost (fphi) bond lengths</p></td>
+<td><p>force/length                                                       length^2</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>tabular non-bond potential</strong> has the tabulated values:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>index</strong></p></td>
+<td><p><strong>r</strong></p></td>
+<td><p><strong>energy</strong></p></td>
+<td><p><strong>force</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>i_1</p></td>
+<td><p>r_1</p></td>
+<td><p>e_1</p></td>
+<td><p>f_1</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>i_N</p></td>
+<td><p>r_N</p></td>
+<td><p>e_n</p></td>
+<td><p>f_N</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="xml-schema">
+<h2><span class="section-number">8.12.2. </span>XML Schema<a class="headerlink" href="#xml-schema" title="Permalink to this heading">¶</a></h2>
+<p>The XML schema for the <strong>tabular non-ond potential</strong> has the following representation (design mode representation using Liquid XML Studio):</p>
+<img alt="../_images/NonBond-Tabular.png" class="align-left" src="../_images/NonBond-Tabular.png" />
+<p>The relationship between the parameters/symbols and XML schema notations are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Parameter Definition</strong></p></td>
+<td><p><strong>Parameter/Symbol</strong></p></td>
+<td><p><strong>Schema Notation</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Atom type of atom [i]</p></td>
+<td><p><span class="math notranslate nohighlight">\(i\)</span></p></td>
+<td><p>AT-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Atom type of atom [j]</p></td>
+<td><p><span class="math notranslate nohighlight">\(j\)</span></p></td>
+<td><p>AT-2</p></td>
+</tr>
+<tr class="row-even"><td><p>Section identifying keyword</p></td>
+<td><p>N/A</p></td>
+<td><p>keyword</p></td>
+</tr>
+<tr class="row-odd"><td><p>Number of tabulated values</p></td>
+<td><p>N</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-even"><td><p>Interatomic distance (least)</p></td>
+<td><p>R</p></td>
+<td><p>rlo</p></td>
+</tr>
+<tr class="row-odd"><td><p>Interatomic distance (greatest)</p></td>
+<td><p>R</p></td>
+<td><p>rhi</p></td>
+</tr>
+<tr class="row-even"><td><p>Interatomic distance squared (least)</p></td>
+<td><p>RSQ</p></td>
+<td><p>rlo</p></td>
+</tr>
+<tr class="row-odd"><td><p>Interatomic distance squared (greatest)</p></td>
+<td><p>RSQ</p></td>
+<td><p>rhi</p></td>
+</tr>
+<tr class="row-even"><td><p>Determines ordering of tabulated values (least)</p></td>
+<td><p>BITMAP</p></td>
+<td><p>rlo</p></td>
+</tr>
+<tr class="row-odd"><td><p>Determines ordering of tabulated values (greatest)</p></td>
+<td><p>BITMAP</p></td>
+<td><p>rhi</p></td>
+</tr>
+<tr class="row-even"><td><p>Derivative of the force at the innermost</p></td>
+<td><p>FPRIME</p></td>
+<td><p>fplo</p></td>
+</tr>
+<tr class="row-odd"><td><p>Derivative of the force at the outermost</p></td>
+<td><p>FPRIME</p></td>
+<td><p>fphi</p></td>
+</tr>
+<tr class="row-even"><td><p>Index</p></td>
+<td><p>index</p></td>
+<td><p>index</p></td>
+</tr>
+<tr class="row-odd"><td><p>Interatomic distance</p></td>
+<td><p>r</p></td>
+<td><p>r</p></td>
+</tr>
+<tr class="row-even"><td><p>Energy</p></td>
+<td><p>energy</p></td>
+<td><p>energy</p></td>
+</tr>
+<tr class="row-odd"><td><p>Force</p></td>
+<td><p>force</p></td>
+<td><p>force</p></td>
+</tr>
+</tbody>
+</table>
+<p>The general attributes (describing the entire data set) are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>General Attributes</strong></p></td>
+<td><p><strong>Cardinality</strong></p></td>
+<td><p><strong>Value/Definition</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>style</p></td>
+<td><p>Fixed</p></td>
+<td><p>Tabular</p></td>
+</tr>
+<tr class="row-odd"><td><p>Interpolation-style</p></td>
+<td><p>Required</p></td>
+<td><p>Enumerations specified in schema</p></td>
+</tr>
+<tr class="row-even"><td><p>r-units</p></td>
+<td><p>Required</p></td>
+<td><p>Enumerations specified in schema</p></td>
+</tr>
+<tr class="row-odd"><td><p>energy-units</p></td>
+<td><p>Required</p></td>
+<td><p>Enumerations specified in schema</p></td>
+</tr>
+<tr class="row-even"><td><p>force-units</p></td>
+<td><p>Required</p></td>
+<td><p>Enumerations specified in schema</p></td>
+</tr>
+<tr class="row-odd"><td><p>comment</p></td>
+<td><p>Optional</p></td>
+<td><p>Comment attached to parameter set</p></td>
+</tr>
+<tr class="row-even"><td><p>version</p></td>
+<td><p>Optional</p></td>
+<td><p>Version number of parameter set</p></td>
+</tr>
+<tr class="row-odd"><td><p>reference</p></td>
+<td><p>Optional</p></td>
+<td><p>Reference attached to parameter set</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that an XML document will be rejected from being entered into the WebFF database if a required attribute is left unspecified.</p>
+</section>
+<section id="references">
+<h2><span class="section-number">8.12.3. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="http://lammps.sandia.gov/doc/pair_table.html">LAMMPS Tabular Pair Potential</a>.</p></li>
+<li><p><a class="reference external" href="https://www.liquid-technologies.com/">Liquid XML Studio</a>.</p></li>
+</ol>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">8.12. Tabular Non-Bond</a><ul>
+<li><a class="reference internal" href="#tabular-form">8.12.1. Tabular Form</a></li>
+<li><a class="reference internal" href="#xml-schema">8.12.2. XML Schema</a></li>
+<li><a class="reference internal" href="#references">8.12.3. References</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="NonBond-Soft.html"
+                          title="previous chapter"><span class="section-number">8.11. </span>Non-Bond Soft Potential</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="NonBond-Weeks-Chandler-Anderson.html"
+                          title="next chapter"><span class="section-number">8.13. </span>Non-Bond Weeks-Chandler-Anderson Potential</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Reference/NonBond-Tabular.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="NonBond-Weeks-Chandler-Anderson.html" title="8.13. Non-Bond Weeks-Chandler-Anderson Potential"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="NonBond-Soft.html" title="8.11. Non-Bond Soft Potential"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="NonBond.html" ><span class="section-number">8. </span>Non-Bond Potentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">8.12. </span>Tabular Non-Bond</a></li> 
+      </ul>
+    </div>
+
+  
+    <div class="footer" role="contentinfo">
+    &#169; Copyright Official contribution of the National Institute of Standards and Technology; not subject to copyright in the United States.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+
+  <!-- Taken from https://www.filamentgroup.com/lab/html-includes/#another-demo%3A-including-another-html-file -->
+  <iframe src="../_static/ntd2d_menu.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  </body>
+</html>

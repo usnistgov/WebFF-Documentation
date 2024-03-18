@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>8.2. Non-Bond Lennard-Jones Potential &#8212; WebFF 0.5.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=b597d1d3" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=3fadbb4a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8.3. Non-Bond Lennard-Jones (9-6 Form) Potential" href="NonBond-LJ96.html" />
+    <link rel="prev" title="8.1. Non-Bond Lennard-Jones Potential" href="NonBond-LJ.html" />
+   
+
+  <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-3.6.2.min.js" type="text/javascript" defer="defer"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="NonBond-LJ96.html" title="8.3. Non-Bond Lennard-Jones (9-6 Form) Potential"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="NonBond-LJ.html" title="8.1. Non-Bond Lennard-Jones Potential"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="NonBond.html" accesskey="U"><span class="section-number">8. </span>Non-Bond Potentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">8.2. </span>Non-Bond Lennard-Jones Potential</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="non-bond-lennard-jones-potential">
+<span id="nonbond-lj2"></span><h1><span class="section-number">8.2. </span>Non-Bond Lennard-Jones Potential<a class="headerlink" href="#non-bond-lennard-jones-potential" title="Permalink to this heading">¶</a></h1>
+<section id="functional-form">
+<h2><span class="section-number">8.2.1. </span>Functional Form<a class="headerlink" href="#functional-form" title="Permalink to this heading">¶</a></h2>
+<p>The <strong>non-bond Lennard-Jones potential</strong> has the functional form:</p>
+<p><span class="math notranslate nohighlight">\(E = 4 \cdot {\epsilon} \cdot \left[ {\left( \frac {\sigma}{R_{ij}} \right)^{12}  - \left( \frac {\sigma}{R_{ij}} \right)^{6}} \right]\)</span></p>
+<p>The force-field parameters for this potential and units are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Equation Symbol</strong></p></td>
+<td><p><strong>Parameter Definition</strong></p></td>
+<td><p><strong>Units</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\epsilon\)</span></p></td>
+<td><p>Potential well depth for atom [i]</p></td>
+<td><p>energy/mol</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\sigma\)</span></p></td>
+<td><p>Interatomic cut-off distance for atom [i]</p></td>
+<td><p>length</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="xml-schema">
+<h2><span class="section-number">8.2.2. </span>XML Schema<a class="headerlink" href="#xml-schema" title="Permalink to this heading">¶</a></h2>
+<p>The XML schema for the <strong>non-bond Lennard-Jones potential</strong> has the following representation (design mode representation using Liquid XML Studio):</p>
+<img alt="../_images/NonBond-LJ2.png" class="align-left" src="../_images/NonBond-LJ2.png" />
+<p>The relationship between the equation symbols and XML schema notations are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Parameter Definition</strong></p></td>
+<td><p><strong>Equation Symbol</strong></p></td>
+<td><p><strong>Schema Notation</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Atom type of atom [i]</p></td>
+<td><p>(implicit)</p></td>
+<td><p>AT-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Atom type of atom [j]</p></td>
+<td><p>(implicit)</p></td>
+<td><p>AT-2</p></td>
+</tr>
+<tr class="row-even"><td><p>Potential well depth for atom [i]</p></td>
+<td><p><span class="math notranslate nohighlight">\(\epsilon\)</span></p></td>
+<td><p>epsilon</p></td>
+</tr>
+<tr class="row-odd"><td><p>Interatomic cut-off distance for atom [i]</p></td>
+<td><p><span class="math notranslate nohighlight">\(\sigma\)</span></p></td>
+<td><p>sigma</p></td>
+</tr>
+</tbody>
+</table>
+<p>The general attributes (describing the entire data set) are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>General Attributes</strong></p></td>
+<td><p><strong>Cardinality</strong></p></td>
+<td><p><strong>Value/Definition</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>style</p></td>
+<td><p>Fixed</p></td>
+<td><p>Lennard-Jones (12-6)</p></td>
+</tr>
+<tr class="row-odd"><td><p>formula</p></td>
+<td><p>Fixed</p></td>
+<td><p>4*epsilon*[(sigma/R)^12-(sigma/R)^6]</p></td>
+</tr>
+<tr class="row-even"><td><p>epsilon-units</p></td>
+<td><p>Required</p></td>
+<td><p>Enumerations specified in schema</p></td>
+</tr>
+<tr class="row-odd"><td><p>sigma-units</p></td>
+<td><p>Required</p></td>
+<td><p>Enumerations specified in schema</p></td>
+</tr>
+<tr class="row-even"><td><p>Combining-Rule</p></td>
+<td><p>Required</p></td>
+<td><p>Combining rule for mixed atom types</p></td>
+</tr>
+</tbody>
+</table>
+<p>The specific attributes (attached to each set of parameters) are given by:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Specific Attributes</strong></p></td>
+<td><p><strong>Cardinality</strong></p></td>
+<td><p><strong>Value/Definition</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>comment</p></td>
+<td><p>Optional</p></td>
+<td><p>Comment attached to parameter set</p></td>
+</tr>
+<tr class="row-odd"><td><p>version</p></td>
+<td><p>Optional</p></td>
+<td><p>Version number of parameter set</p></td>
+</tr>
+<tr class="row-even"><td><p>reference</p></td>
+<td><p>Optional</p></td>
+<td><p>Reference attached to parameter set</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that an XML document will be rejected from being entered into the WebFF database if a required attribute is left unspecified.</p>
+</section>
+<section id="references">
+<h2><span class="section-number">8.2.3. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a href="#id1"><span class="problematic" id="id2">`LAMMPS Lennard-Jones Pair Potential`_</span></a>.</p></li>
+<li><p><a href="#id3"><span class="problematic" id="id4">`GROMACS Lennard-Jones Pair Potential`_</span></a> page 66.</p></li>
+<li><p><a class="reference external" href="https://www.liquid-technologies.com/">Liquid XML Studio</a>.</p></li>
+</ol>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">8.2. Non-Bond Lennard-Jones Potential</a><ul>
+<li><a class="reference internal" href="#functional-form">8.2.1. Functional Form</a></li>
+<li><a class="reference internal" href="#xml-schema">8.2.2. XML Schema</a></li>
+<li><a class="reference internal" href="#references">8.2.3. References</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="NonBond-LJ.html"
+                          title="previous chapter"><span class="section-number">8.1. </span>Non-Bond Lennard-Jones Potential</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="NonBond-LJ96.html"
+                          title="next chapter"><span class="section-number">8.3. </span>Non-Bond Lennard-Jones (9-6 Form) Potential</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Reference/NonBond-LJ2.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="NonBond-LJ96.html" title="8.3. Non-Bond Lennard-Jones (9-6 Form) Potential"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="NonBond-LJ.html" title="8.1. Non-Bond Lennard-Jones Potential"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">WebFF 0.5.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="NonBond.html" ><span class="section-number">8. </span>Non-Bond Potentials</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">8.2. </span>Non-Bond Lennard-Jones Potential</a></li> 
+      </ul>
+    </div>
+
+  
+    <div class="footer" role="contentinfo">
+    &#169; Copyright Official contribution of the National Institute of Standards and Technology; not subject to copyright in the United States.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+
+  <!-- Taken from https://www.filamentgroup.com/lab/html-includes/#another-demo%3A-including-another-html-file -->
+  <iframe src="../_static/ntd2d_menu.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  </body>
+</html>
