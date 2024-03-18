@@ -13,7 +13,7 @@ The **umbrella improper potential** has the functional form:
 The force-field parameters for this potential and units are given by:
 
 ======================= ============================================== ================
-**Equation Symbol**      **Parameter Definition**                     **Units**
+**Equation Symbol**     **Parameter Definition**                       **Units**
 ----------------------- ---------------------------------------------- ----------------
 :math:`K_{i,ijkl}`      Improper coefficient for atoms [i,j,k,l]       energy
 :math:`\omega_{0,ijkl}` Equilibrium improper angle for atoms [i,j,k,l] degrees

@@ -1,7 +1,7 @@
 .. _Cross-BondAngle:
 
 Cross: Bond-Angle  
-================
+=================
 
 Functional Form
 ---------------

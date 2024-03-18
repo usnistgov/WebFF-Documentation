@@ -1,7 +1,7 @@
 .. _Cross-MiddleBondTorsion:
 
 Cross: Middle-Bond-Torsion  
-==================
+==========================
 
 Functional Form
 ---------------

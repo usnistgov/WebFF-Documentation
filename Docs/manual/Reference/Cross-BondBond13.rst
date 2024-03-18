@@ -1,7 +1,7 @@
 .. _Cross-BondBond13:
 
 Cross: Bond-Bond-13  
-==================
+===================
 
 Functional Form
 ---------------

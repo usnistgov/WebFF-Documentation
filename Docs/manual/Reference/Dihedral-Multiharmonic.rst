@@ -1,7 +1,7 @@
 .. _Dihedral-Multiharmonic:
 
 Multi-Harmonic Dihedral  
-==================
+=======================
 
 Functional Form
 ---------------
@@ -89,7 +89,7 @@ References
 
 2. `Liquid XML Studio`_.
 
-.. _LAMMPS Fourier Dihedral Potential: https://lammps.sandia.gov/doc/dihedral_multi_harmonic.html
+.. _LAMMPS Multi-Harmonic Dihedral Potential: https://lammps.sandia.gov/doc/dihedral_multi_harmonic.html
 
 .. _Liquid XML Studio: https://www.liquid-technologies.com/
 

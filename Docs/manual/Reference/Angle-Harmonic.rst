@@ -1,7 +1,7 @@
 .. _Angle-Harmonic:
 
 Harmonic Angle  
-=============
+==============
 
 Functional Form
 ---------------

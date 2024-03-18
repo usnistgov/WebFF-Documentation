@@ -1,7 +1,7 @@
 .. _Improper-CHARMM
 
 CHARMM Improper  
-==================
+===============
 
 Functional Form
 ---------------

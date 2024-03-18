@@ -1,7 +1,7 @@
 .. _Dihedral-FourierSimple:
 
 Fourier (Simple) Dihedral  
-==================
+=========================
 
 Functional Form
 ---------------

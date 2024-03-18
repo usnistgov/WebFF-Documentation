@@ -81,7 +81,7 @@ References
 
 .. _LAMMPS Quadratic Dihedral Potential: http://lammps.sandia.gov/doc/dihedral_quadratic.html
 
-.. _GROMACS Quadratic Bond Potential: http://manual.gromacs.org/documentation/2016.3/manual-2016.3.pdf
+.. _GROMACS Quadratic Dihedral Potential: http://manual.gromacs.org/documentation/2016.3/manual-2016.3.pdf
 
 .. _Liquid XML Studio: https://www.liquid-technologies.com/
 

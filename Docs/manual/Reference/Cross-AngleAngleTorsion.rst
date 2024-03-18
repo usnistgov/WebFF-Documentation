@@ -1,7 +1,7 @@
 .. _Cross-AngleAngleTorsion:
 
 Cross: Angle-Angle-Torsion  
-==================
+==========================
 
 Functional Form
 ---------------

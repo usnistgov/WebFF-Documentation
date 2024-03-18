@@ -1,7 +1,7 @@
 .. _Cross-EndBondTorsion:
 
 Cross: End-Bond-Torsion  
-==================
+=======================
 
 Functional Form
 ---------------
